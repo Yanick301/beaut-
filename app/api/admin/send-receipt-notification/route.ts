@@ -76,9 +76,8 @@ export async function POST(request: NextRequest) {
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` 
       : 'http://localhost:3000';
     
-    const adminToken = process.env.ADMIN_CONFIRMATION_TOKEN || 'change-this-secret-token';
-    const confirmUrl = `${baseUrl}/api/admin/orders/${orderId}/confirm?token=${adminToken}`;
-    const rejectUrl = `${baseUrl}/api/admin/orders/${orderId}/reject?token=${adminToken}`;
+    const confirmUrl = `${baseUrl}/api/admin/orders/${orderId}/confirm`;
+    const rejectUrl = `${baseUrl}/api/admin/orders/${orderId}/reject`;
 
     console.log('Sending email to admin:', adminEmail);
     console.log('Resend API Key exists:', !!process.env.RESEND_API_KEY);

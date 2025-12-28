@@ -39,18 +39,27 @@ export async function GET(
     const { orderId } = await params;
     const supabase = await createClient();
 
-    // Vérifier le token
-    const searchParams = request.nextUrl.searchParams;
-    const token = searchParams.get('token');
-    const reason = searchParams.get('reason') || 'Reçu de virement non valide ou montant incorrect';
+    // Vérifier l'authentification et les droits admin
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    
+    if (authError || !user) {
+      // Rediriger vers la connexion avec un redirect vers cette page
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+      const currentUrl = `${baseUrl}/api/admin/orders/${orderId}/reject`;
+      return NextResponse.redirect(`${baseUrl}/connexion?redirect=${encodeURIComponent(currentUrl)}`);
+    }
 
-    const expectedToken = process.env.ADMIN_CONFIRMATION_TOKEN || 'change-this-secret-token';
-    if (token !== expectedToken) {
+    // Vérifier les droits admin
+    const userIsAdmin = await isAdmin(user.id, user.email);
+    if (!userIsAdmin) {
       return NextResponse.json(
-        { error: 'Token invalide' },
+        { error: 'Accès refusé. Droits administrateur requis.' },
         { status: 403 }
       );
     }
+
+    const searchParams = request.nextUrl.searchParams;
+    const reason = searchParams.get('reason') || 'Reçu de virement non valide ou montant incorrect';
 
     console.log('GET REJECT: Looking for order with ID:', orderId);
     
