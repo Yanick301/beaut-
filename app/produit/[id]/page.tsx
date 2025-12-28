@@ -12,12 +12,15 @@ import ProductCard from '@/components/ProductCard';
 import FavoriteButton from '@/components/FavoriteButton';
 import ReviewForm from '@/components/ReviewForm';
 import ProductStructuredData from './ProductStructuredData';
+import ProductRecommendations from '@/components/ProductRecommendations';
+import { getSimilarProducts, getComplementaryProducts } from '@/lib/recommendations';
 
 export default function ProductPage() {
   const params = useParams();
   const id = params.id as string;
   const product = products.find(p => p.id === id);
-  const relatedProducts = products.filter(p => p.category === product?.category && p.id !== product?.id).slice(0, 4);
+  const relatedProducts = product ? getSimilarProducts(product, products, 4) : [];
+  const complementaryProducts = product ? getComplementaryProducts(product, products, 3) : [];
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -313,14 +316,19 @@ export default function ProductPage() {
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div>
-            <h2 className="font-elegant text-3xl text-brown-dark mb-8">Produits similaires</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          </div>
+          <ProductRecommendations
+            title="Produits similaires"
+            products={relatedProducts}
+          />
+        )}
+
+        {/* Complementary Products (Upsell/Cross-sell) */}
+        {complementaryProducts.length > 0 && (
+          <ProductRecommendations
+            title="Produits complémentaires"
+            products={complementaryProducts}
+            limit={3}
+          />
         )}
       </div>
     </div>

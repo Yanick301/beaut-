@@ -134,3 +134,4 @@ Pour vérifier que tout fonctionne :
 3. **Google Search Console** : Vérifier l'indexation
 4. **PageSpeed Insights** : Vérifier les performances
 
+

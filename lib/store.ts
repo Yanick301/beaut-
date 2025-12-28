@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { CartItem, Product } from '@/types';
 
 interface CartStore {
@@ -11,8 +12,10 @@ interface CartStore {
   getItemCount: () => number;
 }
 
-export const useCartStore = create<CartStore>((set, get) => ({
-  items: [],
+export const useCartStore = create<CartStore>()(
+  persist(
+    (set, get) => ({
+      items: [],
   
   addItem: (product) => {
     const items = get().items;
@@ -56,7 +59,15 @@ export const useCartStore = create<CartStore>((set, get) => ({
   getItemCount: () => {
     return get().items.reduce((count, item) => count + item.quantity, 0);
   },
-}));
+    }),
+    {
+      name: 'essence-feminine-cart', // nom de la clé dans localStorage
+      storage: createJSONStorage(() => localStorage),
+      // Optionnel : ne sauvegarder que les items pour éviter les problèmes de sérialisation
+      partialize: (state) => ({ items: state.items }),
+    }
+  )
+);
 
 
 

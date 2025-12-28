@@ -93,3 +93,4 @@ export default function CategoryStructuredData({ slug }: CategoryStructuredDataP
   return null;
 }
 
+

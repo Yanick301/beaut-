@@ -260,3 +260,4 @@ WHERE id = (SELECT id FROM auth.users WHERE email = 'admin@essencefeminine.nl');
 **Besoin d'aide ?** Vérifiez les logs de la console et les erreurs dans Supabase Dashboard.
 
 
+

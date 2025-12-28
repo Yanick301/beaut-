@@ -26,14 +26,40 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   useEffect(() => {
     if (searchQuery.trim().length > 0) {
-      const query = searchQuery.toLowerCase();
-      const filtered = products.filter(product =>
-        product.name.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query) ||
-        product.brand?.toLowerCase().includes(query) ||
-        product.category.toLowerCase().includes(query)
-      ).slice(0, 8);
-      setResults(filtered);
+      const query = searchQuery.toLowerCase().trim();
+      const queryWords = query.split(/\s+/);
+      
+      // Recherche avancée avec scoring
+      const scored = products.map(product => {
+        let score = 0;
+        const nameLower = product.name.toLowerCase();
+        const descLower = product.description.toLowerCase();
+        const brandLower = product.brand?.toLowerCase() || '';
+        const categoryLower = product.category.toLowerCase();
+        
+        queryWords.forEach(word => {
+          // Nom exact : score élevé
+          if (nameLower === word) score += 100;
+          // Nom commence par : score moyen-élevé
+          else if (nameLower.startsWith(word)) score += 50;
+          // Nom contient : score moyen
+          else if (nameLower.includes(word)) score += 30;
+          // Description contient : score faible
+          if (descLower.includes(word)) score += 10;
+          // Marque correspond : score moyen
+          if (brandLower.includes(word)) score += 20;
+          // Catégorie correspond : score faible
+          if (categoryLower.includes(word)) score += 5;
+        });
+        
+        return { product, score };
+      })
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 12)
+      .map(item => item.product);
+      
+      setResults(scored);
     } else {
       setResults([]);
     }
@@ -111,6 +137,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     </div>
   );
 }
+
 
 
 

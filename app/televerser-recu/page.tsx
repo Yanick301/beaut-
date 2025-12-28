@@ -399,8 +399,8 @@ function UploadReceiptContent() {
                       </>
                     ) : (
                       <>
-                        <FiUpload className="w-5 h-5" />
-                        Téléverser le reçu
+                        <FiCheckCircle className="w-5 h-5" />
+                        Valider ma commande
                       </>
                     )}
                   </button>

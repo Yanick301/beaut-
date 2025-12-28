@@ -17,3 +17,4 @@ CREATE INDEX IF NOT EXISTS idx_profiles_is_admin ON public.profiles(is_admin);
 
 
 
+
