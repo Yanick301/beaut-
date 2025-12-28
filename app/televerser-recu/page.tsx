@@ -12,6 +12,7 @@ function UploadReceiptContent() {
   const orderId = searchParams.get('orderId');
   const orderNumber = searchParams.get('orderNumber');
   const supabase = createClient();
+  const { clearCart } = useCartStore();
 
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -132,7 +133,7 @@ function UploadReceiptContent() {
         .update({
           receipt_url: publicUrl,
           receipt_file_name: fileName,
-          status: 'processing',
+          status: 'pending',
           payment_status: 'pending',
           updated_at: new Date().toISOString()
         })
@@ -161,10 +162,15 @@ function UploadReceiptContent() {
         // Ne pas bloquer si l'email échoue, le reçu est déjà uploadé
       }
 
+      // Vider le panier maintenant que le reçu est téléversé
+      clearCart();
+      
       setSuccess(true);
       
-      // Vider le panier seulement après confirmation du téléversement
-      // Le panier sera vidé automatiquement lors de la confirmation du paiement par l'admin
+      // Rediriger vers l'historique des commandes après 3 secondes
+      setTimeout(() => {
+        router.push('/compte?tab=orders');
+      }, 3000);
     } catch (err: any) {
       console.error('Upload error:', err);
       setError(err.message || 'Erreur lors du téléversement du reçu');
@@ -213,7 +219,10 @@ function UploadReceiptContent() {
               Reçu téléversé avec succès !
             </h1>
             <p className="text-lg text-brown-soft mb-6">
-              Votre reçu de virement a été reçu. Nous allons le vérifier et confirmer votre commande sous peu.
+              Votre reçu de virement a été reçu. Votre commande est maintenant <strong className="text-brown-dark">en attente de vérification</strong>.
+            </p>
+            <p className="text-base text-brown-soft mb-6">
+              Nous allons vérifier votre reçu et confirmer votre commande sous peu. Vous recevrez un email de confirmation une fois que votre commande sera validée.
             </p>
             {orderNumber && (
               <p className="text-sm text-brown-soft mb-8">
@@ -221,11 +230,11 @@ function UploadReceiptContent() {
               </p>
             )}
             <p className="text-sm text-brown-soft mb-8">
-              Vous recevrez un email de confirmation une fois que votre commande sera validée.
+              Vous serez automatiquement redirigé vers votre historique de commandes dans quelques secondes...
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/compte" className="btn-primary">
-                Voir mes commandes
+              <Link href="/compte?tab=orders" className="btn-primary">
+                Voir mes commandes maintenant
               </Link>
               <Link href="/" className="btn-secondary">
                 Retour à l'accueil

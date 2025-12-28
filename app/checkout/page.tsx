@@ -90,8 +90,8 @@ export default function CheckoutPage() {
         throw new Error(data.error || 'Erreur lors de la création de la commande');
       }
 
-      // Succès - vider le panier et rediriger vers la page de téléversement du reçu
-      clearCart();
+      // Succès - rediriger vers la page de téléversement du reçu
+      // Ne pas vider le panier ici, on le videra après téléversement réussi
       router.push(`/televerser-recu?orderId=${data.order.id}&orderNumber=${data.order.orderNumber}`);
     } catch (err: any) {
       console.error('Checkout error:', err);
@@ -100,14 +100,14 @@ export default function CheckoutPage() {
     }
   };
 
-  // Vérifier si le panier est vide et rediriger
+  // Vérifier si le panier est vide et rediriger (seulement si on n'est pas en train de soumettre)
   useEffect(() => {
-    if (items.length === 0) {
+    if (items.length === 0 && !submitting) {
       router.push('/panier');
     }
-  }, [items.length, router]);
+  }, [items.length, router, submitting]);
 
-  if (items.length === 0) {
+  if (items.length === 0 && !submitting) {
     return null;
   }
 

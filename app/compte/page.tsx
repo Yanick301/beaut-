@@ -1,16 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { FiUser, FiMail, FiLock, FiPackage, FiHeart, FiLogOut } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 
-export default function AccountPage() {
+function AccountContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const supabase = createClient();
   const [activeTab, setActiveTab] = useState<'profile' | 'orders' | 'favorites'>('profile');
+  
+  // Vérifier si on doit ouvrir l'onglet commandes depuis l'URL
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'orders') {
+      setActiveTab('orders');
+    }
+  }, [searchParams]);
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -314,11 +323,13 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
                     order.status === 'delivered' ? 'bg-green-100 text-green-700' :
                     order.status === 'shipped' ? 'bg-blue-100 text-blue-700' :
                     order.status === 'processing' ? 'bg-yellow-100 text-yellow-700' :
+                    order.status === 'pending' ? 'bg-orange-100 text-orange-700' :
                     'bg-gray-100 text-gray-700'
                   }`}>
                     {order.status === 'delivered' ? 'Livrée' :
                      order.status === 'shipped' ? 'Expédiée' :
-                     order.status === 'processing' ? 'En cours' :
+                     order.status === 'processing' ? 'En traitement' :
+                     order.status === 'pending' ? 'En attente de vérification' :
                      'En attente'}
                   </span>
                   <p className="text-brown-dark font-semibold text-lg">
@@ -434,5 +445,17 @@ function FavoritesTab({ userId, supabase }: { userId: string; supabase: any }) {
         </div>
       )}
     </div>
+  );
+}
+
+export default function AccountPage() {
+  return (
+    <Suspense fallback={
+      <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
+        <div className="text-brown-soft">Chargement...</div>
+      </div>
+    }>
+      <AccountContent />
+    </Suspense>
   );
 }

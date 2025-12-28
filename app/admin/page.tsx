@@ -46,14 +46,19 @@ export default function AdminDashboard() {
           router.push('/');
           return;
         }
-        throw new Error(data.error || 'Erreur lors du chargement');
+        const errorMessage = data.details 
+          ? `${data.error}\n\nDétails: ${data.details}\n${data.hint ? `\nIndication: ${data.hint}` : ''}`
+          : data.error || 'Erreur lors du chargement';
+        throw new Error(errorMessage);
       }
 
       setOrders(data.orders || []);
       setStats(data.stats || null);
     } catch (error: any) {
       console.error('Error loading orders:', error);
-      alert('Erreur lors du chargement des commandes: ' + error.message);
+      console.error('Full error:', error);
+      const errorMessage = error.message || 'Erreur inconnue';
+      alert('Erreur lors du chargement des commandes:\n\n' + errorMessage + '\n\nVérifiez la console pour plus de détails.');
     } finally {
       setLoadingOrders(false);
       setLoading(false);

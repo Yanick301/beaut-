@@ -80,8 +80,15 @@ export async function GET(request: NextRequest) {
 
     if (ordersError) {
       console.error('Error fetching orders:', ordersError);
+      console.error('Error details:', JSON.stringify(ordersError, null, 2));
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération des commandes' },
+        { 
+          error: 'Erreur lors de la récupération des commandes',
+          details: ordersError.message,
+          hint: ordersError.code === 'PGRST301' 
+            ? 'Vérifiez que les politiques RLS permettent aux admins de voir toutes les commandes. Exécutez le script admin_rls_policies.sql dans Supabase.'
+            : ordersError.message
+        },
         { status: 500 }
       );
     }

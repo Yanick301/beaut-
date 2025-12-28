@@ -64,7 +64,12 @@ Une fois configuré, accédez au dashboard via :
 - URL : `http://localhost:3000/admin` (développement)
 - URL : `https://votre-domaine.com/admin` (production)
 
-Si vous n'êtes pas connecté, vous serez redirigé vers la page de connexion.
+**Étapes pour accéder :**
+1. Connectez-vous avec le compte admin sur `/connexion`
+2. Allez sur `/admin`
+3. Si vous n'êtes pas connecté, vous serez automatiquement redirigé vers la page de connexion
+
+**Voir le guide complet** : `GUIDE_ADMIN.md` pour des instructions détaillées.
 
 ## ✨ Fonctionnalités du Dashboard
 
