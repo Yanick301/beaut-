@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     ].filter(Boolean),
     authors: [{ name: 'Essence Féminine' }],
     openGraph: {
-      type: 'product',
+      type: 'website',
       title,
       description,
       url: `https://essencefeminine.nl/produit/${id}`,
