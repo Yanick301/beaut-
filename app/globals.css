@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-playfair: 'Playfair Display', serif;
+  }
+
+  body {
+    @apply bg-beige-light text-brown-dark;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-elegant;
+  }
+
+  /* Amélioration de la lisibilité sur mobile */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Optimisation du scroll sur mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Amélioration des performances sur mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brown-soft text-white-cream px-6 sm:px-8 py-3 rounded-full font-medium 
+           hover:bg-brown-dark transition-all duration-300 shadow-md hover:shadow-lg
+           transform hover:-translate-y-0.5 text-sm sm:text-base;
+  }
+
+  .btn-secondary {
+    @apply bg-white-cream text-brown-soft border-2 border-brown-soft px-6 sm:px-8 py-3 
+           rounded-full font-medium hover:bg-brown-soft hover:text-white-cream 
+           transition-all duration-300 text-sm sm:text-base;
+  }
+
+  .btn-outline {
+    @apply border-2 border-rose-soft text-rose-soft px-4 sm:px-6 py-2 rounded-full 
+           font-medium hover:bg-rose-soft hover:text-white transition-all duration-300 text-sm sm:text-base;
+  }
+
+  .card-product {
+    @apply bg-white-cream rounded-2xl shadow-md hover:shadow-xl transition-all 
+           duration-300 overflow-hidden transform hover:-translate-y-1;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Optimisation des images pour mobile */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Amélioration du contraste pour l'accessibilité */
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-rose-soft;
+  }
+}
