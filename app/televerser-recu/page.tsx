@@ -152,6 +152,7 @@ function UploadReceiptContent() {
           orderId,
           orderNumber: order?.order_number || orderNumber,
           receiptUrl: publicUrl,
+          receiptFileName: fileName,
           customerName: `${order?.shipping_address?.firstName || ''} ${order?.shipping_address?.lastName || ''}`.trim(),
           totalAmount: order?.total_amount,
         }),
