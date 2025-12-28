@@ -35,6 +35,11 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
+  // Ne pas bloquer les routes API - elles gèrent leur propre authentification
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    return supabaseResponse;
+  }
+
   // Routes protégées
   if (request.nextUrl.pathname.startsWith('/compte') && !user) {
     const url = request.nextUrl.clone()

@@ -73,6 +73,7 @@ export async function GET(
     }
 
     // Mettre à jour le statut de la commande
+    console.log('Updating order:', orderId, 'to processing');
     const { error: updateError } = await supabase
       .from('orders')
       .update({
@@ -83,11 +84,20 @@ export async function GET(
       .eq('id', orderId);
 
     if (updateError) {
+      console.error('Update error:', updateError);
+      console.error('Update error details:', JSON.stringify(updateError, null, 2));
       return NextResponse.json(
-        { error: 'Erreur lors de la mise à jour de la commande' },
+        { 
+          error: 'Erreur lors de la mise à jour de la commande',
+          details: updateError.message,
+          code: updateError.code,
+          hint: updateError.code === '42501' ? 'Vérifiez que la politique RLS "Admins can update all orders" est créée dans Supabase. Exécutez le script admin_rls_policies.sql' : updateError.message
+        },
         { status: 500 }
       );
     }
+    
+    console.log('Order updated successfully');
 
     // Récupérer l'email du client depuis shipping_address
     const customerEmail = order.shipping_address?.email || null;
@@ -210,6 +220,7 @@ export async function POST(
     console.log('POST: Order found:', order.order_number);
 
     // Mettre à jour le statut de la commande
+    console.log('POST: Updating order:', orderId, 'to processing');
     const { error: updateError } = await supabase
       .from('orders')
       .update({
@@ -220,11 +231,20 @@ export async function POST(
       .eq('id', orderId);
 
     if (updateError) {
+      console.error('POST: Update error:', updateError);
+      console.error('POST: Update error details:', JSON.stringify(updateError, null, 2));
       return NextResponse.json(
-        { error: 'Erreur lors de la mise à jour de la commande' },
+        { 
+          error: 'Erreur lors de la mise à jour de la commande',
+          details: updateError.message,
+          code: updateError.code,
+          hint: updateError.code === '42501' ? 'Vérifiez que la politique RLS "Admins can update all orders" est créée dans Supabase. Exécutez le script admin_rls_policies.sql' : updateError.message
+        },
         { status: 500 }
       );
     }
+    
+    console.log('POST: Order updated successfully');
 
     // Récupérer l'email du client depuis shipping_address
     const customerEmail = order.shipping_address?.email || null;
