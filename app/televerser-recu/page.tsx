@@ -142,7 +142,18 @@ function UploadReceiptContent() {
 
       if (updateError) throw updateError;
 
-      // 4. Envoyer l'email à l'admin via l'API
+      // 4. Convertir le fichier en base64 pour l'envoyer dans l'email
+      const fileBase64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64String = (reader.result as string).split(',')[1]; // Enlever le préfixe data:...
+          resolve(base64String);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      // 5. Envoyer l'email à l'admin via l'API avec le fichier directement
       const response = await fetch('/api/admin/send-receipt-notification', {
         method: 'POST',
         headers: {
@@ -153,6 +164,9 @@ function UploadReceiptContent() {
           orderNumber: order?.order_number || orderNumber,
           receiptUrl: publicUrl,
           receiptFileName: fileName,
+          receiptOriginalFileName: file.name, // Nom original du fichier uploadé
+          receiptFileBase64: fileBase64,
+          receiptFileType: file.type,
           customerName: `${order?.shipping_address?.firstName || ''} ${order?.shipping_address?.lastName || ''}`.trim(),
           totalAmount: order?.total_amount,
         }),

@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { orderId, orderNumber, receiptUrl, receiptFileName, customerName, totalAmount } = body;
+    const { orderId, orderNumber, receiptUrl, receiptFileName, receiptOriginalFileName, receiptFileBase64, receiptFileType, customerName, totalAmount } = body;
 
     if (!orderId || !orderNumber || !receiptUrl) {
       return NextResponse.json(
@@ -54,51 +54,58 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Télécharger le fichier depuis Supabase Storage pour l'envoyer en pièce jointe
-    let attachment: { filename: string; content: Buffer } | null = null;
+    // Utiliser le fichier directement envoyé par le client (pas besoin de télécharger depuis Storage)
+    let attachment: { filename: string; content: Buffer; mimeType: string } | null = null;
+    let imageDataUri: string | null = null; // Pour afficher l'image directement dans l'email
+    let isPdf = false;
     
-    if (receiptFileName) {
+    if (receiptFileBase64 && receiptFileName) {
       try {
-        // Utiliser le service role key pour télécharger le fichier
-        const { createClient: createServiceClient } = await import('@supabase/supabase-js');
-        const serviceSupabase = createServiceClient(
-          process.env.NEXT_PUBLIC_SUPABASE_URL!,
-          process.env.SUPABASE_SERVICE_ROLE_KEY!,
-          {
-            auth: {
-              autoRefreshToken: false,
-              persistSession: false
-            }
+        // Convertir le base64 en Buffer
+        const buffer = Buffer.from(receiptFileBase64, 'base64');
+        
+        // Déterminer le type MIME et l'extension
+        const extension = receiptFileName.split('.').pop()?.toLowerCase();
+        let mimeType = receiptFileType || 'application/octet-stream';
+        isPdf = extension === 'pdf' || mimeType === 'application/pdf';
+        
+        // S'assurer que le mimeType est correct
+        if (!mimeType || mimeType === 'application/octet-stream') {
+          if (isPdf) {
+            mimeType = 'application/pdf';
+          } else if (['jpg', 'jpeg'].includes(extension || '')) {
+            mimeType = 'image/jpeg';
+          } else if (extension === 'png') {
+            mimeType = 'image/png';
+          } else if (extension === 'webp') {
+            mimeType = 'image/webp';
           }
-        );
-
-        const filePath = `receipts/${receiptFileName}`;
-        const { data: fileData, error: downloadError } = await serviceSupabase.storage
-          .from('receipts')
-          .download(filePath);
-
-        if (!downloadError && fileData) {
-          const arrayBuffer = await fileData.arrayBuffer();
-          const buffer = Buffer.from(arrayBuffer);
-          
-          // Déterminer le type MIME
-          const extension = receiptFileName.split('.').pop()?.toLowerCase();
-          let contentType = 'application/octet-stream';
-          if (extension === 'pdf') contentType = 'application/pdf';
-          else if (['jpg', 'jpeg'].includes(extension || '')) contentType = 'image/jpeg';
-          else if (extension === 'png') contentType = 'image/png';
-          else if (extension === 'webp') contentType = 'image/webp';
-
-          attachment = {
-            filename: `recu-commande-${orderNumber}.${extension || 'pdf'}`,
-            content: buffer,
-          };
-        } else {
-          console.warn('Could not download receipt file for attachment:', downloadError);
         }
+
+        // Utiliser le nom original du fichier uploadé par le client
+        const originalFileName = receiptOriginalFileName || `recu-commande-${orderNumber}.${extension || 'pdf'}`;
+        
+        attachment = {
+          filename: originalFileName,
+          content: buffer,
+          mimeType: mimeType,
+        };
+
+        // Si c'est une image (pas un PDF), créer un data URI pour l'afficher dans l'email
+        if (!isPdf && mimeType.startsWith('image/')) {
+          imageDataUri = `data:${mimeType};base64,${receiptFileBase64}`;
+        }
+
+        console.log('File processed:', {
+          filename: attachment.filename,
+          mimeType: attachment.mimeType,
+          size: buffer.length,
+          isPdf,
+          hasImageDataUri: !!imageDataUri
+        });
       } catch (error) {
-        console.error('Error downloading receipt file:', error);
-        // Continuer sans pièce jointe si le téléchargement échoue
+        console.error('Error processing receipt file:', error);
+        // Continuer sans pièce jointe si le traitement échoue
       }
     }
 
@@ -130,7 +137,9 @@ export async function POST(request: NextRequest) {
     console.log('Sending email to admin:', adminEmail);
     console.log('Resend API Key exists:', !!process.env.RESEND_API_KEY);
     console.log('From email:', process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>');
-    console.log('Attachment:', attachment ? `Yes (${attachment.filename})` : 'No');
+    console.log('Attachment:', attachment ? `Yes (${attachment.filename}, ${attachment.mimeType})` : 'No');
+    console.log('Image Data URI:', imageDataUri ? 'Yes' : 'No');
+    console.log('Is PDF:', isPdf);
     
     // Préparer les pièces jointes pour Resend
     // Resend attend: { filename: string, content: string (base64) }
@@ -138,6 +147,8 @@ export async function POST(request: NextRequest) {
       filename: attachment.filename,
       content: attachment.content.toString('base64'),
     }] : [];
+    
+    console.log('Attachments prepared:', attachments.length);
 
     // Envoyer l'email à l'admin
     const emailPayload: any = {
@@ -206,11 +217,31 @@ export async function POST(request: NextRequest) {
 
               <div class="receipt-box">
                 <h2>Reçu de virement</h2>
+                ${attachment ? `<p style="color: #10b981; font-weight: bold; margin-bottom: 15px;">📎 Le reçu est disponible en pièce jointe (${attachment.filename})</p>` : ''}
                 <p style="margin-bottom: 15px;">
                   <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline; font-weight: bold;">Voir le reçu complet en ligne</a>
                 </p>
-                ${attachment ? `<p style="color: #10b981; font-weight: bold; margin-bottom: 10px;">📎 Le reçu est également disponible en pièce jointe (${attachment.filename})</p>` : ''}
-                <img src="${receiptUrl}" alt="Reçu de virement" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574;" />
+                ${isPdf ? `
+                  <div style="background: #f3f4f6; padding: 40px; border-radius: 8px; text-align: center; border: 2px solid #d4a574;">
+                    <p style="font-size: 48px; margin: 0;">📄</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: #5a4a3a;">Document PDF</p>
+                    <p style="color: #666; font-size: 14px;">Le reçu est disponible en pièce jointe</p>
+                    <p style="margin-top: 10px;">
+                      <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline;">Ouvrir le PDF</a>
+                    </p>
+                  </div>
+                ` : imageDataUri ? `
+                  <img src="${imageDataUri}" alt="Reçu de virement" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574; display: block; margin: 15px auto;" />
+                ` : `
+                  <img src="${receiptUrl}" alt="Reçu de virement" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574; display: block; margin: 15px auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                  <div style="display: none; background: #f3f4f6; padding: 40px; border-radius: 8px; text-align: center; border: 2px solid #d4a574;">
+                    <p style="font-size: 48px; margin: 0;">📎</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: #5a4a3a;">Reçu disponible en pièce jointe</p>
+                    <p style="margin-top: 10px;">
+                      <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline;">Voir le reçu</a>
+                    </p>
+                  </div>
+                `}
               </div>
 
               <div class="buttons">
