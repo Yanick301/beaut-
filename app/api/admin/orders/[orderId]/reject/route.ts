@@ -55,15 +55,7 @@ export async function GET(
     // Récupérer la commande
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .select(`
-        *,
-        profiles:user_id (
-          id,
-          email,
-          first_name,
-          last_name
-        )
-      `)
+      .select('*')
       .eq('id', orderId)
       .single();
 
@@ -91,12 +83,16 @@ export async function GET(
       );
     }
 
+    // Récupérer l'email du client depuis shipping_address
+    const customerEmail = order.shipping_address?.email || null;
+    const customerName = order.shipping_address?.firstName || 'Cher client';
+
     // Envoyer un email au client
-    if (order.profiles?.email && process.env.RESEND_API_KEY) {
+    if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
-          to: order.profiles.email,
+          to: customerEmail,
           subject: `Commande ${order.order_number} - Problème de paiement`,
           html: `
             <!DOCTYPE html>
@@ -122,7 +118,7 @@ export async function GET(
                     <h2 style="margin-top: 0; color: #92400e;">Attention</h2>
                     <p style="margin-bottom: 0; color: #78350f;">Votre reçu de virement n'a pas pu être validé.</p>
                   </div>
-                  <p>Bonjour ${order.profiles?.first_name || 'Cher client'},</p>
+                  <p>Bonjour ${customerName},</p>
                   <p>Nous avons examiné le reçu de virement que vous avez téléversé pour la commande <strong>${order.order_number}</strong>.</p>
                   <p><strong>Raison du rejet :</strong> ${reason}</p>
                   <p>Veuillez nous contacter à <a href="mailto:contact@essencefeminine.nl" style="color: #d4a574; text-decoration: underline;">contact@essencefeminine.nl</a> si vous pensez qu'il s'agit d'une erreur.</p>
@@ -188,15 +184,7 @@ export async function POST(
     // Récupérer la commande
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .select(`
-        *,
-        profiles:user_id (
-          id,
-          email,
-          first_name,
-          last_name
-        )
-      `)
+      .select('*')
       .eq('id', orderId)
       .single();
 
@@ -224,12 +212,16 @@ export async function POST(
       );
     }
 
+    // Récupérer l'email du client depuis shipping_address
+    const customerEmail = order.shipping_address?.email || null;
+    const customerName = order.shipping_address?.firstName || 'Cher client';
+
     // Envoyer un email au client
-    if (order.profiles?.email && process.env.RESEND_API_KEY) {
+    if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
-          to: order.profiles.email,
+          to: customerEmail,
           subject: `Commande ${order.order_number} - Problème de paiement`,
           html: `
             <!DOCTYPE html>
@@ -255,7 +247,7 @@ export async function POST(
                     <h2 style="margin-top: 0; color: #92400e;">Attention</h2>
                     <p style="margin-bottom: 0; color: #78350f;">Votre reçu de virement n'a pas pu être validé.</p>
                   </div>
-                  <p>Bonjour ${order.profiles?.first_name || 'Cher client'},</p>
+                  <p>Bonjour ${customerName},</p>
                   <p>Nous avons examiné le reçu de virement que vous avez téléversé pour la commande <strong>${order.order_number}</strong>.</p>
                   <p><strong>Raison du rejet :</strong> ${reason}</p>
                   <p>Veuillez nous contacter à <a href="mailto:contact@essencefeminine.nl" style="color: #d4a574; text-decoration: underline;">contact@essencefeminine.nl</a> si vous pensez qu'il s'agit d'une erreur.</p>

@@ -54,15 +54,7 @@ export async function GET(
     // Récupérer la commande
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .select(`
-        *,
-        profiles:user_id (
-          id,
-          email,
-          first_name,
-          last_name
-        )
-      `)
+      .select('*')
       .eq('id', orderId)
       .single();
 
@@ -90,12 +82,16 @@ export async function GET(
       );
     }
 
+    // Récupérer l'email du client depuis shipping_address
+    const customerEmail = order.shipping_address?.email || null;
+    const customerName = order.shipping_address?.firstName || 'Cher client';
+
     // Envoyer un email de confirmation au client
-    if (order.profiles?.email && process.env.RESEND_API_KEY) {
+    if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
-          to: order.profiles.email,
+          to: customerEmail,
           subject: `Commande ${order.order_number} confirmée`,
           html: `
             <!DOCTYPE html>
@@ -120,7 +116,7 @@ export async function GET(
                   <div class="success-box">
                     <h2 style="margin: 0;">✓ Votre paiement a été confirmé</h2>
                   </div>
-                  <p>Bonjour ${order.profiles?.first_name || 'Cher client'},</p>
+                  <p>Bonjour ${customerName},</p>
                   <p>Nous avons bien reçu et validé votre reçu de virement pour la commande <strong>${order.order_number}</strong>.</p>
                   <p>Votre commande est maintenant en cours de traitement et sera expédiée sous peu.</p>
                   <p>Vous pouvez suivre l'état de votre commande depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
@@ -182,15 +178,7 @@ export async function POST(
     // Récupérer la commande
     const { data: order, error: orderError } = await supabase
       .from('orders')
-      .select(`
-        *,
-        profiles:user_id (
-          id,
-          email,
-          first_name,
-          last_name
-        )
-      `)
+      .select('*')
       .eq('id', orderId)
       .single();
 
@@ -218,12 +206,16 @@ export async function POST(
       );
     }
 
+    // Récupérer l'email du client depuis shipping_address
+    const customerEmail = order.shipping_address?.email || null;
+    const customerName = order.shipping_address?.firstName || 'Cher client';
+
     // Envoyer un email de confirmation au client
-    if (order.profiles?.email && process.env.RESEND_API_KEY) {
+    if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
-          to: order.profiles.email,
+          to: customerEmail,
           subject: `Commande ${order.order_number} confirmée`,
           html: `
             <!DOCTYPE html>
@@ -248,7 +240,7 @@ export async function POST(
                   <div class="success-box">
                     <h2 style="margin: 0;">✓ Votre paiement a été confirmé</h2>
                   </div>
-                  <p>Bonjour ${order.profiles?.first_name || 'Cher client'},</p>
+                  <p>Bonjour ${customerName},</p>
                   <p>Nous avons bien reçu et validé votre reçu de virement pour la commande <strong>${order.order_number}</strong>.</p>
                   <p>Votre commande est maintenant en cours de traitement et sera expédiée sous peu.</p>
                   <p>Vous pouvez suivre l'état de votre commande depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>

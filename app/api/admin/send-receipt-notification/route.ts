@@ -167,11 +167,18 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error('Resend error:', error);
+      console.error('Resend error details:', JSON.stringify(error, null, 2));
       return NextResponse.json(
-        { error: 'Erreur lors de l\'envoi de l\'email', details: error.message },
+        { 
+          error: 'Erreur lors de l\'envoi de l\'email', 
+          details: error instanceof Error ? error.message : String(error),
+          resendError: error
+        },
         { status: 500 }
       );
     }
+
+    console.log('Email sent successfully:', data);
 
     return NextResponse.json({ 
       success: true, 
