@@ -42,8 +42,11 @@ export default function SignupPage() {
     }
 
     try {
-      // Utiliser une variable d'environnement ou window.location.origin
-      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+      // Utiliser une variable d'environnement ou window.location.origin (vérifier que window existe)
+      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+      if (!redirectUrl) {
+        throw new Error('NEXT_PUBLIC_SITE_URL must be set in environment variables');
+      }
       const callbackUrl = `${redirectUrl}/auth/callback?next=/compte`;
 
       const { data, error } = await supabase.auth.signUp({

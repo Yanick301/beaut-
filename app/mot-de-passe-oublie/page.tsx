@@ -20,8 +20,11 @@ export default function ForgotPasswordPage() {
     setMessage(null);
 
     try {
-      // Utiliser une variable d'environnement ou window.location.origin
-      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+      // Utiliser une variable d'environnement ou window.location.origin (vérifier que window existe)
+      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+      if (!redirectUrl) {
+        throw new Error('NEXT_PUBLIC_SITE_URL must be set in environment variables');
+      }
       const callbackUrl = `${redirectUrl}/auth/callback?next=/reinitialiser-mot-de-passe`;
 
       const { error } = await supabase.auth.resetPasswordForEmail(email, {

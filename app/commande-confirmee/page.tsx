@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import { FiCheckCircle } from 'react-icons/fi';
 
-export default function OrderConfirmedPage() {
+function OrderConfirmedContent() {
   const searchParams = useSearchParams();
   const orderNumber = searchParams.get('orderNumber');
 
@@ -38,6 +39,18 @@ export default function OrderConfirmedPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function OrderConfirmedPage() {
+  return (
+    <Suspense fallback={
+      <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
+        <div className="text-brown-soft">Chargement...</div>
+      </div>
+    }>
+      <OrderConfirmedContent />
+    </Suspense>
   );
 }
 

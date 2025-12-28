@@ -100,8 +100,14 @@ export default function CheckoutPage() {
     }
   };
 
+  // Vérifier si le panier est vide et rediriger
+  useEffect(() => {
+    if (items.length === 0) {
+      router.push('/panier');
+    }
+  }, [items.length, router]);
+
   if (items.length === 0) {
-    router.push('/panier');
     return null;
   }
 
