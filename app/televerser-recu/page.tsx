@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FiUpload, FiFile, FiCheckCircle, FiArrowLeft, FiX } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
+import { useCartStore } from '@/lib/store';
 
 function UploadReceiptContent() {
   const router = useRouter();
