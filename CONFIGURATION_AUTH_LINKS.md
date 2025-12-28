@@ -161,3 +161,4 @@ Dans **Authentication** > **Email Templates**, vérifiez que les templates conti
 - Seules les URLs autorisées dans Supabase Dashboard peuvent être utilisées
 
 
+

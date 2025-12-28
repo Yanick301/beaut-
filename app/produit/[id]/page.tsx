@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { FiStar, FiShoppingCart, FiHeart, FiTruck, FiShield, FiCheck } from 'react-icons/fi';
 import { products } from '@/lib/data';
 import { useCartStore } from '@/lib/store';
+import { useToastStore } from '@/lib/toast-store';
 import ProductCard from '@/components/ProductCard';
 import FavoriteButton from '@/components/FavoriteButton';
 import ReviewForm from '@/components/ReviewForm';
@@ -22,6 +23,7 @@ export default function ProductPage() {
   const [productReviews, setProductReviews] = useState<any[]>([]);
   const [reviewsLoading, setReviewsLoading] = useState(true);
   const addItem = useCartStore(state => state.addItem);
+  const addToast = useToastStore(state => state.addToast);
 
   // Charger les avis depuis l'API
   useEffect(() => {
@@ -55,6 +57,11 @@ export default function ProductPage() {
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
       addItem(product);
+    }
+    if (quantity === 1) {
+      addToast(`${product.name} a été ajouté au panier`, 'success');
+    } else {
+      addToast(`${quantity}x ${product.name} ont été ajoutés au panier`, 'success');
     }
   };
 

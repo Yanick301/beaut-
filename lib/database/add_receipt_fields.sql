@@ -13,3 +13,4 @@ ADD COLUMN IF NOT EXISTS receipt_file_name TEXT;
 -- (Les utilisateurs peuvent déjà voir leurs propres commandes via la politique existante)
 
 
+

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FiStar, FiShoppingCart } from 'react-icons/fi';
 import { Product } from '@/types';
 import { useCartStore } from '@/lib/store';
+import { useToastStore } from '@/lib/toast-store';
 
 interface ProductCardProps {
   product: Product;
@@ -12,10 +13,12 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore(state => state.addItem);
+  const addToast = useToastStore(state => state.addToast);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     addItem(product);
+    addToast(`${product.name} a été ajouté au panier`, 'success');
   };
 
   return (

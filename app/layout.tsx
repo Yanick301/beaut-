@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import StructuredData from '@/components/StructuredData'
+import ToastContainer from '@/components/ToastContainer'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -94,6 +95,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   )

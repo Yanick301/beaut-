@@ -342,7 +342,8 @@ export default function AdminDashboard() {
 
                   {/* Actions */}
                   <div className="flex flex-wrap gap-2 mt-4">
-                    {order.status === 'processing' && order.receipt_url && (
+                    {/* Commandes avec reçu de virement en attente de confirmation */}
+                    {order.status === 'pending' && order.receipt_url && (
                       <>
                         <button
                           onClick={async () => {
@@ -392,8 +393,24 @@ export default function AdminDashboard() {
                         >
                           ✗ Rejeter
                         </button>
+                        <button
+                          onClick={() => updateOrderStatus(order.id, 'cancelled')}
+                          className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition text-sm font-medium"
+                        >
+                          Annuler
+                        </button>
                       </>
                     )}
+                    {/* Commandes en traitement avec reçu (déjà confirmées) */}
+                    {order.status === 'processing' && order.receipt_url && (
+                      <button
+                        onClick={() => updateOrderStatus(order.id, 'shipped')}
+                        className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition text-sm font-medium"
+                      >
+                        Marquer comme expédiée
+                      </button>
+                    )}
+                    {/* Commandes en attente sans reçu */}
                     {order.status === 'pending' && !order.receipt_url && (
                       <>
                         <button
@@ -406,10 +423,11 @@ export default function AdminDashboard() {
                           onClick={() => updateOrderStatus(order.id, 'cancelled')}
                           className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium"
                         >
-                          Rejeter
+                          Annuler
                         </button>
                       </>
                     )}
+                    {/* Commandes en traitement sans reçu */}
                     {order.status === 'processing' && !order.receipt_url && (
                       <button
                         onClick={() => updateOrderStatus(order.id, 'shipped')}
@@ -418,6 +436,7 @@ export default function AdminDashboard() {
                         Marquer comme expédiée
                       </button>
                     )}
+                    {/* Commandes expédiées */}
                     {order.status === 'shipped' && (
                       <button
                         onClick={() => updateOrderStatus(order.id, 'delivered')}
@@ -426,7 +445,8 @@ export default function AdminDashboard() {
                         Marquer comme livrée
                       </button>
                     )}
-                    {order.status !== 'cancelled' && order.status !== 'delivered' && order.status !== 'processing' && (
+                    {/* Bouton annuler pour les autres statuts (sauf cancelled et delivered) */}
+                    {order.status !== 'cancelled' && order.status !== 'delivered' && (
                       <button
                         onClick={() => updateOrderStatus(order.id, 'cancelled')}
                         className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium"

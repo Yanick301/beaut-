@@ -136,3 +136,4 @@ Dans Vercel, allez dans Settings > Environment Variables et vérifiez :
 
 Si vous voyez une erreur spécifique, notez-la et vérifiez la section correspondante ci-dessus.
 
+
