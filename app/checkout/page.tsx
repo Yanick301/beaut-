@@ -221,9 +221,7 @@ export default function CheckoutPage() {
                     className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
                   >
                     <option value="NL">Pays-Bas</option>
-                    <option value="BE">Belgique</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Allemagne</option>
+                  
                   </select>
                 </div>
               </div>
@@ -294,7 +292,7 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white-cream rounded-2xl p-6 shadow-md sticky top-24">
+            <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
               <h2 className="font-elegant text-2xl text-brown-dark mb-6">Récapitulatif</h2>
 
               <div className="space-y-3 mb-6">
@@ -341,7 +339,7 @@ export default function CheckoutPage() {
               </button>
 
               <p className="text-xs text-brown-soft text-center">
-                Votre paiement est sécurisé et crypté
+              
               </p>
             </div>
           </div>

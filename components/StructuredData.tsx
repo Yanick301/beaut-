@@ -3,7 +3,7 @@
  */
 
 interface StructuredDataProps {
-  type?: 'Organization' | 'Product' | 'BreadcrumbList';
+  type?: 'Organization' | 'Product' | 'BreadcrumbList' | 'CollectionPage' | 'WebSite';
   data: any;
 }
 
@@ -45,7 +45,29 @@ export default function StructuredData({ type = 'Organization', data }: Structur
         return {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
-          itemListElement: data,
+          itemListElement: data.itemListElement || data,
+        };
+      case 'CollectionPage':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          ...data,
+        };
+      case 'WebSite':
+        return {
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'Essence Féminine',
+          url: 'https://essencefeminine.nl',
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: {
+              '@type': 'EntryPoint',
+              urlTemplate: 'https://essencefeminine.nl/recherche?q={search_term_string}',
+            },
+            'query-input': 'required name=search_term_string',
+          },
+          ...data,
         };
       default:
         return data;

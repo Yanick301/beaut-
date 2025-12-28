@@ -5,12 +5,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brown-dark text-white-cream mt-20">
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-brown-dark text-white-cream mt-12 sm:mt-20">
+      <div className="container-custom py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* About */}
           <div>
-            <h3 className="font-elegant text-2xl mb-4">Essence Féminine</h3>
+            <h3 className="font-elegant text-xl sm:text-2xl mb-3 sm:mb-4">Essence Féminine</h3>
             <p className="text-white-cream/80 text-sm mb-4">
               Votre destination beauté premium. Des produits de qualité supérieure 
               pour sublimer votre beauté naturelle.
@@ -23,7 +23,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Navigation</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Navigation</h4>
             <ul className="space-y-2 text-sm text-white-cream/80">
               <li>
                 <Link href="/a-propos" className="hover:text-gold transition">À propos</Link>
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Customer Service */}
           <div>
-            <h4 className="font-semibold mb-4">Service Client</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Service Client</h4>
             <ul className="space-y-2 text-sm text-white-cream/80">
               <li>
                 <Link href="/faq" className="hover:text-gold transition">FAQ</Link>
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Contact</h4>
             <ul className="space-y-3 text-sm text-white-cream/80">
               <li className="flex items-center gap-2">
                 <FiMapPin className="w-4 h-4" />
@@ -86,10 +86,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white-cream/20 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-white-cream/60">
-            <p>&copy; {currentYear} Essence Féminine. Tous droits réservés.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
+        <div className="border-t border-white-cream/20 pt-6 sm:pt-8 mt-6 sm:mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-0 text-xs sm:text-sm text-white-cream/60">
+            <p className="text-center md:text-left">&copy; {currentYear} Essence Féminine. Tous droits réservés.</p>
+            <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-end">
               <span>Paiement sécurisé</span>
               <span>Livraison rapide</span>
               <span>RGPD conforme</span>

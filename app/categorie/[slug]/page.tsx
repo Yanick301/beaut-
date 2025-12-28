@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import { products, categories } from '@/lib/data';
 import { FiFilter, FiX } from 'react-icons/fi';
+import CategoryStructuredData from './CategoryStructuredData';
 
 export default function CategoryPage() {
   const params = useParams();
@@ -65,8 +66,10 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="section-padding bg-beige-light min-h-screen">
-      <div className="container-custom">
+    <>
+      <CategoryStructuredData slug={slug} />
+      <div className="section-padding bg-beige-light min-h-screen">
+        <div className="container-custom">
         {/* Header */}
         <div className="mb-8">
           <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-4">
@@ -91,14 +94,14 @@ export default function CategoryPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 rounded-full border-2 border-rose-soft text-brown-dark bg-white-cream"
+            className="px-3 sm:px-4 py-2 rounded-full border-2 border-rose-soft text-brown-dark bg-white-cream text-sm sm:text-base w-full md:w-auto"
           >
             <option value="popular">Plus populaires</option>
             <option value="price-asc">Prix croissant</option>
             <option value="price-desc">Prix décroissant</option>
             <option value="rating">Mieux notés</option>
           </select>
-          <div className="flex-1 text-right text-brown-soft">
+          <div className="flex-1 text-left md:text-right text-brown-soft text-sm sm:text-base">
             {filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''}
           </div>
         </div>
@@ -193,6 +196,7 @@ export default function CategoryPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

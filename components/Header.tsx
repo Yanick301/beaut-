@@ -44,12 +44,12 @@ export default function Header() {
       <div className="container-custom">
         {/* Top Bar */}
         <div className="border-b border-nude py-2 hidden md:block">
-          <div className="flex justify-between items-center text-sm text-brown-soft">
-            <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 text-xs sm:text-sm text-brown-soft">
+            <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
               <span>🇳🇱 Livraison gratuite dès €50</span>
               <span>✓ Paiement sécurisé</span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
               <Link href="/compte" className="hover:text-brown-dark transition">Mon compte</Link>
               <Link href="/faq" className="hover:text-brown-dark transition">Aide</Link>
               {/* Le lien admin sera affiché conditionnellement côté client si nécessaire */}
@@ -58,10 +58,10 @@ export default function Header() {
         </div>
 
         {/* Main Header */}
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-3 sm:py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-3xl font-elegant text-brown-dark">Essence Féminine</span>
+            <span className="text-xl sm:text-2xl md:text-3xl font-elegant text-brown-dark">Essence Féminine</span>
           </Link>
 
           {/* Desktop Navigation */}

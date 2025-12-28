@@ -11,6 +11,7 @@ import { useToastStore } from '@/lib/toast-store';
 import ProductCard from '@/components/ProductCard';
 import FavoriteButton from '@/components/FavoriteButton';
 import ReviewForm from '@/components/ReviewForm';
+import ProductStructuredData from './ProductStructuredData';
 
 export default function ProductPage() {
   const params = useParams();
@@ -66,8 +67,10 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="section-padding bg-beige-light min-h-screen">
-      <div className="container-custom">
+    <>
+      <ProductStructuredData productId={id} reviews={productReviews} />
+      <div className="section-padding bg-beige-light min-h-screen">
+        <div className="container-custom">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-brown-soft">
           <Link href="/" className="hover:text-brown-dark">Accueil</Link>
@@ -79,10 +82,10 @@ export default function ProductPage() {
           <span className="text-brown-dark">{product.name}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
           {/* Images */}
           <div>
-            <div className="relative aspect-square bg-white-cream rounded-2xl overflow-hidden mb-4 shadow-lg">
+            <div className="relative aspect-square bg-white-cream rounded-2xl overflow-hidden mb-3 sm:mb-4 shadow-lg">
               <Image
                 src={images[selectedImage]}
                 alt={product.name}
@@ -92,7 +95,7 @@ export default function ProductPage() {
               />
             </div>
             {images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
@@ -321,6 +324,7 @@ export default function ProductPage() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

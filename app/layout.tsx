@@ -90,6 +90,7 @@ export default function RootLayout({
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-beige-light font-sans antialiased">
         <StructuredData type="Organization" data={{}} />
+        <StructuredData type="WebSite" data={{}} />
         <Header />
         <main className="flex-1">
           {children}

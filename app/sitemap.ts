@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { categories } from '@/lib/data'
+import { categories, products } from '@/lib/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://essencefeminine.nl'
@@ -54,6 +54,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/panier`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/compte`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
   ]
 
   // Pages de catégories
@@ -64,7 +76,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  return [...staticPages, ...categoryPages]
+  // Pages de produits
+  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${baseUrl}/produit/${product.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }))
+
+  return [...staticPages, ...categoryPages, ...productPages]
 }
 
 

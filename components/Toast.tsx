@@ -39,10 +39,10 @@ export default function Toast({ message, type = 'success', duration = 3000, onCl
   const colorClass = colors[type];
 
   return (
-    <div className="fixed top-4 right-4 z-50 animate-slide-in-right">
-      <div className={`${colorClass} rounded-lg shadow-lg p-4 flex items-center gap-3 min-w-[300px] max-w-md`}>
-        <Icon className="w-5 h-5 flex-shrink-0" />
-        <p className="flex-1 text-sm font-medium">{message}</p>
+    <div className="fixed top-4 right-2 sm:right-4 z-50 animate-slide-in-right max-w-[calc(100vw-1rem)] sm:max-w-md">
+      <div className={`${colorClass} rounded-lg shadow-lg p-3 sm:p-4 flex items-center gap-2 sm:gap-3 w-full`}>
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+        <p className="flex-1 text-xs sm:text-sm font-medium break-words">{message}</p>
         <button
           onClick={onClose}
           className="flex-shrink-0 hover:opacity-80 transition-opacity"

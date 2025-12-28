@@ -83,7 +83,7 @@ function AccountContent() {
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white-cream rounded-2xl p-6 shadow-md sticky top-24">
+            <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
               <nav className="space-y-2">
                 <button
                   onClick={() => setActiveTab('profile')}

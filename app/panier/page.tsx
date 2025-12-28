@@ -37,10 +37,10 @@ export default function CartPage() {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white-cream rounded-2xl p-6 shadow-md flex flex-col md:flex-row gap-6"
+                className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md flex flex-col sm:flex-row gap-4 sm:gap-6"
               >
                 {/* Image */}
-                <div className="relative w-full md:w-32 h-32 bg-beige rounded-lg overflow-hidden flex-shrink-0">
+                <div className="relative w-full sm:w-24 md:w-32 h-32 sm:h-24 md:h-32 bg-beige rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src={item.image}
                     alt={item.name}
@@ -73,25 +73,27 @@ export default function CartPage() {
                 </div>
 
                 {/* Quantity Controls */}
-                <div className="flex items-center gap-4 md:flex-col md:items-end">
+                <div className="flex items-center justify-between md:flex-col md:items-end gap-4">
                   <div className="flex items-center border-2 border-nude rounded-full overflow-hidden">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="p-2 hover:bg-nude transition"
+                      className="p-2 sm:p-3 hover:bg-nude transition"
+                      aria-label="Diminuer la quantité"
                     >
                       <FiMinus className="w-4 h-4" />
                     </button>
-                    <span className="px-4 py-2 font-semibold min-w-[3rem] text-center">
+                    <span className="px-3 sm:px-4 py-2 font-semibold min-w-[2.5rem] sm:min-w-[3rem] text-center text-sm sm:text-base">
                       {item.quantity}
                     </span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="p-2 hover:bg-nude transition"
+                      className="p-2 sm:p-3 hover:bg-nude transition"
+                      aria-label="Augmenter la quantité"
                     >
                       <FiPlus className="w-4 h-4" />
                     </button>
                   </div>
-                  <span className="text-sm text-brown-soft">
+                  <span className="text-xs sm:text-sm text-brown-soft">
                     €{item.price.toFixed(2)} / unité
                   </span>
                 </div>
@@ -114,7 +116,7 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white-cream rounded-2xl p-6 shadow-md sticky top-24">
+            <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
               <h2 className="font-elegant text-2xl text-brown-dark mb-6">Récapitulatif</h2>
 
               <div className="space-y-4 mb-6">

@@ -274,7 +274,7 @@ function UploadReceiptContent() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white-cream rounded-2xl p-6 shadow-md sticky top-24">
+            <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
               <h2 className="font-elegant text-2xl text-brown-dark mb-6">Récapitulatif de commande</h2>
               
               {orderNumber && (
@@ -325,7 +325,7 @@ function UploadReceiptContent() {
           {/* Upload Section */}
           <div className="lg:col-span-2">
             <div className="bg-white-cream rounded-2xl p-6 shadow-md">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Téléverser le reçu</h2>
+              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Valider ma commande</h2>
 
               {error && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">

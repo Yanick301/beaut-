@@ -151,67 +151,67 @@ export default function AdminDashboard() {
       <div className="container-custom py-8">
         {/* Statistiques */}
         {stats && (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiPackage className="w-5 h-5 text-brown-soft" />
-                <span className="text-2xl font-bold text-brown-dark">{stats.total}</span>
+                <FiPackage className="w-4 h-4 sm:w-5 sm:h-5 text-brown-soft" />
+                <span className="text-xl sm:text-2xl font-bold text-brown-dark">{stats.total}</span>
               </div>
-              <p className="text-sm text-brown-soft">Total</p>
+              <p className="text-xs sm:text-sm text-brown-soft">Total</p>
             </div>
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiRefreshCw className="w-5 h-5 text-yellow-600" />
-                <span className="text-2xl font-bold text-yellow-600">{stats.pending}</span>
+                <FiRefreshCw className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600" />
+                <span className="text-xl sm:text-2xl font-bold text-yellow-600">{stats.pending}</span>
               </div>
-              <p className="text-sm text-brown-soft">En attente</p>
+              <p className="text-xs sm:text-sm text-brown-soft">En attente</p>
             </div>
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiRefreshCw className="w-5 h-5 text-blue-600" />
-                <span className="text-2xl font-bold text-blue-600">{stats.processing}</span>
+                <FiRefreshCw className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                <span className="text-xl sm:text-2xl font-bold text-blue-600">{stats.processing}</span>
               </div>
-              <p className="text-sm text-brown-soft">En traitement</p>
+              <p className="text-xs sm:text-sm text-brown-soft">En traitement</p>
             </div>
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiTruck className="w-5 h-5 text-purple-600" />
-                <span className="text-2xl font-bold text-purple-600">{stats.shipped}</span>
+                <FiTruck className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
+                <span className="text-xl sm:text-2xl font-bold text-purple-600">{stats.shipped}</span>
               </div>
-              <p className="text-sm text-brown-soft">Expédiées</p>
+              <p className="text-xs sm:text-sm text-brown-soft">Expédiées</p>
             </div>
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiCheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-2xl font-bold text-green-600">{stats.delivered}</span>
+                <FiCheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
+                <span className="text-xl sm:text-2xl font-bold text-green-600">{stats.delivered}</span>
               </div>
-              <p className="text-sm text-brown-soft">Livrées</p>
+              <p className="text-xs sm:text-sm text-brown-soft">Livrées</p>
             </div>
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiXCircle className="w-5 h-5 text-red-600" />
-                <span className="text-2xl font-bold text-red-600">{stats.cancelled}</span>
+                <FiXCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600" />
+                <span className="text-xl sm:text-2xl font-bold text-red-600">{stats.cancelled}</span>
               </div>
-              <p className="text-sm text-brown-soft">Annulées</p>
+              <p className="text-xs sm:text-sm text-brown-soft">Annulées</p>
             </div>
-            <div className="bg-white-cream rounded-xl p-4 shadow-sm">
+            <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <FiDollarSign className="w-5 h-5 text-rose-soft" />
-                <span className="text-2xl font-bold text-rose-soft">€{stats.totalRevenue.toFixed(2)}</span>
+                <FiDollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-rose-soft" />
+                <span className="text-lg sm:text-xl xl:text-2xl font-bold text-rose-soft">€{stats.totalRevenue.toFixed(2)}</span>
               </div>
-              <p className="text-sm text-brown-soft">CA Total</p>
+              <p className="text-xs sm:text-sm text-brown-soft">CA Total</p>
             </div>
           </div>
         )}
 
         {/* Filtres */}
-        <div className="bg-white-cream rounded-xl p-4 shadow-sm mb-6">
-          <div className="flex items-center gap-4 flex-wrap">
-            <FiFilter className="w-5 h-5 text-brown-soft" />
-            <span className="font-medium text-brown-dark">Filtrer par statut :</span>
+        <div className="bg-white-cream rounded-xl p-3 sm:p-4 shadow-sm mb-4 sm:mb-6">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+            <FiFilter className="w-4 h-4 sm:w-5 sm:h-5 text-brown-soft" />
+            <span className="font-medium text-brown-dark text-sm sm:text-base">Filtrer par statut :</span>
             <button
               onClick={() => setFilterStatus('all')}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 filterStatus === 'all'
                   ? 'bg-rose-soft text-white'
                   : 'bg-beige text-brown-soft hover:bg-nude'
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={() => setFilterStatus('pending')}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 filterStatus === 'pending'
                   ? 'bg-yellow-600 text-white'
                   : 'bg-beige text-brown-soft hover:bg-nude'
@@ -231,7 +231,7 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={() => setFilterStatus('processing')}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 filterStatus === 'processing'
                   ? 'bg-blue-600 text-white'
                   : 'bg-beige text-brown-soft hover:bg-nude'
@@ -241,7 +241,7 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={() => setFilterStatus('shipped')}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 filterStatus === 'shipped'
                   ? 'bg-purple-600 text-white'
                   : 'bg-beige text-brown-soft hover:bg-nude'
@@ -251,7 +251,7 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={() => setFilterStatus('delivered')}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 filterStatus === 'delivered'
                   ? 'bg-green-600 text-white'
                   : 'bg-beige text-brown-soft hover:bg-nude'
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={() => setFilterStatus('cancelled')}
-              className={`px-4 py-2 rounded-lg transition ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition text-xs sm:text-sm ${
                 filterStatus === 'cancelled'
                   ? 'bg-red-600 text-white'
                   : 'bg-beige text-brown-soft hover:bg-nude'
