@@ -27,6 +27,7 @@ export default function AdminDashboard() {
       loadOrders('all');
     }
     checkAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, supabase]);
 
   const loadOrders = async (status: string) => {
@@ -63,6 +64,7 @@ export default function AdminDashboard() {
     if (authenticated) {
       loadOrders(filterStatus);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterStatus, authenticated]);
 
   const updateOrderStatus = async (orderId: string, newStatus: string) => {
@@ -320,6 +322,7 @@ export default function AdminDashboard() {
                       </a>
                       {order.receipt_url.match(/\.(jpg|jpeg|png|webp)$/i) && (
                         <div className="mt-3">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={order.receipt_url}
                             alt="Reçu de virement"

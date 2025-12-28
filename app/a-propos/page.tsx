@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import Image from 'next/image';
-import { FiHeart, FiAward, FiLeaf, FiUsers } from 'react-icons/fi';
+import { FiHeart, FiAward, FiZap, FiUsers } from 'react-icons/fi';
 
 export const metadata: Metadata = {
   title: 'À Propos',
-  description: 'Découvrez l\'histoire d\'Essence Féminine, notre passion pour la beauté authentique et notre engagement envers des produits de qualité premium.',
+  description: 'Découvrez l&apos;histoire d&apos;Essence Féminine, notre passion pour la beauté authentique et notre engagement envers des produits de qualité premium.',
   openGraph: {
     title: 'À Propos de Essence Féminine',
     description: 'Notre histoire et nos valeurs : qualité, naturel, responsabilité et engagement envers nos clientes.',
@@ -36,13 +36,13 @@ export default function AboutPage() {
           <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Notre Histoire</h2>
           <div className="space-y-4 text-brown-soft leading-relaxed text-base sm:text-lg">
             <p>
-              Essence Féminine est née d'une passion profonde pour la beauté authentique et le bien-être. 
+              Essence Féminine est née d&apos;une passion profonde pour la beauté authentique et le bien-être. 
               Fondée aux Pays-Bas, notre mission est de démocratiser l'accès à des produits de beauté 
               premium, alliant qualité supérieure, ingrédients naturels et efficacité prouvée.
             </p>
             <p>
               Nous croyons que chaque femme mérite de se sentir belle, confiante et épanouie. 
-              C'est pourquoi nous sélectionnons avec un soin méticuleux chaque produit de notre catalogue, 
+              C&apos;est pourquoi nous sélectionnons avec un soin méticuleux chaque produit de notre catalogue, 
               en privilégiant les formulations respectueuses de votre peau et de l'environnement.
             </p>
             <p>
@@ -71,14 +71,14 @@ export default function AboutPage() {
             </div>
             <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Qualité</h3>
             <p className="text-sm sm:text-base text-brown-soft leading-relaxed">
-              Nous n'acceptons que l'excellence. Tous nos produits sont testés et certifiés 
+              Nous n&apos;acceptons que l&apos;excellence. Tous nos produits sont testés et certifiés 
               pour garantir leur efficacité et leur sécurité.
             </p>
           </div>
 
           <div className="bg-white-cream rounded-2xl p-6 sm:p-8 shadow-md">
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mb-4">
-              <FiLeaf className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
+              <FiZap className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
             </div>
             <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Responsabilité</h3>
             <p className="text-sm sm:text-base text-brown-soft leading-relaxed">

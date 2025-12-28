@@ -362,6 +362,7 @@ export default function UploadReceiptPage() {
                     {preview && (
                       <div className="mt-4">
                         <p className="text-sm font-semibold text-brown-dark mb-2">Aperçu :</p>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={preview}
                           alt="Aperçu du reçu"
