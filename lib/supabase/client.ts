@@ -12,6 +12,10 @@ if (!supabaseUrl || !supabaseAnonKey) {
   )
 }
 
+// TypeScript assertion : on sait que ces valeurs ne sont pas undefined après la vérification
+const SUPABASE_URL = supabaseUrl as string
+const SUPABASE_ANON_KEY = supabaseAnonKey as string
+
 export function createClient() {
-  return createBrowserClient(supabaseUrl, supabaseAnonKey)
+  return createBrowserClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 }
