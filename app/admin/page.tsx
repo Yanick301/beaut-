@@ -292,8 +292,8 @@ export default function AdminDashboard() {
                     </div>
                     <div className="text-sm text-brown-soft space-y-1">
                       <p>
-                        Client : {order.profiles?.first_name || ''} {order.profiles?.last_name || ''} 
-                        {order.profiles?.email && ` (${order.profiles.email})`}
+                        Client : {order.user_name || order.user_profile?.first_name + ' ' + order.user_profile?.last_name || 'Client'} 
+                        {order.user_email && ` (${order.user_email})`}
                       </p>
                       <p>
                         Date : {new Date(order.created_at).toLocaleDateString('fr-FR', {

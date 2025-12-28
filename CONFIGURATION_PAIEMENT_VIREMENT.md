@@ -53,24 +53,37 @@ NEXT_PUBLIC_VERCEL_URL=votre-projet.vercel.app
 5. **Important** : Définissez-le comme **Private** (pas public)
 6. Configurez les politiques RLS :
 
+**IMPORTANT** : Exécutez le script SQL dans `lib/database/storage_receipts_rls_simple.sql`
+
+Ou copiez-collez ce script simplifié :
+
 ```sql
--- Politique pour permettre aux utilisateurs d'uploader leurs propres reçus
-CREATE POLICY "Users can upload their own receipts"
+-- Supprimer les anciennes politiques si elles existent
+DROP POLICY IF EXISTS "Users can upload receipts" ON storage.objects;
+DROP POLICY IF EXISTS "Users can view their receipts" ON storage.objects;
+DROP POLICY IF EXISTS "Admins can view all receipts" ON storage.objects;
+
+-- Politique : Permettre à tous les utilisateurs authentifiés d'uploader dans receipts
+CREATE POLICY "Users can upload receipts"
 ON storage.objects FOR INSERT
 WITH CHECK (
   bucket_id = 'receipts' AND
-  auth.uid()::text = (storage.foldername(name))[1]
+  auth.role() = 'authenticated'
 );
 
--- Politique pour permettre aux utilisateurs de voir leurs propres reçus
-CREATE POLICY "Users can view their own receipts"
+-- Politique : Permettre aux utilisateurs de voir les fichiers qui contiennent leur order_id
+CREATE POLICY "Users can view their receipts"
 ON storage.objects FOR SELECT
 USING (
   bucket_id = 'receipts' AND
-  auth.uid()::text = (storage.foldername(name))[1]
+  EXISTS (
+    SELECT 1 FROM public.orders
+    WHERE name LIKE '%' || orders.id::text || '%'
+    AND orders.user_id = auth.uid()
+  )
 );
 
--- Politique pour permettre aux admins de voir tous les reçus
+-- Politique : Permettre aux admins de voir tous les reçus
 CREATE POLICY "Admins can view all receipts"
 ON storage.objects FOR SELECT
 USING (

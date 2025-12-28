@@ -68,6 +68,7 @@ export default function CheckoutPage() {
         postalCode: formData.postalCode,
         country: formData.country,
         phone: formData.phone,
+        email: formData.email,
       };
 
       const response = await fetch('/api/orders', {
