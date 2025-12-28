@@ -89,14 +89,16 @@ export default function AdminDashboard() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de la mise à jour');
+        throw new Error(data.error || `Erreur ${response.status}: ${response.statusText}`);
       }
 
+      alert('Statut mis à jour avec succès !');
       // Recharger les commandes
       loadOrders(filterStatus);
     } catch (error: any) {
       console.error('Error updating order:', error);
-      alert('Erreur lors de la mise à jour: ' + error.message);
+      console.error('Full error:', JSON.stringify(error, null, 2));
+      alert('Erreur lors de la mise à jour: ' + (error.message || 'Erreur inconnue'));
     }
   };
 
@@ -348,11 +350,17 @@ export default function AdminDashboard() {
                             try {
                               const response = await fetch(`/api/admin/orders/${order.id}/confirm`, {
                                 method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
                               });
-                              if (!response.ok) throw new Error('Erreur');
+                              const data = await response.json();
+                              if (!response.ok) {
+                                throw new Error(data.error || `Erreur ${response.status}: ${response.statusText}`);
+                              }
+                              alert('Commande confirmée avec succès !');
                               loadOrders(filterStatus);
                             } catch (error: any) {
-                              alert('Erreur : ' + error.message);
+                              console.error('Error confirming order:', error);
+                              alert('Erreur lors de la confirmation : ' + (error.message || 'Erreur inconnue'));
                             }
                           }}
                           className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm font-medium"
@@ -369,10 +377,15 @@ export default function AdminDashboard() {
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ reason }),
                               });
-                              if (!response.ok) throw new Error('Erreur');
+                              const data = await response.json();
+                              if (!response.ok) {
+                                throw new Error(data.error || `Erreur ${response.status}: ${response.statusText}`);
+                              }
+                              alert('Commande rejetée avec succès !');
                               loadOrders(filterStatus);
                             } catch (error: any) {
-                              alert('Erreur : ' + error.message);
+                              console.error('Error rejecting order:', error);
+                              alert('Erreur lors du rejet : ' + (error.message || 'Erreur inconnue'));
                             }
                           }}
                           className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-medium"

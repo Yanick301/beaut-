@@ -33,10 +33,10 @@ async function isAdmin(userId: string, userEmail?: string): Promise<boolean> {
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { orderId: string } }
+  { params }: { params: Promise<{ orderId: string }> }
 ) {
   try {
-    const { orderId } = params;
+    const { orderId } = await params;
     const supabase = await createClient();
 
     // Vérifier le token
@@ -52,6 +52,8 @@ export async function GET(
       );
     }
 
+    console.log('GET REJECT: Looking for order with ID:', orderId);
+    
     // Récupérer la commande
     const { data: order, error: orderError } = await supabase
       .from('orders')
@@ -59,12 +61,23 @@ export async function GET(
       .eq('id', orderId)
       .single();
 
-    if (orderError || !order) {
+    if (orderError) {
+      console.error('GET REJECT: Error fetching order:', orderError);
       return NextResponse.json(
-        { error: 'Commande non trouvée' },
+        { error: 'Erreur lors de la récupération de la commande', details: orderError.message },
+        { status: 500 }
+      );
+    }
+
+    if (!order) {
+      console.error('GET REJECT: Order not found with ID:', orderId);
+      return NextResponse.json(
+        { error: 'Commande non trouvée', orderId },
         { status: 404 }
       );
     }
+    
+    console.log('GET REJECT: Order found:', order.order_number);
 
     // Mettre à jour le statut de la commande
     const { error: updateError } = await supabase
@@ -153,10 +166,10 @@ export async function GET(
  */
 export async function POST(
   request: NextRequest,
-  { params }: { params: { orderId: string } }
+  { params }: { params: Promise<{ orderId: string }> }
 ) {
   try {
-    const { orderId } = params;
+    const { orderId } = await params;
     const supabase = await createClient();
 
     // Vérifier l'authentification
@@ -181,6 +194,8 @@ export async function POST(
     const body = await request.json();
     const reason = body.reason || 'Reçu de virement non valide ou montant incorrect';
 
+    console.log('GET REJECT: Looking for order with ID:', orderId);
+    
     // Récupérer la commande
     const { data: order, error: orderError } = await supabase
       .from('orders')
@@ -188,12 +203,23 @@ export async function POST(
       .eq('id', orderId)
       .single();
 
-    if (orderError || !order) {
+    if (orderError) {
+      console.error('GET REJECT: Error fetching order:', orderError);
       return NextResponse.json(
-        { error: 'Commande non trouvée' },
+        { error: 'Erreur lors de la récupération de la commande', details: orderError.message },
+        { status: 500 }
+      );
+    }
+
+    if (!order) {
+      console.error('GET REJECT: Order not found with ID:', orderId);
+      return NextResponse.json(
+        { error: 'Commande non trouvée', orderId },
         { status: 404 }
       );
     }
+    
+    console.log('GET REJECT: Order found:', order.order_number);
 
     // Mettre à jour le statut de la commande
     const { error: updateError } = await supabase

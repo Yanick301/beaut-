@@ -159,8 +159,13 @@ function UploadReceiptContent() {
 
       if (!response.ok) {
         const data = await response.json();
-        console.error('Error sending email:', data);
+        console.error('Error sending email to admin:', data);
+        console.error('Response status:', response.status);
         // Ne pas bloquer si l'email échoue, le reçu est déjà uploadé
+        // Mais afficher un avertissement
+        alert('Reçu téléversé avec succès, mais l\'email à l\'admin n\'a pas pu être envoyé. Veuillez vérifier la configuration Resend.');
+      } else {
+        console.log('Email sent successfully to admin');
       }
 
       // Vider le panier maintenant que le reçu est téléversé

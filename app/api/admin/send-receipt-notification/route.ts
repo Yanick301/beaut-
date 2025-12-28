@@ -80,6 +80,10 @@ export async function POST(request: NextRequest) {
     const confirmUrl = `${baseUrl}/api/admin/orders/${orderId}/confirm?token=${adminToken}`;
     const rejectUrl = `${baseUrl}/api/admin/orders/${orderId}/reject?token=${adminToken}`;
 
+    console.log('Sending email to admin:', adminEmail);
+    console.log('Resend API Key exists:', !!process.env.RESEND_API_KEY);
+    console.log('From email:', process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>');
+    
     // Envoyer l'email à l'admin
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
