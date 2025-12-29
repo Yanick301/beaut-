@@ -85,3 +85,4 @@ NOTES IMPORTANTES
 - Vérifiez si certaines images existent déjà sous un nom similaire.
 - Les noms d'images doivent correspondre exactement aux noms générés par la fonction productNameToImageName().
 
+
