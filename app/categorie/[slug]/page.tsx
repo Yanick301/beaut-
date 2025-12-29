@@ -1,22 +1,32 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { useParams } from 'next/navigation';
+import { useState, useMemo, useEffect, Suspense } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import { products, categories } from '@/lib/data';
 import { FiFilter, FiX } from 'react-icons/fi';
 import CategoryStructuredData from './CategoryStructuredData';
 
-export default function CategoryPage() {
+function CategoryPageContent() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const slug = params.slug as string;
   const category = categories.find(c => c.slug === slug);
   const categoryProducts = products.filter(p => p.category === slug);
+  const subCategoryParam = searchParams.get('subCategory');
 
   const [showFilters, setShowFilters] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 200]);
   const [selectedBrand, setSelectedBrand] = useState<string>('');
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string>(subCategoryParam || '');
   const [sortBy, setSortBy] = useState<string>('popular');
+
+  // Mettre à jour la sous-catégorie sélectionnée quand le paramètre URL change
+  useEffect(() => {
+    if (subCategoryParam) {
+      setSelectedSubCategory(subCategoryParam);
+    }
+  }, [subCategoryParam]);
 
   const brands = useMemo(() => {
     const uniqueBrands = Array.from(new Set(categoryProducts.map(p => p.brand).filter(Boolean)));
@@ -25,6 +35,11 @@ export default function CategoryPage() {
 
   const filteredProducts = useMemo(() => {
     let filtered = [...categoryProducts];
+
+    // Filter by subcategory
+    if (selectedSubCategory) {
+      filtered = filtered.filter(p => p.subCategory === selectedSubCategory);
+    }
 
     // Filter by price
     filtered = filtered.filter(p => p.price >= priceRange[0] && p.price <= priceRange[1]);
@@ -52,7 +67,7 @@ export default function CategoryPage() {
     }
 
     return filtered;
-  }, [categoryProducts, priceRange, selectedBrand, sortBy]);
+  }, [categoryProducts, priceRange, selectedBrand, selectedSubCategory, sortBy]);
 
   if (!category) {
     return (
@@ -140,6 +155,25 @@ export default function CategoryPage() {
               </div>
             </div>
 
+            {/* SubCategory Filter */}
+            {category?.subCategories && category.subCategories.length > 0 && (
+              <div className="mb-6">
+                <h3 className="font-semibold text-brown-dark mb-3">Sous-catégorie</h3>
+                <select
+                  value={selectedSubCategory}
+                  onChange={(e) => setSelectedSubCategory(e.target.value)}
+                  className="w-full px-4 py-2 rounded-lg border border-nude bg-white text-brown-dark"
+                >
+                  <option value="">Toutes les sous-catégories</option>
+                  {category.subCategories.map((subCat) => (
+                    <option key={subCat} value={subCat}>
+                      {subCat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
             {/* Brand Filter */}
             {brands.length > 0 && (
               <div className="mb-6">
@@ -163,6 +197,7 @@ export default function CategoryPage() {
               onClick={() => {
                 setPriceRange([0, 200]);
                 setSelectedBrand('');
+                setSelectedSubCategory('');
               }}
               className="text-sm text-rose-soft hover:text-rose-soft/80 underline"
             >
@@ -197,6 +232,20 @@ export default function CategoryPage() {
       </div>
     </div>
     </>
+  );
+}
+
+export default function CategoryPage() {
+  return (
+    <Suspense fallback={
+      <div className="section-padding bg-beige-light min-h-screen">
+        <div className="container-custom">
+          <div className="text-center py-12 text-brown-soft">Chargement...</div>
+        </div>
+      </div>
+    }>
+      <CategoryPageContent />
+    </Suspense>
   );
 }
 

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FiShoppingBag, FiMenu, FiX, FiSearch, FiUser, FiLogOut, FiTruck } from 'react-icons/fi';
+import { FiShoppingBag, FiMenu, FiX, FiSearch, FiUser, FiLogOut, FiTruck, FiChevronDown } from 'react-icons/fi';
 import { useCartStore } from '@/lib/store';
 import { categories } from '@/lib/data';
 import { createClient } from '@/lib/supabase/client';
@@ -15,6 +15,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const itemCount = useCartStore(state => state.getItemCount());
 
   useEffect(() => {
@@ -79,15 +80,45 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {categories.slice(0, 6).map((category) => (
-              <Link
-                key={category.id}
-                href={`/categorie/${category.slug}`}
-                className="text-brown-soft hover:text-brown-dark transition font-medium"
-              >
-                {category.name}
-              </Link>
-            ))}
+            {categories.slice(0, 6).map((category) => {
+              const hasSubCategories = category.subCategories && category.subCategories.length > 0;
+              const isExpanded = expandedCategory === category.id;
+              
+              return (
+                <div
+                  key={category.id}
+                  className="relative"
+                  onMouseEnter={() => hasSubCategories && setExpandedCategory(category.id)}
+                  onMouseLeave={() => setExpandedCategory(null)}
+                >
+                  <Link
+                    href={`/categorie/${category.slug}`}
+                    className="flex items-center gap-1 text-brown-soft hover:text-brown-dark transition font-medium"
+                  >
+                    {category.name}
+                    {hasSubCategories && (
+                      <FiChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                    )}
+                  </Link>
+                  
+                  {/* Sous-catégories dropdown */}
+                  {hasSubCategories && isExpanded && (
+                    <div className="absolute top-full left-0 mt-2 bg-white-cream rounded-lg shadow-lg border border-nude py-2 min-w-[200px] z-50">
+                      {category.subCategories!.map((subCat) => (
+                        <Link
+                          key={subCat}
+                          href={`/categorie/${category.slug}?subCategory=${encodeURIComponent(subCat)}`}
+                          className="block px-4 py-2 text-brown-soft hover:text-brown-dark hover:bg-beige transition"
+                          onClick={() => setExpandedCategory(null)}
+                        >
+                          {subCat}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
                   {/* Right Side Icons */}
@@ -138,16 +169,50 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-nude py-4">
             <nav className="flex flex-col gap-4">
-              {categories.map((category) => (
-                <Link
-                  key={category.id}
-                  href={`/categorie/${category.slug}`}
-                  className="text-brown-soft hover:text-brown-dark transition font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {category.name}
-                </Link>
-              ))}
+              {categories.map((category) => {
+                const hasSubCategories = category.subCategories && category.subCategories.length > 0;
+                const isExpanded = expandedCategory === category.id;
+                
+                return (
+                  <div key={category.id}>
+                    <div className="flex items-center justify-between">
+                      <Link
+                        href={`/categorie/${category.slug}`}
+                        className="text-brown-soft hover:text-brown-dark transition font-medium py-2 flex-1"
+                        onClick={() => {
+                          if (!hasSubCategories) {
+                            setIsMenuOpen(false);
+                          }
+                        }}
+                      >
+                        {category.name}
+                      </Link>
+                      {hasSubCategories && (
+                        <button
+                          onClick={() => setExpandedCategory(isExpanded ? null : category.id)}
+                          className="p-2 text-brown-soft hover:text-brown-dark transition"
+                        >
+                          <FiChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                        </button>
+                      )}
+                    </div>
+                    {hasSubCategories && isExpanded && (
+                      <div className="pl-4 mt-2 space-y-2">
+                        {category.subCategories!.map((subCat) => (
+                          <Link
+                            key={subCat}
+                            href={`/categorie/${category.slug}?subCategory=${encodeURIComponent(subCat)}`}
+                            className="block text-brown-soft hover:text-brown-dark transition text-sm py-1"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subCat}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
               {user ? (
                 <>
                   <Link
