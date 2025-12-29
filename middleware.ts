@@ -48,6 +48,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // Route checkout - protection requise
+  if (request.nextUrl.pathname.startsWith('/checkout') && !user) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/connexion'
+    url.searchParams.set('redirect', request.nextUrl.pathname)
+    return NextResponse.redirect(url)
+  }
+
   // Route admin - la protection est gérée dans l'API route
   // Le middleware redirige juste vers la connexion si non authentifié
   if (request.nextUrl.pathname.startsWith('/admin') && !user) {

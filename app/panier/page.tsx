@@ -1,14 +1,48 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiTrash2, FiPlus, FiMinus, FiArrowLeft } from 'react-icons/fi';
 import { useCartStore } from '@/lib/store';
+import { createClient } from '@/lib/supabase/client';
 
 export default function CartPage() {
+  const router = useRouter();
+  const supabase = createClient();
   const { items, removeItem, updateQuantity, getTotal, clearCart } = useCartStore();
   const total = getTotal();
   const shipping = total >= 50 ? 0 : 5.99;
+  const [user, setUser] = useState<any>(null);
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
+  // Vérifier l'authentification
+  useEffect(() => {
+    async function checkAuth() {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+      setCheckingAuth(false);
+    }
+    checkAuth();
+
+    // Écouter les changements d'authentification
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
+
+  const handleCheckout = () => {
+    if (!user) {
+      // Rediriger vers la page de connexion avec un paramètre redirect
+      router.push('/connexion?redirect=/checkout');
+    } else {
+      // Utilisateur connecté, rediriger vers le checkout
+      router.push('/checkout');
+    }
+  };
 
   if (items.length === 0) {
     return (
@@ -150,9 +184,13 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <Link href="/checkout" className="btn-primary w-full text-center block mb-4">
-                Passer la commande
-              </Link>
+              <button
+                onClick={handleCheckout}
+                disabled={checkingAuth}
+                className="btn-primary w-full text-center block mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {checkingAuth ? 'Vérification...' : 'Passer la commande'}
+              </button>
 
               <div className="text-sm text-brown-soft space-y-2">
                 <p className="flex items-center gap-2">

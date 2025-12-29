@@ -30,30 +30,36 @@ export default function CheckoutPage() {
     paymentMethod: 'bank_transfer',
   });
 
-  // Charger les données utilisateur si connecté
+  // Vérifier l'authentification et charger les données utilisateur
   useEffect(() => {
-    async function loadUserData() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', user.id)
-          .single();
+    async function checkAuthAndLoadData() {
+      const { data: { user }, error } = await supabase.auth.getUser();
+      
+      if (error || !user) {
+        // Rediriger vers la connexion si non authentifié
+        router.push('/connexion?redirect=/checkout');
+        return;
+      }
 
-        if (profile) {
-          setFormData(prev => ({
-            ...prev,
-            email: user.email || '',
-            firstName: profile.first_name || '',
-            lastName: profile.last_name || '',
-            phone: profile.phone || '',
-          }));
-        }
+      // Charger les données du profil
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+
+      if (profile) {
+        setFormData(prev => ({
+          ...prev,
+          email: user.email || '',
+          firstName: profile.first_name || '',
+          lastName: profile.last_name || '',
+          phone: profile.phone || '',
+        }));
       }
     }
-    loadUserData();
-  }, [supabase]);
+    checkAuthAndLoadData();
+  }, [supabase, router]);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
