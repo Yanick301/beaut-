@@ -1,0 +1,61 @@
+LISTE DES NOUVEAUX NOMS D'IMAGES DES PRODUITS REMPLACÉS
+============================================================
+
+PRODUITS REMPLACÉS - DÉODORANTS/PARFUMS (11 produits):
+-----------------------------------------------------------
+rexona_maximum_protection_rexona.jpg
+rexona_rollon_rexona.jpg
+rexona_spray_rexona.jpg
+sanex_dermo_sensitive_sanex.jpg
+dove_original_dove.jpg
+yves_rocher_deodorant_nature_yves_rocher.jpg
+yves_rocher_rollon_vegetal_yves_rocher.jpg
+yves_rocher_spray_fraicheur_yves_rocher.jpg
+yves_rocher_brume_parfumee_yves_rocher.jpg
+yves_rocher_eau_de_toilette_yves_rocher.jpg
+yves_rocher_eau_de_cologne_yves_rocher.jpg
+
+
+PRODUITS REMPLACÉS - ACCESSOIRES BEAUTÉ (29 produits):
+-----------------------------------------------------------
+essential_brush_set_ecotools.jpg
+perfecting_blender_sponge_ecotools.jpg
+led_makeup_mirror_philips.jpg
+brush_storage_case_ecotools.jpg
+beauty_organizer_philips.jpg
+travel_makeup_bag_ecotools.jpg
+brush_cleansing_soap_ecotools.jpg
+reusable_makeup_remover_pads_ecotools.jpg
+professional_eyelash_curler_shiseido.jpg
+precision_tweezers_shiseido.jpg
+professional_nail_care_set_shiseido.jpg
+wet_brush_pro_wet_brush.jpg
+detangler_brush_wet_brush.jpg
+ionic_hair_dryer_babyliss.jpg
+ceramic_straightener_babyliss.jpg
+curling_wand_babyliss.jpg
+hair_claw_clips_scunci.jpg
+nocrease_hair_elastics_scunci.jpg
+velvet_scrunchie_scunci.jpg
+wide_headband_scunci.jpg
+magnetic_makeup_palette_morphe.jpg
+pro_brush_collection_morphe.jpg
+original_beauty_sponge_fenty_beauty.jpg
+beauty_sponge_duo_fenty_beauty.jpg
+brush_cleaning_glove_morphe.jpg
+essential_brush_kit_morphe.jpg
+blending_sponge_morphe.jpg
+compact_makeup_mirror_philips.jpg
+smart_led_mirror_philips.jpg
+portable_mirror_philips.jpg
+
+
+RÉSUMÉ:
+-------
+Total de produits remplacés: 40 produits
+- Déodorants/Parfums: 11 produits
+- Accessoires beauté: 29 produits
+
+Toutes les images doivent être placées dans le dossier: /public/image-products/
+
+
