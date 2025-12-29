@@ -86,3 +86,5 @@ NOTES IMPORTANTES
 - Les noms d'images doivent correspondre exactement aux noms générés par la fonction productNameToImageName().
 
 
+
+

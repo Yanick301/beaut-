@@ -60,3 +60,5 @@ Toutes les images doivent être placées dans le dossier: /public/image-products
 
 
 
+
+
