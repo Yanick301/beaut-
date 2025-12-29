@@ -2,15 +2,46 @@ import { Product, Category, Review } from '@/types';
 
 /**
  * Convertit un nom de produit en nom de fichier image
+ * Supprime les accents pour correspondre aux noms de fichiers existants
  */
 function productNameToImageName(name: string): string {
-  return name
+  // Mapping des caractères accentués vers leurs équivalents sans accent
+  const accentMap: { [key: string]: string } = {
+    'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a',
+    'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
+    'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
+    'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+    'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
+    'ý': 'y', 'ÿ': 'y',
+    'ç': 'c'
+  };
+
+  let result = name
     .toLowerCase()
     .trim()
+    // Remplacer les caractères accentués
+    .split('')
+    .map(char => accentMap[char] || char)
+    .join('')
     .replace(/\s+/g, '_')
-    .replace(/[^a-z0-9_àáâãäåèéêëìíîïòóôõöùúûüýÿç]/gi, '')
+    .replace(/[^a-z0-9_]/gi, '')
     .replace(/_{2,}/g, '_')
     .replace(/^_|_$/g, '') + '.jpg';
+
+  // Mapping spécifique pour les fichiers existants avec noms différents
+  const fileMapping: { [key: string]: string } = {
+    // Cas où le fichier existe avec un nom légèrement différent
+    'the_ritual_of_sakura_body_mist_rituals.jpg': 'he_ritual_of_sakura_body_mist_rituals.jpg',
+    'the_ritual_of_ayurveda_eau_de_parfum_rituals.jpg': 'the_ritual_of_ayurveda_eau_de_parfum_ritual.jpg',
+    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier..jpg'
+  };
+
+  // Si le résultat correspond à un mapping, utiliser le nom du fichier existant
+  if (fileMapping[result]) {
+    return fileMapping[result];
+  }
+
+  return result;
 }
 
 /**
