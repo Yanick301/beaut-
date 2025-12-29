@@ -70,3 +70,4 @@ console.log(`\nListe des noms d'images sauvegardée dans: ${imageListFile}`);
 
 
 
+

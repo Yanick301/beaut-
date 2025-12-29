@@ -1,0 +1,95 @@
+=== IMAGES DE CATÉGORIES ===
+soins_du_visage.jpg
+maquillage.jpg
+soins_du_corps.jpg
+cheveux.jpg
+parfums.jpg
+fond_de_teint_fluide_mat.jpg
+
+=== PRODUITS - SOINS DU VISAGE ===
+sérum_antiâge_premium.jpg
+sérum_vitamine_c_éclat.jpg
+sérum_acide_hyaluronique_intense.jpg
+sérum_rétinol_nuit.jpg
+sérum_niacinamide_pores.jpg
+crème_hydratante_intense.jpg
+crème_matifiante_peau_grasse.jpg
+crème_antiâge_collagène.jpg
+crème_nourrissante_peau_sèche.jpg
+crème_nuit_régénérante.jpg
+masque_hydratant_aloe_vera.jpg
+masque_argile_détox_purifiant.jpg
+masque_éclat_vitamine_c.jpg
+masque_antiâge_collagène.jpg
+nettoyant_doux_mousse.jpg
+gel_nettoyant_purifiant.jpg
+huile_démaquillante_nourrissante.jpg
+crème_solaire_spf50_visage.jpg
+fluide_solaire_teinté_spf30.jpg
+
+=== PRODUITS - MAQUILLAGE ===
+fond_de_teint_fluide_mat.jpg
+bb_crème_toute_la_journée.jpg
+correcteur_anticernes_haute_couvrance.jpg
+poudre_matifiante_compacte.jpg
+rouge_à_lèvres_velours.jpg
+rouge_à_lèvres_liquide_matte.jpg
+baume_à_lèvres_teinté.jpg
+gloss_brillant_longue_tenue.jpg
+mascara_volume_intense.jpg
+mascara_allongement_extrême.jpg
+mascara_waterproof_résistant.jpg
+mascara_cils_inférieurs.jpg
+palette_fards_à_paupières_nude.jpg
+palette_fards_à_paupières_smoky.jpg
+palette_complète_visage.jpg
+highlighter_poudre_éclat.jpg
+highlighter_liquide_lumière.jpg
+
+=== PRODUITS - SOINS DU CORPS ===
+lotion_corporelle_nourrissante.jpg
+lotion_hydratante_légère.jpg
+lotion_fermeté_antiâge_corps.jpg
+lotion_aprèssoleil_apaisante.jpg
+huile_sèche_argan.jpg
+huile_massage_relaxante.jpg
+huile_bronzante_naturelle.jpg
+gommage_corps_sucre_de_coco.jpg
+gommage_corps_sel_marin.jpg
+crème_mains_réparatrice.jpg
+baume_mains_spf30.jpg
+
+=== PRODUITS - CHEVEUX ===
+shampoing_réparateur.jpg
+shampoing_volume_et_épaisseur.jpg
+shampoing_hydratant_cheveux_secs.jpg
+shampoing_purifiant_cuir_chevelu.jpg
+shampoing_colorant_cheveux_colorés.jpg
+aprèsshampoing_démêlant.jpg
+masque_capillaire_intensif.jpg
+masque_hydratant_cheveux_secs.jpg
+huile_capillaire_brillance.jpg
+spray_thermoprotecteur.jpg
+laissein_brilliance_et_volume.jpg
+
+=== PRODUITS - PARFUMS ===
+eau_de_parfum_élégance.jpg
+eau_de_parfum_fraîcheur.jpg
+eau_de_parfum_sensuelle.jpg
+eau_de_toilette_légère.jpg
+eau_de_parfum_romantique.jpg
+
+=== PRODUITS - ACCESSOIRES BEAUTÉ ===
+set_pinceaux_maquillage_pro.jpg
+éponge_beauté_maquillage.jpg
+miroir_maquillage_led.jpg
+étui_à_pinceaux_premium.jpg
+gant_exfoliant_corps.jpg
+bandeaux_cheveux_soie.jpg
+palette_maquillage_vide.jpg
+
+=== IMAGES SPÉCIALES (dans /public/) ===
+og-image.jpg
+logo.png
+
+

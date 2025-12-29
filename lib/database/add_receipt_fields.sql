@@ -16,3 +16,4 @@ ADD COLUMN IF NOT EXISTS receipt_file_name TEXT;
 
 
 
+
