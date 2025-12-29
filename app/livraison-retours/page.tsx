@@ -22,18 +22,15 @@ export default function DeliveryReturnsPage() {
               <h3 className="font-semibold text-brown-dark text-xl mb-3">Délais de livraison</h3>
               <ul className="space-y-2 ml-4">
                 <li className="list-disc">
-                  <strong>Pays-Bas :</strong> 2-3 jours ouvrés (livraison standard), 1 jour ouvré (livraison express)
+                  <strong>Livraison standard :</strong> 2-3 jours ouvrés
                 </li>
                 <li className="list-disc">
-                  <strong>Belgique :</strong> 3-4 jours ouvrés
-                </li>
-                <li className="list-disc">
-                  <strong>France, Allemagne :</strong> 4-5 jours ouvrés
-                </li>
-                <li className="list-disc">
-                  <strong>Autres pays européens :</strong> 5-7 jours ouvrés
+                  <strong>Livraison express :</strong> 1 jour ouvré
                 </li>
               </ul>
+              <p className="mt-3 text-brown-soft">
+                <strong>Note :</strong> Nous livrons uniquement aux Pays-Bas.
+              </p>
             </div>
 
             <div>
@@ -43,10 +40,10 @@ export default function DeliveryReturnsPage() {
                   <strong>Livraison gratuite</strong> pour toute commande supérieure à €50
                 </li>
                 <li className="list-disc">
-                  <strong>Livraison standard :</strong> €5,99 (Pays-Bas) / €7,99 (Europe)
+                  <strong>Livraison standard :</strong> €5,99
                 </li>
                 <li className="list-disc">
-                  <strong>Livraison express :</strong> €9,99 (Pays-Bas uniquement)
+                  <strong>Livraison express :</strong> €9,99
                 </li>
               </ul>
             </div>

@@ -218,17 +218,11 @@ export default function CheckoutPage() {
                     className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
                   />
                 </div>
-                <div>
-                  <label className="block text-brown-dark font-medium mb-2">Pays *</label>
-                  <select
-                    required
-                    value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  >
-                    <option value="NL">Pays-Bas</option>
-                  
-                  </select>
+                <input type="hidden" name="country" value="NL" />
+                <div className="bg-rose-soft/10 border border-rose-soft/30 rounded-lg p-4">
+                  <p className="text-sm text-brown-dark">
+                    <strong>Livraison :</strong> Nous livrons uniquement aux Pays-Bas
+                  </p>
                 </div>
               </div>
             </div>

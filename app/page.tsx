@@ -175,7 +175,7 @@ export default function Home() {
                   <FiTruck className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
                 </div>
                 <h3 className="font-elegant text-lg sm:text-xl text-brown-dark mb-2">Livraison rapide</h3>
-                <p className="text-sm sm:text-base text-brown-soft">Livraison express aux Pays-Bas & Europe sous 2-3 jours</p>
+                <p className="text-sm sm:text-base text-brown-soft">Livraison express aux Pays-Bas sous 1-3 jours</p>
               </div>
               <div className="text-center bg-white-cream p-6 sm:p-8 rounded-2xl shadow-md">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4">

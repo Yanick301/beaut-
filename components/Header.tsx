@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FiShoppingBag, FiMenu, FiX, FiSearch, FiUser, FiLogOut } from 'react-icons/fi';
+import { FiShoppingBag, FiMenu, FiX, FiSearch, FiUser, FiLogOut, FiTruck } from 'react-icons/fi';
 import { useCartStore } from '@/lib/store';
 import { categories } from '@/lib/data';
 import { createClient } from '@/lib/supabase/client';
@@ -43,16 +43,29 @@ export default function Header() {
     <header className="bg-white-cream shadow-sm sticky top-0 z-50">
       <div className="container-custom">
         {/* Top Bar */}
-        <div className="border-b border-nude py-2 hidden md:block">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 text-xs sm:text-sm text-brown-soft">
-            <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
-              <span>🇳🇱 Livraison gratuite dès €50</span>
-              <span>✓ Paiement sécurisé</span>
+        <div className="bg-gradient-to-r from-rose-powder/30 via-beige/20 to-rose-powder/30 border-b border-rose-soft/20 py-3 hidden md:block">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2 text-sm text-brown-dark/80 font-medium">
+                <div className="w-5 h-5 rounded-full bg-rose-soft/20 flex items-center justify-center">
+                  <FiTruck className="w-3 h-3 text-rose-soft" />
+                </div>
+                <span className="font-elegant">Livraison gratuite dès €50</span>
+              </div>
             </div>
-            <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-              <Link href="/compte" className="hover:text-brown-dark transition">Mon compte</Link>
-              <Link href="/faq" className="hover:text-brown-dark transition">Aide</Link>
-              {/* Le lien admin sera affiché conditionnellement côté client si nécessaire */}
+            <div className="flex items-center gap-6 text-sm">
+              <Link 
+                href="/compte" 
+                className="text-brown-soft hover:text-brown-dark transition-colors duration-200 font-medium tracking-wide"
+              >
+                Mon compte
+              </Link>
+              <Link 
+                href="/faq" 
+                className="text-brown-soft hover:text-brown-dark transition-colors duration-200 font-medium tracking-wide"
+              >
+                Aide
+              </Link>
             </div>
           </div>
         </div>

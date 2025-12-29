@@ -11,7 +11,7 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: 'Quels sont les délais de livraison ?',
-    answer: 'Pour les commandes aux Pays-Bas, la livraison standard prend 2-3 jours ouvrés. La livraison express (1 jour ouvré) est disponible pour une majoration. Pour l\'Europe, comptez 3-5 jours ouvrés. La livraison est gratuite dès €50 d\'achat.',
+    answer: 'La livraison standard prend 2-3 jours ouvrés. La livraison express (1 jour ouvré) est disponible pour une majoration de €9,99. La livraison est gratuite dès €50 d\'achat. Nous livrons uniquement aux Pays-Bas.',
   },
   {
     question: 'Quels modes de paiement acceptez-vous ?',

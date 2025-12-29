@@ -135,3 +135,4 @@ Pour vérifier que tout fonctionne :
 4. **PageSpeed Insights** : Vérifier les performances
 
 
+
