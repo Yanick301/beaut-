@@ -24,10 +24,18 @@ export default function ProductPage() {
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [selectedVolume, setSelectedVolume] = useState<string | null>(null);
   const [productReviews, setProductReviews] = useState<any[]>([]);
   const [reviewsLoading, setReviewsLoading] = useState(true);
   const addItem = useCartStore(state => state.addItem);
   const addToast = useToastStore(state => state.addToast);
+
+  // Initialiser le volume sélectionné avec le premier volume disponible ou le prix par défaut
+  useEffect(() => {
+    if (product?.volumes && product.volumes.length > 0) {
+      setSelectedVolume(product.volumes[0].volume);
+    }
+  }, [product]);
 
   // Charger les avis depuis l'API
   useEffect(() => {
@@ -58,14 +66,32 @@ export default function ProductPage() {
 
   const images = product.images || [product.image];
 
-  const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addItem(product);
+  // Calculer le prix actuel en fonction du volume sélectionné
+  const getCurrentPrice = () => {
+    if (product.volumes && product.volumes.length > 0 && selectedVolume) {
+      const volume = product.volumes.find(v => v.volume === selectedVolume);
+      return volume ? volume.price : product.price;
     }
+    return product.price;
+  };
+
+  const handleAddToCart = () => {
+    // Créer une copie du produit avec le volume sélectionné
+    const productToAdd = {
+      ...product,
+      price: getCurrentPrice(),
+      selectedVolume: selectedVolume || undefined
+    };
+    
+    for (let i = 0; i < quantity; i++) {
+      addItem(productToAdd);
+    }
+    
+    const volumeText = selectedVolume ? ` (${selectedVolume})` : '';
     if (quantity === 1) {
-      addToast(`${product.name} a été ajouté au panier`, 'success');
+      addToast(`${product.name}${volumeText} a été ajouté au panier`, 'success');
     } else {
-      addToast(`${quantity}x ${product.name} ont été ajoutés au panier`, 'success');
+      addToast(`${quantity}x ${product.name}${volumeText} ont été ajoutés au panier`, 'success');
     }
   };
 
@@ -156,7 +182,7 @@ export default function ProductPage() {
 
             <div className="flex items-center gap-4 mb-6">
               <span className="text-4xl font-elegant text-brown-dark">
-                €{product.price.toFixed(2)}
+                €{getCurrentPrice().toFixed(2)}
               </span>
               {product.originalPrice && (
                 <>
@@ -164,11 +190,34 @@ export default function ProductPage() {
                     €{product.originalPrice.toFixed(2)}
                   </span>
                   <span className="bg-rose-soft text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    -{Math.round((1 - product.price / product.originalPrice) * 100)}%
+                    -{Math.round((1 - getCurrentPrice() / product.originalPrice) * 100)}%
                   </span>
                 </>
               )}
             </div>
+
+            {/* Volume Selector for Parfums */}
+            {product.volumes && product.volumes.length > 0 && (
+              <div className="mb-8">
+                <label className="block font-semibold text-brown-dark mb-4">Volume :</label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {product.volumes.map((vol) => (
+                    <button
+                      key={vol.volume}
+                      onClick={() => setSelectedVolume(vol.volume)}
+                      className={`px-4 py-3 rounded-lg border-2 transition text-center ${
+                        selectedVolume === vol.volume
+                          ? 'border-rose-soft bg-rose-soft/10 text-brown-dark font-semibold'
+                          : 'border-nude hover:border-rose-soft/50 text-brown-soft'
+                      }`}
+                    >
+                      <div className="font-medium">{vol.volume}</div>
+                      <div className="text-sm text-brown-soft mt-1">€{vol.price.toFixed(2)}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <p className="text-lg text-brown-soft mb-8 leading-relaxed">
               {product.longDescription || product.description}

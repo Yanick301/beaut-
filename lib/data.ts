@@ -110,7 +110,7 @@ export const categories: Category[] = [
   },
 ];
 
-export const products: Product[] = [
+const productsRaw: Product[] = [
   // SOINS VISAGE
   {
     id: '1',
@@ -4345,6 +4345,81 @@ export const products: Product[] = [
     badges: ['Luxe']
   },
 ];
+
+/**
+ * Fusionne les produits parfums qui ont le même nom de base (sans le volume)
+ * en un seul produit avec plusieurs volumes disponibles
+ */
+function mergeParfumProducts(productsList: Product[]): Product[] {
+  const parfumMap = new Map<string, Product>();
+  const otherProducts: Product[] = [];
+  
+  for (const product of productsList) {
+    if (product.category === 'parfums' && product.name.match(/\d+\s*ml$/i)) {
+      // Extraire le nom de base (sans le volume)
+      const baseName = product.name.replace(/\s+\d+\s*ml$/i, '').trim();
+      const volumeMatch = product.name.match(/(\d+)\s*ml$/i);
+      const volume = volumeMatch ? `${volumeMatch[1]} ml` : '';
+      
+      if (parfumMap.has(baseName)) {
+        // Ajouter le volume au produit existant
+        const existingProduct = parfumMap.get(baseName)!;
+        if (!existingProduct.volumes) {
+          existingProduct.volumes = [];
+          // Ajouter le prix initial comme premier volume
+          const initialVolumeMatch = existingProduct.name.match(/(\d+)\s*ml$/i);
+          if (initialVolumeMatch) {
+            existingProduct.volumes.push({
+              volume: `${initialVolumeMatch[1]} ml`,
+              price: existingProduct.price
+            });
+          }
+        }
+        if (volume) {
+          existingProduct.volumes!.push({
+            volume,
+            price: product.price
+          });
+        }
+        // Garder le meilleur rating et reviewsCount
+        if (product.rating > existingProduct.rating) {
+          existingProduct.rating = product.rating;
+        }
+        if (product.reviewsCount > existingProduct.reviewsCount) {
+          existingProduct.reviewsCount = product.reviewsCount;
+        }
+      } else {
+        // Créer un nouveau produit fusionné
+        const mergedProduct: Product = {
+          ...product,
+          name: baseName,
+          volumes: volume ? [{ volume, price: product.price }] : [],
+          price: product.price
+        };
+        parfumMap.set(baseName, mergedProduct);
+      }
+    } else {
+      // Produit non-parfum ou parfum sans volume spécifié
+      otherProducts.push(product);
+    }
+  }
+  
+  // Convertir la map en tableau et trier les volumes par prix
+  const mergedParfums = Array.from(parfumMap.values()).map(product => {
+    if (product.volumes && product.volumes.length > 0) {
+      // Trier les volumes par prix croissant
+      product.volumes.sort((a, b) => a.price - b.price);
+      // Le prix du produit est le prix minimum
+      product.price = product.volumes[0].price;
+    }
+    return product;
+  });
+  
+  return [...otherProducts, ...mergedParfums];
+}
+
+// Fusionner les produits parfums avant l'export
+export const products: Product[] = mergeParfumProducts(productsRaw);
 
 export const reviews: Review[] = [
   {

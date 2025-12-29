@@ -1,3 +1,8 @@
+export interface ProductVolume {
+  volume: string;
+  price: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -19,10 +24,12 @@ export interface Product {
   isBestSeller?: boolean;
   isNew?: boolean;
   badges?: string[];
+  volumes?: ProductVolume[]; // Volumes disponibles pour les parfums
 }
 
 export interface CartItem extends Product {
   quantity: number;
+  selectedVolume?: string; // Volume sélectionné pour les parfums
 }
 
 export interface Category {

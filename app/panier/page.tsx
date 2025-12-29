@@ -54,6 +54,9 @@ export default function CartPage() {
                   <Link href={`/produit/${item.id}`}>
                     <h3 className="font-elegant text-xl text-brown-dark mb-2 hover:text-rose-soft transition">
                       {item.name}
+                      {item.selectedVolume && (
+                        <span className="text-base text-brown-soft font-normal"> - {item.selectedVolume}</span>
+                      )}
                     </h3>
                   </Link>
                   <p className="text-brown-soft text-sm mb-4 line-clamp-2">
