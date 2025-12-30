@@ -10,8 +10,8 @@ export default function CGVPage() {
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">1. Objet</h2>
             <p>
-              Les présentes Conditions Générales de Vente (CGV) régissent les relations entre Essence Féminine B.V., 
-              société immatriculée aux Pays-Bas, et les clients effectuant des achats sur le site essencefeminine.nl.
+              Les présentes Conditions Générales de Vente (CGV) régissent les relations entre Essence Féminine S.P.R.L., 
+              société immatriculée en Belgique, et les clients effectuant des achats sur le site essencefeminine.be.
             </p>
           </section>
 
@@ -46,9 +46,9 @@ export default function CGVPage() {
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Paiement</h2>
             <p>
-              Le paiement s'effectue par carte bancaire, iDEAL ou PayPal. Le débit de la carte bancaire 
-              intervient au moment de la commande. En cas de paiement par PayPal, le règlement s'effectue 
-              lors de la confirmation de la commande. Tous les paiements sont sécurisés et cryptés.
+              Le paiement s'effectue par carte bancaire (Visa, Mastercard, Bancontact), virement bancaire ou PayPal. 
+              Le débit de la carte bancaire intervient au moment de la commande. En cas de paiement par virement bancaire, 
+              les coordonnées bancaires vous seront communiquées par email. Tous les paiements sont sécurisés et cryptés.
             </p>
           </section>
 
@@ -74,7 +74,7 @@ export default function CGVPage() {
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">8. Propriété intellectuelle</h2>
             <p>
-              L'ensemble de ce site relève de la législation néerlandaise et internationale sur le droit 
+              L'ensemble de ce site relève de la législation belge et internationale sur le droit 
               d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
             </p>
           </section>
@@ -92,8 +92,8 @@ export default function CGVPage() {
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">10. Litiges</h2>
             <p>
-              Les présentes CGV sont régies par le droit néerlandais. En cas de litige, et après 
-              tentative de résolution amiable, les tribunaux compétents seront ceux d'Amsterdam, Pays-Bas.
+              Les présentes CGV sont régies par le droit belge. En cas de litige, et après 
+              tentative de résolution amiable, les tribunaux compétents seront ceux de Bruxelles, Belgique.
             </p>
           </section>
 

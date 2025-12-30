@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { categories, products } from '@/lib/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://essencefeminine.nl'
+  const baseUrl = 'https://essencefeminine.be'
 
   // Pages statiques
   const staticPages: MetadataRoute.Sitemap = [

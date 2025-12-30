@@ -26,6 +26,12 @@ export async function requireAuth() {
   if (!user) {
     redirect('/connexion');
   }
+  
+  // Vérifier que l'email est confirmé
+  if (!user.email_confirmed_at) {
+    redirect('/connexion?error=email_not_confirmed');
+  }
+  
   return user;
 }
 
@@ -46,6 +52,7 @@ export async function getUserProfile(userId: string) {
 
   return data;
 }
+
 
 
 

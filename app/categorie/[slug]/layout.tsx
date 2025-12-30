@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const title = `${category.name} | Essence Féminine`;
-  const description = category.description || `Découvrez notre sélection de produits ${category.name.toLowerCase()}. ${categoryProducts.length} produits disponibles. Produits de beauté premium, livraison gratuite dès €50.`;
+  const description = category.description || `Découvrez notre sélection de produits ${category.name.toLowerCase()}. ${categoryProducts.length} produits disponibles. Produits de beauté premium, livraison gratuite dès €150.`;
 
   return {
     title,
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       'produits beauté',
       'soins',
       'maquillage',
-      'Pays-Bas',
+      'Belgique',
       'e-commerce beauté',
     ],
     authors: [{ name: 'Essence Féminine' }],
@@ -35,11 +35,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'website',
       title,
       description,
-      url: `https://essencefeminine.nl/categorie/${slug}`,
+      url: `https://essencefeminine.be/categorie/${slug}`,
       siteName: 'Essence Féminine',
       images: [
         {
-          url: category.image?.startsWith('http') ? category.image : `https://essencefeminine.nl${category.image}`,
+          url: category.image?.startsWith('http') ? category.image : `https://essencefeminine.be${category.image}`,
           width: 1200,
           height: 630,
           alt: category.name,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [category.image?.startsWith('http') ? category.image : `https://essencefeminine.nl${category.image}`],
     },
     alternates: {
-      canonical: `https://essencefeminine.nl/categorie/${slug}`,
+      canonical: `https://essencefeminine.be/categorie/${slug}`,
     },
   };
 }
@@ -66,6 +66,7 @@ export default function CategoryLayout({
 }) {
   return <>{children}</>;
 }
+
 
 
 

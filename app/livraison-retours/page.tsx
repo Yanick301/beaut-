@@ -29,7 +29,7 @@ export default function DeliveryReturnsPage() {
                 </li>
               </ul>
               <p className="mt-3 text-brown-soft">
-                <strong>Note :</strong> Nous livrons uniquement aux Pays-Bas.
+                <strong>Note :</strong> Nous livrons uniquement en Belgique.
               </p>
             </div>
 
@@ -37,15 +37,15 @@ export default function DeliveryReturnsPage() {
               <h3 className="font-semibold text-brown-dark text-xl mb-3">Frais de livraison</h3>
               <ul className="space-y-2 ml-4">
                 <li className="list-disc">
-                  <strong>Livraison gratuite</strong> pour toute commande supérieure à €50
+                  <strong>Livraison gratuite</strong> pour toute commande supérieure ou égale à €150
                 </li>
                 <li className="list-disc">
-                  <strong>Livraison standard :</strong> €5,99
-                </li>
-                <li className="list-disc">
-                  <strong>Livraison express :</strong> €9,99
+                  <strong>Livraison standard :</strong> €2,99 pour les commandes inférieures à €150
                 </li>
               </ul>
+              <p className="mt-4 p-4 bg-rose-soft/10 border border-rose-soft/30 rounded-lg text-brown-dark">
+                <strong>💡 Astuce :</strong> Ajoutez des produits à votre panier pour bénéficier de la livraison gratuite dès €150 !
+              </p>
             </div>
 
             <div>
@@ -90,7 +90,7 @@ export default function DeliveryReturnsPage() {
             <div>
               <h3 className="font-semibold text-brown-dark text-xl mb-3">Procédure de retour</h3>
               <ol className="space-y-2 ml-4 list-decimal">
-                <li>Contactez-nous à contact@essencefeminine.nl avec votre numéro de commande</li>
+                <li>Contactez-nous à contact@essencefeminine.be avec votre numéro de commande</li>
                 <li>Nous vous enverrons une étiquette de retour (si applicable)</li>
                 <li>Emballez soigneusement les articles à retourner</li>
                 <li>Envoyez le colis à l'adresse fournie</li>

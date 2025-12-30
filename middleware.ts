@@ -48,6 +48,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // Vérifier que l'email est confirmé pour les routes protégées (sauf email-confirme)
+  if (user && !user.email_confirmed_at && 
+      (request.nextUrl.pathname.startsWith('/compte') || 
+       request.nextUrl.pathname.startsWith('/checkout'))) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/connexion'
+    url.searchParams.set('error', 'email_not_confirmed')
+    url.searchParams.set('redirect', request.nextUrl.pathname)
+    return NextResponse.redirect(url)
+  }
+
   // Route checkout - protection requise
   if (request.nextUrl.pathname.startsWith('/checkout') && !user) {
     const url = request.nextUrl.clone()

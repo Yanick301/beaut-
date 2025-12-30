@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
@@ -10,6 +10,7 @@ function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get('redirect') || '/compte';
+  const errorParam = searchParams.get('error');
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +18,49 @@ function LoginContent() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const [resendingEmail, setResendingEmail] = useState(false);
+  const [emailNotConfirmed, setEmailNotConfirmed] = useState(false);
+
+  // Vérifier le paramètre d'erreur dans l'URL
+  useEffect(() => {
+    if (errorParam === 'email_not_confirmed') {
+      setEmailNotConfirmed(true);
+      setError('Votre email n\'a pas encore été confirmé. Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation.');
+    }
+  }, [errorParam]);
+
+  const handleResendConfirmation = async () => {
+    if (!email) {
+      setError('Veuillez entrer votre email');
+      return;
+    }
+
+    setResendingEmail(true);
+    setError(null);
+    setMessage(null);
+
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: email.trim(),
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/compte`,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      setMessage('Un nouvel email de confirmation a été envoyé ! Vérifiez votre boîte de réception.');
+      setEmailNotConfirmed(false);
+    } catch (error: any) {
+      setError(error.message || 'Erreur lors de l\'envoi de l\'email de confirmation');
+    } finally {
+      setResendingEmail(false);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +81,14 @@ function LoginContent() {
       }
 
       if (data.user) {
+        // Vérifier si l'email est confirmé
+        if (!data.user.email_confirmed_at) {
+          setEmailNotConfirmed(true);
+          setError('Votre email n\'a pas encore été confirmé. Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation.');
+          setLoading(false);
+          return;
+        }
+
         setMessage('Connexion réussie ! Redirection...');
         // Petit délai pour s'assurer que la session est bien établie
         setTimeout(() => {
@@ -113,6 +165,17 @@ function LoginContent() {
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
               {error}
+              {emailNotConfirmed && email && (
+                <div className="mt-3 pt-3 border-t border-red-200">
+                  <button
+                    onClick={handleResendConfirmation}
+                    disabled={resendingEmail}
+                    className="text-sm text-red-700 hover:text-red-800 underline disabled:opacity-50"
+                  >
+                    {resendingEmail ? 'Envoi en cours...' : 'Renvoyer l\'email de confirmation'}
+                  </button>
+                </div>
+              )}
             </div>
           )}
 

@@ -17,16 +17,16 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://essencefeminine.nl'),
+  metadataBase: new URL('https://essencefeminine.be'),
   title: {
     default: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
     template: '%s | Essence Féminine'
   },
-  description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, parfums et accessoires beauté de qualité. Livraison rapide aux Pays-Bas.',
-  keywords: ['beauté', 'cosmétiques', 'soins visage', 'maquillage', 'parfums', 'Pays-Bas', 'e-commerce beauté', 'produits beauté premium', 'soins du corps', 'cheveux', 'accessoires beauté'],
+  description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, parfums et accessoires beauté de qualité. Livraison rapide en Belgique.',
+  keywords: ['beauté', 'cosmétiques', 'soins visage', 'maquillage', 'parfums', 'Belgique', 'e-commerce beauté', 'produits beauté premium', 'soins du corps', 'cheveux', 'accessoires beauté'],
   authors: [{ name: 'Essence Féminine' }],
   creator: 'Essence Féminine',
-  publisher: 'Essence Féminine B.V.',
+  publisher: 'Essence Féminine S.P.R.L.',
   formatDetection: {
     email: false,
     address: false,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://essencefeminine.nl',
+    url: 'https://essencefeminine.be',
     siteName: 'Essence Féminine',
     title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
     description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, parfums et accessoires beauté de qualité.',
@@ -53,7 +53,6 @@ export const metadata: Metadata = {
     title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
     description: 'Découvrez notre sélection de produits de beauté premium pour femmes.',
     images: ['/og-image.jpg'],
-    creator: '@essencefeminine',
   },
   robots: {
     index: true,
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
     // yandex: 'your-yandex-verification-code',
   },
   alternates: {
-    canonical: 'https://essencefeminine.nl',
+    canonical: 'https://essencefeminine.be',
   },
   viewport: {
     width: 'device-width',

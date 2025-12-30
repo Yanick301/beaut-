@@ -51,7 +51,7 @@ export default function Header() {
                 <div className="w-5 h-5 rounded-full bg-rose-soft/20 flex items-center justify-center">
                   <FiTruck className="w-3 h-3 text-rose-soft" />
                 </div>
-                <span className="font-elegant">Livraison gratuite dès €50</span>
+                <span className="font-elegant">Livraison gratuite dès €150</span>
               </div>
             </div>
             <div className="flex items-center gap-6 text-sm">

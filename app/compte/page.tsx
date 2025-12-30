@@ -32,6 +32,12 @@ function AccountContent() {
         return;
       }
 
+      // Vérifier si l'email est confirmé
+      if (!user.email_confirmed_at) {
+        router.push('/connexion?error=email_not_confirmed');
+        return;
+      }
+
       setUser(user);
 
       // Charger le profil

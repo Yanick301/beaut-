@@ -11,11 +11,11 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: 'Quels sont les délais de livraison ?',
-    answer: 'La livraison standard prend 2-3 jours ouvrés. La livraison express (1 jour ouvré) est disponible pour une majoration de €9,99. La livraison est gratuite dès €50 d\'achat. Nous livrons uniquement aux Pays-Bas.',
+    answer: 'La livraison standard prend 2-3 jours ouvrés en Belgique. La livraison est gratuite dès €150 d\'achat, sinon les frais de livraison sont de €2,99. Nous livrons uniquement en Belgique.',
   },
   {
     question: 'Quels modes de paiement acceptez-vous ?',
-    answer: 'Nous acceptons iDEAL, les cartes bancaires (Visa, Mastercard, American Express) et PayPal. Tous les paiements sont sécurisés et cryptés.',
+    answer: 'Nous acceptons les cartes bancaires (Visa, Mastercard, Bancontact), les virements bancaires et PayPal. Tous les paiements sont sécurisés et cryptés.',
   },
   {
     question: 'Puis-je retourner un produit ?',
@@ -39,7 +39,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: 'Que faire en cas de problème avec ma commande ?',
-    answer: 'Contactez-nous immédiatement à contact@essencefeminine.nl ou par téléphone au +31 20 123 4567. Notre équipe se chargera de résoudre le problème rapidement.',
+    answer: 'Contactez-nous immédiatement à contact@essencefeminine.be. Notre équipe se chargera de résoudre le problème rapidement et vous répondra sous 24h ouvrées.',
   },
 ];
 

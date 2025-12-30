@@ -7,9 +7,10 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://essencefeminine.nl/sitemap.xml',
+    sitemap: 'https://essencefeminine.be/sitemap.xml',
   }
 }
+
 
 
 

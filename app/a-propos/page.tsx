@@ -37,8 +37,9 @@ export default function AboutPage() {
           <div className="space-y-4 text-brown-soft leading-relaxed text-base sm:text-lg">
             <p>
               Essence Féminine est née d&apos;une passion profonde pour la beauté authentique et le bien-être. 
-              Fondée aux Pays-Bas, notre mission est de démocratiser l'accès à des produits de beauté 
-              premium, alliant qualité supérieure, ingrédients naturels et efficacité prouvée.
+              Fondée en Belgique, notre mission est de démocratiser l'accès à des produits de beauté 
+              premium, alliant qualité supérieure, ingrédients naturels et efficacité prouvée. 
+              Nous sommes fiers d'être une entreprise belge, engagée envers nos clientes et notre communauté.
             </p>
             <p>
               Nous croyons que chaque femme mérite de se sentir belle, confiante et épanouie. 

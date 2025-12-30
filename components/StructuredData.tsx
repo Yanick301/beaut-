@@ -15,25 +15,22 @@ export default function StructuredData({ type = 'Organization', data }: Structur
           '@context': 'https://schema.org',
           '@type': 'Organization',
           name: 'Essence Féminine',
-          url: 'https://essencefeminine.nl',
-          logo: 'https://essencefeminine.nl/logo.png',
-          description: 'E-commerce de produits de beauté premium pour femmes',
+          url: 'https://essencefeminine.be',
+          logo: 'https://essencefeminine.be/logo.png',
+          description: 'E-commerce de produits de beauté premium pour femmes en Belgique',
           address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Amsterdam',
-            addressCountry: 'NL',
+            streetAddress: 'Avenue Louise 123',
+            addressLocality: 'Bruxelles',
+            postalCode: '1050',
+            addressCountry: 'BE',
           },
           contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+31-20-123-4567',
             contactType: 'customer service',
-            email: 'contact@essencefeminine.nl',
+            email: 'contact@essencefeminine.be',
             availableLanguage: ['French', 'Dutch', 'English'],
           },
-          sameAs: [
-            'https://www.facebook.com/essencefeminine',
-            'https://www.instagram.com/essencefeminine',
-          ],
         };
       case 'Product':
         return {
@@ -58,12 +55,12 @@ export default function StructuredData({ type = 'Organization', data }: Structur
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           name: 'Essence Féminine',
-          url: 'https://essencefeminine.nl',
+          url: 'https://essencefeminine.be',
           potentialAction: {
             '@type': 'SearchAction',
             target: {
               '@type': 'EntryPoint',
-              urlTemplate: 'https://essencefeminine.nl/recherche?q={search_term_string}',
+              urlTemplate: 'https://essencefeminine.be/recherche?q={search_term_string}',
             },
             'query-input': 'required name=search_term_string',
           },

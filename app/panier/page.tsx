@@ -13,7 +13,7 @@ export default function CartPage() {
   const supabase = createClient();
   const { items, removeItem, updateQuantity, getTotal, clearCart } = useCartStore();
   const total = getTotal();
-  const shipping = total >= 50 ? 0 : 5.99;
+  const shipping = total >= 150 ? 0 : 2.99;
   const [user, setUser] = useState<any>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
@@ -171,9 +171,9 @@ export default function CartPage() {
                     )}
                   </span>
                 </div>
-                {total < 50 && (
+                {total < 150 && (
                   <p className="text-sm text-rose-soft">
-                    Ajoutez €{(50 - total).toFixed(2)} pour la livraison gratuite
+                    Ajoutez €{(150 - total).toFixed(2)} pour la livraison gratuite
                   </p>
                 )}
                 <div className="border-t border-nude pt-4">

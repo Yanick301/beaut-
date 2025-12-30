@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiMapPin } from 'react-icons/fi';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,10 +15,6 @@ export default function Footer() {
               Votre destination beauté premium. Des produits de qualité supérieure 
               pour sublimer votre beauté naturelle.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="hover:text-gold transition">Facebook</a>
-              <a href="#" className="hover:text-gold transition">Instagram</a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -71,15 +67,11 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-white-cream/80">
               <li className="flex items-center gap-2">
                 <FiMapPin className="w-4 h-4" />
-                <span>Amsterdam, Pays-Bas</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <FiPhone className="w-4 h-4" />
-                <a href="tel:+31201234567" className="hover:text-gold transition">+31 20 123 4567</a>
+                <span>Bruxelles, Belgique</span>
               </li>
               <li className="flex items-center gap-2">
                 <FiMail className="w-4 h-4" />
-                <a href="mailto:contact@essencefeminine.nl" className="hover:text-gold transition">contact@essencefeminine.nl</a>
+                <a href="mailto:contact@essencefeminine.be" className="hover:text-gold transition">contact@essencefeminine.be</a>
               </li>
             </ul>
           </div>

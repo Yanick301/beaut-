@@ -18,17 +18,17 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { items, shippingAddress, paymentMethod, totalAmount, shippingCost } = body;
 
-    // Vérifier que la livraison est uniquement aux Pays-Bas
-    if (shippingAddress?.country && shippingAddress.country !== 'NL') {
+    // Vérifier que la livraison est uniquement en Belgique
+    if (shippingAddress?.country && shippingAddress.country !== 'BE') {
       return NextResponse.json(
-        { error: 'Nous livrons uniquement aux Pays-Bas' },
+        { error: 'Nous livrons uniquement en Belgique' },
         { status: 400 }
       );
     }
 
-    // Forcer le pays à NL si non spécifié ou incorrect
+    // Forcer le pays à BE si non spécifié ou incorrect
     if (shippingAddress) {
-      shippingAddress.country = 'NL';
+      shippingAddress.country = 'BE';
     }
 
     // Générer un numéro de commande unique

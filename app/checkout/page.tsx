@@ -12,7 +12,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, getTotal, clearCart } = useCartStore();
   const total = getTotal();
-  const shipping = total >= 50 ? 0 : 5.99;
+  const shipping = total >= 150 ? 0 : 2.99;
   const supabase = createClient();
   
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -25,7 +25,7 @@ export default function CheckoutPage() {
     address: '',
     city: '',
     postalCode: '',
-    country: 'NL',
+    country: 'BE',
     phone: '',
     paymentMethod: 'bank_transfer',
   });
@@ -224,10 +224,10 @@ export default function CheckoutPage() {
                     className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
                   />
                 </div>
-                <input type="hidden" name="country" value="NL" />
+                <input type="hidden" name="country" value="BE" />
                 <div className="bg-rose-soft/10 border border-rose-soft/30 rounded-lg p-4">
                   <p className="text-sm text-brown-dark">
-                    <strong>Livraison :</strong> Nous livrons uniquement aux Pays-Bas
+                    <strong>Livraison :</strong> Nous livrons uniquement en Belgique
                   </p>
                 </div>
               </div>
@@ -263,20 +263,20 @@ export default function CheckoutPage() {
               <div className="bg-white-cream rounded-lg p-6 space-y-4">
                 <div className="border-b border-nude pb-4">
                   <p className="text-sm font-semibold text-brown-soft mb-2">Titulaire du compte :</p>
-                  <p className="text-lg font-semibold text-brown-dark">ESSENCE FÉMININE B.V.</p>
+                  <p className="text-lg font-semibold text-brown-dark">ESSENCE FÉMININE S.P.R.L.</p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">IBAN :</p>
-                    <p className="text-lg font-mono text-brown-dark">NL91 ABNA 0417 1643 00</p>
+                    <p className="text-lg font-mono text-brown-dark">BE68 5390 0754 7034</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">BIC / SWIFT :</p>
-                    <p className="text-lg font-mono text-brown-dark">ABNANL2A</p>
+                    <p className="text-lg font-mono text-brown-dark">GKCCBEBB</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">Banque :</p>
-                    <p className="text-lg text-brown-dark">ABN AMRO Bank N.V.</p>
+                    <p className="text-lg text-brown-dark">Belfius Bank</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">Montant à virer :</p>

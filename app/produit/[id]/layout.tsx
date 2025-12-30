@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 
   const title = `${product.name} | Essence Féminine`;
-  const description = product.longDescription || product.description || `Découvrez ${product.name}, un produit de beauté premium de la catégorie ${category?.name || product.category}. ${product.rating ? `Note : ${product.rating}/5.` : ''} Livraison gratuite dès €50.`;
+  const description = product.longDescription || product.description || `Découvrez ${product.name}, un produit de beauté premium de la catégorie ${category?.name || product.category}. ${product.rating ? `Note : ${product.rating}/5.` : ''} Livraison gratuite dès €150.`;
   const images = product.images || [product.image];
   const price = product.originalPrice || product.price;
   const discount = product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       'produits beauté',
       'soins',
       'maquillage',
-      'Pays-Bas',
+      'Belgique',
       'e-commerce beauté',
     ].filter(Boolean),
     authors: [{ name: 'Essence Féminine' }],
@@ -40,10 +40,10 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       type: 'website',
       title,
       description,
-      url: `https://essencefeminine.nl/produit/${id}`,
+      url: `https://essencefeminine.be/produit/${id}`,
       siteName: 'Essence Féminine',
       images: images.map(img => ({
-        url: img.startsWith('http') ? img : `https://essencefeminine.nl${img}`,
+        url: img.startsWith('http') ? img : `https://essencefeminine.be${img}`,
         width: 1200,
         height: 1200,
         alt: product.name,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       images: images.map(img => img.startsWith('http') ? img : `https://essencefeminine.nl${img}`),
     },
     alternates: {
-      canonical: `https://essencefeminine.nl/produit/${id}`,
+      canonical: `https://essencefeminine.be/produit/${id}`,
     },
     other: {
       'product:price:amount': product.price.toString(),
