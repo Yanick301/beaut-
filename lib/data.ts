@@ -4351,15 +4351,23 @@ function mergeParfumProducts(productsList: Product[]): Product[] {
   const otherProducts: Product[] = [];
   
   for (const product of productsList) {
-    if (product.category === 'parfums' && product.name.match(/\d+\s*ml$/i)) {
+    // Vérifier si c'est un parfum (senteur-corporel avec subCategory Parfum)
+    const isParfum = product.category === 'senteur-corporel' && product.subCategory === 'Parfum';
+    
+    // Vérifier si le nom contient un volume (format: "Nom 50 ml" ou "Nom - 50ml")
+    const volumeMatch = product.name.match(/(\d+)\s*ml$/i);
+    
+    if (isParfum && volumeMatch) {
       // Extraire le nom de base (sans le volume)
       const baseName = product.name.replace(/\s+\d+\s*ml$/i, '').trim();
-      const volumeMatch = product.name.match(/(\d+)\s*ml$/i);
-      const volume = volumeMatch ? `${volumeMatch[1]} ml` : '';
+      const volume = `${volumeMatch[1]} ml`;
       
-      if (parfumMap.has(baseName)) {
+      // Créer une clé unique basée sur le nom de base et la marque (si disponible)
+      const mapKey = product.brand ? `${baseName}::${product.brand}` : baseName;
+      
+      if (parfumMap.has(mapKey)) {
         // Ajouter le volume au produit existant
-        const existingProduct = parfumMap.get(baseName)!;
+        const existingProduct = parfumMap.get(mapKey)!;
         if (!existingProduct.volumes) {
           existingProduct.volumes = [];
           // Ajouter le prix initial comme premier volume
@@ -4371,7 +4379,9 @@ function mergeParfumProducts(productsList: Product[]): Product[] {
             });
           }
         }
-        if (volume) {
+        // Vérifier que le volume n'existe pas déjà
+        const volumeExists = existingProduct.volumes!.some(v => v.volume === volume);
+        if (!volumeExists) {
           existingProduct.volumes!.push({
             volume,
             price: product.price
@@ -4384,15 +4394,29 @@ function mergeParfumProducts(productsList: Product[]): Product[] {
         if (product.reviewsCount > existingProduct.reviewsCount) {
           existingProduct.reviewsCount = product.reviewsCount;
         }
+        // Garder les meilleurs badges
+        if (product.isBestSeller && !existingProduct.isBestSeller) {
+          existingProduct.isBestSeller = true;
+        }
+        if (product.badges && product.badges.length > 0) {
+          if (!existingProduct.badges) {
+            existingProduct.badges = [];
+          }
+          product.badges.forEach(badge => {
+            if (!existingProduct.badges!.includes(badge)) {
+              existingProduct.badges!.push(badge);
+            }
+          });
+        }
       } else {
         // Créer un nouveau produit fusionné
         const mergedProduct: Product = {
           ...product,
           name: baseName,
-          volumes: volume ? [{ volume, price: product.price }] : [],
+          volumes: [{ volume, price: product.price }],
           price: product.price
         };
-        parfumMap.set(baseName, mergedProduct);
+        parfumMap.set(mapKey, mergedProduct);
       }
     } else {
       // Produit non-parfum ou parfum sans volume spécifié
@@ -4400,12 +4424,16 @@ function mergeParfumProducts(productsList: Product[]): Product[] {
     }
   }
   
-  // Convertir la map en tableau et trier les volumes par prix
+  // Convertir la map en tableau et trier les volumes par taille (volume croissant)
   const mergedParfums = Array.from(parfumMap.values()).map(product => {
     if (product.volumes && product.volumes.length > 0) {
-      // Trier les volumes par prix croissant
-      product.volumes.sort((a, b) => a.price - b.price);
-      // Le prix du produit est le prix minimum
+      // Trier les volumes par taille (extraire le nombre de ml)
+      product.volumes.sort((a, b) => {
+        const aVolume = parseInt(a.volume.replace(/\D/g, '')) || 0;
+        const bVolume = parseInt(b.volume.replace(/\D/g, '')) || 0;
+        return aVolume - bVolume;
+      });
+      // Le prix du produit est le prix du plus petit volume
       product.price = product.volumes[0].price;
     }
     return product;
