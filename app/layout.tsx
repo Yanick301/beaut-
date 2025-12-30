@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PromoBanner from '@/components/PromoBanner'
 import StructuredData from '@/components/StructuredData'
 import ToastContainer from '@/components/ToastContainer'
 
@@ -22,8 +23,8 @@ export const metadata: Metadata = {
     default: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
     template: '%s | Essence Féminine'
   },
-  description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, parfums et accessoires beauté de qualité. Livraison rapide en Belgique.',
-  keywords: ['beauté', 'cosmétiques', 'soins visage', 'maquillage', 'parfums', 'Belgique', 'e-commerce beauté', 'produits beauté premium', 'soins du corps', 'cheveux', 'accessoires beauté'],
+  description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, senteurs corporelles et accessoires beauté de qualité. Livraison rapide en Belgique.',
+  keywords: ['beauté', 'cosmétiques', 'soins visage', 'maquillage', 'parfums', 'senteur corporel', 'Belgique', 'e-commerce beauté', 'produits beauté premium', 'soins du corps', 'cheveux', 'accessoires beauté'],
   authors: [{ name: 'Essence Féminine' }],
   creator: 'Essence Féminine',
   publisher: 'Essence Féminine S.P.R.L.',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     url: 'https://essencefeminine.be',
     siteName: 'Essence Féminine',
     title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
-    description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, parfums et accessoires beauté de qualité.',
+    description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, senteurs corporelles et accessoires beauté de qualité.',
     images: [
       {
         url: '/og-image.jpg',
@@ -90,6 +91,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-beige-light font-sans antialiased">
         <StructuredData type="Organization" data={{}} />
         <StructuredData type="WebSite" data={{}} />
+        <PromoBanner />
         <Header />
         <main className="flex-1">
           {children}

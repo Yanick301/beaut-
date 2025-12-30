@@ -24,7 +24,7 @@ const ReviewsSection = dynamic(() => import('@/components/ReviewsSection'), {
 
 export const metadata: Metadata = {
   title: 'Accueil',
-  description: 'Essence Féminine - Votre destination beauté premium. Découvrez notre sélection exclusive de produits de beauté haut de gamme pour femmes. Soins du visage, maquillage, parfums et accessoires beauté de qualité.',
+  description: 'Essence Féminine - Votre destination beauté premium. Découvrez notre sélection exclusive de produits de beauté haut de gamme pour femmes. Soins du visage, maquillage, senteurs corporelles et accessoires beauté de qualité.',
   openGraph: {
     title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
     description: 'Découvrez notre sélection premium de produits de beauté pour révéler votre éclat naturel.',
@@ -55,25 +55,25 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-rose-powder via-beige to-white-cream section-padding overflow-hidden">
           <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="text-center lg:text-left">
-                <h1 className="font-elegant text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-brown-dark mb-6 leading-tight">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
+              <div className="text-center lg:text-left order-2 lg:order-1">
+                <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-brown-dark mb-4 sm:mb-6 leading-tight">
                   Sublimez votre beauté naturelle
                 </h1>
-                <p className="text-lg sm:text-xl text-brown-soft mb-8 max-w-xl mx-auto lg:mx-0">
+                <p className="text-base sm:text-lg md:text-xl text-brown-soft mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                   Découvrez notre sélection premium de produits de beauté, 
                   conçus pour révéler votre éclat et renforcer votre confiance.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <Link href="/categorie/soins-visage" className="btn-primary text-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                  <Link href="/categorie/soins-visage" className="btn-primary text-center w-full sm:w-auto">
                     Découvrir la collection
                   </Link>
-                  <Link href="/a-propos" className="btn-secondary text-center">
+                  <Link href="/a-propos" className="btn-secondary text-center w-full sm:w-auto">
                     Notre histoire
                   </Link>
                 </div>
               </div>
-              <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
                 <Image
                   src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1200"
                   alt="Beauté naturelle - Essence Féminine"
@@ -100,18 +100,18 @@ export default function Home() {
                 de soin exceptionnelle, alliant qualité supérieure, ingrédients naturels 
                 et efficacité prouvée. Votre confiance est notre priorité.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12">
-                <div>
-                  <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-2">Qualité</h3>
-                  <p className="text-sm sm:text-base text-brown-soft">Produits certifiés et testés dermatologiquement</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-8 sm:mt-12">
+                <div className="text-center sm:text-left">
+                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Qualité</h3>
+                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Produits certifiés et testés dermatologiquement</p>
                 </div>
-                <div>
-                  <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-2">Naturel</h3>
-                  <p className="text-sm sm:text-base text-brown-soft">Ingrédients naturels et respectueux de votre peau</p>
+                <div className="text-center sm:text-left">
+                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Naturel</h3>
+                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Ingrédients naturels et respectueux de votre peau</p>
                 </div>
-                <div>
-                  <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-2">Efficacité</h3>
-                  <p className="text-sm sm:text-base text-brown-soft">Résultats visibles pour une beauté radieuse</p>
+                <div className="text-center sm:text-left">
+                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Efficacité</h3>
+                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Résultats visibles pour une beauté radieuse</p>
                 </div>
               </div>
             </div>
@@ -169,34 +169,34 @@ export default function Home() {
                 Pourquoi nous choisir ?
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              <div className="text-center bg-white-cream p-6 sm:p-8 rounded-2xl shadow-md">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FiTruck className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+              <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                  <FiTruck className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl text-brown-dark mb-2">Livraison rapide</h3>
-                <p className="text-sm sm:text-base text-brown-soft">Livraison express en Belgique sous 1-3 jours</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Livraison rapide</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Livraison express en Belgique sous 1-3 jours</p>
               </div>
-              <div className="text-center bg-white-cream p-6 sm:p-8 rounded-2xl shadow-md">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FiCheck className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
+              <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                  <FiCheck className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl text-brown-dark mb-2">Produits certifiés</h3>
-                <p className="text-sm sm:text-base text-brown-soft">Tous nos produits sont testés et certifiés</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Produits certifiés</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Tous nos produits sont testés et certifiés</p>
               </div>
-              <div className="text-center bg-white-cream p-6 sm:p-8 rounded-2xl shadow-md">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FiHeadphones className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
+              <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                  <FiHeadphones className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl text-brown-dark mb-2">Service client</h3>
-                <p className="text-sm sm:text-base text-brown-soft">Équipe réactive disponible pour vous accompagner</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Service client</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Équipe réactive disponible pour vous accompagner</p>
               </div>
-              <div className="text-center bg-white-cream p-6 sm:p-8 rounded-2xl shadow-md">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FiShield className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
+              <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                  <FiShield className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl text-brown-dark mb-2">Paiements sécurisés</h3>
-                <p className="text-sm sm:text-base text-brown-soft">Transactions protégées et données sécurisées</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Paiements sécurisés</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Transactions protégées et données sécurisées</p>
               </div>
             </div>
           </div>

@@ -443,3 +443,4 @@ Le projet est complet avec toutes les fonctionnalités e-commerce essentielles :
 
 *Dernière mise à jour : Analyse complète du projet ESthetique*
 
+

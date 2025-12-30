@@ -111,33 +111,36 @@ export default function ProductPage() {
           <span className="text-brown-dark">{product.name}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 md:mb-16">
           {/* Images */}
           <div>
-            <div className="relative aspect-square bg-white-cream rounded-2xl overflow-hidden mb-3 sm:mb-4 shadow-lg">
+            <div className="relative aspect-square bg-white-cream rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 shadow-lg">
               <Image
                 src={images[selectedImage]}
                 alt={product.name}
                 fill
                 className="object-cover"
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             {images.length > 1 && (
-              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+              <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(idx)}
-                    className={`relative aspect-square rounded-lg overflow-hidden border-2 transition ${
-                      selectedImage === idx ? 'border-rose-soft' : 'border-transparent'
+                    className={`relative aspect-square rounded-lg overflow-hidden border-2 transition active:scale-95 touch-manipulation ${
+                      selectedImage === idx ? 'border-rose-soft shadow-md' : 'border-transparent hover:border-rose-soft/50'
                     }`}
+                    aria-label={`Voir l'image ${idx + 1}`}
                   >
                     <Image
                       src={img}
                       alt={`${product.name} ${idx + 1}`}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 640px) 25vw, (max-width: 1024px) 20vw, 12.5vw"
                     />
                   </button>
                 ))}
@@ -160,59 +163,59 @@ export default function ProductPage() {
               ))}
             </div>
 
-            <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-4">
+            <h1 className="font-elegant text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-brown-dark mb-3 sm:mb-4">
               {product.name}
             </h1>
 
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
+              <div className="flex items-center gap-1 sm:gap-2">
                 {[...Array(5)].map((_, i) => (
                   <FiStar
                     key={i}
-                    className={`w-5 h-5 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 ${
                       i < Math.floor(product.rating) ? 'fill-gold text-gold' : 'text-gray-300'
                     }`}
                   />
                 ))}
               </div>
-              <span className="text-brown-soft">
+              <span className="text-sm sm:text-base text-brown-soft">
                 {product.rating}/5 ({product.reviewsCount} avis)
               </span>
             </div>
 
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-4xl font-elegant text-brown-dark">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-elegant text-brown-dark">
                 €{getCurrentPrice().toFixed(2)}
               </span>
               {product.originalPrice && (
                 <>
-                  <span className="text-2xl text-brown-soft line-through">
+                  <span className="text-xl sm:text-2xl md:text-3xl text-brown-soft line-through">
                     €{product.originalPrice.toFixed(2)}
                   </span>
-                  <span className="bg-rose-soft text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-rose-soft text-white px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                     -{Math.round((1 - getCurrentPrice() / product.originalPrice) * 100)}%
                   </span>
                 </>
               )}
             </div>
 
-            {/* Volume Selector for Parfums */}
+            {/* Volume Selector for Senteur corporel */}
             {product.volumes && product.volumes.length > 0 && (
-              <div className="mb-8">
-                <label className="block font-semibold text-brown-dark mb-4">Volume :</label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <div className="mb-6 sm:mb-8">
+                <label className="block font-semibold text-brown-dark mb-3 sm:mb-4 text-sm sm:text-base">Volume :</label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                   {product.volumes.map((vol) => (
                     <button
                       key={vol.volume}
                       onClick={() => setSelectedVolume(vol.volume)}
-                      className={`px-4 py-3 rounded-lg border-2 transition text-center ${
+                      className={`px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 transition text-center active:scale-95 touch-manipulation ${
                         selectedVolume === vol.volume
-                          ? 'border-rose-soft bg-rose-soft/10 text-brown-dark font-semibold'
+                          ? 'border-rose-soft bg-rose-soft/10 text-brown-dark font-semibold shadow-md'
                           : 'border-nude hover:border-rose-soft/50 text-brown-soft'
                       }`}
                     >
-                      <div className="font-medium">{vol.volume}</div>
-                      <div className="text-sm text-brown-soft mt-1">€{vol.price.toFixed(2)}</div>
+                      <div className="font-medium text-sm sm:text-base">{vol.volume}</div>
+                      <div className="text-xs sm:text-sm text-brown-soft mt-1">€{vol.price.toFixed(2)}</div>
                     </button>
                   ))}
                 </div>
@@ -224,19 +227,21 @@ export default function ProductPage() {
             </p>
 
             {/* Quantity Selector */}
-            <div className="flex items-center gap-4 mb-8">
-              <label className="font-semibold text-brown-dark">Quantité:</label>
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <label className="font-semibold text-brown-dark text-sm sm:text-base">Quantité:</label>
               <div className="flex items-center border-2 border-nude rounded-full overflow-hidden">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-2 hover:bg-nude transition"
+                  className="px-3 sm:px-4 py-2 hover:bg-nude transition active:scale-95 touch-manipulation"
+                  aria-label="Diminuer la quantité"
                 >
                   -
                 </button>
-                <span className="px-6 py-2 font-semibold">{quantity}</span>
+                <span className="px-4 sm:px-6 py-2 font-semibold text-sm sm:text-base min-w-[3rem] text-center">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-2 hover:bg-nude transition"
+                  className="px-3 sm:px-4 py-2 hover:bg-nude transition active:scale-95 touch-manipulation"
+                  aria-label="Augmenter la quantité"
                 >
                   +
                 </button>
@@ -244,27 +249,27 @@ export default function ProductPage() {
             </div>
 
             {/* Add to Cart Button */}
-            <div className="flex gap-4 mb-8">
-              <button onClick={handleAddToCart} className="btn-primary flex-1 flex items-center justify-center gap-2">
-                <FiShoppingCart className="w-5 h-5" />
-                Ajouter au panier
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <button onClick={handleAddToCart} className="btn-primary flex-1 flex items-center justify-center gap-2 active:scale-95 touch-manipulation">
+                <FiShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-sm sm:text-base">Ajouter au panier</span>
               </button>
               <FavoriteButton productId={product.id} />
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-3 gap-4 p-6 bg-white-cream rounded-2xl">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 p-4 sm:p-6 bg-white-cream rounded-xl sm:rounded-2xl">
               <div className="text-center">
-                <FiTruck className="w-6 h-6 text-rose-soft mx-auto mb-2" />
-                <p className="text-xs text-brown-soft">Livraison gratuite</p>
+                <FiTruck className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
+                <p className="text-[10px] sm:text-xs text-brown-soft">Livraison gratuite</p>
               </div>
               <div className="text-center">
-                <FiShield className="w-6 h-6 text-rose-soft mx-auto mb-2" />
-                <p className="text-xs text-brown-soft">Paiement sécurisé</p>
+                <FiShield className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
+                <p className="text-[10px] sm:text-xs text-brown-soft">Paiement sécurisé</p>
               </div>
               <div className="text-center">
-                <FiCheck className="w-6 h-6 text-rose-soft mx-auto mb-2" />
-                <p className="text-xs text-brown-soft">Retours faciles</p>
+                <FiCheck className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
+                <p className="text-[10px] sm:text-xs text-brown-soft">Retours faciles</p>
               </div>
             </div>
           </div>

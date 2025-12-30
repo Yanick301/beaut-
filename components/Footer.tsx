@@ -5,13 +5,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brown-dark text-white-cream mt-12 sm:mt-20">
-      <div className="container-custom py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+    <footer className="bg-brown-dark text-white-cream mt-12 sm:mt-16 md:mt-20">
+      <div className="container-custom py-8 sm:py-10 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-12">
           {/* About */}
-          <div>
-            <h3 className="font-elegant text-xl sm:text-2xl mb-3 sm:mb-4">Essence Féminine</h3>
-            <p className="text-white-cream/80 text-sm mb-4">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-5">Essence Féminine</h3>
+            <p className="text-white-cream/80 text-sm sm:text-base leading-relaxed mb-4 max-w-sm">
               Votre destination beauté premium. Des produits de qualité supérieure 
               pour sublimer votre beauté naturelle.
             </p>
@@ -19,72 +19,72 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Navigation</h4>
-            <ul className="space-y-2 text-sm text-white-cream/80">
+            <h4 className="font-semibold mb-4 sm:mb-5 text-base sm:text-lg md:text-xl">Navigation</h4>
+            <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base text-white-cream/80">
               <li>
-                <Link href="/a-propos" className="hover:text-gold transition">À propos</Link>
+                <Link href="/a-propos" className="hover:text-gold transition-colors duration-200 inline-block">À propos</Link>
               </li>
               <li>
-                <Link href="/categorie/soins-visage" className="hover:text-gold transition">Soins du visage</Link>
+                <Link href="/categorie/soins-visage" className="hover:text-gold transition-colors duration-200 inline-block">Soins du visage</Link>
               </li>
               <li>
-                <Link href="/categorie/maquillage" className="hover:text-gold transition">Maquillage</Link>
+                <Link href="/categorie/maquillage" className="hover:text-gold transition-colors duration-200 inline-block">Maquillage</Link>
               </li>
               <li>
-                <Link href="/categorie/soins-corps" className="hover:text-gold transition">Soins du corps</Link>
+                <Link href="/categorie/soins-corps" className="hover:text-gold transition-colors duration-200 inline-block">Soins du corps</Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-gold transition">Contact</Link>
+                <Link href="/contact" className="hover:text-gold transition-colors duration-200 inline-block">Contact</Link>
               </li>
             </ul>
           </div>
 
           {/* Customer Service */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Service Client</h4>
-            <ul className="space-y-2 text-sm text-white-cream/80">
+            <h4 className="font-semibold mb-4 sm:mb-5 text-base sm:text-lg md:text-xl">Service Client</h4>
+            <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base text-white-cream/80">
               <li>
-                <Link href="/faq" className="hover:text-gold transition">FAQ</Link>
+                <Link href="/faq" className="hover:text-gold transition-colors duration-200 inline-block">FAQ</Link>
               </li>
               <li>
-                <Link href="/livraison-retours" className="hover:text-gold transition">Livraison & Retours</Link>
+                <Link href="/livraison-retours" className="hover:text-gold transition-colors duration-200 inline-block">Livraison & Retours</Link>
               </li>
               <li>
-                <Link href="/cgv" className="hover:text-gold transition">Conditions Générales</Link>
+                <Link href="/cgv" className="hover:text-gold transition-colors duration-200 inline-block">Conditions Générales</Link>
               </li>
               <li>
-                <Link href="/confidentialite" className="hover:text-gold transition">Confidentialité</Link>
+                <Link href="/confidentialite" className="hover:text-gold transition-colors duration-200 inline-block">Confidentialité</Link>
               </li>
               <li>
-                <Link href="/mentions-legales" className="hover:text-gold transition">Mentions Légales</Link>
+                <Link href="/mentions-legales" className="hover:text-gold transition-colors duration-200 inline-block">Mentions Légales</Link>
               </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Contact</h4>
-            <ul className="space-y-3 text-sm text-white-cream/80">
-              <li className="flex items-center gap-2">
-                <FiMapPin className="w-4 h-4" />
+            <h4 className="font-semibold mb-4 sm:mb-5 text-base sm:text-lg md:text-xl">Contact</h4>
+            <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base text-white-cream/80">
+              <li className="flex items-start gap-3">
+                <FiMapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
                 <span>Bruxelles, Belgique</span>
               </li>
-              <li className="flex items-center gap-2">
-                <FiMail className="w-4 h-4" />
-                <a href="mailto:contact@essencefeminine.be" className="hover:text-gold transition">contact@essencefeminine.be</a>
+              <li className="flex items-start gap-3">
+                <FiMail className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <a href="mailto:contact@essencefeminine.be" className="hover:text-gold transition-colors duration-200 break-all">contact@essencefeminine.be</a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white-cream/20 pt-6 sm:pt-8 mt-6 sm:mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-0 text-xs sm:text-sm text-white-cream/60">
+        <div className="border-t border-white-cream/20 pt-6 sm:pt-8 md:pt-10 mt-6 sm:mt-8 md:mt-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-xs sm:text-sm md:text-base text-white-cream/60">
             <p className="text-center md:text-left">&copy; {currentYear} Essence Féminine. Tous droits réservés.</p>
-            <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-end">
-              <span>Paiement sécurisé</span>
-              <span>Livraison rapide</span>
-              <span>RGPD conforme</span>
+            <div className="flex flex-wrap gap-4 sm:gap-6 justify-center md:justify-end">
+              <span className="hover:text-white-cream/80 transition">Paiement sécurisé</span>
+              <span className="hover:text-white-cream/80 transition">Livraison rapide</span>
+              <span className="hover:text-white-cream/80 transition">RGPD conforme</span>
             </div>
           </div>
         </div>

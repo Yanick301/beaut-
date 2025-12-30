@@ -24,13 +24,13 @@ export const PROMO_CODES: PromoCode[] = [
     code: 'LIVRAISON50',
     type: 'fixed',
     value: 5.99,
-    minPurchase: 50,
+    minPurchase: 150,
   },
   {
     code: 'PREMIUM20',
     type: 'percentage',
     value: 20,
-    minPurchase: 100,
+    minPurchase: 350,
     maxDiscount: 50,
   },
 ];
@@ -85,6 +85,7 @@ export function validatePromoCode(
 
   return { valid: true, discount };
 }
+
 
 
 

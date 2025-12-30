@@ -98,41 +98,43 @@ function CategoryPageContent() {
         </div>
 
         {/* Filters & Sort Bar */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="btn-outline flex items-center gap-2 md:w-auto w-full justify-center"
+            className="btn-outline flex items-center gap-2 sm:w-auto w-full justify-center active:scale-95 touch-manipulation"
+            aria-label="Afficher les filtres"
           >
-            <FiFilter className="w-4 h-4" />
-            Filtres
+            <FiFilter className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base">Filtres</span>
           </button>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 sm:px-4 py-2 rounded-full border-2 border-rose-soft text-brown-dark bg-white-cream text-sm sm:text-base w-full md:w-auto"
+            className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-full border-2 border-rose-soft text-brown-dark bg-white-cream text-sm sm:text-base w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-rose-soft/50"
           >
             <option value="popular">Plus populaires</option>
             <option value="price-asc">Prix croissant</option>
             <option value="price-desc">Prix décroissant</option>
             <option value="rating">Mieux notés</option>
           </select>
-          <div className="flex-1 text-left md:text-right text-brown-soft text-sm sm:text-base">
-            {filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''}
+          <div className="flex-1 text-left sm:text-right text-brown-soft text-sm sm:text-base flex items-center justify-start sm:justify-end">
+            <span className="font-medium">{filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''}</span>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Filters Sidebar */}
           <aside
-            className={`lg:block ${showFilters ? 'block' : 'hidden'} lg:sticky lg:top-24 h-fit bg-white-cream p-6 rounded-2xl shadow-md`}
+            className={`lg:block ${showFilters ? 'block' : 'hidden'} lg:sticky lg:top-24 h-fit bg-white-cream p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-md max-h-[calc(100vh-200px)] overflow-y-auto`}
           >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="font-elegant text-2xl text-brown-dark">Filtres</h2>
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark">Filtres</h2>
               <button
                 onClick={() => setShowFilters(false)}
-                className="lg:hidden p-2 hover:text-brown-dark"
+                className="lg:hidden p-2 hover:text-brown-dark transition active:scale-95 touch-manipulation"
+                aria-label="Fermer les filtres"
               >
-                <FiX className="w-5 h-5" />
+                <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 
@@ -155,24 +157,6 @@ function CategoryPageContent() {
               </div>
             </div>
 
-            {/* SubCategory Filter */}
-            {category?.subCategories && category.subCategories.length > 0 && (
-              <div className="mb-6">
-                <h3 className="font-semibold text-brown-dark mb-3">Sous-catégorie</h3>
-                <select
-                  value={selectedSubCategory}
-                  onChange={(e) => setSelectedSubCategory(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-nude bg-white text-brown-dark"
-                >
-                  <option value="">Toutes les sous-catégories</option>
-                  {category.subCategories.map((subCat) => (
-                    <option key={subCat} value={subCat}>
-                      {subCat}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
 
             {/* Brand Filter */}
             {brands.length > 0 && (
@@ -208,20 +192,21 @@ function CategoryPageContent() {
           {/* Products Grid */}
           <div className="lg:col-span-3">
             {filteredProducts.length > 0 ? (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 bg-white-cream rounded-2xl">
-                <p className="text-lg text-brown-soft mb-4">Aucun produit ne correspond à vos critères.</p>
+              <div className="text-center py-8 sm:py-12 bg-white-cream rounded-xl sm:rounded-2xl">
+                <p className="text-base sm:text-lg text-brown-soft mb-4 sm:mb-6">Aucun produit ne correspond à vos critères.</p>
                 <button
                   onClick={() => {
                     setPriceRange([0, 200]);
                     setSelectedBrand('');
+                    setSelectedSubCategory('');
                   }}
-                  className="btn-primary"
+                  className="btn-primary active:scale-95 touch-manipulation"
                 >
                   Réinitialiser les filtres
                 </button>

@@ -132,96 +132,96 @@ export default function CheckoutPage() {
           Retour au panier
         </Link>
 
-        <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-8">Finaliser la commande</h1>
+        <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6 sm:mb-8">Finaliser la commande</h1>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+          <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-xs sm:text-sm">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-8">
+        <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Checkout Form */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Contact Information */}
-            <div className="bg-white-cream rounded-2xl p-6 shadow-md">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Informations de contact</h2>
-              <div className="space-y-4">
+            <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md">
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Informations de contact</h2>
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <label className="block text-brown-dark font-medium mb-2">Email *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Email *</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-2">Téléphone *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Téléphone *</label>
                   <input
                     type="tel"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
               </div>
             </div>
 
             {/* Shipping Address */}
-            <div className="bg-white-cream rounded-2xl p-6 shadow-md">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Adresse de livraison</h2>
-              <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md">
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Adresse de livraison</h2>
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-brown-dark font-medium mb-2">Prénom *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Prénom *</label>
                   <input
                     type="text"
                     required
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-2">Nom *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Nom *</label>
                   <input
                     type="text"
                     required
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
-                <div className="md:col-span-2">
-                  <label className="block text-brown-dark font-medium mb-2">Adresse *</label>
+                <div className="sm:col-span-2">
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Adresse *</label>
                   <input
                     type="text"
                     required
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-2">Code postal *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Code postal *</label>
                   <input
                     type="text"
                     required
                     value={formData.postalCode}
                     onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-2">Ville *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Ville *</label>
                   <input
                     type="text"
                     required
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
                 <input type="hidden" name="country" value="BE" />
@@ -298,8 +298,8 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Récapitulatif</h2>
+            <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md lg:sticky lg:top-24">
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Récapitulatif</h2>
 
               <div className="space-y-3 mb-6">
                 {items.map((item) => (
