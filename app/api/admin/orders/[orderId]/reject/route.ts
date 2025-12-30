@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -58,13 +59,16 @@ export async function GET(
       );
     }
 
+    // Utiliser le client admin pour récupérer et mettre à jour la commande
+    const adminSupabase = createAdminClient();
+    
     const searchParams = request.nextUrl.searchParams;
     const reason = searchParams.get('reason') || 'Reçu de virement non valide ou montant incorrect';
 
     console.log('GET REJECT: Looking for order with ID:', orderId);
     
     // Récupérer la commande
-    const { data: order, error: orderError } = await supabase
+    const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*')
       .eq('id', orderId)
@@ -90,7 +94,7 @@ export async function GET(
 
     // Mettre à jour le statut de la commande
     console.log('Updating order:', orderId, 'to cancelled');
-    const { error: updateError } = await supabase
+    const { error: updateError } = await adminSupabase
       .from('orders')
       .update({
         status: 'cancelled',
@@ -210,20 +214,23 @@ export async function POST(
       );
     }
 
+    // Utiliser le client admin pour récupérer et mettre à jour la commande
+    const adminSupabase = createAdminClient();
+    
     const body = await request.json();
     const reason = body.reason || 'Reçu de virement non valide ou montant incorrect';
 
-    console.log('GET REJECT: Looking for order with ID:', orderId);
+    console.log('POST REJECT: Looking for order with ID:', orderId);
     
     // Récupérer la commande
-    const { data: order, error: orderError } = await supabase
+    const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*')
       .eq('id', orderId)
       .single();
 
     if (orderError) {
-      console.error('GET REJECT: Error fetching order:', orderError);
+      console.error('POST REJECT: Error fetching order:', orderError);
       return NextResponse.json(
         { error: 'Erreur lors de la récupération de la commande', details: orderError.message },
         { status: 500 }
@@ -231,18 +238,18 @@ export async function POST(
     }
 
     if (!order) {
-      console.error('GET REJECT: Order not found with ID:', orderId);
+      console.error('POST REJECT: Order not found with ID:', orderId);
       return NextResponse.json(
         { error: 'Commande non trouvée', orderId },
         { status: 404 }
       );
     }
     
-    console.log('GET REJECT: Order found:', order.order_number);
+    console.log('POST REJECT: Order found:', order.order_number);
 
     // Mettre à jour le statut de la commande
     console.log('Updating order:', orderId, 'to cancelled');
-    const { error: updateError } = await supabase
+    const { error: updateError } = await adminSupabase
       .from('orders')
       .update({
         status: 'cancelled',

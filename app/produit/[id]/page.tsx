@@ -313,12 +313,22 @@ export default function ProductPage() {
           
           <ReviewForm 
             productId={id} 
-            onReviewSubmitted={() => {
+            onReviewSubmitted={async () => {
               // Recharger les avis après soumission
-              fetch(`/api/reviews?productId=${id}`)
-                .then(res => res.json())
-                .then(data => setProductReviews(data.reviews || []))
-                .catch(err => console.error('Error reloading reviews:', err));
+              try {
+                setReviewsLoading(true);
+                const response = await fetch(`/api/reviews?productId=${id}`);
+                const data = await response.json();
+                if (response.ok) {
+                  setProductReviews(data.reviews || []);
+                } else {
+                  console.error('Error reloading reviews:', data.error);
+                }
+              } catch (err) {
+                console.error('Error reloading reviews:', err);
+              } finally {
+                setReviewsLoading(false);
+              }
             }}
           />
 

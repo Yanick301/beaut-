@@ -24,12 +24,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Vérifier si l'utilisateur a déjà laissé un avis pour ce produit
-    const { data: existingReview } = await supabase
+    const { data: existingReviews, error: checkError } = await supabase
       .from('reviews')
       .select('*')
       .eq('user_id', user.id)
       .eq('product_id', productId)
-      .single();
+      .limit(1);
+
+    const existingReview = existingReviews && existingReviews.length > 0 ? existingReviews[0] : null;
 
     let review;
     if (existingReview) {
@@ -82,16 +84,10 @@ export async function GET(request: NextRequest) {
     const productId = searchParams.get('productId');
     const userId = searchParams.get('userId');
 
+    // Construire la requête de base
     let query = supabase
       .from('reviews')
-      .select(`
-        *,
-        profiles:user_id (
-          id,
-          first_name,
-          last_name
-        )
-      `);
+      .select('*');
 
     if (productId) {
       query = query.eq('product_id', productId);
@@ -101,19 +97,46 @@ export async function GET(request: NextRequest) {
       query = query.eq('user_id', userId);
     }
 
-    const { data, error } = await query.order('created_at', { ascending: false });
+    const { data: reviews, error: reviewsError } = await query.order('created_at', { ascending: false });
 
-    if (error) {
+    if (reviewsError) {
+      console.error('Error fetching reviews:', reviewsError);
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération des avis' },
+        { error: 'Erreur lors de la récupération des avis', details: reviewsError.message },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ reviews: data || [] });
+    if (!reviews || reviews.length === 0) {
+      return NextResponse.json({ reviews: [] });
+    }
+
+    // Récupérer les profils pour tous les user_id uniques
+    const userIds = [...new Set(reviews.map((r: any) => r.user_id))];
+    const { data: profiles, error: profilesError } = await supabase
+      .from('profiles')
+      .select('id, first_name, last_name')
+      .in('id', userIds);
+
+    // Créer une map pour accéder rapidement aux profils
+    const profilesMap = new Map();
+    if (profiles && !profilesError) {
+      profiles.forEach((profile: any) => {
+        profilesMap.set(profile.id, profile);
+      });
+    }
+
+    // Combiner les avis avec leurs profils
+    const reviewsWithProfiles = reviews.map((review: any) => ({
+      ...review,
+      profiles: profilesMap.get(review.user_id) || null
+    }));
+
+    return NextResponse.json({ reviews: reviewsWithProfiles });
   } catch (error: any) {
+    console.error('Unexpected error in GET reviews:', error);
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue' },
+      { error: 'Une erreur inattendue est survenue', details: error.message },
       { status: 500 }
     );
   }

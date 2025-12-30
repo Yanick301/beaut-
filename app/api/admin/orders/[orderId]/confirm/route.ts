@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -58,8 +59,11 @@ export async function GET(
       );
     }
 
+    // Utiliser le client admin pour récupérer et mettre à jour la commande
+    const adminSupabase = createAdminClient();
+    
     // Récupérer la commande
-    const { data: order, error: orderError } = await supabase
+    const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*')
       .eq('id', orderId)
@@ -74,7 +78,7 @@ export async function GET(
 
     // Mettre à jour le statut de la commande
     console.log('Updating order:', orderId, 'to processing');
-    const { error: updateError } = await supabase
+    const { error: updateError } = await adminSupabase
       .from('orders')
       .update({
         status: 'processing',
@@ -192,10 +196,13 @@ export async function POST(
       );
     }
 
+    // Utiliser le client admin pour récupérer et mettre à jour la commande
+    const adminSupabase = createAdminClient();
+    
     console.log('POST: Looking for order with ID:', orderId);
     
     // Récupérer la commande
-    const { data: order, error: orderError } = await supabase
+    const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*')
       .eq('id', orderId)
@@ -221,7 +228,7 @@ export async function POST(
 
     // Mettre à jour le statut de la commande
     console.log('POST: Updating order:', orderId, 'to processing');
-    const { error: updateError } = await supabase
+    const { error: updateError } = await adminSupabase
       .from('orders')
       .update({
         status: 'processing',

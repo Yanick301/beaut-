@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
@@ -33,8 +34,8 @@ async function isAdmin(userId: string, userEmail?: string): Promise<boolean> {
  */
 export async function GET(request: NextRequest) {
   try {
+    // Vérifier l'authentification avec le client normal
     const supabase = await createClient();
-    
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -53,11 +54,13 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Utiliser le client admin pour contourner RLS et voir toutes les commandes
+    const adminSupabase = createAdminClient();
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
 
     // Construire la requête pour récupérer les commandes
-    let query = supabase
+    let query = adminSupabase
       .from('orders')
       .select(`
         *,
@@ -89,12 +92,12 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Récupérer les profils des utilisateurs séparément
+    // Récupérer les profils des utilisateurs séparément avec le client admin
     const userIds = orders?.map((order: any) => order.user_id) || [];
     let profilesMap: Record<string, any> = {};
     
     if (userIds.length > 0) {
-      const { data: profiles, error: profilesError } = await supabase
+      const { data: profiles, error: profilesError } = await adminSupabase
         .from('profiles')
         .select('id, first_name, last_name')
         .in('id', userIds);
@@ -156,8 +159,8 @@ export async function GET(request: NextRequest) {
  */
 export async function PATCH(request: NextRequest) {
   try {
+    // Vérifier l'authentification avec le client normal
     const supabase = await createClient();
-    
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -194,8 +197,9 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    // Mettre à jour la commande
-    const { data: order, error: updateError } = await supabase
+    // Utiliser le client admin pour mettre à jour la commande
+    const adminSupabase = createAdminClient();
+    const { data: order, error: updateError } = await adminSupabase
       .from('orders')
       .update({ 
         status,

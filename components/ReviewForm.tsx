@@ -58,9 +58,14 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
       setSuccess(true);
       setComment('');
       setRating(0);
-      if (onReviewSubmitted) {
-        onReviewSubmitted();
-      }
+      setHoverRating(0);
+      
+      // Appeler le callback après un court délai pour s'assurer que l'avis est bien enregistré
+      setTimeout(() => {
+        if (onReviewSubmitted) {
+          onReviewSubmitted();
+        }
+      }, 500);
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue');
     } finally {
@@ -70,9 +75,18 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
 
   if (success) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700">
-        <p className="font-semibold">Merci pour votre avis !</p>
-        <p className="text-sm">Votre avis a été enregistré avec succès.</p>
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4 sm:p-6 text-green-700">
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0">
+            <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <p className="font-semibold text-base sm:text-lg mb-1">Merci pour votre avis !</p>
+            <p className="text-sm text-green-600">Votre avis a été enregistré avec succès et sera visible dans quelques instants.</p>
+          </div>
+        </div>
       </div>
     );
   }
