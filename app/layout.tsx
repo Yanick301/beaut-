@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
+import Script from 'next/script'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PromoBanner from '@/components/PromoBanner'
@@ -97,6 +98,16 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Script
+          src="https://www.smartsuppchat.com/loader.js?" 
+          strategy="afterInteractive"
+          onLoad={() => {
+            // @ts-ignore
+            window.smartsupp = window.smartsupp || {};
+            // @ts-ignore
+            window.smartsupp.key = '27918820574ca61c1750dcb48c456fa20666a40d';
+          }}
+        />
         <ToastContainer />
       </body>
     </html>
