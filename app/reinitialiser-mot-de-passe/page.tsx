@@ -25,7 +25,7 @@ export default function ResetPasswordPage() {
       
       if (error) {
         console.error('Session error:', error);
-        setError('Erreur de session. Veuillez redemander un lien de réinitialisation.');
+        setError('Sessie fout. Vraag alstublieft opnieuw een wachtwoord reset link aan.');
         setTimeout(() => {
           router.push('/mot-de-passe-oublie');
         }, 3000);
@@ -34,7 +34,7 @@ export default function ResetPasswordPage() {
 
       if (!session) {
         // Pas de session, rediriger vers la page de demande de réinitialisation
-        setError('Session expirée. Veuillez redemander un lien de réinitialisation.');
+        setError('Sessie verlopen. Vraag alstublieft opnieuw een wachtwoord reset link aan.');
         setTimeout(() => {
           router.push('/mot-de-passe-oublie');
         }, 3000);
@@ -50,13 +50,13 @@ export default function ResetPasswordPage() {
     setError(null);
 
     if (password !== confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
+      setError('De wachtwoorden komen niet overeen');
       setLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères');
+      setError('Het wachtwoord moet minimaal 6 tekens bevatten');
       setLoading(false);
       return;
     }
@@ -82,10 +82,10 @@ export default function ResetPasswordPage() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Réinitialiser le mot de passe
+            Wachtwoord herstellen
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Entrez votre nouveau mot de passe
+            Voer uw nieuwe wachtwoord in
           </p>
 
           {error && (
@@ -97,7 +97,7 @@ export default function ResetPasswordPage() {
           <form onSubmit={handleReset} className="space-y-6">
             <div>
               <label htmlFor="password" className="block text-brown-dark font-medium mb-2">
-                Nouveau mot de passe
+                Nieuw wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -123,7 +123,7 @@ export default function ResetPasswordPage() {
 
             <div>
               <label htmlFor="confirmPassword" className="block text-brown-dark font-medium mb-2">
-                Confirmer le mot de passe
+                Bevestig wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -151,7 +151,7 @@ export default function ResetPasswordPage() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Mise à jour...' : 'Réinitialiser le mot de passe'}
+              {loading ? 'Bijwerken...' : 'Herstel wachtwoord'}
             </button>
           </form>
         </div>

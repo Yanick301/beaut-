@@ -33,7 +33,7 @@ export default function ForgotPasswordPage() {
 
       if (error) throw error;
 
-      setMessage('Un lien de réinitialisation a été envoyé à votre adresse email !');
+      setMessage('Een wachtwoord reset link is naar uw e-mailadres verzonden!');
     } catch (error: any) {
       setError(error.message || 'Une erreur est survenue');
     } finally {
@@ -46,10 +46,10 @@ export default function ForgotPasswordPage() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Mot de passe oublié
+            Wachtwoord vergeten
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Entrez votre adresse email pour recevoir un lien de réinitialisation
+            Voer uw e-mailadres in om een wachtwoord reset link te ontvangen
           </p>
 
           {error && (
@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
           <form onSubmit={handleReset} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
-                Email
+                E-mail
               </label>
               <div className="relative">
                 <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -88,13 +88,13 @@ export default function ForgotPasswordPage() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Envoi...' : 'Envoyer le lien de réinitialisation'}
+              {loading ? 'Verzenden...' : 'Verstuur reset link'}
             </button>
           </form>
 
           <div className="mt-6 text-center text-sm text-brown-soft">
             <Link href="/connexion" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Retour à la connexion
+              Terug naar inloggen
             </Link>
           </div>
         </div>

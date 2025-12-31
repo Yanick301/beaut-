@@ -59,11 +59,11 @@ function EmailConfirmedContent() {
               <FiMail className="w-8 h-8 text-red-600" />
             </div>
             <h1 className="font-elegant text-2xl text-brown-dark mb-4">
-              Erreur de confirmation
+              Bevestigingsfout
             </h1>
             <p className="text-brown-soft mb-6">{error}</p>
             <Link href="/connexion" className="btn-primary">
-              Aller à la page de connexion
+              Ga naar inlogpagina
             </Link>
           </div>
         </div>
@@ -80,15 +80,15 @@ function EmailConfirmedContent() {
           </div>
           
           <h1 className="font-elegant text-3xl text-brown-dark mb-4">
-            Email confirmé !
+            E-mail bevestigd !
           </h1>
           
           <p className="text-brown-soft mb-2 text-lg">
-            Votre adresse email a été vérifiée avec succès.
+            Uw e-mailadres is succesvol geverifieerd.
           </p>
           
           <p className="text-brown-soft mb-8">
-            Votre compte est maintenant actif et vous pouvez accéder à tous les services.
+            Uw account is nu actief en u heeft toegang tot alle diensten.
           </p>
 
           <div className="space-y-4">
@@ -96,7 +96,7 @@ function EmailConfirmedContent() {
               href="/compte" 
               className="btn-primary w-full flex items-center justify-center gap-2"
             >
-              Accéder à mon compte
+              Toegang tot mijn account
               <FiArrowRight className="w-5 h-5" />
             </Link>
             
@@ -104,7 +104,7 @@ function EmailConfirmedContent() {
               href="/" 
               className="block text-rose-soft hover:text-rose-soft/80 transition text-sm"
             >
-              Continuer mes achats
+              Verder met winkelen
             </Link>
           </div>
         </div>

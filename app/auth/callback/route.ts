@@ -16,11 +16,15 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     
     if (!error && data.user) {
-      // Vérifier si c'est une confirmation d'email
-      const isEmailConfirmation = data.user.email_confirmed_at !== null;
+      // Vérifier le type de callback à partir des paramètres
+      const type = requestUrl.searchParams.get('type');
       
-      if (isEmailConfirmation) {
-        // Rediriger vers la page de confirmation d'email
+      if (type === 'recovery') {
+        // C'est une récupération de mot de passe, rediriger vers la page de réinitialisation
+        const redirectUrl = new URL('/reinitialiser-mot-de-passe', requestUrl.origin);
+        return NextResponse.redirect(redirectUrl);
+      } else if (type === 'signup' || type === 'email_change') {
+        // C'est une confirmation d'email, rediriger vers la page de confirmation
         return NextResponse.redirect(new URL('/email-confirme', requestUrl.origin));
       } else {
         // Sinon, rediriger vers la page demandée
@@ -41,11 +45,13 @@ export async function GET(request: NextRequest) {
     });
 
     if (!error && data.user) {
-      // Vérifier si c'est une confirmation d'email
-      const isEmailConfirmation = type === 'signup' && data.user.email_confirmed_at !== null;
-      
-      if (isEmailConfirmation) {
-        // Rediriger vers la page de confirmation d'email
+      // Vérifier le type de callback
+      if (type === 'recovery') {
+        // C'est une récupération de mot de passe, rediriger vers la page de réinitialisation
+        const redirectUrl = new URL('/reinitialiser-mot-de-passe', requestUrl.origin);
+        return NextResponse.redirect(redirectUrl);
+      } else if (type === 'signup' || type === 'email_change') {
+        // C'est une confirmation d'email, rediriger vers la page de confirmation
         return NextResponse.redirect(new URL('/email-confirme', requestUrl.origin));
       } else {
         // Sinon, rediriger vers la page demandée
