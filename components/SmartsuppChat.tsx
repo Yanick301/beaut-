@@ -6,18 +6,17 @@ export default function SmartsuppChat() {
   return (
     <>
       <Script
-        id="smartsupp-script"
-        src="https://www.smartsuppchat.com/loader.js?"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="smartsupp-config"
+        id="smartsupp-full"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: `
-            window.smartsupp = window.smartsupp || {};
-            window.smartsupp.key = '27918820574ca61c1750dcb48c456fa20666a40d';
-          `,
+          __html: `var _smartsupp = _smartsupp || {};
+_smartsupp.key = '27918820574ca61c1750dcb48c456fa20666a40d';
+(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);`,
         }}
       />
       <noscript>
