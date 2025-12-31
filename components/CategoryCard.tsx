@@ -28,7 +28,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
             </p>
           )}
           <span className="flex items-center gap-2 text-sm font-medium group-hover:translate-x-1 transition-transform">
-            Découvrir <FiArrowRight className="w-4 h-4" />
+            Ontdekken <FiArrowRight className="w-4 h-4" />
           </span>
         </div>
       </div>
