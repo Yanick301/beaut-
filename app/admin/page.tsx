@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FiUser, FiPackage, FiDollarSign, FiClock, FiCheckCircle, FiTruck, FiXCircle, FiRefreshCw, FiLogOut } from 'react-icons/fi';
+import { FiUser, FiPackage, FiDollarSign, FiClock, FiCheckCircle, FiTruck, FiXCircle, FiRefreshCw, FiLogOut, FiAlertCircle, FiCheck } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
 
 interface Order {
@@ -35,6 +35,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [error, setError] = useState<string | null>(null);
+  const [notification, setNotification] = useState<{type: 'success' | 'error' | 'info', message: string} | null>(null);
 
   useEffect(() => {
     checkAdminAccess();
@@ -97,6 +98,7 @@ export default function AdminDashboard() {
     } catch (err: any) {
       console.error('Fetch orders error:', err);
       setError(err.message || 'Erreur lors de la récupération des commandes');
+      setNotification({ type: 'error', message: err.message || 'Erreur lors de la récupération des commandes' });
     }
   };
 
@@ -131,9 +133,16 @@ export default function AdminDashboard() {
       
       // Rafraîchir les stats
       fetchOrders();
+      
+      // Afficher une notification de succès
+      setNotification({ 
+        type: 'success', 
+        message: `Statut de la commande mise à jour à ${newStatus}` 
+      });
     } catch (err: any) {
       console.error('Update order error:', err);
       setError(err.message || 'Erreur lors de la mise à jour de la commande');
+      setNotification({ type: 'error', message: err.message || 'Erreur lors de la mise à jour de la commande' });
     }
   };
 
@@ -141,6 +150,17 @@ export default function AdminDashboard() {
     await supabase.auth.signOut();
     router.push('/');
   };
+
+  // Effacer la notification après un certain temps
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification(null);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
 
   if (loading) {
     return (
@@ -191,6 +211,22 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Notification System */}
+      {notification && (
+        <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg text-white max-w-sm ${notification.type === 'success' ? 'bg-green-500' : notification.type === 'error' ? 'bg-red-500' : 'bg-blue-500'}`}>
+          <div className="flex items-start gap-2">
+            {notification.type === 'success' ? (
+              <FiCheck className="flex-shrink-0 mt-0.5" />
+            ) : (
+              <FiAlertCircle className="flex-shrink-0 mt-0.5" />
+            )}
+            <div>
+              <p className="font-medium">{notification.message}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Header */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
