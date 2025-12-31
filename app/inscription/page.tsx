@@ -30,13 +30,13 @@ export default function SignupPage() {
 
     // Validation
     if (password !== confirmPassword) {
-      setError('Les mots de passe ne correspondent pas');
+      setError('De wachtwoorden komen niet overeen');
       setLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères');
+      setError('Het wachtwoord moet minimaal 6 tekens bevatten');
       setLoading(false);
       return;
     }
@@ -64,14 +64,14 @@ export default function SignupPage() {
       if (error) throw error;
 
       if (data.user) {
-        setMessage('Un email de confirmation a été envoyé à votre adresse ! Veuillez vérifier votre boîte de réception.');
+        setMessage('Een bevestigingsmail is naar uw e-mailadres verzonden! Controleer alstublieft uw inbox.');
         // Optionnel : redirection automatique après quelques secondes
         setTimeout(() => {
           router.push('/connexion');
         }, 3000);
       }
     } catch (error: any) {
-      setError(error.message || 'Une erreur est survenue lors de l\'inscription');
+      setError(error.message || 'Er is een fout opgetreden tijdens de registratie');
     } finally {
       setLoading(false);
     }
@@ -82,10 +82,10 @@ export default function SignupPage() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Inscription
+            Registratie
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Créez votre compte Essence Féminine
+            Maak uw Her Essence account aan
           </p>
 
           {error && (
@@ -104,7 +104,7 @@ export default function SignupPage() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-brown-dark font-medium mb-2">
-                  Prénom
+                  Voornaam
                 </label>
                 <div className="relative">
                   <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -115,14 +115,14 @@ export default function SignupPage() {
                     onChange={(e) => setFirstName(e.target.value)}
                     required
                     className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                    placeholder="Prénom"
+                    placeholder="Voornaam"
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="lastName" className="block text-brown-dark font-medium mb-2">
-                  Nom
+                  Achternaam
                 </label>
                 <div className="relative">
                   <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -133,7 +133,7 @@ export default function SignupPage() {
                     onChange={(e) => setLastName(e.target.value)}
                     required
                     className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                    placeholder="Nom"
+                    placeholder="Achternaam"
                   />
                 </div>
               </div>
@@ -159,7 +159,7 @@ export default function SignupPage() {
 
             <div>
               <label htmlFor="password" className="block text-brown-dark font-medium mb-2">
-                Mot de passe
+                Wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -181,12 +181,12 @@ export default function SignupPage() {
                   {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
                 </button>
               </div>
-              <p className="text-xs text-brown-soft mt-1">Minimum 6 caractères</p>
+              <p className="text-xs text-brown-soft mt-1">Minimaal 6 tekens</p>
             </div>
 
             <div>
               <label htmlFor="confirmPassword" className="block text-brown-dark font-medium mb-2">
-                Confirmer le mot de passe
+                Bevestig wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -212,11 +212,11 @@ export default function SignupPage() {
             <div className="text-xs text-brown-soft">
               En créant un compte, vous acceptez nos{' '}
               <Link href="/cgv" className="text-rose-soft hover:underline">
-                Conditions Générales de Vente
+                Algemene voorwaarden
               </Link>{' '}
-              et notre{' '}
+              en ons{' '}
               <Link href="/confidentialite" className="text-rose-soft hover:underline">
-                Politique de Confidentialité
+                Privacybeleid
               </Link>
             </div>
 
@@ -225,14 +225,14 @@ export default function SignupPage() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Inscription...' : 'Créer mon compte'}
+              {loading ? 'Registratie...' : 'Maak account aan'}
             </button>
           </form>
 
           <div className="mt-6 text-center text-sm text-brown-soft">
-            Vous avez déjà un compte ?{' '}
+            Heeft u al een account ?{' '}
             <Link href="/connexion" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Se connecter
+              Inloggen
             </Link>
           </div>
         </div>
