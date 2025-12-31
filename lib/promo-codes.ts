@@ -15,13 +15,13 @@ export interface PromoCode {
 // Codes promo prédéfinis (à migrer vers Supabase plus tard)
 export const PROMO_CODES: PromoCode[] = [
   {
-    code: 'BIENVENUE10',
+    code: 'WELKOM10',
     type: 'percentage',
     value: 10,
     minPurchase: 0,
   },
   {
-    code: 'LIVRAISON50',
+    code: 'VERZEND50',
     type: 'fixed',
     value: 5.99,
     minPurchase: 150,
@@ -33,6 +33,25 @@ export const PROMO_CODES: PromoCode[] = [
     minPurchase: 350,
     maxDiscount: 50,
   },
+  {
+    code: 'SCHOONHEID15',
+    type: 'percentage',
+    value: 15,
+    minPurchase: 75,
+  },
+  {
+    code: 'KERST25',
+    type: 'percentage',
+    value: 25,
+    minPurchase: 100,
+    maxDiscount: 40,
+  },
+  {
+    code: 'ZORG12',
+    type: 'percentage',
+    value: 12,
+    minPurchase: 50,
+  },
 ];
 
 export function validatePromoCode(
@@ -43,16 +62,16 @@ export function validatePromoCode(
   const promo = PROMO_CODES.find(p => p.code.toUpperCase() === code.toUpperCase());
   
   if (!promo) {
-    return { valid: false, discount: 0, error: 'Code promo invalide' };
+    return { valid: false, discount: 0, error: 'Ongeldige kortingscode' };
   }
 
   // Vérifier la date de validité
   const now = new Date();
   if (promo.validFrom && now < promo.validFrom) {
-    return { valid: false, discount: 0, error: 'Code promo pas encore valide' };
+    return { valid: false, discount: 0, error: 'Kortingscode is nog niet geldig' };
   }
   if (promo.validUntil && now > promo.validUntil) {
-    return { valid: false, discount: 0, error: 'Code promo expiré' };
+    return { valid: false, discount: 0, error: 'Kortingscode is verlopen' };
   }
 
   // Vérifier le montant minimum
@@ -60,13 +79,13 @@ export function validatePromoCode(
     return {
       valid: false,
       discount: 0,
-      error: `Montant minimum de commande : €${promo.minPurchase.toFixed(2)}`,
+      error: `Minimum bestelbedrag: €${promo.minPurchase.toFixed(2)}`, 
     };
   }
 
   // Vérifier les limites d'utilisation
   if (promo.usageLimit && (promo.usedCount || 0) >= promo.usageLimit) {
-    return { valid: false, discount: 0, error: 'Code promo épuisé' };
+    return { valid: false, discount: 0, error: 'Kortingscode is uitgeput' };
   }
 
   // Calculer la réduction

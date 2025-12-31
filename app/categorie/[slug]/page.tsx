@@ -107,6 +107,33 @@ function CategoryPageContent() {
           )}
         </div>
 
+        {/* Subcategory Filter Buttons */}
+        <div className="mb-6">
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => {
+                setSelectedSubCategory('');
+                router.push(`?page=1`, { scroll: false });
+              }}
+              className={`px-4 py-2 rounded-full text-sm sm:text-base transition ${!selectedSubCategory ? 'bg-rose-soft text-white-cream' : 'bg-white-cream text-brown-dark border border-rose-soft hover:bg-rose-soft/10'}`}
+            >
+              Alle producten
+            </button>
+            {Array.from(new Set(categoryProducts.map(p => p.subCategory).filter(Boolean))).map((subCategory) => (
+              <button
+                key={subCategory}
+                onClick={() => {
+                  setSelectedSubCategory(subCategory || '');
+                  router.push(`?subCategory=${encodeURIComponent(subCategory || '')}&page=1`, { scroll: false });
+                }}
+                className={`px-4 py-2 rounded-full text-sm sm:text-base transition ${selectedSubCategory === subCategory ? 'bg-rose-soft text-white-cream' : 'bg-white-cream text-brown-dark border border-rose-soft hover:bg-rose-soft/10'}`}
+              >
+                {subCategory}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Filters & Sort Bar */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
           <button

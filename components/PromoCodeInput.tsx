@@ -27,7 +27,7 @@ export default function PromoCodeInput({
 
   const handleApply = async () => {
     if (!code.trim()) {
-      setError('Veuillez entrer un code promo');
+      setError('Voer een kortingscode in');
       return;
     }
 
@@ -56,17 +56,17 @@ export default function PromoCodeInput({
             <FiCheck className="w-5 h-5 text-green-600" />
             <div>
               <p className="text-sm font-semibold text-green-800">
-                Code {appliedCode} appliqué
+                Korting {appliedCode} toegepast
               </p>
               <p className="text-xs text-green-600">
-                Réduction de €{appliedDiscount?.toFixed(2)}
+                Korting van €{appliedDiscount?.toFixed(2)}
               </p>
             </div>
           </div>
           <button
             onClick={onRemove}
             className="p-1 hover:bg-green-100 rounded transition"
-            aria-label="Retirer le code promo"
+            aria-label="Kortingscode verwijderen"
           >
             <FiX className="w-5 h-5 text-green-600" />
           </button>
@@ -78,7 +78,7 @@ export default function PromoCodeInput({
   return (
     <div>
       <label className="block text-sm font-medium text-brown-dark mb-2">
-        Code promo
+        Kortingscode
       </label>
       <div className="flex gap-2">
         <div className="flex-1 relative">
@@ -95,7 +95,7 @@ export default function PromoCodeInput({
                 handleApply();
               }
             }}
-            placeholder="Entrez votre code promo"
+            placeholder="Voer uw kortingscode in"
             className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
           />
         </div>
@@ -104,7 +104,7 @@ export default function PromoCodeInput({
           disabled={loading || !code.trim()}
           className="btn-secondary whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? 'Application...' : 'Appliquer'}
+          {loading ? 'Toepassen...' : 'Toepassen'}
         </button>
       </div>
       {error && (

@@ -48,7 +48,20 @@ export default function LegalNoticePage() {
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Aansprakelijkheid</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Betrouwbaarheid en legitimiteit</h2>
+            <p>
+              Her Essence B.V. is een betrouwbaar en legitiem bedrijf gevestigd in Nederland. Wij nemen volledige 
+              verantwoordelijkheid voor onze dienstverlening en producten. Onze winkel is volledig gecertificeerd en 
+              voldoet aan alle wettelijke vereisten voor e-commerce activiteiten in Nederland en Europa.
+            </p>
+            <p className="mt-3">
+              Onze klanten kunnen met vertrouwen winkelen bij Her Essence, aangezien wij garant staan voor de 
+              kwaliteit van onze producten en de veiligheid van uw persoonlijke gegevens.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Aansprakelijkheid</h2>
             <p>
               Her Essence B.V. streeft ernaar om de juistheid en actualiteit van de informatie op deze website 
               te garanderen, en behoudt zich het recht voor om op elk moment en zonder voorafgaande kennisgeving 
@@ -64,7 +77,40 @@ export default function LegalNoticePage() {
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Hypertext links</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Betalingsmethoden</h2>
+            <p>
+              Her Essence B.V. accepteert enkel betalingen via bankoverschrijving. Wij accepteren geen 
+              creditcards of PayPal betalingen. Klanten dienen de betaling zelf uit te voeren via 
+              hun eigen bank. Betalingen dienen te worden voldaan binnen 48 uur na het plaatsen van de bestelling.
+            </p>
+            <p className="mt-3">
+              Zodra de betaling is ontvangen, wordt uw bestelling verwerkt en verzonden.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">7. Verzending</h2>
+            <p>
+              Wij verzenden uitsluitend naar adressen in Nederland. Verzending vindt plaats via 
+              betrouwbare koeriersdiensten met tracking mogelijkheid. Verwachte levertijd is 1-3 werkdagen 
+              na verzending.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">8. Retourbeleid</h2>
+            <p>
+              U heeft 14 dagen na ontvangst van uw bestelling de mogelijkheid om uw bestelling kosteloos 
+              te retourneren. De retourzending dient binnen deze 14 dagen te worden verzonden. Producten 
+              dienen in ongebruikte staat te zijn en in de originele verpakking.
+            </p>
+            <p className="mt-3">
+              Terugbetaling vindt plaats binnen 14 dagen na ontvangst van het geretourneerde product.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">9. Hypertext links</h2>
             <p>
               Het plaatsen van een hyperlink naar de website heressence.nl vereist een voorafgaande 
               schriftelijke toestemming van Her Essence B.V. De hyperlinks naar andere websites vanaf 
