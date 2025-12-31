@@ -23,11 +23,11 @@ const ReviewsSection = dynamic(() => import('@/components/ReviewsSection'), {
 });
 
 export const metadata: Metadata = {
-  title: 'Accueil',
-  description: 'Essence Féminine - Votre destination beauté premium. Découvrez notre sélection exclusive de produits de beauté haut de gamme pour femmes. Soins du visage, maquillage, senteurs corporelles et accessoires beauté de qualité.',
+  title: 'Home',
+  description: 'Her Essence - Uw premium beauty bestemming. Ontdek onze exclusieve selectie van hoogwaardige beautyproducten voor vrouwen. Gezichtsverzorging, make-up, lichaamsgeuren en beautyaccessoires van hoge kwaliteit.',
   openGraph: {
-    title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
-    description: 'Découvrez notre sélection premium de produits de beauté pour révéler votre éclat naturel.',
+    title: 'Her Essence - Premium Beauty & Luxe Cosmetica',
+    description: 'Ontdek onze premium selectie van beautyproducten om uw natuurlijke stralen te onthullen.',
     images: ['/og-image.jpg'],
   },
 };
@@ -58,18 +58,18 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
               <div className="text-center lg:text-left order-2 lg:order-1">
                 <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-brown-dark mb-4 sm:mb-6 leading-tight">
-                  Sublimez votre beauté naturelle
+                  Verheerlijk uw natuurlijke schoonheid
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-brown-soft mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                  Découvrez notre sélection premium de produits de beauté, 
-                  conçus pour révéler votre éclat et renforcer votre confiance.
+                  Ontdek onze premium selectie van beautyproducten, 
+                  ontworpen om uw stralen te onthullen en uw zelfvertrouwen te versterken.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                   <Link href="/categorie/soins-visage" className="btn-primary text-center w-full sm:w-auto">
-                    Découvrir la collection
+                    Ontdek de collectie
                   </Link>
                   <Link href="/a-propos" className="btn-secondary text-center w-full sm:w-auto">
-                    Notre histoire
+                    Ons verhaal
                   </Link>
                 </div>
               </div>
@@ -92,13 +92,13 @@ export default function Home() {
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6">
-                Notre Histoire
+                Ons verhaal
               </h2>
                   <p className="text-base sm:text-lg text-brown-soft mb-8 leading-relaxed">
-                Essence Féminine est née d'une passion pour la beauté authentique et le bien-être. 
-                Basée en Belgique, nous sélectionnons avec soin chaque produit pour vous offrir une expérience 
-                de soin exceptionnelle, alliant qualité supérieure, ingrédients naturels 
-                et efficacité prouvée. Votre confiance est notre priorité.
+                Her Essence is ontstaan uit een passie voor authentieke schoonheid en welzijn. 
+                Gevestigd in Nederland, selecteren we zorgvuldig elk product om u een uitzonderlijke 
+                verzorgingservaring te bieden, met een combinatie van hoogwaardige kwaliteit, natuurlijke 
+                ingrediënten en bewezen effectiviteit. Uw vertrouwen is onze prioriteit.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-8 sm:mt-12">
                 <div className="text-center sm:text-left">
@@ -123,10 +123,10 @@ export default function Home() {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-4">
-                Nos Catégories
+                Onze Categorieën
               </h2>
               <p className="text-base sm:text-lg text-brown-soft max-w-2xl mx-auto">
-                Explorez notre gamme complète de produits de beauté
+                Verken ons volledige assortiment beautyproducten
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -142,10 +142,10 @@ export default function Home() {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-4">
-                Best-sellers
+                Bestsellers
               </h2>
               <p className="text-base sm:text-lg text-brown-soft max-w-2xl mx-auto">
-                Les produits préférés de nos clientes
+                De favoriete producten van onze klanten
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -155,7 +155,7 @@ export default function Home() {
             </div>
             <div className="text-center mt-8 sm:mt-12">
               <Link href="/categorie/soins-visage" className="btn-secondary">
-                Voir tous les produits
+                Bekijk alle producten
               </Link>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-4">
-                Pourquoi nous choisir ?
+                Waarom kiezen voor ons ?
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
@@ -174,29 +174,29 @@ export default function Home() {
                 <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
                   <FiTruck className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Livraison rapide</h3>
-                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Livraison express en Belgique sous 1-3 jours</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Snelle levering</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Snelle levering in Nederland binnen 1-3 dagen</p>
               </div>
               <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
                   <FiCheck className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Produits certifiés</h3>
-                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Tous nos produits sont testés et certifiés</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Gecertificeerde producten</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Al onze producten zijn getest en gecertificeerd</p>
               </div>
               <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
                   <FiHeadphones className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Service client</h3>
-                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Équipe réactive disponible pour vous accompagner</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Klantenservice</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Reactieve team beschikbaar om u te begeleiden</p>
               </div>
               <div className="text-center bg-white-cream p-6 sm:p-8 md:p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-rose-soft/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
                   <FiShield className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-rose-soft" />
                 </div>
-                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Paiements sécurisés</h3>
-                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Transactions protégées et données sécurisées</p>
+                <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 sm:mb-3">Veilige betalingen</h3>
+                <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Beveiligde transacties en veilige gegevens</p>
               </div>
             </div>
           </div>
@@ -211,21 +211,21 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div>
                 <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6">
-                  Qualité & Ingrédients
+                  Kwaliteit & Ingrediënten
                 </h2>
                 <p className="text-base sm:text-lg text-brown-soft mb-6 leading-relaxed">
-                  Nous nous engageons à n'utiliser que des ingrédients de la plus haute qualité, 
-                  testés dermatologiquement et respectueux de votre peau. Nos produits sont 
-                  cruelty-free et formulés pour être efficaces tout en préservant votre bien-être.
+                  Wij streven ernaar alleen ingrediënten van de hoogste kwaliteit te gebruiken, 
+                  dermatologisch getest en respectvol voor uw huid. Onze producten zijn 
+                  cruelty-free en geformuleerd om effectief te zijn terwijl uw welzijn behouden blijft.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3">
                     <FiCheck className="w-5 h-5 text-rose-soft flex-shrink-0" />
-                    <span className="text-sm sm:text-base text-brown-dark">100% Naturels</span>
+                    <span className="text-sm sm:text-base text-brown-dark">100% Natuurlijk</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <FiCheck className="w-5 h-5 text-rose-soft flex-shrink-0" />
-                    <span className="text-sm sm:text-base text-brown-dark">Testés dermatologiquement</span>
+                    <span className="text-sm sm:text-base text-brown-dark">Dermatologisch getest</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <FiCheck className="w-5 h-5 text-rose-soft flex-shrink-0" />
@@ -233,11 +233,11 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-3">
                     <FiCheck className="w-5 h-5 text-rose-soft flex-shrink-0" />
-                    <span className="text-sm sm:text-base text-brown-dark">Sans parabènes ni sulfates</span>
+                    <span className="text-sm sm:text-base text-brown-dark">Zonder parabenen of sulfaten</span>
                   </li>
                 </ul>
                 <Link href="/a-propos" className="btn-primary">
-                  En savoir plus
+                  Meer weten
                 </Link>
               </div>
               <div className="relative h-64 sm:h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl">
@@ -257,10 +257,10 @@ export default function Home() {
         <section className="bg-gradient-to-r from-rose-powder via-rose-soft to-nude section-padding">
           <div className="container-custom max-w-3xl mx-auto text-center">
             <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-4">
-              Restez informée
+              Blijf op de hoogte
             </h2>
             <p className="text-lg text-brown-soft mb-8">
-              Recevez nos nouveautés, offres exclusives et conseils beauté directement dans votre boîte mail.
+              Ontvang onze nieuwigheden, exclusieve aanbiedingen en beautyadvies rechtstreeks in uw mailbox.
             </p>
             <NewsletterForm />
           </div>
@@ -270,17 +270,17 @@ export default function Home() {
         <section className="bg-brown-dark text-white-cream section-padding">
           <div className="container-custom text-center">
             <h2 className="font-elegant text-3xl sm:text-4xl md:text-5xl mb-6">
-              Prête à révéler votre beauté ?
+              Klaar om uw schoonheid te onthullen ?
             </h2>
             <p className="text-lg sm:text-xl text-white-cream/90 mb-8 max-w-2xl mx-auto">
-              Rejoignez des milliers de femmes qui nous font confiance pour leur routine beauté quotidienne.
+              Sluit u aan bij duizenden vrouwen die ons vertrouwen voor hun dagelijkse beautyroutine.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/categorie/soins-visage" className="btn-secondary bg-white-cream text-brown-dark hover:bg-beige">
-                Explorer la boutique
+                Verken de winkel
               </Link>
               <Link href="/contact" className="btn-outline border-white-cream text-white-cream hover:bg-white-cream hover:text-brown-dark">
-                Nous contacter
+                Neem contact met ons op
               </Link>
             </div>
           </div>

@@ -263,20 +263,20 @@ export default function CheckoutPage() {
               <div className="bg-white-cream rounded-lg p-6 space-y-4">
                 <div className="border-b border-nude pb-4">
                   <p className="text-sm font-semibold text-brown-soft mb-2">Titulaire du compte :</p>
-                  <p className="text-lg font-semibold text-brown-dark">ESSENCE FÉMININE S.P.R.L.</p>
+                  <p className="text-lg font-semibold text-brown-dark">Emiliano maccioni</p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">IBAN :</p>
-                    <p className="text-lg font-mono text-brown-dark">BE68 5390 0754 7034</p>
+                    <p className="text-lg font-mono text-brown-dark">NL56 BUNQ 2179 0816 50</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">BIC / SWIFT :</p>
-                    <p className="text-lg font-mono text-brown-dark">GKCCBEBB</p>
+                    <p className="text-lg font-mono text-brown-dark">BUNQNL2A</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brown-soft mb-2">Banque :</p>
-                    <p className="text-lg text-brown-dark">Belfius Bank</p>
+                    <p className="text-sm font-semibold text-brown-soft mb-2">MOTIF :</p>
+                    <p className="text-lg text-brown-dark">HERESSENCE</p>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">Montant à virer :</p>

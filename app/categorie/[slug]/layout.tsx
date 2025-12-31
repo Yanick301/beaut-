@@ -8,13 +8,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!category) {
     return {
-      title: 'Catégorie non trouvée',
-      description: 'La catégorie que vous recherchez n\'existe pas.',
+      title: 'Categorie niet gevonden',
+      description: 'De categorie die u zoekt bestaat niet.',
     };
   }
 
   const title = `${category.name} | Her Essence`;
-  const description = category.description || `Découvrez notre sélection de produits ${category.name.toLowerCase()}. ${categoryProducts.length} produits disponibles. Produits de beauté premium, livraison gratuite dès €150.`;
+  const description = category.description || `Ontdek onze selectie ${category.name.toLowerCase()} producten. ${categoryProducts.length} producten beschikbaar. Premium beautyproducten, gratis verzending vanaf €150.`;
 
   return {
     title,
@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     keywords: [
       category.name,
       ...(category.subCategories || []),
-      'beauté',
-      'cosmétiques',
-      'produits beauté',
-      'soins',
-      'maquillage',
-      'Belgique',
-      'e-commerce beauté',
+      'schoonheid',
+      'cosmetica',
+      'beautyproducten',
+      'verzorging',
+      'make-up',
+      'Nederland',
+      'e-commerce beauty',
     ],
     authors: [{ name: 'Her Essence' }],
     openGraph: {
@@ -45,13 +45,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           alt: category.name,
         },
       ],
-      locale: 'fr_FR',
+      locale: 'nl_NL',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [category.image?.startsWith('http') ? category.image : `https://essencefeminine.nl${category.image}`],
+      images: [category.image?.startsWith('http') ? category.image : `https://heressence.nl${category.image}`],
     },
     alternates: {
       canonical: `https://heressence.nl/categorie/${slug}`,

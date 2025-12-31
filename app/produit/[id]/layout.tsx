@@ -8,13 +8,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   if (!product) {
     return {
-      title: 'Produit non trouvé',
-      description: 'Le produit que vous recherchez n\'existe pas.',
+      title: 'Product niet gevonden',
+      description: 'Het product dat u zoekt bestaat niet.'
     };
   }
 
-  const title = `${product.name} | Essence Féminine`;
-  const description = product.longDescription || product.description || `Découvrez ${product.name}, un produit de beauté premium de la catégorie ${category?.name || product.category}. ${product.rating ? `Note : ${product.rating}/5.` : ''} Livraison gratuite dès €150.`;
+  const title = `${product.name} | Her Essence`;
+  const description = product.longDescription || product.description || `Ontdek ${product.name}, een premium beautyproduct uit de categorie ${category?.name || product.category}. ${product.rating ? `Beoordeling: ${product.rating}/5.` : ''} Gratis verzending vanaf €150.`;
   const images = product.images || [product.image];
   const price = product.originalPrice || product.price;
   const discount = product.originalPrice ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
@@ -27,37 +27,37 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       product.brand || '',
       product.category,
       category?.name || '',
-      'beauté',
-      'cosmétiques',
-      'produits beauté',
-      'soins',
-      'maquillage',
-      'Belgique',
-      'e-commerce beauté',
+      'schoonheid',
+      'cosmetica',
+      'beautyproducten',
+      'verzorging',
+      'make-up',
+      'Nederland',
+      'e-commerce beauty',
     ].filter(Boolean),
-    authors: [{ name: 'Essence Féminine' }],
+    authors: [{ name: 'Her Essence' }],
     openGraph: {
       type: 'website',
       title,
       description,
-      url: `https://essencefeminine.be/produit/${id}`,
-      siteName: 'Essence Féminine',
+      url: `https://heressence.nl/produit/${id}`,
+      siteName: 'Her Essence',
       images: images.map(img => ({
-        url: img.startsWith('http') ? img : `https://essencefeminine.be${img}`,
+        url: img.startsWith('http') ? img : `https://heressence.nl${img}`,
         width: 1200,
         height: 1200,
         alt: product.name,
       })),
-      locale: 'fr_FR',
+      locale: 'nl_NL',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: images.map(img => img.startsWith('http') ? img : `https://essencefeminine.nl${img}`),
+      images: images.map(img => img.startsWith('http') ? img : `https://heressence.nl${img}`),
     },
     alternates: {
-      canonical: `https://essencefeminine.be/produit/${id}`,
+      canonical: `https://heressence.nl/produit/${id}`,
     },
     other: {
       'product:price:amount': product.price.toString(),
