@@ -22,7 +22,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
     e.preventDefault();
     
     if (rating === 0) {
-      setError('Veuillez sélectionner une note');
+      setError('Selecteer alstublieft een beoordeling');
       return;
     }
 
@@ -32,7 +32,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
-        setError('Vous devez être connecté pour laisser un avis');
+        setError('U moet ingelogd zijn om een beoordeling te achterlaten');
         setLoading(false);
         return;
       }
@@ -52,7 +52,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de l\'enregistrement de l\'avis');
+        throw new Error(data.error || 'Fout bij het opslaan van de beoordeling');
       }
 
       setSuccess(true);
@@ -67,7 +67,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
         }
       }, 500);
     } catch (err: any) {
-      setError(err.message || 'Une erreur est survenue');
+      setError(err.message || 'Er is een fout opgetreden');
     } finally {
       setLoading(false);
     }
@@ -83,8 +83,8 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
             </svg>
           </div>
           <div>
-            <p className="font-semibold text-base sm:text-lg mb-1">Merci pour votre avis !</p>
-            <p className="text-sm text-green-600">Votre avis a été enregistré avec succès et sera visible dans quelques instants.</p>
+            <p className="font-semibold text-base sm:text-lg mb-1">Bedankt voor uw beoordeling !</p>
+            <p className="text-sm text-green-600">Uw beoordeling is succesvol opgeslagen en zal over enkele ogenblikken zichtbaar zijn.</p>
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
 
   return (
     <form onSubmit={handleSubmit} className="bg-white-cream rounded-lg p-6 space-y-4">
-      <h3 className="font-elegant text-xl text-brown-dark">Laisser un avis</h3>
+      <h3 className="font-elegant text-xl text-brown-dark">Laat een beoordeling achter</h3>
       
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-red-700 text-sm">
@@ -102,7 +102,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
       )}
 
       <div>
-        <label className="block text-brown-dark font-medium mb-2">Note *</label>
+        <label className="block text-brown-dark font-medium mb-2">Beoordeling *</label>
         <div className="flex gap-2">
           {[1, 2, 3, 4, 5].map((star) => (
             <button
@@ -127,7 +127,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
 
       <div>
         <label htmlFor="comment" className="block text-brown-dark font-medium mb-2">
-          Votre avis (optionnel)
+          Uw beoordeling (optioneel)
         </label>
         <textarea
           id="comment"
@@ -135,7 +135,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
           onChange={(e) => setComment(e.target.value)}
           rows={4}
           className="w-full px-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition resize-none"
-          placeholder="Partagez votre expérience avec ce produit..."
+          placeholder="Deel uw ervaring met dit product..."
         />
       </div>
 
@@ -144,7 +144,7 @@ export default function ReviewForm({ productId, onReviewSubmitted }: ReviewFormP
         disabled={loading || rating === 0}
         className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? 'Envoi...' : 'Publier mon avis'}
+        {loading ? 'Verzenden...' : 'Plaats mijn beoordeling'}
       </button>
     </form>
   );

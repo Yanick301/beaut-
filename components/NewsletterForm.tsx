@@ -26,14 +26,14 @@ export default function NewsletterForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de l\'inscription');
+        throw new Error(data.error || 'Fout bij inschrijving');
       }
 
-      setMessage({ type: 'success', text: data.message || 'Vous êtes maintenant inscrit(e) à notre newsletter !' });
+      setMessage({ type: 'success', text: data.message || 'U bent nu ingeschreven voor onze nieuwsbrief !' });
       setEmail('');
       setName('');
     } catch (error: any) {
-      setMessage({ type: 'error', text: error.message || 'Une erreur est survenue' });
+      setMessage({ type: 'error', text: error.message || 'Er is een fout opgetreden' });
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ export default function NewsletterForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Votre prénom (optionnel)"
+          placeholder="Uw voornaam (optioneel)"
           className="flex-1 px-4 py-3 rounded-lg border-2 border-white-cream/30 bg-white-cream/10 text-white-cream placeholder-white-cream/70 focus:border-white-cream outline-none backdrop-blur-sm"
         />
         <div className="flex-1 relative">
@@ -55,7 +55,7 @@ export default function NewsletterForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Votre email"
+            placeholder="Uw e-mail"
             required
             className="w-full pl-12 pr-4 py-3 rounded-lg border-2 border-white-cream/30 bg-white-cream/10 text-white-cream placeholder-white-cream/70 focus:border-white-cream outline-none backdrop-blur-sm"
           />
@@ -65,7 +65,7 @@ export default function NewsletterForm() {
           disabled={loading}
           className="px-6 py-3 bg-white-cream text-brown-dark rounded-lg font-semibold hover:bg-beige transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
         >
-          {loading ? 'Inscription...' : 'S\'inscrire'}
+          {loading ? 'Inschrijven...' : 'Inschrijven'}
         </button>
       </div>
       {message && (
@@ -78,7 +78,7 @@ export default function NewsletterForm() {
         </div>
       )}
       <p className="text-xs text-white-cream/70">
-        En vous inscrivant, vous acceptez de recevoir nos newsletters. Vous pouvez vous désinscrire à tout moment.
+        Door u in te schrijven, accepteert u het ontvangen van onze nieuwsbrieven. U kunt zich op elk moment uitschrijven.
       </p>
     </form>
   );

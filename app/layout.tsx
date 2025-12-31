@@ -20,6 +20,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/logo.png',
+  },
   metadataBase: new URL('https://heressence.nl'),
   title: {
     default: 'Her Essence - Premium Beauty & Luxe Cosmetica',
