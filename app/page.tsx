@@ -40,7 +40,7 @@ export default function Home() {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'Accueil',
+      name: 'Home',
       item: 'https://heressence.nl',
     },
   ];
@@ -76,7 +76,7 @@ export default function Home() {
               <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
                 <Image
                   src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1200"
-                  alt="Beauté naturelle - Essence Féminine"
+                  alt="Natuurlijke schoonheid - Her Essence"
                   fill
                   className="object-cover"
                   priority
@@ -102,16 +102,16 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-8 sm:mt-12">
                 <div className="text-center sm:text-left">
-                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Qualité</h3>
-                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Produits certifiés et testés dermatologiquement</p>
+                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Kwaliteit</h3>
+                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Gecertificeerde producten en dermatologisch getest</p>
                 </div>
                 <div className="text-center sm:text-left">
-                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Naturel</h3>
-                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Ingrédients naturels et respectueux de votre peau</p>
+                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Natuurlijk</h3>
+                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Natuurlijke ingrediënten die rekening houden met uw huid</p>
                 </div>
                 <div className="text-center sm:text-left">
-                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Efficacité</h3>
-                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Résultats visibles pour une beauté radieuse</p>
+                  <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl text-brown-dark mb-2 sm:mb-3">Effectiviteit</h3>
+                  <p className="text-sm sm:text-base text-brown-soft leading-relaxed">Zichtbare resultaten voor een stralende schoonheid</p>
                 </div>
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function Home() {
               <div className="relative h-64 sm:h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=1200"
-                  alt="Ingrédients naturels - Essence Féminine"
+                  alt="Natuurlijke ingrediënten - Her Essence"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
