@@ -155,7 +155,7 @@ function CategoryPageContent() {
             <option value="rating">Best beoordeeld</option>
           </select>
           <div className="flex-1 text-left sm:text-right text-brown-soft text-sm sm:text-base flex items-center justify-start sm:justify-end">
-            <span className="font-medium">{filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''} ({paginatedProducts.length} op pagina {currentPage})</span>
+            <span className="font-medium">{filteredProducts.length} product{filteredProducts.length > 1 ? 'en' : ''} ({paginatedProducts.length} op pagina {currentPage})</span>
           </div>
         </div>
 
@@ -198,7 +198,7 @@ function CategoryPageContent() {
             {/* Brand Filter */}
             {brands.length > 0 && (
               <div className="mb-6">
-                <h3 className="font-semibold text-brown-dark mb-3">Marque</h3>
+                <h3 className="font-semibold text-brown-dark mb-3">Merk</h3>
                 <select
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}

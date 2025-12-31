@@ -57,8 +57,8 @@ export default function ProductPage() {
     return (
       <div className="section-padding">
         <div className="container-custom text-center">
-          <h1 className="font-elegant text-4xl text-brown-dark mb-4">Produit non trouvé</h1>
-          <Link href="/" className="btn-primary">Retour à l'accueil</Link>
+          <h1 className="font-elegant text-4xl text-brown-dark mb-4">Product niet gevonden</h1>
+          <Link href="/" className="btn-primary">Terug naar homepagina</Link>
         </div>
       </div>
     );
@@ -102,7 +102,7 @@ export default function ProductPage() {
         <div className="container-custom">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-brown-soft">
-          <Link href="/" className="hover:text-brown-dark">Accueil</Link>
+          <Link href="/" className="hover:text-brown-dark">Home</Link>
           <span className="mx-2">/</span>
           <Link href={`/categorie/${product.category}`} className="hover:text-brown-dark">
             {product.category}
@@ -133,7 +133,7 @@ export default function ProductPage() {
                     className={`relative aspect-square rounded-lg overflow-hidden border-2 transition active:scale-95 touch-manipulation ${
                       selectedImage === idx ? 'border-rose-soft shadow-md' : 'border-transparent hover:border-rose-soft/50'
                     }`}
-                    aria-label={`Voir l'image ${idx + 1}`}
+                    aria-label={`Bekijk afbeelding ${idx + 1}`}
                   >
                     <Image
                       src={img}
@@ -202,7 +202,7 @@ export default function ProductPage() {
             {/* Volume Selector for Senteur corporel */}
             {product.volumes && product.volumes.length > 0 && (
               <div className="mb-6 sm:mb-8">
-                <label className="block font-semibold text-brown-dark mb-3 sm:mb-4 text-sm sm:text-base">Volume :</label>
+                <label className="block font-semibold text-brown-dark mb-3 sm:mb-4 text-sm sm:text-base">Volume:</label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                   {product.volumes.map((vol) => (
                     <button
@@ -228,12 +228,12 @@ export default function ProductPage() {
 
             {/* Quantity Selector */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <label className="font-semibold text-brown-dark text-sm sm:text-base">Quantité:</label>
+              <label className="font-semibold text-brown-dark text-sm sm:text-base">Hoeveelheid:</label>
               <div className="flex items-center border-2 border-nude rounded-full overflow-hidden">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="px-3 sm:px-4 py-2 hover:bg-nude transition active:scale-95 touch-manipulation"
-                  aria-label="Diminuer la quantité"
+                  aria-label="Hoeveelheid verlagen"
                 >
                   -
                 </button>
@@ -241,7 +241,7 @@ export default function ProductPage() {
                 <button
                   onClick={() => setQuantity(quantity + 1)}
                   className="px-3 sm:px-4 py-2 hover:bg-nude transition active:scale-95 touch-manipulation"
-                  aria-label="Augmenter la quantité"
+                  aria-label="Hoeveelheid verhogen"
                 >
                   +
                 </button>
@@ -252,7 +252,7 @@ export default function ProductPage() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
               <button onClick={handleAddToCart} className="btn-primary flex-1 flex items-center justify-center gap-2 active:scale-95 touch-manipulation">
                 <FiShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-sm sm:text-base">Ajouter au panier</span>
+                <span className="text-sm sm:text-base">Aan winkelwagen toevoegen</span>
               </button>
               <FavoriteButton productId={product.id} />
             </div>
@@ -261,15 +261,15 @@ export default function ProductPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 p-4 sm:p-6 bg-white-cream rounded-xl sm:rounded-2xl">
               <div className="text-center">
                 <FiTruck className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
-                <p className="text-[10px] sm:text-xs text-brown-soft">Livraison gratuite</p>
+                <p className="text-[10px] sm:text-xs text-brown-soft">Gratis levering</p>
               </div>
               <div className="text-center">
                 <FiShield className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
-                <p className="text-[10px] sm:text-xs text-brown-soft">Paiement sécurisé</p>
+                <p className="text-[10px] sm:text-xs text-brown-soft">Veilige betaling</p>
               </div>
               <div className="text-center">
                 <FiCheck className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
-                <p className="text-[10px] sm:text-xs text-brown-soft">Retours faciles</p>
+                <p className="text-[10px] sm:text-xs text-brown-soft">Gemakkelijke retourzendingen</p>
               </div>
             </div>
           </div>
@@ -280,21 +280,21 @@ export default function ProductPage() {
           <div className="space-y-6">
             {product.usage && (
               <div>
-                <h3 className="font-elegant text-2xl text-brown-dark mb-4">Mode d'utilisation</h3>
+                <h3 className="font-elegant text-2xl text-brown-dark mb-4">Gebruiksaanwijzing</h3>
                 <p className="text-brown-soft leading-relaxed">{product.usage}</p>
               </div>
             )}
 
             {product.ingredients && (
               <div>
-                <h3 className="font-elegant text-2xl text-brown-dark mb-4">Ingrédients</h3>
+                <h3 className="font-elegant text-2xl text-brown-dark mb-4">Ingrediënten</h3>
                 <p className="text-brown-soft leading-relaxed">{product.ingredients}</p>
               </div>
             )}
 
             {product.skinType && product.skinType.length > 0 && (
               <div>
-                <h3 className="font-elegant text-2xl text-brown-dark mb-4">Type de peau</h3>
+                <h3 className="font-elegant text-2xl text-brown-dark mb-4">Huidtype</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.skinType.map((type) => (
                     <span key={type} className="bg-beige text-brown-dark px-4 py-2 rounded-full text-sm">
@@ -309,7 +309,7 @@ export default function ProductPage() {
 
         {/* Reviews */}
         <div className="mb-16">
-          <h2 className="font-elegant text-3xl text-brown-dark mb-8">Avis clients</h2>
+          <h2 className="font-elegant text-3xl text-brown-dark mb-8">Klantbeoordelingen</h2>
           
           <ReviewForm 
             productId={id} 
@@ -333,7 +333,7 @@ export default function ProductPage() {
           />
 
           {reviewsLoading ? (
-            <div className="text-center py-8 text-brown-soft">Chargement des avis...</div>
+            <div className="text-center py-8 text-brown-soft">Beoordelingen laden...</div>
           ) : productReviews.length > 0 ? (
             <div className="mt-8 grid md:grid-cols-2 gap-6">
               {productReviews.map((review) => (
@@ -344,7 +344,7 @@ export default function ProductPage() {
                     </span>
                     {review.verified && (
                       <span className="text-xs bg-rose-soft/20 text-rose-soft px-2 py-1 rounded">
-                        Vérifié
+                        Geverifieerd
                       </span>
                     )}
                   </div>
@@ -373,7 +373,7 @@ export default function ProductPage() {
             </div>
           ) : (
             <div className="mt-8 text-center py-8 text-brown-soft bg-white-cream rounded-2xl">
-              Aucun avis pour le moment. Soyez le premier à laisser un avis !
+              Nog geen beoordelingen. Wees de eerste die een beoordeling achterlaat!
             </div>
           )}
         </div>
@@ -381,7 +381,7 @@ export default function ProductPage() {
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <ProductRecommendations
-            title="Produits similaires"
+            title="Vergelijkbare producten"
             products={relatedProducts}
           />
         )}
@@ -389,7 +389,7 @@ export default function ProductPage() {
         {/* Complementary Products (Upsell/Cross-sell) */}
         {complementaryProducts.length > 0 && (
           <ProductRecommendations
-            title="Produits complémentaires"
+            title="Aanvullende producten"
             products={complementaryProducts}
             limit={3}
           />
