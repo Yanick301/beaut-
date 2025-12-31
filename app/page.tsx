@@ -41,7 +41,7 @@ export default function Home() {
       '@type': 'ListItem',
       position: 1,
       name: 'Accueil',
-      item: 'https://essencefeminine.be',
+      item: 'https://heressence.nl',
     },
   ];
 
