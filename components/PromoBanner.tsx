@@ -44,10 +44,10 @@ export default function PromoBanner() {
             </div>
             <div>
               <h3 className="font-elegant text-base sm:text-lg md:text-xl text-brown-dark font-semibold">
-                Codes promo exclusifs
+                Exclusieve promotiecodes
               </h3>
               <p className="text-xs sm:text-sm text-brown-soft/90 hidden sm:block">
-                Profitez de nos offres spéciales
+                Profiteer van onze speciale aanbiedingen
               </p>
             </div>
           </div>
