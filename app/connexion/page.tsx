@@ -159,7 +159,7 @@ function LoginContent() {
             Inloggen
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Log in op uw Essence Féminine account
+            Log in op uw Her Essence account
           </p>
 
           {error && (

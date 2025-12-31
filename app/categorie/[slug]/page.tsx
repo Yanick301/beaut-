@@ -159,7 +159,7 @@ function CategoryPageContent() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Filters Sidebar */}
           <aside
             className={`lg:block ${showFilters ? 'block' : 'hidden'} lg:sticky lg:top-24 h-fit bg-white-cream p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-md max-h-[calc(100vh-200px)] overflow-y-auto`}
@@ -230,7 +230,7 @@ function CategoryPageContent() {
           <div className="lg:col-span-3">
             {filteredProducts.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
                   {paginatedProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
@@ -244,7 +244,7 @@ function CategoryPageContent() {
                         onClick={() => {
                           const newPage = Math.max(1, currentPage - 1);
                           setCurrentPage(newPage);
-                          router.push(`?page=${newPage}` + (selectedSubCategory ? `&subCategory=${selectedSubCategory}` : ''), { scroll: false });
+                          router.push(`?page=${newPage}` + (selectedSubCategory ? `&subCategory=${selectedSubCategory}` : ''), { scroll: true });
                         }}
                         disabled={currentPage === 1}
                         className={`p-2 rounded-full ${currentPage === 1 ? 'text-brown-soft/50 cursor-not-allowed' : 'text-brown-dark hover:bg-rose-soft/10'}`}
@@ -261,7 +261,7 @@ function CategoryPageContent() {
                         onClick={() => {
                           const newPage = Math.min(totalPages, currentPage + 1);
                           setCurrentPage(newPage);
-                          router.push(`?page=${newPage}` + (selectedSubCategory ? `&subCategory=${selectedSubCategory}` : ''), { scroll: false });
+                          router.push(`?page=${newPage}` + (selectedSubCategory ? `&subCategory=${selectedSubCategory}` : ''), { scroll: true });
                         }}
                         disabled={currentPage === totalPages}
                         className={`p-2 rounded-full ${currentPage === totalPages ? 'text-brown-soft/50 cursor-not-allowed' : 'text-brown-dark hover:bg-rose-soft/10'}`}

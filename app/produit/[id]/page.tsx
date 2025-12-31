@@ -111,7 +111,7 @@ export default function ProductPage() {
           <span className="text-brown-dark">{product.name}</span>
         </nav>
 
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 md:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 md:mb-16">
           {/* Images */}
           <div>
             <div className="relative aspect-square bg-white-cream rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-4 shadow-lg">
@@ -258,7 +258,7 @@ export default function ProductPage() {
             </div>
 
             {/* Trust Badges */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 p-4 sm:p-6 bg-white-cream rounded-xl sm:rounded-2xl">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 p-4 sm:p-6 bg-white-cream rounded-xl sm:rounded-2xl">
               <div className="text-center">
                 <FiTruck className="w-5 h-5 sm:w-6 sm:h-6 text-rose-soft mx-auto mb-1 sm:mb-2" />
                 <p className="text-[10px] sm:text-xs text-brown-soft">Livraison gratuite</p>

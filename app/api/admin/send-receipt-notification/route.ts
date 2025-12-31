@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 /**
- * Vérifie si l'utilisateur est admin
+ * Controleert of gebruiker admin is
  */
 async function isAdmin(userId: string, userEmail?: string): Promise<boolean> {
   const adminEmailsStr = process.env.ADMIN_EMAILS || '';
@@ -29,7 +29,7 @@ async function isAdmin(userId: string, userEmail?: string): Promise<boolean> {
 }
 
 /**
- * POST - Envoie un email à l'admin avec le reçu de virement
+ * POST - Verzendt een e-mail naar de admin met het overschrijvingsbewijs
  */
 export async function POST(request: NextRequest) {
   try {
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Non authentifié' },
+        { error: 'Niet geauthenticeerd' },
         { status: 401 }
       );
     }
@@ -49,27 +49,27 @@ export async function POST(request: NextRequest) {
 
     if (!orderId || !orderNumber || !receiptUrl) {
       return NextResponse.json(
-        { error: 'Données manquantes' },
+        { error: 'Ontbrekende gegevens' },
         { status: 400 }
       );
     }
 
-    // Utiliser le fichier directement envoyé par le client (pas besoin de télécharger depuis Storage)
+    // Gebruik het bestand direct verzonden door de klant (geen download nodig vanuit Storage)
     let attachment: { filename: string; content: Buffer; mimeType: string } | null = null;
-    let imageDataUri: string | null = null; // Pour afficher l'image directement dans l'email
+    let imageDataUri: string | null = null; // Om de afbeelding direct in de e-mail weer te geven
     let isPdf = false;
     
     if (receiptFileBase64 && receiptFileName) {
       try {
-        // Convertir le base64 en Buffer
+        // Converteer base64 naar Buffer
         const buffer = Buffer.from(receiptFileBase64, 'base64');
         
-        // Déterminer le type MIME et l'extension
+        // Bepaal het MIME-type en de extensie
         const extension = receiptFileName.split('.').pop()?.toLowerCase();
         let mimeType = receiptFileType || 'application/octet-stream';
         isPdf = extension === 'pdf' || mimeType === 'application/pdf';
         
-        // S'assurer que le mimeType est correct
+        // Zorg ervoor dat het MIME-type correct is
         if (!mimeType || mimeType === 'application/octet-stream') {
           if (isPdf) {
             mimeType = 'application/pdf';
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Utiliser le nom original du fichier uploadé par le client
+        // Gebruik de oorspronkelijke bestandsnaam geüpload door de klant
         const originalFileName = receiptOriginalFileName || `recu-commande-${orderNumber}.${extension || 'pdf'}`;
         
         attachment = {
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
           mimeType: mimeType,
         };
 
-        // Si c'est une image (pas un PDF), créer un data URI pour l'afficher dans l'email
+        // Als het een afbeelding is (geen PDF), maak een data URI aan om het in de e-mail weer te geven
         if (!isPdf && mimeType.startsWith('image/')) {
           imageDataUri = `data:${mimeType};base64,${receiptFileBase64}`;
         }
@@ -105,28 +105,28 @@ export async function POST(request: NextRequest) {
         });
       } catch (error) {
         console.error('Error processing receipt file:', error);
-        // Continuer sans pièce jointe si le traitement échoue
+        // Ga door zonder bijlage als verwerking mislukt
       }
     }
 
-    // Récupérer l'email admin depuis les variables d'environnement
+    // Haal de admin e-mail op uit de omgevingsvariabelen
     const adminEmail = process.env.ADMIN_EMAIL || process.env.ADMIN_EMAILS?.split(',')[0]?.trim();
     
     if (!adminEmail) {
       return NextResponse.json(
-        { error: 'Email admin non configuré' },
+        { error: 'Admin e-mail niet geconfigureerd' },
         { status: 500 }
       );
     }
 
     if (!process.env.RESEND_API_KEY) {
       return NextResponse.json(
-        { error: 'Resend API key non configurée' },
+        { error: 'Resend API-sleutel niet geconfigureerd' },
         { status: 500 }
       );
     }
 
-    // URLs pour confirmer/rejeter la commande
+    // URL's om de bestelling te bevestigen/afwijzen
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_VERCEL_URL 
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` 
       : 'http://localhost:3000';
@@ -141,8 +141,8 @@ export async function POST(request: NextRequest) {
     console.log('Image Data URI:', imageDataUri ? 'Yes' : 'No');
     console.log('Is PDF:', isPdf);
     
-    // Préparer les pièces jointes pour Resend
-    // Resend attend: { filename: string, content: string (base64) }
+    // Bereid bijlagen voor voor Resend
+    // Resend verwacht: { filename: string, content: string (base64) }
     const attachments = attachment ? [{
       filename: attachment.filename,
       content: attachment.content.toString('base64'),
@@ -150,14 +150,14 @@ export async function POST(request: NextRequest) {
     
     console.log('Attachments prepared:', attachments.length);
 
-    // Envoyer l'email à l'admin
+    // Verzend de e-mail naar de admin
     const emailPayload: any = {
       from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
       to: adminEmail,
-      subject: `Nouveau reçu de virement - Commande ${orderNumber}`,
+      subject: `Nieuw overschrijvingsbewijs - Bestelling ${orderNumber}`,
     };
 
-    // Ajouter les pièces jointes si disponibles
+    // Voeg bijlagen toe indien beschikbaar
     if (attachments.length > 0) {
       emailPayload.attachments = attachments;
     }
@@ -193,71 +193,71 @@ export async function POST(request: NextRequest) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>Nouveau reçu de virement reçu</h1>
+              <h1>Nieuw overschrijvingsbewijs ontvangen</h1>
             </div>
             <div class="content">
-              <p>Bonjour,</p>
-              <p>Un nouveau reçu de virement a été téléversé pour la commande suivante :</p>
+              <p>Goedendag,</p>
+              <p>Er is een nieuw overschrijvingsbewijs geüpload voor de volgende bestelling:</p>
               
               <div class="info-box">
-                <h2>Détails de la commande</h2>
+                <h2>Bestelgegevens</h2>
                 <div class="info-row">
-                  <span class="info-label">Numéro de commande :</span>
+                  <span class="info-label">Bestelnummer :</span>
                   <span class="info-value"><strong>${orderNumber}</strong></span>
                 </div>
                 <div class="info-row">
-                  <span class="info-label">Client :</span>
-                  <span class="info-value">${customerName || 'Non renseigné'}</span>
+                  <span class="info-label">Klant :</span>
+                  <span class="info-value">${customerName || 'Niet opgegeven'}</span>
                 </div>
                 <div class="info-row">
-                  <span class="info-label">Montant total :</span>
+                  <span class="info-label">Totaalbedrag :</span>
                   <span class="info-value"><strong>€${parseFloat(totalAmount || 0).toFixed(2)}</strong></span>
                 </div>
               </div>
 
               <div class="receipt-box">
-                <h2>Reçu de virement</h2>
-                ${attachment ? `<p style="color: #10b981; font-weight: bold; margin-bottom: 15px;">📎 Le reçu est disponible en pièce jointe (${attachment.filename})</p>` : ''}
+                <h2>Overschrijvingsbewijs</h2>
+                ${attachment ? `<p style="color: #10b981; font-weight: bold; margin-bottom: 15px;">📎 Het bewijs is beschikbaar als bijlage (${attachment.filename})</p>` : ''}
                 <p style="margin-bottom: 15px;">
-                  <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline; font-weight: bold;">Voir le reçu complet en ligne</a>
+                  <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline; font-weight: bold;">Bekijk het volledige bewijs online</a>
                 </p>
                 ${isPdf ? `
                   <div style="background: #f3f4f6; padding: 40px; border-radius: 8px; text-align: center; border: 2px solid #d4a574;">
                     <p style="font-size: 48px; margin: 0;">📄</p>
-                    <p style="margin-top: 15px; font-weight: bold; color: #5a4a3a;">Document PDF</p>
-                    <p style="color: #666; font-size: 14px;">Le reçu est disponible en pièce jointe</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: #5a4a3a;">PDF Document</p>
+                    <p style="color: #666; font-size: 14px;">Het bewijs is beschikbaar als bijlage</p>
                     <p style="margin-top: 10px;">
-                      <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline;">Ouvrir le PDF</a>
+                      <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline;">Open PDF</a>
                     </p>
                   </div>
                 ` : imageDataUri ? `
-                  <img src="${imageDataUri}" alt="Reçu de virement" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574; display: block; margin: 15px auto;" />
+                  <img src="${imageDataUri}" alt="Overschrijvingsbewijs" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574; display: block; margin: 15px auto;" />
                 ` : `
-                  <img src="${receiptUrl}" alt="Reçu de virement" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574; display: block; margin: 15px auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                  <img src="${receiptUrl}" alt="Overschrijvingsbewijs" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 2px solid #d4a574; display: block; margin: 15px auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
                   <div style="display: none; background: #f3f4f6; padding: 40px; border-radius: 8px; text-align: center; border: 2px solid #d4a574;">
                     <p style="font-size: 48px; margin: 0;">📎</p>
-                    <p style="margin-top: 15px; font-weight: bold; color: #5a4a3a;">Reçu disponible en pièce jointe</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: #5a4a3a;">Bewijs beschikbaar als bijlage</p>
                     <p style="margin-top: 10px;">
-                      <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline;">Voir le reçu</a>
+                      <a href="${receiptUrl}" target="_blank" style="color: #d4a574; text-decoration: underline;">Bekijk het bewijs</a>
                     </p>
                   </div>
                 `}
               </div>
 
               <div class="buttons">
-                <p style="margin-bottom: 15px; font-weight: bold; color: #5a4a3a;">Actions :</p>
-                <a href="${confirmUrl}" class="btn btn-confirm">✓ Confirmer la commande</a>
-                <a href="${rejectUrl}" class="btn btn-reject">✗ Rejeter la commande</a>
+                <p style="margin-bottom: 15px; font-weight: bold; color: #5a4a3a;">Acties :</p>
+                <a href="${confirmUrl}" class="btn btn-confirm">✓ Bestelling bevestigen</a>
+                <a href="${rejectUrl}" class="btn btn-reject">✗ Bestelling afwijzen</a>
               </div>
 
               <p style="margin-top: 30px; font-size: 14px; color: #666;">
-                <strong>Note :</strong> Vous pouvez également gérer cette commande depuis le 
-                <a href="${baseUrl}/admin" style="color: #d4a574; text-decoration: underline;">tableau de bord admin</a>.
+                <strong>Note :</strong> U kunt deze bestelling ook beheren via het 
+                <a href="${baseUrl}/admin" style="color: #d4a574; text-decoration: underline;">admin dashboard</a>.
               </p>
             </div>
             <div class="footer">
-              <p>Her Essence - Système de gestion des commandes</p>
-              <p>Cet email a été envoyé automatiquement, merci de ne pas y répondre.</p>
+              <p>Her Essence - Bestelbeheersysteem</p>
+              <p>Deze e-mail is automatisch verzonden, gelieve niet te beantwoorden.</p>
             </div>
           </div>
         </body>
@@ -288,7 +288,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Unexpected error:', error);
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue', details: error.message },
+      { error: 'Er is een onverwachte fout opgetreden', details: error.message },
       { status: 500 }
     );
   }

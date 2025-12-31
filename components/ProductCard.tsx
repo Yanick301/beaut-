@@ -46,16 +46,16 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-5 md:p-6 flex-1 flex flex-col">
-          <h3 className="font-elegant text-lg sm:text-xl md:text-2xl text-brown-dark mb-2 group-hover:text-rose-soft transition-colors duration-300 line-clamp-2 min-h-[3.5rem]">
+        <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex-1 flex flex-col">
+          <h3 className="font-elegant text-base sm:text-lg md:text-xl lg:text-2xl text-brown-dark mb-1 sm:mb-2 group-hover:text-rose-soft transition-colors duration-300 line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[3.5rem]">
             {product.name}
           </h3>
-          <p className="text-brown-soft text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 flex-shrink-0">
+          <p className="text-brown-soft text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2 flex-shrink-0">
             {product.description}
           </p>
 
           {/* Rating */}
-          <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 mb-2 sm:mb-3 flex-shrink-0">
             <div className="flex items-center gap-0.5 sm:gap-1">
               {[...Array(5)].map((_, i) => (
                 <FiStar
@@ -74,13 +74,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
 
           {/* Price */}
-          <div className="flex items-center justify-between mb-4 sm:mb-5 flex-shrink-0">
+          <div className="flex items-center justify-between mb-3 sm:mb-4 md:mb-5 flex-shrink-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xl sm:text-2xl md:text-3xl font-elegant text-brown-dark">
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-elegant text-brown-dark">
                 €{product.price.toFixed(2)}
               </span>
               {product.originalPrice && (
-                <span className="text-xs sm:text-sm text-brown-soft line-through">
+                <span className="text-xs sm:text-xs md:text-sm text-brown-soft line-through">
                   €{product.originalPrice.toFixed(2)}
                 </span>
               )}
@@ -90,10 +90,10 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Add to Cart Button */}
           <button
             onClick={handleAddToCart}
-            className="w-full btn-outline flex items-center justify-center gap-2 mt-auto active:scale-95 touch-manipulation"
+            className="w-full btn-outline flex items-center justify-center gap-1 sm:gap-2 mt-auto active:scale-95 touch-manipulation py-2 sm:py-2.5"
           >
-            <FiShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="text-xs sm:text-sm md:text-base">Ajouter au panier</span>
+            <FiShoppingCart className="w-3 h-3 sm:w-4 md:w-5 sm:h-3 md:h-5" />
+            <span className="text-xs sm:text-xs md:text-sm lg:text-base">Ajouter au panier</span>
           </button>
         </div>
       </div>

@@ -1,69 +1,69 @@
-# Configuration du Système de Paiement par Virement Bancaire
+# Configuratie van het Bankoverschrijvingsbetalingsysteem
 
-## 📋 Vue d'ensemble
+## 📋 Overzicht
 
-Ce système permet aux clients de :
-1. Passer une commande avec paiement par virement bancaire
-2. Téléverser le reçu de virement
-3. Recevoir une confirmation une fois le reçu validé par l'admin
+Dit systeem stelt klanten in staat om:
+1. Een bestelling plaatsen met betaling via bankoverschrijving
+2. Het overschrijvingsbewijs uploaden
+3. Een bevestiging te ontvangen zodra het bewijs is gevalideerd door de admin
 
-L'admin peut :
-- Recevoir un email avec le reçu et des boutons pour confirmer/rejeter
-- Confirmer ou rejeter depuis le dashboard admin
-- Confirmer ou rejeter directement depuis l'email
+De admin kan:
+- Een e-mail ontvangen met het bewijs en knoppen om te bevestigen/afwijzen
+- Bevestigen of afwijzen vanuit het admin dashboard
+- Bevestigen of afwijzen direct vanuit de e-mail
 
-## 🔧 Configuration requise
+## 🔧 Vereiste configuratie
 
-### 1. Variables d'environnement
+### 1. Omgevingsvariabelen
 
-Ajoutez ces variables dans votre fichier `.env.local` :
+Voeg deze variabelen toe aan uw `.env.local` bestand:
 
 ```env
-# Resend (pour les emails)
+# Resend (voor e-mails)
 RESEND_API_KEY=re_xxxxxxxxxxxxx
-RESEND_FROM_EMAIL=Essence Féminine <noreply@essencefeminine.nl>
+RESEND_FROM_EMAIL=Her Essence <noreply@heressence.nl>
 
-# Email admin (celui qui recevra les notifications de reçus)
-ADMIN_EMAIL=admin@essencefeminine.nl
-# OU plusieurs emails séparés par des virgules
-ADMIN_EMAILS=admin1@essencefeminine.nl,admin2@essencefeminine.nl
+# Admin e-mail (deze ontvangt de meldingen van bewijzen)
+ADMIN_EMAIL=admin@heressence.nl
+# OF meerdere e-mails gescheiden door komma's
+ADMIN_EMAILS=admin1@heressence.nl,admin2@heressence.nl
 
-# Token secret pour les liens de confirmation/rejet dans les emails
-ADMIN_CONFIRMATION_TOKEN=votre-token-secret-tres-securise-changez-moi
+# Geheime token voor de bevestiging/afwijzing links in de e-mails
+ADMIN_CONFIRMATION_TOKEN=uw-geheime-token-zeer-beveiligd-verander-mij
 
-# URL du site (pour les liens dans les emails)
-NEXT_PUBLIC_SITE_URL=https://essencefeminine.nl
-# OU pour Vercel
-NEXT_PUBLIC_VERCEL_URL=votre-projet.vercel.app
+# Site URL (voor de links in de e-mails)
+NEXT_PUBLIC_SITE_URL=https://heressence.nl
+# OF voor Vercel
+NEXT_PUBLIC_VERCEL_URL=uw-project.vercel.app
 ```
 
-### 2. Configuration Resend
+### 2. Resend-configuratie
 
-1. Créez un compte sur [resend.com](https://resend.com)
-2. Obtenez votre API key
-3. Vérifiez votre domaine (ou utilisez le domaine par défaut de Resend)
-4. Ajoutez `RESEND_API_KEY` dans `.env.local`
+1. Maak een account aan op [resend.com](https://resend.com)
+2. Verkrijg uw API-sleutel
+3. Verifieer uw domein (of gebruik het standaarddomein van Resend)
+4. Voeg `RESEND_API_KEY` toe aan `.env.local`
 
-### 3. Configuration Supabase Storage
+### 3. Supabase Storage-configuratie
 
-1. Allez dans votre dashboard Supabase
-2. Naviguez vers **Storage**
-3. Cliquez sur **Create bucket**
-4. Nommez-le `receipts`
-5. **Important** : Définissez-le comme **Private** (pas public)
-6. Configurez les politiques RLS :
+1. Ga naar uw Supabase dashboard
+2. Navigeer naar **Storage**
+3. Klik op **Create bucket**
+4. Noem het `receipts`
+5. **Belangrijk** : Stel het in op **Private** (niet openbaar)
+6. Configureer de RLS-beleid:
 
-**IMPORTANT** : Exécutez le script SQL dans `lib/database/storage_receipts_rls_simple.sql`
+**BELANGRIJK** : Voer het SQL-script uit in `lib/database/storage_receipts_rls_simple.sql`
 
-Ou copiez-collez ce script simplifié :
+Of kopieer-plak dit vereenvoudigde script:
 
 ```sql
--- Supprimer les anciennes politiques si elles existent
+-- Verwijder oude beleid als ze bestaan
 DROP POLICY IF EXISTS "Users can upload receipts" ON storage.objects;
 DROP POLICY IF EXISTS "Users can view their receipts" ON storage.objects;
 DROP POLICY IF EXISTS "Admins can view all receipts" ON storage.objects;
 
--- Politique : Permettre à tous les utilisateurs authentifiés d'uploader dans receipts
+-- Beleid : Sta alle geverifieerde gebruikers toe om te uploaden naar receipts
 CREATE POLICY "Users can upload receipts"
 ON storage.objects FOR INSERT
 WITH CHECK (
@@ -71,7 +71,7 @@ WITH CHECK (
   auth.role() = 'authenticated'
 );
 
--- Politique : Permettre aux utilisateurs de voir les fichiers qui contiennent leur order_id
+-- Beleid : Sta gebruikers toe om bestanden te bekijken die hun order_id bevatten
 CREATE POLICY "Users can view their receipts"
 ON storage.objects FOR SELECT
 USING (
@@ -83,7 +83,7 @@ USING (
   )
 );
 
--- Politique : Permettre aux admins de voir tous les reçus
+-- Beleid : Sta admins toe om alle bewijzen te bekijken
 CREATE POLICY "Admins can view all receipts"
 ON storage.objects FOR SELECT
 USING (
@@ -96,93 +96,93 @@ USING (
 );
 ```
 
-### 4. Mise à jour de la base de données
+### 4. Database update
 
-Exécutez le script SQL suivant dans l'éditeur SQL de Supabase :
+Voer het volgende SQL-script uit in de Supabase SQL-editor:
 
 ```sql
--- Ajouter les colonnes pour le reçu de virement
+-- Kolommen toevoegen voor het overschrijvingsbewijs
 ALTER TABLE public.orders 
 ADD COLUMN IF NOT EXISTS receipt_url TEXT,
 ADD COLUMN IF NOT EXISTS receipt_file_name TEXT;
 ```
 
-Ou exécutez le fichier : `lib/database/add_receipt_fields.sql`
+Of voer het bestand uit: `lib/database/add_receipt_fields.sql`
 
-## 📧 Informations bancaires à configurer
+## 📧 Te configureren bankgegevens
 
-Modifiez les informations bancaires dans `app/checkout/page.tsx` (lignes ~240-260) :
+Wijzig de bankgegevens in `app/checkout/page.tsx` (regels ~240-260):
 
 ```tsx
-<p className="text-lg font-semibold text-brown-dark">ESSENCE FÉMININE B.V.</p>
-<p className="text-lg font-mono text-brown-dark">NL91 ABNA 0417 1643 00</p> // Votre IBAN
-<p className="text-lg font-mono text-brown-dark">ABNANL2A</p> // Votre BIC
-<p className="text-lg text-brown-dark">ABN AMRO Bank N.V.</p> // Votre banque
+<p className="text-lg font-semibold text-brown-dark">HER ESSENCE B.V.</p>
+<p className="text-lg font-mono text-brown-dark">NL91 ABNA 0417 1643 00</p> // Uw IBAN
+<p className="text-lg font-mono text-brown-dark">ABNANL2A</p> // Uw BIC
+<p className="text-lg text-brown-dark">ABN AMRO Bank N.V.</p> // Uw bank
 ```
 
-## 🔄 Flux de travail
+## 🔄 Werkstroom
 
-### Côté client :
+### Klantzijde:
 
-1. **Checkout** : Le client remplit ses informations et voit les instructions de virement
-2. **Commande créée** : La commande est créée avec le statut `pending`
-3. **Virement effectué** : Le client effectue le virement bancaire
-4. **Téléversement** : Le client téléverse le reçu sur `/televerser-recu`
-5. **Statut mis à jour** : Le statut passe à `processing` et un email est envoyé à l'admin
+1. **Afrekenen** : De klant vult zijn gegevens in en ziet de overschrijvingsinstructies
+2. **Bestelling aangemaakt** : De bestelling wordt aangemaakt met status `pending`
+3. **Overschrijving uitgevoerd** : De klant voert de bankoverschrijving uit
+4. **Uploaden** : De klant uploadt het bewijs naar `/televerser-recu`
+5. **Status bijgewerkt** : De status verandert naar `processing` en er wordt een e-mail verzonden naar de admin
 
-### Côté admin :
+### Adminzijde:
 
-1. **Email reçu** : L'admin reçoit un email avec :
-   - Détails de la commande
-   - Reçu de virement (image)
-   - Boutons "Confirmer" et "Rejeter"
+1. **E-mail ontvangen** : De admin ontvangt een e-mail met:
+   - Bestelgegevens
+   - Overschrijvingsbewijs (afbeelding)
+   - Knoppen "Bevestigen" en "Afwijzen"
 
-2. **Actions possibles** :
-   - **Depuis l'email** : Cliquer sur "Confirmer" ou "Rejeter" (nécessite le token secret)
-   - **Depuis le dashboard** : Aller sur `/admin` et utiliser les boutons
+2. **Mogelijke acties**:
+   - **Vanuit de e-mail** : Klik op "Bevestigen" of "Afwijzen" (vereist het geheime token)
+   - **Vanuit het dashboard** : Ga naar `/admin` en gebruik de knoppen
 
-3. **Confirmation** :
-   - Statut passe à `processing` (si confirmé) ou `cancelled` (si rejeté)
-   - `payment_status` passe à `paid` (si confirmé) ou `failed` (si rejeté)
-   - Email de confirmation/rejet envoyé au client
+3. **Bevestiging**:
+   - Status verandert naar `processing` (bij bevestiging) of `cancelled` (bij afwijzing)
+   - `payment_status` verandert naar `paid` (bij bevestiging) of `failed` (bij afwijzing)
+   - Bevestiging/afwijzing e-mail verzonden naar de klant
 
-## 🔒 Sécurité
+## 🔒 Beveiliging
 
-- Les reçus sont stockés dans un bucket **privé** Supabase
-- Les liens de confirmation/rejet nécessitent un token secret
-- Seuls les admins peuvent voir tous les reçus
-- Les utilisateurs ne peuvent voir que leurs propres reçus
+- Bewijzen worden opgeslagen in een **privé** Supabase bucket
+- Bevestiging/afwijzing links vereisen een geheim token
+- Alleen admins kunnen alle bewijzen zien
+- Gebruikers kunnen alleen hun eigen bewijzen zien
 
-## 🧪 Test
+## 🧪 Testen
 
-1. Passez une commande test
-2. Téléversez un reçu test (image ou PDF)
-3. Vérifiez que l'email arrive à l'admin
-4. Testez la confirmation depuis l'email et depuis le dashboard
-5. Vérifiez que le client reçoit l'email de confirmation
+1. Plaats een testbestelling
+2. Upload een testbewijs (afbeelding of PDF)
+3. Controleer of de e-mail bij de admin aankomt
+4. Test de bevestiging vanuit de e-mail en vanuit het dashboard
+5. Controleer of de klant de bevestigingsmail ontvangt
 
-## 📝 Notes importantes
+## 📝 Belangrijke opmerkingen
 
-- Les fichiers uploadés sont limités à **5MB**
-- Formats acceptés : JPG, PNG, WEBP, PDF
-- Le statut `processing` signifie "en attente de validation du reçu"
-- Une fois confirmé, le statut reste `processing` jusqu'à l'expédition
-- Les commandes rejetées passent au statut `cancelled`
+- Geüploade bestanden zijn beperkt tot **5MB**
+- Ondersteunde formaten: JPG, PNG, WEBP, PDF
+- De status `processing` betekent "wachten op validatie van het bewijs"
+- Eenmaal bevestigd, blijft de status `processing` tot verzending
+- Afgewezen bestellingen krijgen de status `cancelled`
 
-## 🐛 Dépannage
+## 🐛 Probleemoplossing
 
-### L'email n'arrive pas à l'admin
-- Vérifiez `RESEND_API_KEY` et `ADMIN_EMAIL`
-- Vérifiez les logs dans Resend dashboard
-- Vérifiez que le domaine est vérifié dans Resend
+### De e-mail komt niet bij de admin aan
+- Controleer `RESEND_API_KEY` en `ADMIN_EMAIL`
+- Controleer de logs in het Resend dashboard
+- Controleer of het domein geverifieerd is in Resend
 
-### Le téléversement échoue
-- Vérifiez que le bucket `receipts` existe dans Supabase Storage
-- Vérifiez les politiques RLS du bucket
-- Vérifiez la taille du fichier (max 5MB)
+### Uploaden mislukt
+- Controleer of de bucket `receipts` bestaat in Supabase Storage
+- Controleer de RLS-beleid van de bucket
+- Controleer de bestandsgrootte (max 5MB)
 
-### Les boutons dans l'email ne fonctionnent pas
-- Vérifiez `ADMIN_CONFIRMATION_TOKEN` dans les deux fichiers
-- Vérifiez `NEXT_PUBLIC_SITE_URL` ou `NEXT_PUBLIC_VERCEL_URL`
+### De knoppen in de e-mail werken niet
+- Controleer `ADMIN_CONFIRMATION_TOKEN` in beide bestanden
+- Controleer `NEXT_PUBLIC_SITE_URL` of `NEXT_PUBLIC_VERCEL_URL`
 
 

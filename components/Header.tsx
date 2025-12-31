@@ -72,14 +72,14 @@ export default function Header() {
         </div>
 
         {/* Main Header */}
-        <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
+        <div className="flex items-center justify-between py-2 sm:py-3 md:py-4 lg:py-5">
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-elegant text-brown-dark">Her Essence</span>
+            <span className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-elegant text-brown-dark">Her Essence</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {categories.slice(0, 6).map((category) => {
               const hasSubCategories = category.subCategories && category.subCategories.length > 0;
               const isExpanded = expandedCategory === category.id;
@@ -93,7 +93,7 @@ export default function Header() {
                 >
                   <Link
                     href={`/categorie/${category.slug}`}
-                    className={`flex items-center gap-1 text-brown-soft hover:text-brown-dark transition font-medium text-sm xl:text-base ${
+                    className={`flex items-center gap-1 text-brown-soft hover:text-brown-dark transition font-medium text-xs sm:text-sm md:text-base ${
                       hasSubCategories ? '' : ''
                     }`}
                   >
@@ -124,17 +124,17 @@ export default function Header() {
           </nav>
 
           {/* Right Side Icons */}
-          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
             <button 
               onClick={() => setIsSearchOpen(true)}
-              className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation"
+              className="p-1.5 sm:p-2 md:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation"
               aria-label="Zoeken"
             >
               <FiSearch className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             {user ? (
               <div className="hidden md:flex items-center gap-2">
-                <Link href="/compte" className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95" aria-label="Mijn account">
+                <Link href="/compte" className="p-1.5 sm:p-2 md:p-2.5 hover:text-brown-dark transition active:scale-95" aria-label="Mijn account">
                   <FiUser className="w-5 h-5 sm:w-6 sm:h-6" />
                 </Link>
                 <button
@@ -147,22 +147,22 @@ export default function Header() {
                 </button>
               </div>
             ) : (
-              <Link href="/connexion" className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 hidden md:block" aria-label="Inloggen">
+              <Link href="/connexion" className="p-1.5 sm:p-2 md:p-2.5 hover:text-brown-dark transition active:scale-95 hidden md:block" aria-label="Inloggen">
                 <FiUser className="w-5 h-5 sm:w-6 sm:h-6" />
               </Link>
             )}
-            <Link href="/panier" className="relative p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation" aria-label="Winkelwagen">
+            <Link href="/panier" className="relative p-1.5 sm:p-2 md:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation" aria-label="Winkelwagen">
               <FiShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
               {itemCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 bg-rose-soft text-white text-[10px] sm:text-xs 
-                               rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-bold">
+                <span className="absolute -top-0.5 -right-0.5 sm:top-0 sm:right-0 bg-rose-soft text-white text-[8px] sm:text-[10px] md:text-xs 
+                               rounded-full w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 flex items-center justify-center font-bold">
                   {itemCount > 99 ? '99+' : itemCount}
                 </span>
               )}
             </Link>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 hover:text-brown-dark transition active:scale-95 touch-manipulation"
+              className="lg:hidden p-1.5 sm:p-2 hover:text-brown-dark transition active:scale-95 touch-manipulation"
               aria-label="Menu"
               aria-expanded={isMenuOpen}
             >

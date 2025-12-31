@@ -1,30 +1,30 @@
-# Configuration des Liens d'Authentification
+# Configuratie van Authenticatielinks
 
-## 🔧 Problème résolu
+## 🔧 Probleem opgelost
 
-Les liens de confirmation d'inscription et de réinitialisation de mot de passe ne fonctionnaient pas car :
-1. Les URLs de redirection n'étaient pas correctement configurées
-2. Il manquait une route API pour gérer les callbacks Supabase
-3. Les URLs n'étaient pas configurées dans le dashboard Supabase
+De links voor accountbevestiging en wachtwoordherstel werkten niet omdat:
+1. De redirect URL's waren niet correct geconfigureerd
+2. Er ontbrak een API-route om de Supabase callbacks te verwerken
+3. De URL's waren niet geconfigureerd in het Supabase dashboard
 
-## ✅ Solutions implémentées
+## ✅ Geïmplementeerde oplossingen
 
-### 1. Route API de callback créée
+### 1. Callback API-route aangemaakt
 
-Une nouvelle route `/app/auth/callback/route.ts` a été créée pour gérer les callbacks d'authentification Supabase.
+Een nieuwe route `/app/auth/callback/route.ts` is aangemaakt om de Supabase authenticatie callbacks te verwerken.
 
-### 2. URLs de redirection améliorées
+### 2. Verbeterde redirect URL's
 
-Les URLs utilisent maintenant :
-- `NEXT_PUBLIC_SITE_URL` (variable d'environnement) en priorité
-- `window.location.origin` en fallback
-- Route de callback : `/auth/callback?next=/compte` ou `/auth/callback?next=/reinitialiser-mot-de-passe`
+De URL's gebruiken nu:
+- `NEXT_PUBLIC_SITE_URL` (omgevingsvariabele) als prioriteit
+- `window.location.origin` als fallback
+- Callback route: `/auth/callback?next=/compte` of `/auth/callback?next=/reinitialiser-mot-de-passe`
 
-## 📋 Configuration requise
+## 📋 Vereiste configuratie
 
-### 1. Variables d'environnement
+### 1. Omgevingsvariabelen
 
-Ajoutez dans votre `.env.local` :
+Voeg toe aan uw `.env.local`:
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://essencefeminine.nl
@@ -32,133 +32,133 @@ NEXT_PUBLIC_SITE_URL=https://essencefeminine.nl
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-### 2. Configuration Supabase Dashboard
+### 2. Configuratie van het Supabase Dashboard
 
-**IMPORTANT** : Vous devez configurer les URLs de redirection dans Supabase :
+**BELANGRIJK** : U moet de redirect URL's configureren in Supabase:
 
-1. Allez dans votre **Supabase Dashboard**
-2. Naviguez vers **Authentication** > **URL Configuration**
-3. Dans **Site URL**, ajoutez :
-   - Développement : `http://localhost:3000`
-   - Production : `https://essencefeminine.nl`
+1. Ga naar uw **Supabase Dashboard**
+2. Navigeer naar **Authentication** > **URL Configuration**
+3. In **Site URL**, voeg toe:
+   - Ontwikkeling: `http://localhost:3000`
+   - Productie: `https://essencefeminine.nl`
 
-4. Dans **Redirect URLs**, ajoutez **TOUTES** ces URLs :
+4. In **Redirect URLs**, voeg **ALLE** deze URL's toe:
 
-**Pour le développement local :**
+**Voor lokale ontwikkeling:**
 ```
 http://localhost:3000/auth/callback
 http://localhost:3000/compte
 http://localhost:3000/reinitialiser-mot-de-passe
 ```
 
-**Pour la production :**
+**Voor productie:**
 ```
 https://essencefeminine.nl/auth/callback
 https://essencefeminine.nl/compte
 https://essencefeminine.nl/reinitialiser-mot-de-passe
 ```
 
-**Format avec paramètres (optionnel mais recommandé) :**
+**Formaat met parameters (optioneel maar aanbevolen):**
 ```
 http://localhost:3000/auth/callback?next=*
 https://essencefeminine.nl/auth/callback?next=*
 ```
 
-### 3. Configuration des emails Supabase
+### 3. Configuratie van Supabase e-mails
 
-Dans **Authentication** > **Email Templates**, vérifiez que les templates contiennent bien les liens de redirection :
+In **Authentication** > **Email Templates**, controleer of de sjablonen de redirect links bevatten:
 
-**Template "Confirm signup" :**
+**Sjabloon "Confirm signup":**
 ```
 {{ .ConfirmationURL }}
 ```
 
-**Template "Reset Password" :**
+**Sjabloon "Reset Password":**
 ```
 {{ .ConfirmationURL }}
 ```
 
-## 🔄 Flux de travail
+## 🔄 Workflow
 
-### Inscription :
+### Registratie:
 
-1. Utilisateur s'inscrit → Email envoyé avec lien de confirmation
-2. Utilisateur clique sur le lien → Redirigé vers `/auth/callback?next=/compte`
-3. Route API vérifie le token → Redirige vers `/compte`
-4. Utilisateur est connecté automatiquement
+1. Gebruiker registreert → E-mail verzonden met bevestigingslink
+2. Gebruiker klikt op de link → Omgeleid naar `/auth/callback?next=/compte`
+3. API-route controleert het token → Omleiding naar `/compte`
+4. Gebruiker is automatisch ingelogd
 
-### Réinitialisation de mot de passe :
+### Wachtwoordherstel:
 
-1. Utilisateur demande réinitialisation → Email envoyé avec lien
-2. Utilisateur clique sur le lien → Redirigé vers `/auth/callback?next=/reinitialiser-mot-de-passe`
-3. Route API vérifie le token → Redirige vers `/reinitialiser-mot-de-passe`
-4. Utilisateur peut définir un nouveau mot de passe
+1. Gebruiker vraagt herstel aan → E-mail verzonden met link
+2. Gebruiker klikt op de link → Omgeleid naar `/auth/callback?next=/reinitialiser-mot-de-passe`
+3. API-route controleert het token → Omleiding naar `/reinitialiser-mot-de-passe`
+4. Gebruiker kan nieuw wachtwoord instellen
 
-## 🧪 Test
+## 🧪 Testen
 
-### Test d'inscription :
+### Testregistratie:
 
-1. Allez sur `/inscription`
-2. Créez un compte
-3. Vérifiez votre email
-4. Cliquez sur le lien de confirmation
-5. Vous devriez être redirigé vers `/compte` et connecté automatiquement
+1. Ga naar `/inscription`
+2. Maak een account aan
+3. Controleer uw e-mail
+4. Klik op de bevestigingslink
+5. U zou naar `/compte` moeten worden omgeleid en automatisch ingelogd worden
 
-### Test de réinitialisation :
+### Test wachtwoordherstel:
 
-1. Allez sur `/mot-de-passe-oublie`
-2. Entrez votre email
-3. Vérifiez votre email
-4. Cliquez sur le lien de réinitialisation
-5. Vous devriez être redirigé vers `/reinitialiser-mot-de-passe`
-6. Définissez un nouveau mot de passe
+1. Ga naar `/mot-de-passe-oublie`
+2. Voer uw e-mail in
+3. Controleer uw e-mail
+4. Klik op de herstel-link
+5. U zou naar `/reinitialiser-mot-de-passe` moeten worden omgeleid
+6. Stel een nieuw wachtwoord in
 
-## 🐛 Dépannage
+## 🐛 Probleemoplossing
 
-### Le lien ne fonctionne pas / Erreur "Invalid token"
+### De link werkt niet / Foutmelding "Invalid token"
 
-**Causes possibles :**
-1. L'URL de redirection n'est pas dans la liste des Redirect URLs de Supabase
-2. Le token a expiré (les tokens expirent après 1 heure par défaut)
-3. Le token a déjà été utilisé
+**Mogelijke oorzaken:**
+1. De redirect URL staat niet in de lijst van Redirect URL's van Supabase
+2. Het token is verlopen (tokens verlopen standaard na 1 uur)
+3. Het token is al gebruikt
 
-**Solutions :**
-- Vérifiez que toutes les URLs sont bien configurées dans Supabase Dashboard
-- Demandez un nouveau lien de confirmation/réinitialisation
-- Vérifiez que `NEXT_PUBLIC_SITE_URL` correspond à votre domaine
+**Oplossingen:**
+- Controleer of alle URL's correct zijn geconfigureerd in het Supabase Dashboard
+- Vraag een nieuwe bevestigings-/herstel-link aan
+- Controleer of `NEXT_PUBLIC_SITE_URL` overeenkomt met uw domein
 
-### Redirection vers une page d'erreur
+### Omleiding naar een foutpagina
 
-**Causes possibles :**
-- La route `/auth/callback` n'existe pas (elle devrait être créée maintenant)
-- Le paramètre `next` n'est pas valide
+**Mogelijke oorzaken:**
+### De route `/auth/callback` bestaat niet (deze zou nu aangemaakt moeten zijn)
+### De parameter `next` is niet geldig
 
-**Solutions :**
-- Vérifiez que le fichier `/app/auth/callback/route.ts` existe
-- Vérifiez les logs du serveur pour voir l'erreur exacte
+**Oplossingen:**
+### Controleer of het bestand `/app/auth/callback/route.ts` bestaat
+### Controleer de serverlogs om de exacte fout te zien
 
-### L'utilisateur n'est pas connecté après confirmation
+### Gebruiker is niet ingelogd na bevestiging
 
-**Causes possibles :**
-- La session n'est pas correctement établie
-- Le middleware bloque l'accès
+**Mogelijke oorzaken:**
+### De sessie is niet correct opgezet
+### De middleware blokkeert de toegang
 
-**Solutions :**
-- Vérifiez que le middleware ne redirige pas trop tôt
-- Vérifiez que la session est bien créée dans Supabase
+**Oplossingen:**
+### Controleer of de middleware niet te vroeg omleidt
+### Controleer of de sessie correct is aangemaakt in Supabase
 
 ## 📝 Notes importantes
 
-- Les tokens de confirmation expirent après **1 heure** par défaut
-- Les tokens ne peuvent être utilisés **qu'une seule fois**
-- Si vous changez `NEXT_PUBLIC_SITE_URL`, mettez à jour aussi les Redirect URLs dans Supabase
-- Pour la production, utilisez toujours HTTPS
+### Bevestigingstokens verlopen standaard na **1 uur**
+### Tokens kunnen **slechts één keer** worden gebruikt
+### Als u `NEXT_PUBLIC_SITE_URL` wijzigt, update dan ook de Redirect URL's in Supabase
+- Voor productie, gebruik altijd HTTPS
 
-## 🔒 Sécurité
+## 🔒 Beveiliging
 
-- Les tokens sont vérifiés côté serveur
-- Les URLs de redirection sont validées par Supabase
-- Seules les URLs autorisées dans Supabase Dashboard peuvent être utilisées
+### Tokens worden aan de serverzijde gecontroleerd
+### Redirect URL's worden gevalideerd door Supabase
+### Alleen de geautoriseerde URL's in het Supabase Dashboard kunnen worden gebruikt
 
 
 

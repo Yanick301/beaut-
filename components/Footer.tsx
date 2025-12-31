@@ -5,13 +5,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brown-dark text-white-cream mt-12 sm:mt-16 md:mt-20">
-      <div className="container-custom py-8 sm:py-10 md:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-10 md:mb-12">
+    <footer className="bg-brown-dark text-white-cream mt-8 sm:mt-10 md:mt-12 lg:mt-16">
+      <div className="container-custom py-6 sm:py-8 md:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10">
           {/* About */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <h3 className="font-elegant text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-5">Her Essence</h3>
-            <p className="text-white-cream/80 text-sm sm:text-base leading-relaxed mb-4 max-w-sm">
+            <h3 className="font-elegant text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4">Her Essence</h3>
+            <p className="text-white-cream/80 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 max-w-sm">
               Uw premium beauty bestemming. Kwaliteitsproducten 
               om uw natuurlijke schoonheid te versterken.
             </p>
@@ -19,8 +19,8 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 sm:mb-5 text-base sm:text-lg md:text-xl">Navigation</h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base text-white-cream/80">
+            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">Navigation</h4>
+            <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm md:text-base text-white-cream/80">
               <li>
                 <Link href="/a-propos" className="hover:text-gold transition-colors duration-200 inline-block">Over ons</Link>
               </li>
@@ -41,8 +41,8 @@ export default function Footer() {
 
           {/* Customer Service */}
           <div>
-            <h4 className="font-semibold mb-4 sm:mb-5 text-base sm:text-lg md:text-xl">Klantenservice</h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base text-white-cream/80">
+            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">Klantenservice</h4>
+            <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm md:text-base text-white-cream/80">
               <li>
                 <Link href="/faq" className="hover:text-gold transition-colors duration-200 inline-block">FAQ</Link>
               </li>
@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4 sm:mb-5 text-base sm:text-lg md:text-xl">Contact</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">Contact</h4>
             <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base text-white-cream/80">
               <li className="flex items-start gap-3">
                 <FiMapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
@@ -78,8 +78,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white-cream/20 pt-6 sm:pt-8 md:pt-10 mt-6 sm:mt-8 md:mt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 text-xs sm:text-sm md:text-base text-white-cream/60">
+        <div className="border-t border-white-cream/20 pt-4 sm:pt-6 md:pt-8 mt-4 sm:mt-6 md:mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-xs md:text-sm lg:text-base text-white-cream/60">
             <p className="text-center md:text-left">&copy; {currentYear} Her Essence. Alle rechten voorbehouden.</p>
             <div className="flex flex-wrap gap-4 sm:gap-6 justify-center md:justify-end">
               <span className="hover:text-white-cream/80 transition">Beveiligde betaling</span>

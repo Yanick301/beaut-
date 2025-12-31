@@ -86,7 +86,7 @@ function AccountContent() {
           </button>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
@@ -209,7 +209,7 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
           <p className="text-sm text-brown-soft mt-2">E-mailadres kan niet worden gewijzigd</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="block text-brown-dark font-medium mb-2">Voornaam</label>
             <input
@@ -434,7 +434,7 @@ function FavoritesTab({ userId, supabase }: { userId: string; supabase: any }) {
       ) : (
         <div>
           <p className="text-brown-soft mb-6">{favorites.length} favoriete(s) product(en)</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <div key={product.id} className="relative">
                 <ProductCard product={product} />

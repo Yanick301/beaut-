@@ -59,11 +59,11 @@
   }
 
   .section-padding {
-    @apply py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24;
+    @apply py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16;
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-4 sm:px-4 md:px-5 lg:px-6 xl:px-8;
   }
 
   /* Optimisation des images pour mobile */

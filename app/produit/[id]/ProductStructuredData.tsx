@@ -15,7 +15,7 @@ export default function ProductStructuredData({ productId, reviews = [] }: Produ
 
     const category = categories.find(c => c.slug === product.category);
     const images = product.images || [product.image];
-    const baseUrl = 'https://essencefeminine.nl';
+    const baseUrl = 'https://heressence.nl';
 
     // Calculer la note moyenne
     const avgRating = reviews.length > 0

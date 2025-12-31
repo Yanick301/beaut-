@@ -1,138 +1,138 @@
-# 🚀 Améliorations SEO Implémentées
+# 🚀 Geïmplementeerde SEO Verbeteringen
 
-## ✅ Métadonnées Dynamiques
+## ✅ Dynamische Metagegevens
 
-### Pages Produits
-- ✅ **generateMetadata** dans `app/produit/[id]/layout.tsx`
-- ✅ Titre dynamique : `{Nom Produit} | Essence Féminine`
-- ✅ Description optimisée avec informations produit
-- ✅ Keywords dynamiques (nom, marque, catégorie)
-- ✅ Open Graph avec type `product`
-- ✅ Twitter Cards avec images
-- ✅ URLs canoniques
-- ✅ Balises meta product (prix, disponibilité, condition)
+### Productpagina's
+- ✅ **generateMetadata** in `app/produit/[id]/layout.tsx`
+- ✅ Dynamische titel : `{Productnaam} | HerEssence`
+- ✅ Geoptimaliseerde beschrijving met productinformatie
+- ✅ Dynamische trefwoorden (naam, merk, categorie)
+- ✅ Open Graph met type `product`
+- ✅ Twitter Cards met afbeeldingen
+- ✅ Canonieke URL's
+- ✅ Meta product tags (prijs, beschikbaarheid, voorwaarden)
 
-### Pages Catégories
-- ✅ **generateMetadata** dans `app/categorie/[slug]/layout.tsx`
-- ✅ Titre dynamique : `{Nom Catégorie} | Essence Féminine`
-- ✅ Description avec nombre de produits
-- ✅ Keywords incluant sous-catégories
-- ✅ Open Graph optimisé
-- ✅ URLs canoniques
+### Categoriepagina's
+- ✅ **generateMetadata** in `app/categorie/[slug]/layout.tsx`
+- ✅ Dynamische titel : `{Categorienaam} | HerEssence`
+- ✅ Beschrijving met aantal producten
+- ✅ Trefwoorden inclusief subcategorieën
+- ✅ Geoptimaliseerde Open Graph
+- ✅ Canonieke URL's
 
-## ✅ Structured Data (Schema.org)
+## ✅ Gestrucreerde Gegevens (Schema.org)
 
 ### Product Schema
-- ✅ **ProductStructuredData** component pour chaque produit
-- ✅ Informations complètes : nom, description, images, SKU, MPN
-- ✅ Brand schema
-- ✅ Offers avec prix, devise, disponibilité
-- ✅ AggregateRating avec note moyenne et nombre d'avis
-- ✅ Reviews individuelles (jusqu'à 5)
-- ✅ BreadcrumbList pour navigation
+- ✅ **ProductStructuredData** component voor elk product
+- ✅ Volledige informatie : naam, beschrijving, afbeeldingen, SKU, MPN
+- ✅ Merk schema
+- ✅ Aanbiedingen met prijs, valuta, beschikbaarheid
+- ✅ AggregateRating met gemiddelde score en aantal beoordelingen
+- ✅ Individuele beoordelingen (tot 5)
+- ✅ BreadcrumbList voor navigatie
 
-### CollectionPage Schema
-- ✅ **CategoryStructuredData** component pour chaque catégorie
-- ✅ ItemList avec produits de la catégorie
-- ✅ BreadcrumbList pour navigation
+### Collectiepagina Schema
+- ✅ **CategoryStructuredData** component voor elke categorie
+- ✅ ItemList met producten van de categorie
+- ✅ BreadcrumbList voor navigatie
 
-### Organization Schema
-- ✅ Informations complètes de l'entreprise
-- ✅ ContactPoint avec téléphone, email
-- ✅ Adresse postale
-- ✅ Réseaux sociaux (sameAs)
+### Organisatie Schema
+- ✅ Volledige bedrijfsinformatie
+- ✅ ContactPoint met telefoon, e-mail
+- ✅ Postadres
+- ✅ Sociale media (sameAs)
 
-### WebSite Schema
-- ✅ SearchAction pour recherche interne
-- ✅ URL template pour recherche
+### Website Schema
+- ✅ SearchAction voor interne zoekopdracht
+- ✅ URL-sjabloon voor zoekopdracht
 
-## ✅ Sitemap Amélioré
+## ✅ Verbeterde Sitemap
 
-- ✅ Toutes les pages statiques incluses
-- ✅ Toutes les catégories incluses
-- ✅ **Tous les produits inclus** (nouveau)
-- ✅ Priorités optimisées
-- ✅ ChangeFrequency appropriée
-- ✅ LastModified dynamique
+- ✅ Alle statische pagina's inbegrepen
+- ✅ Alle categorieën inbegrepen
+- ✅ **Alle producten inbegrepen** (nieuw)
+- ✅ Geoptimaliseerde prioriteiten
+- ✅ Passende ChangeFrequency
+- ✅ Dynamische LastModified
 
 ## ✅ Robots.txt
 
-- ✅ Configuration optimale
-- ✅ Exclusion des routes API et admin
-- ✅ Référence au sitemap
+- ✅ Geoptimaliseerde configuratie
+- ✅ Uitsluiting van API en admin routes
+- ✅ Verwijzing naar sitemap
 
-## ✅ Optimisations Techniques
+## ✅ Technische Optimalisaties
 
-### Images
-- ✅ Attributs `alt` descriptifs
-- ✅ Images responsives avec `sizes`
-- ✅ Lazy loading automatique
-- ✅ Priority pour images critiques
+### Afbeeldingen
+- ✅ Beschrijvende `alt` attributen
+- ✅ Responsive afbeeldingen met `sizes`
+- ✅ Automatische lazy loading
+- ✅ Prioriteit voor kritieke afbeeldingen
 
-### URLs
-- ✅ URLs canoniques sur toutes les pages
-- ✅ Structure URL claire et logique
-- ✅ Pas de contenu dupliqué
+### URL's
+- ✅ Canonieke URL's op alle pagina's
+- ✅ Duidelijke en logische URL-structuur
+- ✅ Geen gedupliceerde inhoud
 
-### Performance
-- ✅ Next.js Image optimization
-- ✅ Font optimization avec next/font
-- ✅ CSS optimisé avec Tailwind
+### Prestaties
+- ✅ Next.js Afbeelding optimalisatie
+- ✅ Font optimalisatie met next/font
+- ✅ Geoptimaliseerde CSS met Tailwind
 
-## 📊 Rich Snippets Disponibles
+## 📊 Beschikbare Rich Snippets
 
-Le site génère maintenant des rich snippets pour :
+De website genereert nu rich snippets voor:
 
-1. **Produits** : Prix, note, avis, disponibilité
-2. **Breadcrumbs** : Navigation hiérarchique
-3. **Organization** : Informations entreprise
-4. **CollectionPage** : Pages catégories
+1. **Producten** : Prijs, beoordeling, beoordelingen, beschikbaarheid
+2. **Broodkruimels** : Hiërarchische navigatie
+3. **Organisatie** : Bedrijfsinformatie
+4. **Collectiepagina** : Categoriepagina's
 
-## 🎯 Prochaines Étapes Recommandées
+## 🎯 Aanbevolen Volgende Stappen
 
 1. **Google Search Console**
-   - Soumettre le sitemap
-   - Vérifier l'indexation
-   - Surveiller les erreurs
+   - Sitemap indienen
+   - Controleer indexering
+   - Fouten monitoren
 
 2. **Google Analytics / Tag Manager**
-   - Ajouter le tracking
-   - Configurer les événements e-commerce
+   - Tracking toevoegen
+   - E-commerce gebeurtenissen configureren
 
 3. **PageSpeed Insights**
-   - Optimiser les Core Web Vitals
-   - Compresser les images
-   - Minimiser le JavaScript
+   - Core Web Vitals optimaliseren
+   - Afbeeldingen comprimeren
+   - JavaScript minimaliseren
 
-4. **Contenu**
-   - Ajouter plus de contenu unique par produit
-   - Créer un blog avec articles SEO
-   - Ajouter des FAQ structurées
+4. **Inhoud**
+   - Meer unieke inhoud per product toevoegen
+   - Een blog aanmaken met SEO artikelen
+   - Gestrucreerde FAQ's toevoegen
 
-5. **Liens Internes**
-   - Améliorer la structure de liens
-   - Ajouter des liens contextuels
-   - Créer un plan de site HTML
+5. **Interne Links**
+   - Linkstructuur verbeteren
+   - Contextuele links toevoegen
+   - Een HTML sitemap aanmaken
 
-6. **Internationalisation**
-   - Ajouter hreflang pour NL/EN
-   - Créer des versions multilingues
+6. **Internationalisatie**
+   - hreflang toevoegen voor NL/EN
+   - Meertalige versies aanmaken
 
-## 📝 Notes Importantes
+## 📝 Belangrijke Opmerkingen
 
-- Les métadonnées sont générées dynamiquement pour chaque produit et catégorie
-- Les données structurées sont injectées côté client pour les pages dynamiques
-- Le sitemap est généré automatiquement à chaque build
-- Tous les produits sont indexables dans le sitemap
+- De metagegevens worden dynamisch gegenereerd voor elk product en elke categorie
+- Gestrucreerde gegevens worden aan de clientzijde ingevoegd voor dynamische pagina's
+- De sitemap wordt automatisch gegenereerd bij elke build
+- Alle producten zijn indexeerbaar in de sitemap
 
-## 🔍 Vérification
+## 🔍 Verificatie
 
-Pour vérifier que tout fonctionne :
+Om te controleren of alles werkt:
 
 1. **Structured Data Testing Tool** : https://search.google.com/test/rich-results
 2. **Schema Markup Validator** : https://validator.schema.org/
-3. **Google Search Console** : Vérifier l'indexation
-4. **PageSpeed Insights** : Vérifier les performances
+3. **Google Search Console** : Controleer indexering
+4. **PageSpeed Insights** : Controleer prestaties
 
 
 

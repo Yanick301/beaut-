@@ -10,36 +10,36 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: 'Quels sont les délais de livraison ?',
-    answer: 'La livraison standard prend 2-3 jours ouvrés en Belgique. La livraison est gratuite dès €150 d\'achat, sinon les frais de livraison sont de €2,99. Nous livrons uniquement en Belgique.',
+    question: 'Wat zijn de leveringstermijnen?',
+    answer: 'De standaard levering duurt 2-3 werkdagen in België. De levering is gratis vanaf €150 bestelling, anders zijn de verzendkosten €2,99. We leveren enkel in België.',
   },
   {
-    question: 'Quels modes de paiement acceptez-vous ?',
-    answer: 'Nous acceptons les cartes bancaires (Visa, Mastercard, Bancontact), les virements bancaires et PayPal. Tous les paiements sont sécurisés et cryptés.',
+    question: 'Welke betalingsmethodes accepteert u?',
+    answer: 'We accepteren bankkaarten (Visa, Mastercard, Bancontact), overschrijvingen en PayPal. Alle betalingen zijn beveiligd en versleuteld.',
   },
   {
-    question: 'Puis-je retourner un produit ?',
-    answer: 'Oui, vous disposez de 30 jours après réception pour retourner un produit non ouvert et dans son emballage d\'origine. Les frais de retour sont à votre charge, sauf en cas de produit défectueux.',
+    question: 'Kan ik een product retourneren?',
+    answer: 'Ja, u heeft 30 dagen na ontvangst om een ongeopend product in originele verpakking terug te sturen. Retourkosten zijn voor uw rekening, tenzij het product defect is.',
   },
   {
-    question: 'Vos produits sont-ils testés sur les animaux ?',
-    answer: 'Non, absolument pas. Tous nos produits sont cruelty-free et nous nous engageons à ne jamais tester sur les animaux.',
+    question: 'Worden uw producten getest op dieren?',
+    answer: 'Nee, absoluut niet. Al onze producten zijn cruelty-free en wij zorgen ervoor dat er nooit op dieren wordt getest.',
   },
   {
-    question: 'Les produits sont-ils adaptés à tous les types de peau ?',
-    answer: 'Chaque produit indique les types de peau recommandés dans sa description. Nous proposons une large gamme adaptée aux peaux sensibles, sèches, mixtes et grasses. N\'hésitez pas à nous contacter pour des conseils personnalisés.',
+    question: 'Zijn de producten geschikt voor alle huidtypes?',
+    answer: 'Elk product geeft de aanbevolen huidtypes aan in de beschrijving. We bieden een breed scala aan dat geschikt is voor gevoelige, droge, meng- en oliehuid. Aarzel niet om contact met ons op te nemen voor persoonlijk advies.',
   },
   {
-    question: 'Comment puis-je suivre ma commande ?',
-    answer: 'Une fois votre commande expédiée, vous recevrez un email avec un numéro de suivi et un lien pour suivre votre colis en temps réel.',
+    question: 'Hoe kan ik mijn bestelling volgen?',
+    answer: 'Zodra uw bestelling verzonden is, ontvangt u een e-mail met een track & trace nummer en een link om uw pakket in real-time te volgen.',
   },
   {
-    question: 'Proposez-vous des échantillons ?',
-    answer: 'Oui, certains produits incluent des échantillons dans votre commande. Vous pouvez également les ajouter lors du passage en caisse si disponibles.',
+    question: 'Biedt u monsters aan?',
+    answer: 'Ja, sommige producten bevatten monsters in uw bestelling. U kunt deze ook toevoegen bij het afrekenen indien beschikbaar.',
   },
   {
     question: 'Que faire en cas de problème avec ma commande ?',
-    answer: 'Contactez-nous immédiatement à contact@essencefeminine.be. Notre équipe se chargera de résoudre le problème rapidement et vous répondra sous 24h ouvrées.',
+    answer: 'Neem onmiddellijk contact met ons op via contact@heressence.nl. Ons team lost het probleem snel op en reageert binnen 24 werkdagen.'
   },
 ];
 
@@ -50,10 +50,10 @@ export default function FAQPage() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-4xl">
         <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-4 text-center">
-          Questions Fréquentes
+          Veelgestelde Vragen
         </h1>
         <p className="text-lg text-brown-soft text-center mb-12 max-w-2xl mx-auto">
-          Trouvez rapidement les réponses à vos questions les plus courantes
+          Vind snel antwoord op uw meest gestelde vragen
         </p>
 
         <div className="space-y-4">
@@ -86,13 +86,13 @@ export default function FAQPage() {
 
         <div className="mt-12 bg-gradient-to-r from-rose-powder to-beige rounded-2xl p-8 text-center">
           <h2 className="font-elegant text-2xl text-brown-dark mb-4">
-            Vous ne trouvez pas votre réponse ?
+            Vindt u uw antwoord niet?
           </h2>
           <p className="text-brown-soft mb-6">
-            Notre équipe est là pour vous aider
+            Ons team staat klaar om u te helpen
           </p>
           <a href="/contact" className="btn-primary">
-            Contactez-nous
+            Neem contact met ons op
           </a>
         </div>
       </div>

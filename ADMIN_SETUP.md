@@ -1,128 +1,128 @@
-# Configuration du Dashboard Admin
+# Configuratie van het Admin Dashboard
 
-## 📋 Prérequis
+## 📋 Vereisten
 
-1. Avoir Supabase configuré et fonctionnel
-2. Avoir au moins un compte utilisateur créé
-3. Exécuter le script SQL pour ajouter le support admin
+1. Supabase geconfigureerd en functioneel hebben
+2. Minstens één gebruikersaccount aangemaakt hebben
+3. SQL-script uitvoeren om admin-functionaliteit toe te voegen
 
-## 🔧 Configuration
+## 🔧 Configuratie
 
-### 1. Variables d'environnement
+### 1. Omgevingsvariabelen
 
-Ajoutez dans votre fichier `.env.local` :
+Voeg toe aan uw `.env.local` bestand:
 
 ```env
-# Liste des emails admin (séparés par des virgules)
+# Lijst van admin e-mails (gescheiden door komma's)
 ADMIN_EMAILS=admin@example.com,admin2@example.com
 ```
 
-**Important** : Remplacez `admin@example.com` par votre vraie adresse email d'administrateur.
+**Belangrijk** : Vervang `admin@example.com` door uw echte admin e-mailadres.
 
-### 2. Base de données
+### 2. Database
 
-Exécutez le script SQL dans l'éditeur SQL de Supabase :
+Voer het SQL-script uit in de SQL-editor van Supabase:
 
 ```sql
--- Ajouter la colonne is_admin
+-- Kolom is_admin toevoegen
 ALTER TABLE public.profiles 
 ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT false;
 
--- Créer un index
+-- Index aanmaken
 CREATE INDEX IF NOT EXISTS idx_profiles_is_admin ON public.profiles(is_admin);
 ```
 
-### 3. Définir un utilisateur comme admin
+### 3. Een gebruiker als admin instellen
 
-Deux méthodes :
+Twee methodes:
 
-#### Méthode 1 : Via l'email (recommandé pour commencer)
+#### Methode 1 : Via e-mail (aanbevolen om mee te beginnen)
 
-Ajoutez simplement l'email de l'utilisateur dans `ADMIN_EMAILS` dans `.env.local`. Cette méthode ne nécessite pas de modifier la base de données.
+Voeg eenvoudig het e-mailadres van de gebruiker toe aan `ADMIN_EMAILS` in `.env.local`. Deze methode vereist geen aanpassing van de database.
 
-#### Méthode 2 : Via la base de données
+#### Methode 2 : Via de database
 
 ```sql
--- Remplacer 'admin@example.com' par l'email de l'admin
+-- Vervang 'admin@example.com' door het e-mailadres van de admin
 UPDATE public.profiles 
 SET is_admin = true 
 WHERE id = (SELECT id FROM auth.users WHERE email = 'admin@example.com');
 ```
 
-## 🔐 Système d'authentification Admin
+## 🔐 Admin authenticatiesysteem
 
-Le système admin utilise deux mécanismes :
+Het admin systeem gebruikt twee mechanismen:
 
-1. **Liste d'emails** : Les emails définis dans `ADMIN_EMAILS` ont automatiquement accès
-2. **Colonne is_admin** : Les utilisateurs avec `is_admin = true` dans leur profil ont aussi accès
+1. **Emaillijst** : E-mails gedefinieerd in `ADMIN_EMAILS` hebben automatisch toegang
+2. **Kolom is_admin** : Gebruikers met `is_admin = true` in hun profiel hebben ook toegang
 
-Les deux méthodes fonctionnent indépendamment ou ensemble.
+Beide methodes werken onafhankelijk of samen.
 
-## 📍 Accès au Dashboard
+## 📍 Toegang tot het Dashboard
 
-Une fois configuré, accédez au dashboard via :
-- URL : `http://localhost:3000/admin` (développement)
-- URL : `https://votre-domaine.com/admin` (production)
+Eenmaal geconfigureerd, kunt u toegang krijgen tot het dashboard via:
+- URL : `http://localhost:3000/admin` (ontwikkeling)
+- URL : `https://votre-domaine.com/admin` (productie)
 
-**Étapes pour accéder :**
-1. Connectez-vous avec le compte admin sur `/connexion`
-2. Allez sur `/admin`
-3. Si vous n'êtes pas connecté, vous serez automatiquement redirigé vers la page de connexion
+**Stappen voor toegang:**
+1. Log in met het admin account op `/connexion`
+2. Ga naar `/admin`
+3. Als u niet bent ingelogd, wordt u automatisch doorgestuurd naar de inlogpagina
 
-**Voir le guide complet** : `GUIDE_ADMIN.md` pour des instructions détaillées.
+**Zie de volledige gids** : `GUIDE_ADMIN.md` voor gedetailleerde instructies.
 
-## ✨ Fonctionnalités du Dashboard
+## ✨ Functionaliteiten van het Dashboard
 
-### Statistiques
-- Nombre total de commandes
-- Commandes par statut (en attente, en traitement, expédiées, livrées, annulées)
-- Chiffre d'affaires total
+### Statistieken
+- Totaal aantal bestellingen
+- Bestellingen per status (in behandeling, in verwerking, verzonden, geleverd, geannuleerd)
+- Totale omzet
 
-### Filtres
-- Filtrer les commandes par statut
-- Voir toutes les commandes ou un statut spécifique
+### Filters
+- Bestellingen filteren op status
+- Alle bestellingen of een specifieke status bekijken
 
-### Gestion des commandes
-- **Confirmer** : Passe une commande "en attente" à "en traitement"
-- **Rejeter** : Passe une commande à "annulée"
-- **Marquer comme expédiée** : Passe de "en traitement" à "expédiée"
-- **Marquer comme livrée** : Passe de "expédiée" à "livrée"
-- **Annuler** : Permet d'annuler une commande à n'importe quel moment (sauf si déjà livrée)
+### Bestellingbeheer
+- **Bevestigen** : Zet een bestelling van "in behandeling" naar "in verwerking"
+- **Afwijzen** : Zet een bestelling naar "geannuleerd"
+- **Markeren als verzonden** : Verandert van "in verwerking" naar "verzonden"
+- **Markeren als geleverd** : Verandert van "verzonden" naar "geleverd"
+- **Annuleren** : Maakt het mogelijk een bestelling op elk moment te annuleren (behalve als deze al is geleverd)
 
-### Informations affichées
-- Numéro de commande
-- Statut de la commande
-- Informations client (nom, email)
-- Date de commande
-- Total de la commande
-- Adresse de livraison
-- Liste détaillée des articles avec quantités et prix
+### Weergegeven informatie
+- Bestelnummer
+- Bestelstatus
+- Klantinformatie (naam, e-mail)
+- Besteldatum
+- Totaalbestelling
+- Bezorgadres
+- Gedetailleerde lijst van artikelen met hoeveelheden en prijzen
 
-## 🔒 Sécurité
+## 🔒 Beveiliging
 
-- L'authentification est vérifiée sur chaque requête API
-- Seuls les utilisateurs avec les droits admin peuvent accéder
-- Les routes API `/api/admin/*` vérifient les permissions
-- Le middleware redirige vers la connexion si non authentifié
+- Authenticatie wordt gecontroleerd bij elk API-verzoek
+- Alleen gebruikers met adminrechten hebben toegang
+- API-routes `/api/admin/*` controleren de rechten
+- De middleware stuurt door naar login als niet geauthenticeerd
 
-## 📝 Statuts des commandes
+## 📝 Bestelstatussen
 
-Les statuts possibles sont :
-- `pending` : En attente (nouvelle commande)
-- `processing` : En traitement (confirmée par l'admin)
-- `shipped` : Expédiée (en cours de livraison)
-- `delivered` : Livrée (commande complétée)
-- `cancelled` : Annulée (rejetée ou annulée)
+Mogelijke statussen zijn:
+- `pending` : In behandeling (nieuwe bestelling)
+- `processing` : In verwerking (bevestigd door admin)
+- `shipped` : Verzonden (onderweg)
+- `delivered` : Geleverd (bestelling voltooid)
+- `cancelled` : Geannuleerd (afgewezen of geannuleerd)
 
-## 🚀 Prochaines améliorations possibles
+## 🚀 Mogelijke toekomstige verbeteringen
 
-- Export des commandes en CSV/Excel
-- Recherche de commandes par numéro ou client
-- Filtrage par date
-- Notifications en temps réel des nouvelles commandes
-- Interface pour gérer les produits
-- Gestion des stocks
-- Rapports et analytics avancés
+- Exporteren van bestellingen naar CSV/Excel
+- Zoeken van bestellingen op nummer of klant
+- Filteren op datum
+- Realtime meldingen van nieuwe bestellingen
+- Interface om producten te beheren
+- Voorraadbeheer
+- Geavanceerde rapporten en analytics
 
 
 

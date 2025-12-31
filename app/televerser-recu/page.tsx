@@ -26,7 +26,7 @@ function UploadReceiptContent() {
   useEffect(() => {
     async function loadOrder() {
       if (!orderId) {
-        setError('Numéro de commande manquant');
+        setError('Bestelnummer ontbreekt');
         setLoading(false);
         return;
       }
@@ -50,7 +50,7 @@ function UploadReceiptContent() {
 
         if (error) throw error;
         if (!data) {
-          setError('Commande non trouvée');
+          setError('Bestelling niet gevonden');
           setLoading(false);
           return;
         }
@@ -58,7 +58,7 @@ function UploadReceiptContent() {
         setOrder(data);
       } catch (err: any) {
         console.error('Error loading order:', err);
-        setError('Erreur lors du chargement de la commande');
+        setError('Fout bij laden van bestelling');
       } finally {
         setLoading(false);
       }
@@ -74,13 +74,13 @@ function UploadReceiptContent() {
     // Vérifier le type de fichier
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf'];
     if (!validTypes.includes(selectedFile.type)) {
-      setError('Format de fichier non supporté. Veuillez téléverser une image (JPG, PNG, WEBP) ou un PDF.');
+      setError('Niet-ondersteunde bestandsindeling. Upload een afbeelding (JPG, PNG, WEBP) of een PDF.');
       return;
     }
 
     // Vérifier la taille (max 5MB)
     if (selectedFile.size > 5 * 1024 * 1024) {
-      setError('Le fichier est trop volumineux. Taille maximale : 5MB');
+      setError('Het bestand is te groot. Maximale grootte: 5MB');
       return;
     }
 
@@ -101,7 +101,7 @@ function UploadReceiptContent() {
 
   const handleUpload = async () => {
     if (!file || !orderId) {
-      setError('Veuillez sélectionner un fichier');
+      setError('Selecteer een bestand');
       return;
     }
 
@@ -146,7 +146,7 @@ function UploadReceiptContent() {
       const fileBase64 = await new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
         reader.onloadend = () => {
-          const base64String = (reader.result as string).split(',')[1]; // Enlever le préfixe data:...
+          const base64String = (reader.result as string).split(',')[1]; // Verwijder het data:-voorvoegsel...
           resolve(base64String);
         };
         reader.onerror = reject;
@@ -176,9 +176,9 @@ function UploadReceiptContent() {
         const data = await response.json();
         console.error('Error sending email to admin:', data);
         console.error('Response status:', response.status);
-        // Ne pas bloquer si l'email échoue, le reçu est déjà uploadé
-        // Mais afficher un avertissement
-        alert('Reçu téléversé avec succès, mais l\'email à l\'admin n\'a pas pu être envoyé. Veuillez vérifier la configuration Resend.');
+        // Niet blokkeren als e-mail mislukt, ontvangst is al geüpload
+        // Maar toon wel een waarschuwing
+        alert('Ontvangst succesvol geüpload, maar de e-mail naar de beheerder kon niet worden verzonden. Controleer de Resend-configuratie.');
       } else {
         console.log('Email sent successfully to admin');
       }
@@ -194,7 +194,7 @@ function UploadReceiptContent() {
       }, 3000);
     } catch (err: any) {
       console.error('Upload error:', err);
-      setError(err.message || 'Erreur lors du téléversement du reçu');
+      setError(err.message || 'Fout bij uploaden van ontvangst');
       setUploading(false);
     }
   };
@@ -220,7 +220,7 @@ function UploadReceiptContent() {
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
             <p className="text-red-700">{error}</p>
             <Link href="/compte" className="btn-primary mt-4 inline-block">
-              Retour à mon compte
+              Terug naar mijn account
             </Link>
           </div>
         </div>
@@ -247,7 +247,7 @@ function UploadReceiptContent() {
             </p>
             {orderNumber && (
               <p className="text-sm text-brown-soft mb-8">
-                Numéro de commande : <span className="font-semibold text-brown-dark">{orderNumber}</span>
+                Bestelnummer : <span className="font-semibold text-brown-dark">{orderNumber}</span>
               </p>
             )}
             <p className="text-sm text-brown-soft mb-8">
@@ -294,7 +294,7 @@ function UploadReceiptContent() {
               
               {orderNumber && (
                 <div className="mb-4 pb-4 border-b border-nude">
-                  <p className="text-sm text-brown-soft">Numéro de commande</p>
+                  <p className="text-sm text-brown-soft">Bestelnummer</p>
                   <p className="text-lg font-semibold text-brown-dark">{orderNumber}</p>
                 </div>
               )}
@@ -383,7 +383,7 @@ function UploadReceiptContent() {
                       <button
                         onClick={removeFile}
                         className="p-2 text-red-600 hover:bg-red-50 rounded-full transition"
-                        aria-label="Supprimer le fichier"
+                        aria-label="Bestand verwijderen"
                       >
                         <FiX className="w-5 h-5" />
                       </button>
@@ -391,7 +391,7 @@ function UploadReceiptContent() {
 
                     {preview && (
                       <div className="mt-4">
-                        <p className="text-sm font-semibold text-brown-dark mb-2">Aperçu :</p>
+                        <p className="text-sm font-semibold text-brown-dark mb-2">Voorbeeld :</p>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={preview}
@@ -410,7 +410,7 @@ function UploadReceiptContent() {
                     {uploading ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Téléversement en cours...
+                        Uploaden bezig...
                       </>
                     ) : (
                       <>

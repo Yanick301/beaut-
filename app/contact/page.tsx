@@ -25,7 +25,7 @@ export default function ContactPage() {
           Contacteer ons
         </h1>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
             <div className="bg-white-cream rounded-2xl p-8 shadow-md mb-8">
@@ -37,8 +37,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-brown-dark mb-1">Email</h3>
-                    <a href="mailto:contact@essencefeminine.be" className="text-brown-soft hover:text-rose-soft transition">
-                      contact@essencefeminine.be
+                    <a href="mailto:contact@heressence.nl" className="text-brown-soft hover:text-rose-soft transition">
+                      contact@heressence.nl
                     </a>
                     <p className="text-sm text-brown-soft/80 mt-1">Reactie binnen 24 werkdagen</p>
                   </div>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                     <p className="text-brown-soft">
                       Essence Féminine S.P.R.L.<br />
                       Avenue Louise 123<br />
-                      1050 Bruxelles, Belgique
+                      1012 Amsterdam, Pays-Bas
                     </p>
                   </div>
                 </div>

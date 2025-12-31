@@ -13,7 +13,7 @@ export default function CategoryStructuredData({ slug }: CategoryStructuredDataP
     if (!category) return;
 
     const categoryProducts = products.filter(p => p.category === slug);
-    const baseUrl = 'https://essencefeminine.nl';
+    const baseUrl = 'https://heressence.nl';
 
     const collectionPageSchema = {
       '@context': 'https://schema.org',

@@ -14,22 +14,22 @@ export default function StructuredData({ type = 'Organization', data }: Structur
         return {
           '@context': 'https://schema.org',
           '@type': 'Organization',
-          name: 'Essence Féminine',
-          url: 'https://essencefeminine.be',
-          logo: 'https://essencefeminine.be/logo.png',
-          description: 'E-commerce de produits de beauté premium pour femmes en Belgique',
+          name: 'Her Essence',
+          url: 'https://heressence.nl',
+          logo: 'https://heressence.nl/logo.png',
+          description: 'E-commerce van premium schoonheidsproducten voor vrouwen in Nederland',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Avenue Louise 123',
-            addressLocality: 'Bruxelles',
-            postalCode: '1050',
-            addressCountry: 'BE',
+            streetAddress: 'Koninginneweg 123',
+            addressLocality: 'Amsterdam',
+            postalCode: '1011',
+            addressCountry: 'NL',
           },
           contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'customer service',
-            email: 'contact@essencefeminine.be',
-            availableLanguage: ['French', 'Dutch', 'English'],
+            email: 'contact@heressence.nl',
+            availableLanguage: ['Dutch', 'English', 'French'],
           },
         };
       case 'Product':

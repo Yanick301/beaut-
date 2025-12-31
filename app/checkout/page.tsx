@@ -140,7 +140,7 @@ export default function CheckoutPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Contact Information */}
@@ -265,7 +265,7 @@ export default function CheckoutPage() {
                   <p className="text-sm font-semibold text-brown-soft mb-2">Rekeninghouder :</p>
                   <p className="text-lg font-semibold text-brown-dark">Emiliano maccioni</p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">IBAN :</p>
                     <p className="text-lg font-mono text-brown-dark">NL56 BUNQ 2179 0816 50</p>

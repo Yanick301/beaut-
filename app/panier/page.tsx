@@ -65,16 +65,25 @@ export default function CartPage() {
       <div className="container-custom">
         <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6 sm:mb-8">Mijn winkelwagen</h1>
 
-        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-3 sm:space-y-4">
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white-cream rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-md flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6"
-              >
-                {/* Image */}
-                <div className="relative w-full sm:w-20 md:w-24 lg:w-32 h-24 sm:h-20 md:h-24 lg:h-32 bg-beige rounded-lg overflow-hidden flex-shrink-0">
+                className="bg-white-cream rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-md flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6">
+                {/* Mobile layout - Image at top */}
+                <div className="sm:hidden relative w-full h-32 bg-beige rounded-lg overflow-hidden flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                  />
+                </div>
+                {/* Image - Hidden on mobile since we show it at the top */}
+                <div className="relative w-full sm:w-20 md:w-24 lg:w-32 h-24 sm:h-20 md:h-24 lg:h-32 bg-beige rounded-lg overflow-hidden flex-shrink-0 hidden sm:block">
                   <Image
                     src={item.image}
                     alt={item.name}
@@ -94,7 +103,7 @@ export default function CartPage() {
                       )}
                     </h3>
                   </Link>
-                  <p className="text-brown-soft text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-2 hidden sm:block">
+                  <p className="text-brown-soft text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-2">
                     {item.description}
                   </p>
                   <div className="flex items-center justify-between sm:justify-start sm:gap-4 mb-2 sm:mb-0">

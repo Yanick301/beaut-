@@ -6,7 +6,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 /**
- * Vérifie si l'utilisateur est admin
+ * Controleert of gebruiker admin is
  */
 async function isAdmin(userId: string, userEmail?: string): Promise<boolean> {
   const adminEmailsStr = process.env.ADMIN_EMAILS || '';
@@ -30,7 +30,7 @@ async function isAdmin(userId: string, userEmail?: string): Promise<boolean> {
 }
 
 /**
- * GET - Rejette une commande depuis le lien dans l'email
+ * GET - Keurt een bestelling af via de link in de e-mail
  */
 export async function GET(
   request: NextRequest,
@@ -40,21 +40,21 @@ export async function GET(
     const { orderId } = await params;
     const supabase = await createClient();
 
-    // Vérifier l'authentification et les droits admin
+    // Controleer authenticatie en admin rechten
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
-      // Rediriger vers la connexion avec un redirect vers cette page
+      // Redirect naar login met redirect naar deze pagina
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
       const currentUrl = `${baseUrl}/api/admin/orders/${orderId}/reject`;
       return NextResponse.redirect(`${baseUrl}/connexion?redirect=${encodeURIComponent(currentUrl)}`);
     }
 
-    // Vérifier les droits admin
+    // Controleer admin rechten
     const userIsAdmin = await isAdmin(user.id, user.email);
     if (!userIsAdmin) {
       return NextResponse.json(
-        { error: 'Accès refusé. Droits administrateur requis.' },
+        { error: 'Toegang geweigerd. Administrator rechten vereist.' },
         { status: 403 }
       );
     }
@@ -63,11 +63,11 @@ export async function GET(
     const adminSupabase = createAdminClient();
     
     const searchParams = request.nextUrl.searchParams;
-    const reason = searchParams.get('reason') || 'Reçu de virement non valide ou montant incorrect';
+    const reason = searchParams.get('reason') || 'Overschrijvingsbewijs ongeldig of verkeerd bedrag';
 
     console.log('GET REJECT: Looking for order with ID:', orderId);
     
-    // Récupérer la commande
+    // Haal de bestelling op
     const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*')
@@ -77,7 +77,7 @@ export async function GET(
     if (orderError) {
       console.error('GET REJECT: Error fetching order:', orderError);
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération de la commande', details: orderError.message },
+        { error: 'Fout bij het ophalen van de bestelling', details: orderError.message },
         { status: 500 }
       );
     }
@@ -85,14 +85,14 @@ export async function GET(
     if (!order) {
       console.error('GET REJECT: Order not found with ID:', orderId);
       return NextResponse.json(
-        { error: 'Commande non trouvée', orderId },
+        { error: 'Bestelling niet gevonden', orderId },
         { status: 404 }
       );
     }
     
     console.log('GET REJECT: Order found:', order.order_number);
 
-    // Mettre à jour le statut de la commande
+    // Werk de status van de bestelling bij
     console.log('Updating order:', orderId, 'to cancelled');
     const { error: updateError } = await adminSupabase
       .from('orders')
@@ -108,10 +108,10 @@ export async function GET(
       console.error('Update error details:', JSON.stringify(updateError, null, 2));
       return NextResponse.json(
         { 
-          error: 'Erreur lors de la mise à jour de la commande',
+          error: 'Fout bij het bijwerken van de bestelling',
           details: updateError.message,
           code: updateError.code,
-          hint: updateError.code === '42501' ? 'Vérifiez que la politique RLS "Admins can update all orders" est créée dans Supabase. Exécutez le script admin_rls_policies.sql' : updateError.message
+          hint: updateError.code === '42501' ? 'Controleer of het RLS-beleid "Admins can update all orders" is aangemaakt in Supabase. Voer het script admin_rls_policies.sql uit' : updateError.message
         },
         { status: 500 }
       );
@@ -119,17 +119,17 @@ export async function GET(
     
     console.log('Order updated successfully');
 
-    // Récupérer l'email du client depuis shipping_address
+    // Haal de klant e-mail op uit shipping_address
     const customerEmail = order.shipping_address?.email || null;
-    const customerName = order.shipping_address?.firstName || 'Cher client';
+    const customerName = order.shipping_address?.firstName || 'Geachte klant';
 
-    // Envoyer un email au client
+    // Verzend e-mail naar de klant
     if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
           to: customerEmail,
-          subject: `Commande ${order.order_number} - Problème de paiement`,
+          subject: `Bestelling ${order.order_number} - Betalingsprobleem`,
           html: `
             <!DOCTYPE html>
             <html>
@@ -147,20 +147,20 @@ export async function GET(
             <body>
               <div class="container">
                 <div class="header">
-                  <h1>Problème avec votre commande</h1>
+                  <h1>Probleem met uw bestelling</h1>
                 </div>
                 <div class="content">
                   <div class="warning-box">
-                    <h2 style="margin-top: 0; color: #92400e;">Attention</h2>
-                    <p style="margin-bottom: 0; color: #78350f;">Votre reçu de virement n'a pas pu être validé.</p>
+                    <h2 style="margin-top: 0; color: #92400e;">Let op</h2>
+                    <p style="margin-bottom: 0; color: #78350f;">Uw overschrijvingsbewijs kon niet worden gevalideerd.</p>
                   </div>
-                  <p>Bonjour ${customerName},</p>
-                  <p>Nous avons examiné le reçu de virement que vous avez téléversé pour la commande <strong>${order.order_number}</strong>.</p>
-                  <p><strong>Raison du rejet :</strong> ${reason}</p>
-                  <p>Veuillez nous contacter à <a href="mailto:contact@essencefeminine.nl" style="color: #d4a574; text-decoration: underline;">contact@essencefeminine.nl</a> si vous pensez qu'il s'agit d'une erreur.</p>
-                  <p>Vous pouvez également téléverser un nouveau reçu depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
-                  <p>Merci de votre compréhension.</p>
-                  <p>L'équipe Her Essence</p>
+                  <p>Beste ${customerName},</p>
+                  <p>Wij hebben het overschrijvingsbewijs bekeken dat u heeft geüpload voor bestelling <strong>${order.order_number}</strong>.</p>
+                  <p><strong>Reden van afwijzing :</strong> ${reason}</p>
+                  <p>Neem contact met ons op via <a href="mailto:contact@heressence.nl" style="color: #d4a574; text-decoration: underline;">contact@heressence.nl</a> als u denkt dat dit een fout is.</p>
+                  <p>U kunt ook een nieuw bewijs uploaden via uw <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">mijn account</a>.</p>
+                  <p>Bedankt voor uw begrip.</p>
+                  <p>Het Her Essence team</p>
                 </div>
               </div>
             </body>
@@ -172,20 +172,20 @@ export async function GET(
       }
     }
 
-    // Rediriger vers le dashboard admin
+    // Redirect naar het admin dashboard
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     return NextResponse.redirect(`${baseUrl}/admin?rejected=${orderId}`);
   } catch (error: any) {
     console.error('Unexpected error:', error);
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue' },
+      { error: 'Er is een onverwachte fout opgetreden' },
       { status: 500 }
     );
   }
 }
 
 /**
- * POST - Rejette une commande depuis le dashboard admin
+ * POST - Keurt een bestelling af via het admin dashboard
  */
 export async function POST(
   request: NextRequest,
@@ -195,7 +195,7 @@ export async function POST(
     const { orderId } = await params;
     const supabase = await createClient();
 
-    // Vérifier l'authentification
+    // Controleer authenticatie
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -205,11 +205,11 @@ export async function POST(
       );
     }
 
-    // Vérifier les droits admin
+    // Controleer admin rechten
     const userIsAdmin = await isAdmin(user.id, user.email);
     if (!userIsAdmin) {
       return NextResponse.json(
-        { error: 'Accès refusé. Droits administrateur requis.' },
+        { error: 'Toegang geweigerd. Administrator rechten vereist.' },
         { status: 403 }
       );
     }
@@ -218,11 +218,11 @@ export async function POST(
     const adminSupabase = createAdminClient();
     
     const body = await request.json();
-    const reason = body.reason || 'Reçu de virement non valide ou montant incorrect';
+    const reason = body.reason || 'Overschrijvingsbewijs ongeldig of verkeerd bedrag';
 
     console.log('POST REJECT: Looking for order with ID:', orderId);
     
-    // Récupérer la commande
+    // Haal de bestelling op
     const { data: order, error: orderError } = await adminSupabase
       .from('orders')
       .select('*')
@@ -232,7 +232,7 @@ export async function POST(
     if (orderError) {
       console.error('POST REJECT: Error fetching order:', orderError);
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération de la commande', details: orderError.message },
+        { error: 'Fout bij het ophalen van de bestelling', details: orderError.message },
         { status: 500 }
       );
     }
@@ -240,14 +240,14 @@ export async function POST(
     if (!order) {
       console.error('POST REJECT: Order not found with ID:', orderId);
       return NextResponse.json(
-        { error: 'Commande non trouvée', orderId },
+        { error: 'Bestelling niet gevonden', orderId },
         { status: 404 }
       );
     }
     
     console.log('POST REJECT: Order found:', order.order_number);
 
-    // Mettre à jour le statut de la commande
+    // Werk de status van de bestelling bij
     console.log('Updating order:', orderId, 'to cancelled');
     const { error: updateError } = await adminSupabase
       .from('orders')
@@ -263,10 +263,10 @@ export async function POST(
       console.error('Update error details:', JSON.stringify(updateError, null, 2));
       return NextResponse.json(
         { 
-          error: 'Erreur lors de la mise à jour de la commande',
+          error: 'Fout bij het bijwerken van de bestelling',
           details: updateError.message,
           code: updateError.code,
-          hint: updateError.code === '42501' ? 'Vérifiez que la politique RLS "Admins can update all orders" est créée dans Supabase. Exécutez le script admin_rls_policies.sql' : updateError.message
+          hint: updateError.code === '42501' ? 'Controleer of het RLS-beleid "Admins can update all orders" is aangemaakt in Supabase. Voer het script admin_rls_policies.sql uit' : updateError.message
         },
         { status: 500 }
       );
@@ -274,17 +274,17 @@ export async function POST(
     
     console.log('Order updated successfully');
 
-    // Récupérer l'email du client depuis shipping_address
+    // Haal de klant e-mail op uit shipping_address
     const customerEmail = order.shipping_address?.email || null;
-    const customerName = order.shipping_address?.firstName || 'Cher client';
+    const customerName = order.shipping_address?.firstName || 'Geachte klant';
 
-    // Envoyer un email au client
+    // Verzend e-mail naar de klant
     if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
           to: customerEmail,
-          subject: `Commande ${order.order_number} - Problème de paiement`,
+          subject: `Bestelling ${order.order_number} - Betalingsprobleem`,
           html: `
             <!DOCTYPE html>
             <html>
@@ -302,20 +302,20 @@ export async function POST(
             <body>
               <div class="container">
                 <div class="header">
-                  <h1>Problème avec votre commande</h1>
+                  <h1>Probleem met uw bestelling</h1>
                 </div>
                 <div class="content">
                   <div class="warning-box">
-                    <h2 style="margin-top: 0; color: #92400e;">Attention</h2>
-                    <p style="margin-bottom: 0; color: #78350f;">Votre reçu de virement n'a pas pu être validé.</p>
+                    <h2 style="margin-top: 0; color: #92400e;">Let op</h2>
+                    <p style="margin-bottom: 0; color: #78350f;">Uw overschrijvingsbewijs kon niet worden gevalideerd.</p>
                   </div>
-                  <p>Bonjour ${customerName},</p>
-                  <p>Nous avons examiné le reçu de virement que vous avez téléversé pour la commande <strong>${order.order_number}</strong>.</p>
-                  <p><strong>Raison du rejet :</strong> ${reason}</p>
-                  <p>Veuillez nous contacter à <a href="mailto:contact@essencefeminine.nl" style="color: #d4a574; text-decoration: underline;">contact@essencefeminine.nl</a> si vous pensez qu'il s'agit d'une erreur.</p>
-                  <p>Vous pouvez également téléverser un nouveau reçu depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
-                  <p>Merci de votre compréhension.</p>
-                  <p>L'équipe Her Essence</p>
+                  <p>Beste ${customerName},</p>
+                  <p>Wij hebben het overschrijvingsbewijs bekeken dat u heeft geüpload voor bestelling <strong>${order.order_number}</strong>.</p>
+                  <p><strong>Reden van afwijzing :</strong> ${reason}</p>
+                  <p>Neem contact met ons op via <a href="mailto:contact@heressence.nl" style="color: #d4a574; text-decoration: underline;">contact@heressence.nl</a> als u denkt dat dit een fout is.</p>
+                  <p>U kunt ook een nieuw bewijs uploaden via uw <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">mijn account</a>.</p>
+                  <p>Bedankt voor uw begrip.</p>
+                  <p>Het Her Essence team</p>
                 </div>
               </div>
             </body>
@@ -334,7 +334,7 @@ export async function POST(
   } catch (error: any) {
     console.error('Unexpected error:', error);
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue' },
+      { error: 'Er is een onverwachte fout opgetreden' },
       { status: 500 }
     );
   }
