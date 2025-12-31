@@ -47,16 +47,16 @@ export default function Footer() {
                 <Link href="/faq" className="hover:text-gold transition-colors duration-200 inline-block">FAQ</Link>
               </li>
               <li>
-                <Link href="/verzending-retour" className="hover:text-gold transition-colors duration-200 inline-block">Verzending & Retour</Link>
+                <Link href="/livraison-retours" className="hover:text-gold transition-colors duration-200 inline-block">Verzending & Retour</Link>
               </li>
               <li>
-                <Link href="/algemene-voorwaarden" className="hover:text-gold transition-colors duration-200 inline-block">Algemene voorwaarden</Link>
+                <Link href="/cgv" className="hover:text-gold transition-colors duration-200 inline-block">Algemene voorwaarden</Link>
               </li>
               <li>
-                <Link href="/privacybeleid" className="hover:text-gold transition-colors duration-200 inline-block">Privacybeleid</Link>
+                <Link href="/confidentialite" className="hover:text-gold transition-colors duration-200 inline-block">Privacybeleid</Link>
               </li>
               <li>
-                <Link href="/juridische-informatie" className="hover:text-gold transition-colors duration-200 inline-block">Juridische informatie</Link>
+                <Link href="/mentions-legales" className="hover:text-gold transition-colors duration-200 inline-block">Juridische informatie</Link>
               </li>
             </ul>
           </div>

@@ -1,25 +1,30 @@
 'use client';
 
 import { useState, useMemo, useEffect, Suspense } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import { products, categories } from '@/lib/data';
-import { FiFilter, FiX } from 'react-icons/fi';
+import { FiFilter, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import CategoryStructuredData from './CategoryStructuredData';
 
 function CategoryPageContent() {
   const params = useParams();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const slug = params.slug as string;
   const category = categories.find(c => c.slug === slug);
   const categoryProducts = products.filter(p => p.category === slug);
   const subCategoryParam = searchParams.get('subCategory');
-
+  const pageParam = searchParams.get('page');
+  
   const [showFilters, setShowFilters] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 200]);
   const [selectedBrand, setSelectedBrand] = useState<string>('');
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>(subCategoryParam || '');
   const [sortBy, setSortBy] = useState<string>('popular');
+  const [currentPage, setCurrentPage] = useState<number>(parseInt(pageParam || '1', 10));
+  
+  const productsPerPage = 10;
 
   // Werk de geselecteerde subcategorie bij wanneer de URL-parameter verandert
   useEffect(() => {
@@ -68,6 +73,11 @@ function CategoryPageContent() {
 
     return filtered;
   }, [categoryProducts, priceRange, selectedBrand, selectedSubCategory, sortBy]);
+  
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const paginatedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
 
   if (!category) {
     return (
@@ -118,7 +128,7 @@ function CategoryPageContent() {
             <option value="rating">Best beoordeeld</option>
           </select>
           <div className="flex-1 text-left sm:text-right text-brown-soft text-sm sm:text-base flex items-center justify-start sm:justify-end">
-            <span className="font-medium">{filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''}</span>
+            <span className="font-medium">{filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''} ({paginatedProducts.length} op pagina {currentPage})</span>
           </div>
         </div>
 
@@ -192,11 +202,50 @@ function CategoryPageContent() {
           {/* Products Grid */}
           <div className="lg:col-span-3">
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+                  {paginatedProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+                
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                  <div className="flex justify-center mt-8 sm:mt-10">
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          const newPage = Math.max(1, currentPage - 1);
+                          setCurrentPage(newPage);
+                          router.push(`?page=${newPage}` + (selectedSubCategory ? `&subCategory=${selectedSubCategory}` : ''), { scroll: false });
+                        }}
+                        disabled={currentPage === 1}
+                        className={`p-2 rounded-full ${currentPage === 1 ? 'text-brown-soft/50 cursor-not-allowed' : 'text-brown-dark hover:bg-rose-soft/10'}`}
+                        aria-label="Vorige pagina"
+                      >
+                        <FiChevronLeft className="w-5 h-5" />
+                      </button>
+                      
+                      <span className="px-3 py-1 text-brown-dark">
+                        {currentPage} <span className="text-brown-soft">van</span> {totalPages}
+                      </span>
+                      
+                      <button
+                        onClick={() => {
+                          const newPage = Math.min(totalPages, currentPage + 1);
+                          setCurrentPage(newPage);
+                          router.push(`?page=${newPage}` + (selectedSubCategory ? `&subCategory=${selectedSubCategory}` : ''), { scroll: false });
+                        }}
+                        disabled={currentPage === totalPages}
+                        className={`p-2 rounded-full ${currentPage === totalPages ? 'text-brown-soft/50 cursor-not-allowed' : 'text-brown-dark hover:bg-rose-soft/10'}`}
+                        aria-label="Volgende pagina"
+                      >
+                        <FiChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-8 sm:py-12 bg-white-cream rounded-xl sm:rounded-2xl">
                 <p className="text-base sm:text-lg text-brown-soft mb-4 sm:mb-6">Geen producten gevonden die aan uw criteria voldoen.</p>
