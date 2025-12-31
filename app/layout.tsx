@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import PromoBanner from '@/components/PromoBanner'
 import StructuredData from '@/components/StructuredData'
 import ToastContainer from '@/components/ToastContainer'
+import SmartsuppChat from '@/components/SmartsuppChat'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -98,16 +99,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <Script
-          src="https://www.smartsuppchat.com/loader.js?" 
-          strategy="afterInteractive"
-          onLoad={() => {
-            // @ts-ignore
-            window.smartsupp = window.smartsupp || {};
-            // @ts-ignore
-            window.smartsupp.key = '27918820574ca61c1750dcb48c456fa20666a40d';
-          }}
-        />
+        <SmartsuppChat />
         <ToastContainer />
       </body>
     </html>
