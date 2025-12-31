@@ -100,20 +100,20 @@ export default function CheckoutPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de la création de la commande');
+        throw new Error(data.error || 'Fout bij het aanmaken van de bestelling');
       }
 
-      // Succès - rediriger vers la page de téléversement du reçu
-      // Ne pas vider le panier ici, on le videra après téléversement réussi
+      // Succes - doorsturen naar de pagina voor het uploaden van het bewijs
+      // Winkelwagen hier niet legen, dat doen we na succesvolle upload
       router.push(`/televerser-recu?orderId=${data.order.id}&orderNumber=${data.order.orderNumber}`);
     } catch (err: any) {
       console.error('Checkout error:', err);
-      setError(err.message || 'Une erreur est survenue lors de la finalisation de la commande');
+      setError(err.message || 'Er is een fout opgetreden bij het afronden van de bestelling');
       setSubmitting(false);
     }
   };
 
-  // Vérifier si le panier est vide et rediriger (seulement si on n'est pas en train de soumettre)
+  // Controleren of winkelwagen leeg is en doorsturen (alleen als we niet aan het verzenden zijn)
   useEffect(() => {
     if (items.length === 0 && !submitting) {
       router.push('/panier');
@@ -129,10 +129,10 @@ export default function CheckoutPage() {
       <div className="container-custom max-w-5xl">
         <Link href="/panier" className="flex items-center gap-2 text-brown-soft hover:text-brown-dark transition mb-8">
           <FiArrowLeft className="w-4 h-4" />
-          Retour au panier
+          Terug naar winkelwagen
         </Link>
 
-        <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6 sm:mb-8">Finaliser la commande</h1>
+        <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6 sm:mb-8">Bestelling afronden</h1>
 
         {error && (
           <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-xs sm:text-sm">
@@ -145,10 +145,10 @@ export default function CheckoutPage() {
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Contact Information */}
             <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md">
-              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Informations de contact</h2>
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Contactinformatie</h2>
               <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Email *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">E-mail *</label>
                   <input
                     type="email"
                     required
@@ -158,7 +158,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Téléphone *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Telefoon *</label>
                   <input
                     type="tel"
                     required
@@ -172,10 +172,10 @@ export default function CheckoutPage() {
 
             {/* Shipping Address */}
             <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md">
-              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Adresse de livraison</h2>
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Bezorgadres</h2>
               <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Prénom *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Voornaam *</label>
                   <input
                     type="text"
                     required
@@ -185,7 +185,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Nom *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Achternaam *</label>
                   <input
                     type="text"
                     required
@@ -195,7 +195,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Adresse *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Adres *</label>
                   <input
                     type="text"
                     required
@@ -205,7 +205,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Code postal *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Postcode *</label>
                   <input
                     type="text"
                     required
@@ -215,7 +215,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Ville *</label>
+                  <label className="block text-brown-dark font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Stad *</label>
                   <input
                     type="text"
                     required
@@ -227,7 +227,7 @@ export default function CheckoutPage() {
                 <input type="hidden" name="country" value="BE" />
                 <div className="bg-rose-soft/10 border border-rose-soft/30 rounded-lg p-4">
                   <p className="text-sm text-brown-dark">
-                    <strong>Livraison :</strong> Nous livrons uniquement en Belgique
+                    <strong>Bezorging :</strong> We leveren alleen in België
                   </p>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
 
             {/* Payment Method */}
             <div className="bg-white-cream rounded-2xl p-6 shadow-md">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Méthode de paiement</h2>
+              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Betaalmethode</h2>
               <div className="space-y-3">
                 <label className="flex items-center p-4 border-2 border-rose-soft rounded-lg cursor-pointer bg-rose-soft/5">
                   <input
@@ -246,11 +246,11 @@ export default function CheckoutPage() {
                     onChange={(e) => setFormData({ ...formData, paymentMethod: e.target.value })}
                     className="mr-3"
                   />
-                  <span className="font-medium">Virement bancaire instantané</span>
+                  <span className="font-medium">Instant bankoverschrijving</span>
                 </label>
               </div>
               <p className="text-sm text-brown-soft mt-4">
-                Vous serez redirigé vers une page pour téléverser le reçu de virement après validation de la commande.
+                U wordt doorgestuurd naar een pagina om de overschrijvingsbewijsstukken te uploaden na bestelvalidatie.
               </p>
             </div>
 
@@ -258,11 +258,11 @@ export default function CheckoutPage() {
             <div className="bg-gradient-to-r from-rose-powder to-beige rounded-2xl p-6 shadow-md border-2 border-rose-soft">
               <h2 className="font-elegant text-2xl text-brown-dark mb-6 flex items-center gap-2">
                 <FiLock className="w-6 h-6" />
-                Instructions de virement bancaire
+                Instructies voor bankoverschrijving
               </h2>
               <div className="bg-white-cream rounded-lg p-6 space-y-4">
                 <div className="border-b border-nude pb-4">
-                  <p className="text-sm font-semibold text-brown-soft mb-2">Titulaire du compte :</p>
+                  <p className="text-sm font-semibold text-brown-soft mb-2">Rekeninghouder :</p>
                   <p className="text-lg font-semibold text-brown-dark">Emiliano maccioni</p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -275,7 +275,7 @@ export default function CheckoutPage() {
                     <p className="text-lg font-mono text-brown-dark">BUNQNL2A</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brown-soft mb-2">MOTIF :</p>
+                    <p className="text-sm font-semibold text-brown-soft mb-2">REDEN :</p>
                     <p className="text-lg text-brown-dark">HERESSENCE</p>
                   </div>
                   <div>
@@ -284,12 +284,12 @@ export default function CheckoutPage() {
                   </div>
                 </div>
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
-                  <p className="text-sm text-yellow-800 font-semibold mb-2">⚠️ Important :</p>
+                  <p className="text-sm text-yellow-800 font-semibold mb-2">⚠️ Belangrijk :</p>
                   <ul className="text-sm text-yellow-700 space-y-1 list-disc list-inside">
-                    <li>Effectuez le virement pour le montant exact indiqué ci-dessus</li>
-                    <li>Prenez une capture d'écran ou téléchargez le reçu de virement</li>
-                    <li>Vous devrez téléverser ce reçu sur la page suivante pour finaliser votre commande</li>
-                    <li>Votre commande sera traitée uniquement après réception et validation du reçu</li>
+                    <li>Maak de overschrijving voor het exacte bedrag dat hierboven is aangegeven</li>
+                    <li>Maak een schermafbeelding of download het overschrijvingsbewijs</li>
+                    <li>U moet dit bewijs uploaden op de volgende pagina om uw bestelling te voltooien</li>
+                    <li>Uw bestelling wordt pas verwerkt na ontvangst en validatie van het bewijs</li>
                   </ul>
                 </div>
               </div>
@@ -299,7 +299,7 @@ export default function CheckoutPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md lg:sticky lg:top-24">
-              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Récapitulatif</h2>
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Samenvatting</h2>
 
               <div className="space-y-3 mb-6">
                 {items.map((item) => (
@@ -332,20 +332,20 @@ export default function CheckoutPage() {
 
               <div className="space-y-3 border-t border-nude pt-4 mb-6">
                 <div className="flex justify-between text-brown-soft">
-                  <span>Sous-total</span>
+                  <span>Subtotaal</span>
                   <span>€{total.toFixed(2)}</span>
                 </div>
                 {promoDiscount > 0 && (
                   <div className="flex justify-between text-green-600">
-                    <span>Code promo ({appliedPromoCode})</span>
+                    <span>Promocode ({appliedPromoCode})</span>
                     <span>-€{promoDiscount.toFixed(2)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-brown-soft">
-                  <span>Livraison</span>
+                  <span>Bezorging</span>
                   <span>
                     {shipping === 0 ? (
-                      <span className="text-rose-soft font-semibold">Gratuite</span>
+                      <span className="text-rose-soft font-semibold">Gratis</span>
                     ) : (
                       `€${shipping.toFixed(2)}`
                     )}
@@ -365,7 +365,7 @@ export default function CheckoutPage() {
                 className="btn-primary w-full flex items-center justify-center gap-2 mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <FiLock className="w-5 h-5" />
-                {submitting ? 'Traitement...' : 'Commander en toute sécurité'}
+                {submitting ? 'Verwerking...' : 'Veilig bestellen'}
               </button>
 
               <p className="text-xs text-brown-soft text-center">

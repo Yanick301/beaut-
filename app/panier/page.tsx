@@ -17,7 +17,7 @@ export default function CartPage() {
   const [user, setUser] = useState<any>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
 
-  // Vérifier l'authentification
+  // Authenticatie controleren
   useEffect(() => {
     async function checkAuth() {
       const { data: { user } } = await supabase.auth.getUser();
@@ -26,7 +26,7 @@ export default function CartPage() {
     }
     checkAuth();
 
-    // Écouter les changements d'authentification
+    // Luisteren naar authenticatieveranderingen
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -49,10 +49,10 @@ export default function CartPage() {
       <div className="section-padding bg-beige-light min-h-screen">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto text-center bg-white-cream p-12 rounded-2xl">
-            <h1 className="font-elegant text-4xl text-brown-dark mb-4">Votre panier est vide</h1>
-            <p className="text-brown-soft mb-8">Découvrez nos produits de beauté premium</p>
+            <h1 className="font-elegant text-4xl text-brown-dark mb-4">Uw winkelwagen is leeg</h1>
+            <p className="text-brown-soft mb-8">Ontdek onze premium beautyproducten</p>
             <Link href="/" className="btn-primary">
-              Découvrir la boutique
+              Verken de winkel
             </Link>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function CartPage() {
   return (
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom">
-        <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6 sm:mb-8">Mon Panier</h1>
+        <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-6 sm:mb-8">Mijn winkelwagen</h1>
 
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Cart Items */}
@@ -104,7 +104,7 @@ export default function CartPage() {
                     <button
                       onClick={() => removeItem(item.id)}
                       className="p-2 text-rose-soft hover:text-rose-soft/80 transition active:scale-95 touch-manipulation sm:ml-auto"
-                      aria-label="Supprimer"
+                      aria-label="Verwijderen"
                     >
                       <FiTrash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
@@ -117,7 +117,7 @@ export default function CartPage() {
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       className="p-2 sm:p-2.5 md:p-3 hover:bg-nude transition active:scale-95 touch-manipulation"
-                      aria-label="Diminuer la quantité"
+                      aria-label="Hoeveelheid verlagen"
                     >
                       <FiMinus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
@@ -127,7 +127,7 @@ export default function CartPage() {
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       className="p-2 sm:p-2.5 md:p-3 hover:bg-nude transition active:scale-95 touch-manipulation"
-                      aria-label="Augmenter la quantité"
+                      aria-label="Hoeveelheid verhogen"
                     >
                       <FiPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
@@ -142,13 +142,13 @@ export default function CartPage() {
             <div className="flex justify-between items-center pt-4">
               <Link href="/" className="flex items-center gap-2 text-brown-soft hover:text-brown-dark transition">
                 <FiArrowLeft className="w-4 h-4" />
-                Continuer mes achats
+                Verder winkelen
               </Link>
               <button
                 onClick={clearCart}
                 className="text-rose-soft hover:text-rose-soft/80 transition text-sm underline"
               >
-                Vider le panier
+                Winkelwagen leegmaken
               </button>
             </div>
           </div>
@@ -156,18 +156,18 @@ export default function CartPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 shadow-md lg:sticky lg:top-24">
-              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Récapitulatif</h2>
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4 sm:mb-6">Samenvatting</h2>
 
               <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                 <div className="flex justify-between text-sm sm:text-base text-brown-soft">
-                  <span>Sous-total</span>
+                  <span>Subtotaal</span>
                   <span className="font-medium">€{total.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm sm:text-base text-brown-soft">
-                  <span>Livraison</span>
+                  <span>Bezorging</span>
                   <span className="font-medium">
                     {shipping === 0 ? (
-                      <span className="text-rose-soft font-semibold">Gratuite</span>
+                      <span className="text-rose-soft font-semibold">Gratis</span>
                     ) : (
                       `€${shipping.toFixed(2)}`
                     )}
@@ -175,7 +175,7 @@ export default function CartPage() {
                 </div>
                 {total < 150 && (
                   <p className="text-xs sm:text-sm text-rose-soft bg-rose-soft/10 p-2 sm:p-3 rounded-lg">
-                    Ajoutez €{(150 - total).toFixed(2)} pour la livraison gratuite
+                    Voeg €{(150 - total).toFixed(2)} toe voor gratis verzending
                   </p>
                 )}
                 <div className="border-t border-nude pt-3 sm:pt-4">
@@ -191,21 +191,21 @@ export default function CartPage() {
                 disabled={checkingAuth}
                 className="btn-primary w-full text-center block mb-4 sm:mb-6 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 touch-manipulation"
               >
-                {checkingAuth ? 'Vérification...' : 'Passer la commande'}
+                {checkingAuth ? 'Controleren...' : 'Plaats bestelling'}
               </button>
 
               <div className="text-xs sm:text-sm text-brown-soft space-y-2">
                 <p className="flex items-center gap-2">
                   <span className="text-rose-soft text-base">✓</span>
-                  Paiement sécurisé
+                  Veilige betaling
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="text-rose-soft text-base">✓</span>
-                  Livraison rapide
+                  Snelle levering
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="text-rose-soft text-base">✓</span>
-                  Retours faciles
+                  Eenvoudige retourzending
                 </p>
               </div>
             </div>

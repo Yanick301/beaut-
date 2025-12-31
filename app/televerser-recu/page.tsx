@@ -208,7 +208,7 @@ function UploadReceiptContent() {
   if (loading) {
     return (
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
-        <div className="text-brown-soft">Chargement...</div>
+        <div className="text-brown-soft">Laden...</div>
       </div>
     );
   }
@@ -237,13 +237,13 @@ function UploadReceiptContent() {
               <FiCheckCircle className="w-12 h-12 text-green-600" />
             </div>
             <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-4">
-              Reçu téléversé avec succès !
+              Bewijs succesvol geüpload!
             </h1>
             <p className="text-lg text-brown-soft mb-6">
-              Votre reçu de virement a été reçu. Votre commande est maintenant <strong className="text-brown-dark">en attente de vérification</strong>.
+              Uw overschrijvingsbewijs is ontvangen. Uw bestelling is nu <strong className="text-brown-dark">in afwachting van verificatie</strong>.
             </p>
             <p className="text-base text-brown-soft mb-6">
-              Nous allons vérifier votre reçu et confirmer votre commande sous peu. Vous recevrez un email de confirmation une fois que votre commande sera validée.
+              Wij zullen uw bewijs controleren en uw bestelling binnenkort bevestigen. U ontvangt een bevestigingsmail zodra uw bestelling is gevalideerd.
             </p>
             {orderNumber && (
               <p className="text-sm text-brown-soft mb-8">
@@ -251,14 +251,14 @@ function UploadReceiptContent() {
               </p>
             )}
             <p className="text-sm text-brown-soft mb-8">
-              Vous serez automatiquement redirigé vers votre historique de commandes dans quelques secondes...
+              U wordt automatisch doorgestuurd naar uw bestelgeschiedenis over enkele seconden...
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/compte?tab=orders" className="btn-primary">
-                Voir mes commandes maintenant
+                Mijn bestellingen nu bekijken
               </Link>
               <Link href="/" className="btn-secondary">
-                Retour à l'accueil
+                Terug naar home
               </Link>
             </div>
           </div>
@@ -272,17 +272,17 @@ function UploadReceiptContent() {
       <div className="container-custom max-w-5xl">
         <Link href="/checkout" className="flex items-center gap-2 text-brown-soft hover:text-brown-dark transition mb-8">
           <FiArrowLeft className="w-4 h-4" />
-          Retour au checkout
+          Terug naar checkout
         </Link>
 
         <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-8">
-          Téléverser le reçu de virement
+          Overschrijvingsbewijs uploaden
         </h1>
 
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8">
           <p className="text-sm text-yellow-800">
-            <strong>Rappel :</strong> Après avoir effectué le virement bancaire, veuillez téléverser une capture d'écran ou le reçu de virement ci-dessous.
-            Votre commande sera traitée uniquement après validation du reçu par notre équipe.
+            <strong>Herinnering :</strong> Na het uitvoeren van de bankoverschrijving, gelieve een schermafbeelding of het overschrijvingsbewijs hieronder te uploaden.
+            Uw bestelling wordt pas verwerkt na validatie van het bewijs door ons team.
           </p>
         </div>
 
@@ -290,7 +290,7 @@ function UploadReceiptContent() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white-cream rounded-2xl p-4 sm:p-6 shadow-md lg:sticky lg:top-24">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Récapitulatif de commande</h2>
+              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Besteloverzicht</h2>
               
               {orderNumber && (
                 <div className="mb-4 pb-4 border-b border-nude">
@@ -314,14 +314,14 @@ function UploadReceiptContent() {
 
               <div className="space-y-3 border-t border-nude pt-4">
                 <div className="flex justify-between text-brown-soft">
-                  <span>Sous-total</span>
+                  <span>Subtotaal</span>
                   <span>€{parseFloat(order?.total_amount || 0).toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-brown-soft">
-                  <span>Livraison</span>
+                  <span>Bezorging</span>
                   <span>
                     {parseFloat(order?.shipping_cost || 0) === 0 ? (
-                      <span className="text-rose-soft font-semibold">Gratuite</span>
+                      <span className="text-rose-soft font-semibold">Gratis</span>
                     ) : (
                       `€${parseFloat(order?.shipping_cost || 0).toFixed(2)}`
                     )}
@@ -340,7 +340,7 @@ function UploadReceiptContent() {
           {/* Upload Section */}
           <div className="lg:col-span-2">
             <div className="bg-white-cream rounded-2xl p-6 shadow-md">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Valider ma commande</h2>
+              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Mijn bestelling bevestigen</h2>
 
               {error && (
                 <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
@@ -360,10 +360,10 @@ function UploadReceiptContent() {
                   <label htmlFor="receipt-upload" className="cursor-pointer">
                     <FiUpload className="w-12 h-12 text-brown-soft mx-auto mb-4" />
                     <p className="text-brown-dark font-semibold mb-2">
-                      Cliquez pour téléverser ou glissez-déposez
+                      Klik om te uploaden of sleep naar hier
                     </p>
                     <p className="text-sm text-brown-soft">
-                      Formats acceptés : JPG, PNG, WEBP, PDF (max 5MB)
+                      Toegestane formaten: JPG, PNG, WEBP, PDF (max 5MB)
                     </p>
                   </label>
                 </div>
@@ -395,7 +395,7 @@ function UploadReceiptContent() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={preview}
-                          alt="Aperçu du reçu"
+                          alt="Voorbeeld van het bewijs"
                           className="max-w-full h-auto rounded-lg border border-nude"
                         />
                       </div>
@@ -415,7 +415,7 @@ function UploadReceiptContent() {
                     ) : (
                       <>
                         <FiCheckCircle className="w-5 h-5" />
-                        Valider ma commande
+                        Bevestig mijn bestelling
                       </>
                     )}
                   </button>
@@ -433,7 +433,7 @@ export default function UploadReceiptPage() {
   return (
     <Suspense fallback={
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
-        <div className="text-brown-soft">Chargement...</div>
+        <div className="text-brown-soft">Laden...</div>
       </div>
     }>
       <UploadReceiptContent />

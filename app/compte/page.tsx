@@ -63,7 +63,7 @@ function AccountContent() {
   if (loading) {
     return (
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
-        <div className="text-brown-soft">Chargement...</div>
+        <div className="text-brown-soft">Laden...</div>
       </div>
     );
   }
@@ -76,13 +76,13 @@ function AccountContent() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-5xl">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark">Mon Compte</h1>
+          <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark">Mijn account</h1>
           <button
             onClick={handleLogout}
             className="flex items-center gap-2 text-brown-soft hover:text-brown-dark transition"
           >
             <FiLogOut className="w-5 h-5" />
-            <span className="hidden sm:inline">Déconnexion</span>
+            <span className="hidden sm:inline">Afmelden</span>
           </button>
         </div>
 
@@ -100,7 +100,7 @@ function AccountContent() {
                   }`}
                 >
                   <FiUser className="w-5 h-5" />
-                  Mon profil
+                  Mijn profiel
                 </button>
                 <button
                   onClick={() => setActiveTab('orders')}
@@ -111,7 +111,7 @@ function AccountContent() {
                   }`}
                 >
                   <FiPackage className="w-5 h-5" />
-                  Mes commandes
+                  Mijn bestellingen
                 </button>
                 <button
                   onClick={() => setActiveTab('favorites')}
@@ -122,7 +122,7 @@ function AccountContent() {
                   }`}
                 >
                   <FiHeart className="w-5 h-5" />
-                  Mes favoris
+                  Mijn favorieten
                 </button>
               </nav>
             </div>
@@ -172,9 +172,9 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
 
       if (error) throw error;
 
-      setMessage('Profil mis à jour avec succès !');
+      setMessage('Profiel succesvol bijgewerkt !');
     } catch (error: any) {
-      setMessage('Erreur lors de la mise à jour du profil');
+      setMessage('Fout bij het bijwerken van het profiel');
     } finally {
       setSaving(false);
     }
@@ -182,7 +182,7 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
 
   return (
     <div className="bg-white-cream rounded-2xl p-6 sm:p-8 shadow-md">
-      <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mes informations</h2>
+      <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mijn gegevens</h2>
       
       {message && (
         <div className={`mb-6 p-4 rounded-lg text-sm ${
@@ -198,7 +198,7 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
         <div>
           <label className="block text-brown-dark font-medium mb-2 flex items-center gap-2">
             <FiMail className="w-4 h-4" />
-            Email
+            E-mail
           </label>
           <input
             type="email"
@@ -206,12 +206,12 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
             disabled
             className="w-full px-4 py-3 rounded-lg border-2 border-nude bg-gray-50 text-brown-soft cursor-not-allowed"
           />
-          <p className="text-sm text-brown-soft mt-2">L'email ne peut pas être modifié</p>
+          <p className="text-sm text-brown-soft mt-2">E-mailadres kan niet worden gewijzigd</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-brown-dark font-medium mb-2">Prénom</label>
+            <label className="block text-brown-dark font-medium mb-2">Voornaam</label>
             <input
               type="text"
               value={firstName}
@@ -220,7 +220,7 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
             />
           </div>
           <div>
-            <label className="block text-brown-dark font-medium mb-2">Nom</label>
+            <label className="block text-brown-dark font-medium mb-2">Achternaam</label>
             <input
               type="text"
               value={lastName}
@@ -231,7 +231,7 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
         </div>
 
         <div>
-          <label className="block text-brown-dark font-medium mb-2">Téléphone</label>
+          <label className="block text-brown-dark font-medium mb-2">Telefoon</label>
           <input
             type="tel"
             value={phone}
@@ -243,13 +243,13 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
         <div>
           <label className="block text-brown-dark font-medium mb-2 flex items-center gap-2">
             <FiLock className="w-4 h-4" />
-            Mot de passe
+            Wachtwoord
           </label>
           <Link
             href="/reinitialiser-mot-de-passe"
             className="text-rose-soft hover:text-rose-soft/80 transition text-sm underline"
           >
-            Modifier mon mot de passe
+            Mijn wachtwoord wijzigen
           </Link>
         </div>
 
@@ -258,7 +258,7 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
           disabled={saving}
           className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {saving ? 'Enregistrement...' : 'Enregistrer les modifications'}
+          {saving ? 'Opslaan...' : 'Wijzigingen opslaan'}
         </button>
       </form>
     </div>
@@ -290,9 +290,9 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
   if (loading) {
     return (
       <div className="bg-white-cream rounded-2xl p-8 shadow-md">
-        <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mes commandes</h2>
+        <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mijn bestellingen</h2>
         <div className="text-center py-12">
-          <div className="text-brown-soft">Chargement...</div>
+          <div className="text-brown-soft">Laden...</div>
         </div>
       </div>
     );
@@ -300,13 +300,13 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
 
   return (
     <div className="bg-white-cream rounded-2xl p-6 sm:p-8 shadow-md">
-      <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mes commandes</h2>
+      <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mijn bestellingen</h2>
       {orders.length === 0 ? (
         <div className="text-center py-12">
           <FiPackage className="w-16 h-16 text-nude mx-auto mb-4" />
-          <p className="text-brown-soft text-lg mb-6">Vous n'avez pas encore de commande</p>
+          <p className="text-brown-soft text-lg mb-6">U heeft nog geen bestellingen</p>
           <Link href="/" className="btn-primary">
-            Découvrir nos produits
+            Ontdek onze producten
           </Link>
         </div>
       ) : (
@@ -315,7 +315,7 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
             <div key={order.id} className="border border-nude rounded-lg p-4 sm:p-6">
               <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-4">
                 <div>
-                  <p className="font-semibold text-brown-dark text-lg">Commande #{order.order_number}</p>
+                  <p className="font-semibold text-brown-dark text-lg">Bestelling #{order.order_number}</p>
                   <p className="text-sm text-brown-soft">
                     {new Date(order.created_at).toLocaleDateString('fr-FR', {
                       day: 'numeric',
@@ -332,11 +332,11 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
                     order.status === 'pending' ? 'bg-orange-100 text-orange-700' :
                     'bg-gray-100 text-gray-700'
                   }`}>
-                    {order.status === 'delivered' ? 'Livrée' :
-                     order.status === 'shipped' ? 'Expédiée' :
-                     order.status === 'processing' ? 'En traitement' :
-                     order.status === 'pending' ? 'En attente de vérification' :
-                     'En attente'}
+                    {order.status === 'delivered' ? 'Geleverd' :
+                     order.status === 'shipped' ? 'Verzonden' :
+                     order.status === 'processing' ? 'In verwerking' :
+                     order.status === 'pending' ? 'In afwachting van verificatie' :
+                     'In behandeling'}
                   </span>
                   <p className="text-brown-dark font-semibold text-lg">
                     €{parseFloat(order.total_amount).toFixed(2)}
@@ -346,7 +346,7 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
               
               {order.order_items && order.order_items.length > 0 && (
                 <div className="mt-4 pt-4 border-t border-nude">
-                  <p className="text-sm font-medium text-brown-dark mb-3">Articles :</p>
+                  <p className="text-sm font-medium text-brown-dark mb-3">Artikelen :</p>
                   <div className="space-y-2">
                     {order.order_items.map((item: any, index: number) => (
                       <div key={index} className="flex justify-between text-sm text-brown-soft">
@@ -412,9 +412,9 @@ function FavoritesTab({ userId, supabase }: { userId: string; supabase: any }) {
   if (loading) {
     return (
       <div className="bg-white-cream rounded-2xl p-8 shadow-md">
-        <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mes favoris</h2>
+        <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mijn favorieten</h2>
         <div className="text-center py-12">
-          <div className="text-brown-soft">Chargement...</div>
+          <div className="text-brown-soft">Laden...</div>
         </div>
       </div>
     );
@@ -422,18 +422,18 @@ function FavoritesTab({ userId, supabase }: { userId: string; supabase: any }) {
 
   return (
     <div className="bg-white-cream rounded-2xl p-6 sm:p-8 shadow-md">
-      <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mes favoris</h2>
+      <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Mijn favorieten</h2>
       {favorites.length === 0 ? (
         <div className="text-center py-12">
           <FiHeart className="w-16 h-16 text-nude mx-auto mb-4" />
-          <p className="text-brown-soft text-lg mb-6">Vous n'avez pas encore de favoris</p>
+          <p className="text-brown-soft text-lg mb-6">U heeft nog geen favorieten</p>
           <Link href="/" className="btn-primary">
-            Découvrir nos produits
+            Ontdek onze producten
           </Link>
         </div>
       ) : (
         <div>
-          <p className="text-brown-soft mb-6">{favorites.length} produit(s) favori(s)</p>
+          <p className="text-brown-soft mb-6">{favorites.length} favoriete(s) product(en)</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <div key={product.id} className="relative">
@@ -441,7 +441,7 @@ function FavoritesTab({ userId, supabase }: { userId: string; supabase: any }) {
                 <button
                   onClick={() => handleRemoveFavorite(product.id)}
                   className="absolute top-2 right-2 p-2 bg-white-cream rounded-full shadow-md hover:bg-rose-soft hover:text-white transition"
-                  aria-label="Retirer des favoris"
+                  aria-label="Verwijderen uit favorieten"
                 >
                   <FiHeart className="w-5 h-5 fill-current text-rose-soft" />
                 </button>
@@ -458,7 +458,7 @@ export default function AccountPage() {
   return (
     <Suspense fallback={
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
-        <div className="text-brown-soft">Chargement...</div>
+        <div className="text-brown-soft">Laden...</div>
       </div>
     }>
       <AccountContent />

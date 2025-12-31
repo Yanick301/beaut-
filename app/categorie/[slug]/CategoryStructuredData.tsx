@@ -19,7 +19,7 @@ export default function CategoryStructuredData({ slug }: CategoryStructuredDataP
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: category.name,
-      description: category.description || `Collection de produits ${category.name.toLowerCase()}`,
+      description: category.description || `Collectie producten ${category.name.toLowerCase()}`,
       url: `${baseUrl}/categorie/${slug}`,
       image: category.image?.startsWith('http') ? category.image : `${baseUrl}${category.image}`,
       mainEntity: {
@@ -51,7 +51,7 @@ export default function CategoryStructuredData({ slug }: CategoryStructuredDataP
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Accueil',
+          name: 'Home',
           item: baseUrl,
         },
         {

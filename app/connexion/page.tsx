@@ -21,7 +21,7 @@ function LoginContent() {
   const [resendingEmail, setResendingEmail] = useState(false);
   const [emailNotConfirmed, setEmailNotConfirmed] = useState(false);
 
-  // Vérifier le paramètre d'erreur dans l'URL
+  // Controleer de foutparameter in de URL
   useEffect(() => {
     if (errorParam === 'email_not_confirmed') {
       setEmailNotConfirmed(true);
@@ -53,10 +53,10 @@ function LoginContent() {
         throw error;
       }
 
-      setMessage('Un nouvel email de confirmation a été envoyé ! Vérifiez votre boîte de réception.');
+      setMessage('Een nieuwe bevestigingsmail is verzonden! Controleer uw inbox.');
       setEmailNotConfirmed(false);
     } catch (error: any) {
-      setError(error.message || 'Erreur lors de l\'envoi de l\'email de confirmation');
+      setError(error.message || 'Fout bij het verzenden van de bevestigingsmail');
     } finally {
       setResendingEmail(false);
     }
@@ -84,12 +84,12 @@ function LoginContent() {
         // Vérifier si l'email est confirmé
         if (!data.user.email_confirmed_at) {
           setEmailNotConfirmed(true);
-          setError('Votre email n\'a pas encore été confirmé. Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation.');
+          setError('Uw e-mailadres is nog niet bevestigd. Controleer uw inbox en klik op de bevestigingslink.');
           setLoading(false);
           return;
         }
 
-        setMessage('Connexion réussie ! Redirection...');
+        setMessage('Succesvol ingelogd! Omleiding...');
         // Petit délai pour s'assurer que la session est bien établie
         setTimeout(() => {
           router.push(redirect);
@@ -98,13 +98,13 @@ function LoginContent() {
       }
     } catch (error: any) {
       console.error('Login error details:', error);
-      let errorMessage = 'Une erreur est survenue lors de la connexion';
+      let errorMessage = 'Er is een fout opgetreden tijdens het inloggen';
       
       if (error.message) {
         if (error.message.includes('Invalid login credentials')) {
-          errorMessage = 'Email ou mot de passe incorrect';
+          errorMessage = 'E-mail of wachtwoord onjuist';
         } else if (error.message.includes('Email not confirmed')) {
-          errorMessage = 'Veuillez confirmer votre email avant de vous connecter';
+          errorMessage = 'Bevestig uw e-mailadres voordat u inlogt';
         } else {
           errorMessage = error.message;
         }
@@ -142,10 +142,10 @@ function LoginContent() {
         throw error;
       }
 
-      setMessage('Un lien de connexion a été envoyé à votre adresse email !');
+      setMessage('Een inloglink is verzonden naar uw e-mailadres!');
     } catch (error: any) {
       console.error('Magic link error details:', error);
-      setError(error.message || 'Une erreur est survenue lors de l\'envoi du lien');
+      setError(error.message || 'Er is een fout opgetreden bij het verzenden van de link');
     } finally {
       setLoading(false);
     }
@@ -156,10 +156,10 @@ function LoginContent() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Connexion
+            Inloggen
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Connectez-vous à votre compte Essence Féminine
+            Log in op uw Essence Féminine account
           </p>
 
           {error && (
@@ -172,7 +172,7 @@ function LoginContent() {
                     disabled={resendingEmail}
                     className="text-sm text-red-700 hover:text-red-800 underline disabled:opacity-50"
                   >
-                    {resendingEmail ? 'Envoi en cours...' : 'Renvoyer l\'email de confirmation'}
+                    {resendingEmail ? 'Verzenden bezig...' : 'Bevestigingsmail opnieuw verzenden'}
                   </button>
                 </div>
               )}
@@ -188,7 +188,7 @@ function LoginContent() {
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
-                Email
+                E-mail
               </label>
               <div className="relative">
                 <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -206,7 +206,7 @@ function LoginContent() {
 
             <div>
               <label htmlFor="password" className="block text-brown-dark font-medium mb-2">
-                Mot de passe
+                Wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -231,7 +231,7 @@ function LoginContent() {
 
             <div className="flex items-center justify-between text-sm">
               <Link href="/mot-de-passe-oublie" className="text-rose-soft hover:text-rose-soft/80 transition">
-                Mot de passe oublié ?
+                Wachtwoord vergeten ?
               </Link>
             </div>
 
@@ -240,7 +240,7 @@ function LoginContent() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Connexion...' : 'Se connecter'}
+              {loading ? 'Inloggen...' : 'Inloggen'}
             </button>
           </form>
 
@@ -250,14 +250,14 @@ function LoginContent() {
               disabled={loading}
               className="w-full btn-outline disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Envoi...' : 'Recevoir un lien de connexion par email'}
+              {loading ? 'Verzenden...' : 'Ontvang een inloglink via e-mail'}
             </button>
           </div>
 
           <div className="mt-6 text-center text-sm text-brown-soft">
-            Vous n'avez pas de compte ?{' '}
+            Heeft u nog geen account ?{' '}
             <Link href="/inscription" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Créer un compte
+              Maak een account aan
             </Link>
           </div>
         </div>

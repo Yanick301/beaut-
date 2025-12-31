@@ -2436,7 +2436,7 @@ const productsRaw: Product[] = [
     id: '146',
     name: 'Yves Rocher Roll-On Végétal',
     description: 'Plantaardige deodorant roll-on',
-    longDescription: 'Deodorant roll-on op plantaardige basis. Effectieve bescherming en gegarandeerde zachtheid. Professioneel kwaliteitsproduct verkrijgbaar in Nederland.'
+    longDescription: 'Deodorant roll-on op plantaardige basis. Effectieve bescherming en gegarandeerde zachtheid. Professioneel kwaliteitsproduct verkrijgbaar in Nederland.',
     price: 30.95,
     image: getProductImagePath('Yves Rocher Roll-On Végétal Yves Rocher'),
     category: 'senteur-corporel',

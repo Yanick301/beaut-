@@ -22,14 +22,14 @@ export default function ContactPage() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-5xl">
         <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-8 text-center">
-          Contactez-nous
+          Contacteer ons
         </h1>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
             <div className="bg-white-cream rounded-2xl p-8 shadow-md mb-8">
-              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Informations de contact</h2>
+              <h2 className="font-elegant text-2xl text-brown-dark mb-6">Contactgegevens</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-rose-soft/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -40,7 +40,7 @@ export default function ContactPage() {
                     <a href="mailto:contact@essencefeminine.be" className="text-brown-soft hover:text-rose-soft transition">
                       contact@essencefeminine.be
                     </a>
-                    <p className="text-sm text-brown-soft/80 mt-1">Réponse sous 24h ouvrées</p>
+                    <p className="text-sm text-brown-soft/80 mt-1">Reactie binnen 24 werkdagen</p>
                   </div>
                 </div>
 
@@ -61,17 +61,17 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-gradient-to-r from-rose-powder to-beige rounded-2xl p-8 shadow-md">
-              <h3 className="font-elegant text-2xl text-brown-dark mb-4">Service Client</h3>
+              <h3 className="font-elegant text-2xl text-brown-dark mb-4">Klantenservice</h3>
               <div className="space-y-3 text-brown-soft">
                 <p className="text-base">
-                  Notre équipe est à votre écoute pour répondre à toutes vos questions. 
-                  Nous nous engageons à vous répondre dans les meilleurs délais.
+                  Ons team staat voor u klaar om al uw vragen te beantwoorden. 
+                  Wij zorgen ervoor dat u zo snel mogelijk een reactie ontvangt.
                 </p>
                 <div className="pt-3 border-t border-nude">
-                  <p className="font-semibold text-brown-dark mb-2">Réponse garantie sous 24h</p>
+                  <p className="font-semibold text-brown-dark mb-2">Reactie gegarandeerd binnen 24 uur</p>
                   <p className="text-sm">
-                    Du lundi au vendredi, nous traitons toutes vos demandes avec attention 
-                    et professionnalisme.
+                    Van maandag tot vrijdag behandelen we al uw verzoeken met aandacht 
+                    en professionaliteit.
                   </p>
                 </div>
               </div>
@@ -80,10 +80,10 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="bg-white-cream rounded-2xl p-8 shadow-md">
-            <h2 className="font-elegant text-2xl text-brown-dark mb-6">Envoyez-nous un message</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-6">Stuur ons een bericht</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-brown-dark font-medium mb-2">Nom complet *</label>
+                <label className="block text-brown-dark font-medium mb-2">Volledige naam *</label>
                 <input
                   type="text"
                   required
@@ -105,7 +105,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-brown-dark font-medium mb-2">Sujet *</label>
+                <label className="block text-brown-dark font-medium mb-2">Onderwerp *</label>
                 <input
                   type="text"
                   required
@@ -128,7 +128,7 @@ export default function ContactPage() {
 
               <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
                 <FiSend className="w-5 h-5" />
-                Envoyer le message
+                Verstuur bericht
               </button>
             </form>
           </div>

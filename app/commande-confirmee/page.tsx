@@ -17,7 +17,7 @@ function OrderConfirmedContent() {
             <FiCheckCircle className="w-12 h-12 text-rose-soft" />
           </div>
           <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-4">
-            Commande confirmée !
+            Bestelling bevestigd !
           </h1>
           {orderNumber && (
             <p className="text-xl font-semibold text-brown-dark mb-4">
@@ -25,15 +25,15 @@ function OrderConfirmedContent() {
             </p>
           )}
           <p className="text-lg text-brown-soft mb-8">
-            Merci pour votre achat. Vous recevrez un email de confirmation sous peu avec 
-            tous les détails de votre commande et le suivi de livraison.
+            Hartelijk dank voor uw aankoop. U ontvangt binnenkort een bevestigingsmail met 
+            alle details van uw bestelling en de verzendgegevens.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/" className="btn-primary">
-              Retour à l'accueil
+              Terug naar home
             </Link>
             <Link href="/compte" className="btn-secondary">
-              Voir mes commandes
+              Mijn bestellingen bekijken
             </Link>
           </div>
         </div>

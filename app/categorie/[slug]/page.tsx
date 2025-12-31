@@ -21,7 +21,7 @@ function CategoryPageContent() {
   const [selectedSubCategory, setSelectedSubCategory] = useState<string>(subCategoryParam || '');
   const [sortBy, setSortBy] = useState<string>('popular');
 
-  // Mettre à jour la sous-catégorie sélectionnée quand le paramètre URL change
+  // Werk de geselecteerde subcategorie bij wanneer de URL-parameter verandert
   useEffect(() => {
     if (subCategoryParam) {
       setSelectedSubCategory(subCategoryParam);
@@ -73,8 +73,8 @@ function CategoryPageContent() {
     return (
       <div className="section-padding">
         <div className="container-custom text-center">
-          <h1 className="font-elegant text-4xl text-brown-dark mb-4">Catégorie non trouvée</h1>
-          <a href="/" className="btn-primary">Retour à l'accueil</a>
+          <h1 className="font-elegant text-4xl text-brown-dark mb-4">Categorie niet gevonden</h1>
+          <a href="/" className="btn-primary">Terug naar home</a>
         </div>
       </div>
     );
@@ -102,20 +102,20 @@ function CategoryPageContent() {
           <button
             onClick={() => setShowFilters(!showFilters)}
             className="btn-outline flex items-center gap-2 sm:w-auto w-full justify-center active:scale-95 touch-manipulation"
-            aria-label="Afficher les filtres"
+            aria-label="Toon filters"
           >
             <FiFilter className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="text-sm sm:text-base">Filtres</span>
+            <span className="text-sm sm:text-base">Filters</span>
           </button>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-full border-2 border-rose-soft text-brown-dark bg-white-cream text-sm sm:text-base w-full sm:w-auto focus:outline-none focus:ring-2 focus:ring-rose-soft/50"
           >
-            <option value="popular">Plus populaires</option>
-            <option value="price-asc">Prix croissant</option>
-            <option value="price-desc">Prix décroissant</option>
-            <option value="rating">Mieux notés</option>
+            <option value="popular">Populairste</option>
+            <option value="price-asc">Prijs oplopend</option>
+            <option value="price-desc">Prijs aflopend</option>
+            <option value="rating">Best beoordeeld</option>
           </select>
           <div className="flex-1 text-left sm:text-right text-brown-soft text-sm sm:text-base flex items-center justify-start sm:justify-end">
             <span className="font-medium">{filteredProducts.length} produit{filteredProducts.length > 1 ? 's' : ''}</span>
@@ -128,11 +128,11 @@ function CategoryPageContent() {
             className={`lg:block ${showFilters ? 'block' : 'hidden'} lg:sticky lg:top-24 h-fit bg-white-cream p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-md max-h-[calc(100vh-200px)] overflow-y-auto`}
           >
             <div className="flex items-center justify-between mb-4 sm:mb-6">
-              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark">Filtres</h2>
+              <h2 className="font-elegant text-xl sm:text-2xl text-brown-dark">Filters</h2>
               <button
                 onClick={() => setShowFilters(false)}
                 className="lg:hidden p-2 hover:text-brown-dark transition active:scale-95 touch-manipulation"
-                aria-label="Fermer les filtres"
+                aria-label="Sluit filters"
               >
                 <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
@@ -140,7 +140,7 @@ function CategoryPageContent() {
 
             {/* Price Filter */}
             <div className="mb-6">
-              <h3 className="font-semibold text-brown-dark mb-3">Prix</h3>
+              <h3 className="font-semibold text-brown-dark mb-3">Prijs</h3>
               <div className="space-y-2">
                 <input
                   type="range"
@@ -167,7 +167,7 @@ function CategoryPageContent() {
                   onChange={(e) => setSelectedBrand(e.target.value)}
                   className="w-full px-4 py-2 rounded-lg border border-nude bg-white text-brown-dark"
                 >
-                  <option value="">Toutes les marques</option>
+                  <option value="">Alle merken</option>
                   {brands.map((brand) => (
                     <option key={brand} value={brand}>
                       {brand}
@@ -185,7 +185,7 @@ function CategoryPageContent() {
               }}
               className="text-sm text-rose-soft hover:text-rose-soft/80 underline"
             >
-              Réinitialiser les filtres
+              Filters resetten
             </button>
           </aside>
 
@@ -199,7 +199,7 @@ function CategoryPageContent() {
               </div>
             ) : (
               <div className="text-center py-8 sm:py-12 bg-white-cream rounded-xl sm:rounded-2xl">
-                <p className="text-base sm:text-lg text-brown-soft mb-4 sm:mb-6">Aucun produit ne correspond à vos critères.</p>
+                <p className="text-base sm:text-lg text-brown-soft mb-4 sm:mb-6">Geen producten gevonden die aan uw criteria voldoen.</p>
                 <button
                   onClick={() => {
                     setPriceRange([0, 200]);
@@ -208,7 +208,7 @@ function CategoryPageContent() {
                   }}
                   className="btn-primary active:scale-95 touch-manipulation"
                 >
-                  Réinitialiser les filtres
+                  Filters resetten
                 </button>
               </div>
             )}
@@ -225,7 +225,7 @@ export default function CategoryPage() {
     <Suspense fallback={
       <div className="section-padding bg-beige-light min-h-screen">
         <div className="container-custom">
-          <div className="text-center py-12 text-brown-soft">Chargement...</div>
+          <div className="text-center py-12 text-brown-soft">Laden...</div>
         </div>
       </div>
     }>
