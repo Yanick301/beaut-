@@ -127,7 +127,7 @@ export async function GET(
     if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
+          from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
           to: customerEmail,
           subject: `Commande ${order.order_number} - Problème de paiement`,
           html: `
@@ -160,7 +160,7 @@ export async function GET(
                   <p>Veuillez nous contacter à <a href="mailto:contact@essencefeminine.nl" style="color: #d4a574; text-decoration: underline;">contact@essencefeminine.nl</a> si vous pensez qu'il s'agit d'une erreur.</p>
                   <p>Vous pouvez également téléverser un nouveau reçu depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
                   <p>Merci de votre compréhension.</p>
-                  <p>L'équipe Essence Féminine</p>
+                  <p>L'équipe Her Essence</p>
                 </div>
               </div>
             </body>
@@ -282,7 +282,7 @@ export async function POST(
     if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
+          from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
           to: customerEmail,
           subject: `Commande ${order.order_number} - Problème de paiement`,
           html: `
@@ -315,7 +315,7 @@ export async function POST(
                   <p>Veuillez nous contacter à <a href="mailto:contact@essencefeminine.nl" style="color: #d4a574; text-decoration: underline;">contact@essencefeminine.nl</a> si vous pensez qu'il s'agit d'une erreur.</p>
                   <p>Vous pouvez également téléverser un nouveau reçu depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
                   <p>Merci de votre compréhension.</p>
-                  <p>L'équipe Essence Féminine</p>
+                  <p>L'équipe Her Essence</p>
                 </div>
               </div>
             </body>

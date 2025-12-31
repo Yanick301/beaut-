@@ -51,7 +51,7 @@ export default function Header() {
                 <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-rose-soft/20 flex items-center justify-center">
                   <FiTruck className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-rose-soft" />
                 </div>
-                <span className="font-elegant">Livraison gratuite dès €150</span>
+                <span className="font-elegant">Gratis verzending vanaf €150</span>
               </div>
             </div>
             <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
@@ -59,13 +59,13 @@ export default function Header() {
                 href="/compte" 
                 className="text-brown-soft hover:text-brown-dark transition-colors duration-200 font-medium tracking-wide"
               >
-                Mon compte
+                Mijn account
               </Link>
               <Link 
                 href="/faq" 
                 className="text-brown-soft hover:text-brown-dark transition-colors duration-200 font-medium tracking-wide"
               >
-                Aide
+                Hulp
               </Link>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function Header() {
         <div className="flex items-center justify-between py-3 sm:py-4 md:py-5">
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-elegant text-brown-dark">Essence Féminine</span>
+            <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-elegant text-brown-dark">Her Essence</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -128,30 +128,30 @@ export default function Header() {
             <button 
               onClick={() => setIsSearchOpen(true)}
               className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation"
-              aria-label="Rechercher"
+              aria-label="Zoeken"
             >
               <FiSearch className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             {user ? (
               <div className="hidden md:flex items-center gap-2">
-                <Link href="/compte" className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95" aria-label="Mon compte">
+                <Link href="/compte" className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95" aria-label="Mijn account">
                   <FiUser className="w-5 h-5 sm:w-6 sm:h-6" />
                 </Link>
                 <button
                   onClick={handleLogout}
                   className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95"
-                  title="Déconnexion"
-                  aria-label="Déconnexion"
+                  title="Afmelden"
+                  aria-label="Afmelden"
                 >
                   <FiLogOut className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
             ) : (
-              <Link href="/connexion" className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 hidden md:block" aria-label="Connexion">
+              <Link href="/connexion" className="p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 hidden md:block" aria-label="Inloggen">
                 <FiUser className="w-5 h-5 sm:w-6 sm:h-6" />
               </Link>
             )}
-            <Link href="/panier" className="relative p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation" aria-label="Panier">
+            <Link href="/panier" className="relative p-2 sm:p-2.5 hover:text-brown-dark transition active:scale-95 touch-manipulation" aria-label="Winkelwagen">
               <FiShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
               {itemCount > 0 && (
                 <span className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 bg-rose-soft text-white text-[10px] sm:text-xs 
@@ -197,7 +197,7 @@ export default function Header() {
                         <button
                           onClick={() => setExpandedCategory(isExpanded ? null : category.id)}
                           className="p-2 text-brown-soft hover:text-brown-dark transition active:scale-95 touch-manipulation"
-                          aria-label={isExpanded ? 'Fermer' : 'Ouvrir'}
+                          aria-label={isExpanded ? 'Sluiten' : 'Openen'}
                         >
                           <FiChevronDown className={`w-5 h-5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
                         </button>
@@ -229,7 +229,7 @@ export default function Header() {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <FiUser className="w-5 h-5" />
-                      Mon compte
+                      Mijn account
                     </Link>
                     <button
                       onClick={() => {
@@ -239,7 +239,7 @@ export default function Header() {
                       className="text-brown-soft hover:text-brown-dark transition font-medium py-3 flex items-center gap-3 w-full text-left text-base sm:text-lg"
                     >
                       <FiLogOut className="w-5 h-5" />
-                      Déconnexion
+                      Afmelden
                     </button>
                   </>
                 ) : (
@@ -249,7 +249,7 @@ export default function Header() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <FiUser className="w-5 h-5" />
-                    Connexion
+                    Inloggen
                   </Link>
                 )}
               </div>
@@ -262,4 +262,3 @@ export default function Header() {
     </header>
   );
 }
-

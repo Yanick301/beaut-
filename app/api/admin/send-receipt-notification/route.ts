@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
 
     console.log('Sending email to admin:', adminEmail);
     console.log('Resend API Key exists:', !!process.env.RESEND_API_KEY);
-    console.log('From email:', process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>');
+    console.log('From email:', process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>');
     console.log('Attachment:', attachment ? `Yes (${attachment.filename}, ${attachment.mimeType})` : 'No');
     console.log('Image Data URI:', imageDataUri ? 'Yes' : 'No');
     console.log('Is PDF:', isPdf);
@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
 
     // Envoyer l'email à l'admin
     const emailPayload: any = {
-      from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
+      from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
       to: adminEmail,
       subject: `Nouveau reçu de virement - Commande ${orderNumber}`,
     };
@@ -256,7 +256,7 @@ export async function POST(request: NextRequest) {
               </p>
             </div>
             <div class="footer">
-              <p>Essence Féminine - Système de gestion des commandes</p>
+              <p>Her Essence - Système de gestion des commandes</p>
               <p>Cet email a été envoyé automatiquement, merci de ne pas y répondre.</p>
             </div>
           </div>

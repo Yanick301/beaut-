@@ -111,7 +111,7 @@ export async function GET(
     if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
+          from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
           to: customerEmail,
           subject: `Commande ${order.order_number} confirmée`,
           html: `
@@ -142,7 +142,7 @@ export async function GET(
                   <p>Votre commande est maintenant en cours de traitement et sera expédiée sous peu.</p>
                   <p>Vous pouvez suivre l'état de votre commande depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
                   <p>Merci pour votre confiance !</p>
-                  <p>L'équipe Essence Féminine</p>
+                  <p>L'équipe Her Essence</p>
                 </div>
               </div>
             </body>
@@ -261,7 +261,7 @@ export async function POST(
     if (customerEmail && process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || 'Essence Féminine <noreply@essencefeminine.nl>',
+          from: process.env.RESEND_FROM_EMAIL || 'Her Essence <noreply@heressence.nl>',
           to: customerEmail,
           subject: `Commande ${order.order_number} confirmée`,
           html: `
@@ -292,7 +292,7 @@ export async function POST(
                   <p>Votre commande est maintenant en cours de traitement et sera expédiée sous peu.</p>
                   <p>Vous pouvez suivre l'état de votre commande depuis votre <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/compte" style="color: #d4a574; text-decoration: underline;">espace client</a>.</p>
                   <p>Merci pour votre confiance !</p>
-                  <p>L'équipe Essence Féminine</p>
+                  <p>L'équipe Her Essence</p>
                 </div>
               </div>
             </body>

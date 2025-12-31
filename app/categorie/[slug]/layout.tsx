@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const title = `${category.name} | Essence Féminine`;
+  const title = `${category.name} | Her Essence`;
   const description = category.description || `Découvrez notre sélection de produits ${category.name.toLowerCase()}. ${categoryProducts.length} produits disponibles. Produits de beauté premium, livraison gratuite dès €150.`;
 
   return {
@@ -30,16 +30,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       'Belgique',
       'e-commerce beauté',
     ],
-    authors: [{ name: 'Essence Féminine' }],
+    authors: [{ name: 'Her Essence' }],
     openGraph: {
       type: 'website',
       title,
       description,
-      url: `https://essencefeminine.be/categorie/${slug}`,
-      siteName: 'Essence Féminine',
+      url: `https://heressence.nl/categorie/${slug}`,
+      siteName: 'Her Essence',
       images: [
         {
-          url: category.image?.startsWith('http') ? category.image : `https://essencefeminine.be${category.image}`,
+          url: category.image?.startsWith('http') ? category.image : `https://heressence.nl${category.image}`,
           width: 1200,
           height: 630,
           alt: category.name,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [category.image?.startsWith('http') ? category.image : `https://essencefeminine.nl${category.image}`],
     },
     alternates: {
-      canonical: `https://essencefeminine.be/categorie/${slug}`,
+      canonical: `https://heressence.nl/categorie/${slug}`,
     },
   };
 }

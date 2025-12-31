@@ -5,7 +5,7 @@ export default function DeliveryReturnsPage() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-4xl">
         <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-12 text-center">
-          Livraison & Retours
+          Verzending & Retour
         </h1>
 
         {/* Delivery */}
@@ -14,45 +14,45 @@ export default function DeliveryReturnsPage() {
             <div className="w-16 h-16 bg-rose-soft/20 rounded-full flex items-center justify-center">
               <FiTruck className="w-8 h-8 text-rose-soft" />
             </div>
-            <h2 className="font-elegant text-3xl text-brown-dark">Livraison</h2>
+            <h2 className="font-elegant text-3xl text-brown-dark">Verzending</h2>
           </div>
 
           <div className="space-y-6 text-brown-soft leading-relaxed">
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Délais de livraison</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Leveringstermijnen</h3>
               <ul className="space-y-2 ml-4">
                 <li className="list-disc">
-                  <strong>Livraison standard :</strong> 2-3 jours ouvrés
+                  <strong>Standaard levering :</strong> 2-3 werkdagen
                 </li>
                 <li className="list-disc">
-                  <strong>Livraison express :</strong> 1 jour ouvré
+                  <strong>Express levering :</strong> 1 werkdag
                 </li>
               </ul>
               <p className="mt-3 text-brown-soft">
-                <strong>Note :</strong> Nous livrons uniquement en Belgique.
+                <strong>Opmerking :</strong> Wij leveren alleen in Nederland.
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Frais de livraison</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Verzendkosten</h3>
               <ul className="space-y-2 ml-4">
                 <li className="list-disc">
-                  <strong>Livraison gratuite</strong> pour toute commande supérieure ou égale à €150
+                  <strong>Gratis verzending</strong> voor alle bestellingen van €150 of meer
                 </li>
                 <li className="list-disc">
-                  <strong>Livraison standard :</strong> €2,99 pour les commandes inférieures à €150
+                  <strong>Standaard verzending :</strong> €2,99 voor bestellingen onder de €150
                 </li>
               </ul>
               <p className="mt-4 p-4 bg-rose-soft/10 border border-rose-soft/30 rounded-lg text-brown-dark">
-                <strong>💡 Astuce :</strong> Ajoutez des produits à votre panier pour bénéficier de la livraison gratuite dès €150 !
+                <strong>💡 Tip :</strong> Voeg producten toe aan uw winkelwagen om gratis verzending te krijgen vanaf €150!
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Suivi de commande</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Bestelling volgen</h3>
               <p>
-                Une fois votre commande expédiée, vous recevrez un email avec votre numéro de suivi. 
-                Vous pourrez suivre votre colis en temps réel jusqu'à sa livraison.
+                Zodra uw bestelling is verzonden, ontvangt u een e-mail met uw trackingnummer. 
+                U kunt uw pakket in real-time volgen tot levering.
               </p>
             </div>
           </div>
@@ -64,45 +64,44 @@ export default function DeliveryReturnsPage() {
             <div className="w-16 h-16 bg-rose-soft/20 rounded-full flex items-center justify-center">
               <FiRefreshCw className="w-8 h-8 text-rose-soft" />
             </div>
-            <h2 className="font-elegant text-3xl text-brown-dark">Retours & Échanges</h2>
+            <h2 className="font-elegant text-3xl text-brown-dark">Retour & Wissel</h2>
           </div>
 
           <div className="space-y-6 text-brown-soft leading-relaxed">
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Droit de rétractation</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Herroepingsrecht</h3>
               <p>
-                Conformément à la législation européenne, vous disposez d'un délai de 14 jours 
-                à compter de la réception de votre commande pour exercer votre droit de rétractation, 
-                sans avoir à justifier de motifs ni à payer de pénalité.
+                Overeenkomstig de Europese wetgeving heeft u 14 dagen na ontvangst van uw bestelling om uw koop te herroepen, 
+                zonder motivering te geven of een boete te betalen. Na 14 dagen na levering is retourneren niet langer mogelijk.
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Conditions de retour</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Retourvoorwaarden</h3>
               <ul className="space-y-2 ml-4">
-                <li className="list-disc">Les produits doivent être retournés dans leur emballage d'origine</li>
-                <li className="list-disc">Les produits doivent être non utilisés et dans leur état d'origine</li>
-                <li className="list-disc">Les produits d'hygiène intime et les produits personnalisés ne peuvent pas être retournés</li>
-                <li className="list-disc">Le retour doit être effectué dans un délai de 30 jours après réception</li>
+                <li className="list-disc">Producten moeten worden geretourneerd in de originele verpakking</li>
+                <li className="list-disc">Producten moeten ongebruikt en in originele staat zijn</li>
+                <li className="list-disc">Intieme hygiëneproducten en gepersonaliseerde producten kunnen niet worden geretourneerd</li>
+                <li className="list-disc">De retour moet plaatsvinden binnen 14 dagen na levering</li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Procédure de retour</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Retourprocedure</h3>
               <ol className="space-y-2 ml-4 list-decimal">
-                <li>Contactez-nous à contact@essencefeminine.be avec votre numéro de commande</li>
-                <li>Nous vous enverrons une étiquette de retour (si applicable)</li>
-                <li>Emballez soigneusement les articles à retourner</li>
-                <li>Envoyez le colis à l'adresse fournie</li>
-                <li>Dès réception, nous procéderons au remboursement sous 14 jours</li>
+                <li>Neem contact met ons op via contact@heressence.nl met uw bestelnummer</li>
+                <li>Wij sturen u een retourlabel (indien van toepassing)</li>
+                <li>Verpak de te retourneren artikelen zorgvuldig</li>
+                <li>Zend het pakket naar het opgegeven adres</li>
+                <li>Bij ontvangst zullen wij de terugbetaling binnen 14 dagen verwerken</li>
               </ol>
             </div>
 
             <div>
-              <h3 className="font-semibold text-brown-dark text-xl mb-3">Frais de retour</h3>
+              <h3 className="font-semibold text-brown-dark text-xl mb-3">Retourkosten</h3>
               <p>
-                Les frais de retour sont à votre charge, sauf en cas de produit défectueux, 
-                d'erreur de notre part ou de non-conformité du produit avec sa description.
+                De retourkosten zijn voor uw rekening, behalve in geval van een defect product, 
+                een fout van onze kant of een product dat niet overeenkomt met de beschrijving.
               </p>
             </div>
           </div>
@@ -118,9 +117,9 @@ export default function DeliveryReturnsPage() {
           </div>
 
           <p className="text-brown-dark leading-relaxed text-lg">
-            Tous nos produits sont garantis conformes à leur description. En cas de produit défectueux 
-            ou non conforme, nous garantissons le remboursement complet ou l'échange sans frais. 
-            N'hésitez pas à nous contacter pour toute question concernant votre commande.
+            Al onze producten worden gegarandeerd conform hun beschrijving geleverd. In geval van een defect product 
+            of een afwijkend product, garanderen wij volledige terugbetaling of ruil zonder extra kosten. 
+            Aarzel niet om contact met ons op te nemen voor vragen over uw bestelling.
           </p>
         </section>
       </div>

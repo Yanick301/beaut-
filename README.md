@@ -1,4 +1,4 @@
-# Essence Féminine - E-commerce Beauté Premium
+# Her Essence - Premium Beauty E-commerce
 
 Site e-commerce haut de gamme spécialisé dans les produits de beauté pour femmes, basé aux Pays-Bas.
 

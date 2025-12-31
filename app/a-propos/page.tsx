@@ -3,11 +3,11 @@ import Image from 'next/image';
 import { FiHeart, FiAward, FiZap, FiUsers } from 'react-icons/fi';
 
 export const metadata: Metadata = {
-  title: 'À Propos',
-  description: 'Découvrez l&apos;histoire d&apos;Essence Féminine, notre passion pour la beauté authentique et notre engagement envers des produits de qualité premium.',
+  title: 'Over ons',
+  description: 'Ontdek het verhaal van Her Essence, onze passie voor authentieke schoonheid en ons engagement voor kwaliteitsproducten.',
   openGraph: {
-    title: 'À Propos de Essence Féminine',
-    description: 'Notre histoire et nos valeurs : qualité, naturel, responsabilité et engagement envers nos clientes.',
+    title: 'Over Her Essence',
+    description: 'Onze geschiedenis en waarden: kwaliteit, natuurlijkheid, verantwoordelijkheid en engagement ten aanzien van onze klanten.',
   },
 };
 
@@ -16,14 +16,14 @@ export default function AboutPage() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-4xl">
         <h1 className="font-elegant text-3xl sm:text-4xl md:text-5xl text-brown-dark mb-8 text-center">
-          À Propos de Essence Féminine
+          Over Her Essence
         </h1>
 
         {/* Hero Image */}
         <div className="relative h-64 sm:h-80 md:h-96 rounded-3xl overflow-hidden mb-12 shadow-xl">
           <Image
             src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200"
-            alt="Essence Féminine - Notre histoire"
+            alt="Her Essence - Ons verhaal"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1024px"
@@ -33,22 +33,22 @@ export default function AboutPage() {
 
         {/* Story */}
         <article className="bg-white-cream rounded-2xl p-6 sm:p-8 md:p-12 mb-12 shadow-md">
-          <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Notre Histoire</h2>
+          <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6">Ons verhaal</h2>
           <div className="space-y-4 text-brown-soft leading-relaxed text-base sm:text-lg">
             <p>
-              Essence Féminine est née d&apos;une passion profonde pour la beauté authentique et le bien-être. 
-              Fondée en Belgique, notre mission est de démocratiser l'accès à des produits de beauté 
-              premium, alliant qualité supérieure, ingrédients naturels et efficacité prouvée. 
-              Nous sommes fiers d'être une entreprise belge, engagée envers nos clientes et notre communauté.
+              Her Essence is ontstaan uit een diepe passie voor authentieke schoonheid en welzijn. 
+              Opgericht in Nederland, is onze missie het democratiseren van de toegang tot premium 
+              schoonheidsproducten die kwaliteit, natuurlijke ingrediënten en bewezen effectiviteit combineren. 
+              We zijn trots op een Nederlands bedrijf te zijn dat zich inzet voor onze klanten en gemeenschap.
             </p>
             <p>
-              Nous croyons que chaque femme mérite de se sentir belle, confiante et épanouie. 
-              C&apos;est pourquoi nous sélectionnons avec un soin méticuleux chaque produit de notre catalogue, 
-              en privilégiant les formulations respectueuses de votre peau et de l'environnement.
+              We geloven dat elke vrouw zich mooi, zelfverzekerd en volledig moet voelen. 
+              Daarom selecteren we met zorg elk product in onze catalogus, 
+              met voorkeur voor formuleringen die respectvol zijn voor uw huid en het milieu.
             </p>
             <p>
-              Notre engagement va au-delà de la simple vente de produits. Nous sommes votre partenaire 
-              beauté, vous accompagnant dans votre routine quotidienne pour révéler votre éclat naturel.
+              Ons engagement gaat verder dan alleen het verkopen van producten. We zijn uw 
+              schoonheidspartner, die u ondersteunt in uw dagelijkse routine om uw natuurlijke glans te onthullen.
             </p>
           </div>
         </article>
@@ -59,10 +59,10 @@ export default function AboutPage() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mb-4">
               <FiHeart className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
             </div>
-            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Passion</h3>
+            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Passie</h3>
             <p className="text-sm sm:text-base text-brown-soft leading-relaxed">
-              Nous sommes animés par une passion authentique pour la beauté et le bien-être, 
-              qui se reflète dans chaque choix que nous faisons.
+              We worden gedreven door een authentieke passie voor schoonheid en welzijn, 
+              die zich weerspiegelt in elk keuze dat we maken.
             </p>
           </div>
 
@@ -70,10 +70,10 @@ export default function AboutPage() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mb-4">
               <FiAward className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
             </div>
-            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Qualité</h3>
+            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Kwaliteit</h3>
             <p className="text-sm sm:text-base text-brown-soft leading-relaxed">
-              Nous n&apos;acceptons que l&apos;excellence. Tous nos produits sont testés et certifiés 
-              pour garantir leur efficacité et leur sécurité.
+              We accepteren alleen uitstekendheid. Al onze producten worden getest en gecertificeerd 
+              om hun effectiviteit en veiligheid te garanderen.
             </p>
           </div>
 
@@ -81,10 +81,10 @@ export default function AboutPage() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mb-4">
               <FiZap className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
             </div>
-            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Responsabilité</h3>
+            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Verantwoordelijkheid</h3>
             <p className="text-sm sm:text-base text-brown-soft leading-relaxed">
-              Nous nous engageons pour une beauté responsable, en privilégiant des ingrédients 
-              naturels et des pratiques respectueuses de l'environnement.
+              We zetten ons in voor verantwoorde schoonheid, met nadruk op natuurlijke ingrediënten 
+              en milieuvriendelijke praktijken.
             </p>
           </div>
 
@@ -92,21 +92,21 @@ export default function AboutPage() {
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-rose-soft/20 rounded-full flex items-center justify-center mb-4">
               <FiUsers className="w-6 h-6 sm:w-8 sm:h-8 text-rose-soft" />
             </div>
-            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Clientes</h3>
+            <h3 className="font-elegant text-xl sm:text-2xl text-brown-dark mb-4">Klanten</h3>
             <p className="text-sm sm:text-base text-brown-soft leading-relaxed">
-              Vous êtes au cœur de nos préoccupations. Votre satisfaction et votre bien-être 
-              guident chacune de nos décisions.
+              U staat centraal in onze aandacht. Uw tevredenheid en welzijn 
+              vormen de basis van al onze beslissingen.
             </p>
           </div>
         </div>
 
         {/* Mission */}
         <section className="bg-gradient-to-r from-rose-powder to-beige rounded-2xl p-6 sm:p-8 md:p-12 shadow-md">
-          <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6 text-center">Notre Mission</h2>
+          <h2 className="font-elegant text-2xl sm:text-3xl text-brown-dark mb-6 text-center">Onze Missie</h2>
           <p className="text-base sm:text-lg text-brown-soft leading-relaxed text-center max-w-3xl mx-auto">
-            Offrir à chaque femme les meilleurs produits de beauté pour révéler sa beauté naturelle, 
-            renforcer sa confiance et prendre soin d'elle-même avec des formulations premium, 
-            sûres et respectueuses de l'environnement.
+            Bied elke vrouw de beste schoonheidsproducten om haar natuurlijke schoonheid te onthullen, 
+            haar zelfvertrouwen te versterken en goed voor zichzelf te zorgen met premium formuleringen 
+            die veilig en milieuvriendelijk zijn.
           </p>
         </section>
       </div>

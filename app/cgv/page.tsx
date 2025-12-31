@@ -3,103 +3,106 @@ export default function CGVPage() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-4xl">
         <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-12 text-center">
-          Conditions Générales de Vente
+          Algemene verkoopvoorwaarden
         </h1>
 
         <div className="bg-white-cream rounded-2xl p-8 md:p-12 shadow-md space-y-8 text-brown-soft leading-relaxed">
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">1. Objet</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">1. Onderwerp</h2>
             <p>
-              Les présentes Conditions Générales de Vente (CGV) régissent les relations entre Essence Féminine S.P.R.L., 
-              société immatriculée en Belgique, et les clients effectuant des achats sur le site essencefeminine.be.
+              De onderhavige Algemene Verkoopvoorwaarden (AV) regelen de relaties tussen Her Essence B.V., 
+              een in Nederland gevestigd bedrijf, en de klanten die aankopen doen op de website heressence.nl.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">2. Acceptation des conditions</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">2. Aanvaarding van de voorwaarden</h2>
             <p>
-              Toute commande implique l'acceptation sans réserve des présentes CGV. Ces conditions prévalent 
-              sur toute autre condition, sauf accord écrit contraire.
+              Elke bestelling impliceert de onvoorbehoudelijke aanvaarding van de onderhavige AV. Deze voorwaarden hebben 
+              voorrang op alle andere voorwaarden, tenzij schriftelijk anders overeengekomen.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">3. Prix</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">3. Prijzen</h2>
             <p>
-              Les prix indiqués sur le site sont exprimés en euros, toutes taxes comprises (TVA incluse). 
-              Les prix sont valables uniquement pour les commandes passées sur le site internet. 
-              Essence Féminine se réserve le droit de modifier ses prix à tout moment, étant toutefois entendu 
-              que le prix figurant au moment de la commande sera le seul applicable à l'acheteur.
+              De op de website vermelde prijzen zijn uitgedrukt in euro's, inclusief alle belastingen (btw inbegrepen). 
+              De prijzen zijn geldig uitsluitend voor bestellingen geplaatst via de website. 
+              Her Essence behoudt zich het recht voor om de prijzen op elk moment te wijzigen, met het begrip 
+              dat de prijs op het moment van bestelling de enige toepasselijke prijs is voor de koper.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">4. Commande</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">4. Bestelling</h2>
             <p>
-              Toute commande vaut acceptation des prix et descriptions des produits disponibles à la vente. 
-              La validation de votre commande vaut confirmation de celle-ci. Un email de confirmation 
-              vous sera envoyé. La vente ne sera considérée comme définitive qu'après l'envoi au client 
-              de l'email de confirmation de l'acceptation de la commande par Essence Féminine.
+              Elke bestelling betekent aanvaarding van de prijzen en beschrijvingen van de producten die te koop zijn. 
+              De bevestiging van uw bestelling geldt als bevestiging hiervan. Een bevestigingsmail 
+              wordt naar u verzonden. De verkoop wordt pas als definitief beschouwd nadat aan de klant 
+              de e-mail is verzonden waarin de acceptatie van de bestelling door Her Essence wordt bevestigd.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Paiement</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Betaling</h2>
             <p>
-              Le paiement s'effectue par carte bancaire (Visa, Mastercard, Bancontact), virement bancaire ou PayPal. 
-              Le débit de la carte bancaire intervient au moment de la commande. En cas de paiement par virement bancaire, 
-              les coordonnées bancaires vous seront communiquées par email. Tous les paiements sont sécurisés et cryptés.
+              De betaling gebeurt uitsluitend via bankoverschrijving, gedaan door de klant zelf. 
+              Na het plaatsen van de bestelling ontvangt u per e-mail de bankgegevens waarnaar u de betaling moet 
+              overschrijven. Betalingen via creditcard, PayPal of andere betaalmethodes zijn niet mogelijk. 
+              Alle betalingen zijn beveiligd.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Livraison</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Levering</h2>
             <p>
-              Les délais de livraison indiqués sont donnés à titre indicatif et ne sont pas garantis. 
-              En cas de retard de livraison, Essence Féminine informera le client par email. Les risques sont 
-              transférés au client au moment de la livraison. La livraison est effectuée à l'adresse 
-              indiquée par le client lors de la commande.
+              De vermelde leveringstermijnen zijn slechts indicatief en worden niet gegarandeerd. 
+              In geval van vertraging bij de levering zal Her Essence de klant per e-mail informeren. De risico's gaan 
+              over op de klant op het moment van levering. De levering vindt plaats op het adres 
+              dat de klant heeft opgegeven bij het plaatsen van de bestelling.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">7. Droit de rétractation</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">7. Herroepingsrecht</h2>
             <p>
-              Conformément à la législation européenne, le client dispose d'un délai de 14 jours à compter 
-              de la réception de sa commande pour exercer son droit de rétractation, sans avoir à justifier 
-              de motifs. Les frais de retour sont à la charge du client, sauf en cas de produit défectueux.
+              Overeenkomstig de Europese wetgeving beschikt de klant over een herroepingsrecht van 14 dagen, 
+              te rekenen vanaf de dag na ontvangst van de bestelling, zonder dat motivering vereist is. 
+              Na 14 dagen na levering is retourneren niet langer mogelijk. De retourkosten zijn voor rekening van de klant, 
+              tenzij het product defect is.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">8. Propriété intellectuelle</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">8. Intellectueel eigendom</h2>
             <p>
-              L'ensemble de ce site relève de la législation belge et internationale sur le droit 
-              d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
+              Deze website valt onder de Nederlandse en internationale wetgeving betreffende het 
+              auteursrecht en intellectuele eigendom. Alle reproductierechten zijn voorbehouden.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">9. Données personnelles</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">9. Persoonsgegevens</h2>
             <p>
-              Les données personnelles collectées sont nécessaires au traitement de votre commande. 
-              Elles sont conservées en toute sécurité et ne sont jamais communiquées à des tiers. 
-              Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression 
-              de vos données.
+              De verzamelde persoonsgegevens zijn nodig voor de verwerking van uw bestelling. 
+              Ze worden veilig opgeslagen en nooit gedeeld met derden. 
+              Overeenkomstig de AVG beschikt u over een recht op inzage, rectificatie en verwijdering 
+              van uw gegevens.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">10. Litiges</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">10. Geschillen</h2>
             <p>
-              Les présentes CGV sont régies par le droit belge. En cas de litige, et après 
-              tentative de résolution amiable, les tribunaux compétents seront ceux de Bruxelles, Belgique.
+              De onderhavige AV worden beheerst door het Nederlandse recht. In geval van geschil, en na 
+              poging tot schikking, zullen de bevoegde rechterlijke instanties in Amsterdam, Nederland, 
+              bevoegd zijn.
             </p>
           </section>
 
           <section className="pt-4 border-t border-nude">
             <p className="text-sm text-brown-soft/80">
-              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+              Laatste update : {new Date().toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </section>
         </div>

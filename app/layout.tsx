@@ -18,16 +18,16 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://essencefeminine.be'),
+  metadataBase: new URL('https://heressence.nl'),
   title: {
-    default: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
-    template: '%s | Essence Féminine'
+    default: 'Her Essence - Premium Beauty & Luxe Cosmetica',
+    template: '%s | Her Essence'
   },
-  description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, senteurs corporelles et accessoires beauté de qualité. Livraison rapide en Belgique.',
-  keywords: ['beauté', 'cosmétiques', 'soins visage', 'maquillage', 'parfums', 'senteur corporel', 'Belgique', 'e-commerce beauté', 'produits beauté premium', 'soins du corps', 'cheveux', 'accessoires beauté'],
-  authors: [{ name: 'Essence Féminine' }],
-  creator: 'Essence Féminine',
-  publisher: 'Essence Féminine S.P.R.L.',
+  description: 'Ontdek onze selectie premium beautyproducten voor vrouwen. Gezichtsverzorging, make-up, lichaamsgeuren en beautyaccessoires van hoge kwaliteit. Snelle levering in Nederland.',
+  keywords: ['beauty', 'cosmetica', 'gezichtsverzorging', 'make-up', 'parfums', 'lichaamsgeuren', 'Nederland', 'e-commerce beauty', 'premium beautyproducten', 'lichaamsverzorging', 'haar', 'beautyaccessoires'],
+  authors: [{ name: 'Her Essence' }],
+  creator: 'Her Essence',
+  publisher: 'Her Essence B.V.',
   formatDetection: {
     email: false,
     address: false,
@@ -35,24 +35,24 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'fr_FR',
-    url: 'https://essencefeminine.be',
-    siteName: 'Essence Féminine',
-    title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
-    description: 'Découvrez notre sélection de produits de beauté premium pour femmes. Soins du visage, maquillage, senteurs corporelles et accessoires beauté de qualité.',
+    locale: 'nl_NL',
+    url: 'https://heressence.nl',
+    siteName: 'Her Essence',
+    title: 'Her Essence - Premium Beauty & Luxe Cosmetica',
+    description: 'Ontdek onze selectie premium beautyproducten voor vrouwen. Gezichtsverzorging, make-up, lichaamsgeuren en beautyaccessoires van hoge kwaliteit.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Essence Féminine - Beauté Premium',
+        alt: 'Her Essence - Premium Beauty',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Essence Féminine - Beauté Premium & Cosmétiques de Luxe',
-    description: 'Découvrez notre sélection de produits de beauté premium pour femmes.',
+    title: 'Her Essence - Premium Beauty & Luxe Cosmetica',
+    description: 'Ontdek onze selectie premium beautyproducten voor vrouwen.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     // yandex: 'your-yandex-verification-code',
   },
   alternates: {
-    canonical: 'https://essencefeminine.be',
+    canonical: 'https://heressence.nl',
   },
   viewport: {
     width: 'device-width',
@@ -87,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="nl" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-beige-light font-sans antialiased">
         <StructuredData type="Organization" data={{}} />
         <StructuredData type="WebSite" data={{}} />

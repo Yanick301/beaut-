@@ -3,87 +3,87 @@ export default function LegalNoticePage() {
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-4xl">
         <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-12 text-center">
-          Mentions Légales
+          Juridische informatie
         </h1>
 
         <div className="bg-white-cream rounded-2xl p-8 md:p-12 shadow-md space-y-8 text-brown-soft leading-relaxed">
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">1. Informations légales</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">1. Juridische informatie</h2>
             <div className="space-y-2">
-              <p><strong>Raison sociale :</strong> Essence Féminine S.P.R.L.</p>
-              <p><strong>Forme juridique :</strong> Société à responsabilité limitée (S.P.R.L.)</p>
-              <p><strong>Siège social :</strong> Avenue Louise 123, 1050 Bruxelles, Belgique</p>
-              <p><strong>Numéro d'entreprise BCE :</strong> BE 1234.567.890</p>
-              <p><strong>Numéro TVA :</strong> BE 1234.567.890</p>
-              <p><strong>Email :</strong> contact@essencefeminine.be</p>
+              <p><strong>Bedrijfsnaam :</strong> Her Essence B.V.</p>
+              <p><strong>Rechtsvorm :</strong> Besloten vennootschap (B.V.)</p>
+              <p><strong>Maatschappelijke zetel :</strong> Herengracht 123, 1015 Amsterdam, Nederland</p>
+              <p><strong>KVK-nummer :</strong> NL 1234.567.890.B</p>
+              <p><strong>BTW-nummer :</strong> NL 1234.567.890.B</p>
+              <p><strong>Email :</strong> contact@heressence.nl</p>
             </div>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">2. Directeur de publication</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">2. Uitgever</h2>
             <p>
-              Le directeur de la publication est le représentant légal de Essence Féminine S.P.R.L.
+              De uitgever is de wettelijke vertegenwoordiger van Her Essence B.V.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">3. Hébergement</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">3. Hosting</h2>
             <p>
-              Le site essencefeminine.be est hébergé par un prestataire d'hébergement conforme aux normes 
-              de sécurité et de protection des données en vigueur en Europe.
+              De website heressence.nl wordt gehost door een hostingprovider die voldoet aan de 
+              beveiligings- en gegevensbeschermingsnormen zoals geldend in Europa.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">4. Propriété intellectuelle</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">4. Intellectueel eigendom</h2>
             <p>
-              L'ensemble de ce site relève de la législation belge et internationale sur le droit 
-              d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, 
-              y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+              Deze website valt onder de Nederlandse en internationale wetgeving betreffende het 
+              auteursrecht en intellectuele eigendom. Alle reproductierechten zijn voorbehouden, 
+              inclusief voor downloadbare documenten en iconografische en fotografische weergaven.
             </p>
             <p className="mt-3">
-              La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit 
-              est formellement interdite sauf autorisation expresse du directeur de publication.
+              De reproductie van geheel of gedeeltelijk van deze website op welk elektronisch medium dan ook 
+              is uitdrukkelijk verboden tenzij met schriftelijke toestemming van de uitgever.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Responsabilité</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Aansprakelijkheid</h2>
             <p>
-              Essence Féminine S.P.R.L. s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées 
-              sur ce site, dont elle se réserve le droit de corriger, à tout moment et sans préavis, le contenu. 
-              Toutefois, Essence Féminine S.P.R.L. ne peut garantir l'exactitude, la précision ou l'exhaustivité des 
-              informations mises à disposition sur ce site.
+              Her Essence B.V. streeft ernaar om de juistheid en actualiteit van de informatie op deze website 
+              te garanderen, en behoudt zich het recht voor om op elk moment en zonder voorafgaande kennisgeving 
+              de inhoud te wijzigen. Echter, Her Essence B.V. kan niet garanderen dat de informatie op deze website 
+              volledig, nauwkeurig of actueel is.
             </p>
             <p className="mt-3">
-              En conséquence, Essence Féminine S.P.R.L. décline toute responsabilité pour tout dommage résultant d'une 
-              intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à disposition 
-              sur le site ou pour tout dommage, direct ou indirect, quelle qu'en soit la cause, l'origine, la nature 
-              ou les conséquences, provoqué à raison de l'accès de quiconque au site ou de l'impossibilité d'y accéder.
+              Derhalve is Her Essence B.V. niet aansprakelijk voor enige schade voortvloeiend uit een 
+              frauduleuze inbraak door een derde partij die heeft geleid tot wijziging van de informatie op 
+              de website of voor enige schade, direct of indirect, van welke aard dan ook, veroorzaakt 
+              door toegang tot de website of de onmogelijkheid daartoe.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Liens hypertextes</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Hypertext links</h2>
             <p>
-              La mise en place d'un lien hypertexte vers le site essencefeminine.be nécessite une autorisation 
-              préalable écrite de Essence Féminine S.P.R.L. Les liens hypertextes mis en place en direction d'autres sites 
-              à partir de essencefeminine.be ne sauraient, en aucun cas, engager la responsabilité de Essence Féminine S.P.R.L.
+              Het plaatsen van een hyperlink naar de website heressence.nl vereist een voorafgaande 
+              schriftelijke toestemming van Her Essence B.V. De hyperlinks naar andere websites vanaf 
+              heressence.nl kunnen in geen geval de aansprakelijkheid van Her Essence B.V. oproepen.
             </p>
           </section>
 
           <section>
-            <h2 className="font-elegant text-2xl text-brown-dark mb-4">7. Droit applicable</h2>
+            <h2 className="font-elegant text-2xl text-brown-dark mb-4">7. Toepasselijk recht</h2>
             <p>
-              Les présentes mentions légales sont régies par le droit belge. En cas de litige et à défaut 
-              d'accord amiable, le litige sera porté devant les tribunaux compétents de Bruxelles, conformément 
-              aux règles de compétence en vigueur.
+              De onderhavige juridische bepalingen worden beheerst door het Nederlandse recht. In geval van 
+              geschil en bij gebrek aan een schikking, wordt het geschil voorgelegd aan de bevoegde rechter 
+              in Amsterdam, overeenkomstig de van toepassing zijnde bevoegdheidsregels.
             </p>
           </section>
 
           <section className="pt-4 border-t border-nude">
             <p className="text-sm text-brown-soft/80">
-              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+              Laatste update : {new Date().toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </section>
         </div>
