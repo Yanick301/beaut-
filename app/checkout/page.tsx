@@ -25,7 +25,7 @@ export default function CheckoutPage() {
     address: '',
     city: '',
     postalCode: '',
-    country: 'BE',
+    country: 'NL',
     phone: '',
     paymentMethod: 'bank_transfer',
   });
@@ -224,10 +224,10 @@ export default function CheckoutPage() {
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition text-sm sm:text-base"
                   />
                 </div>
-                <input type="hidden" name="country" value="BE" />
+                <input type="hidden" name="country" value="NL" />
                 <div className="bg-rose-soft/10 border border-rose-soft/30 rounded-lg p-4">
                   <p className="text-sm text-brown-dark">
-                    <strong>Bezorging :</strong> We leveren alleen in België
+                    <strong>Bezorging :</strong> Bestellingen worden verwerkt en verzonden, levering is binnen Nederland
                   </p>
                 </div>
               </div>
@@ -275,11 +275,11 @@ export default function CheckoutPage() {
                     <p className="text-lg font-mono text-brown-dark">BUNQNL2A</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brown-soft mb-2">REDEN :</p>
+                    <p className="text-sm font-semibold text-brown-soft mb-2">Reden:</p>
                     <p className="text-lg text-brown-dark">HERESSENCE</p>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brown-soft mb-2">Montant à virer :</p>
+                    <p className="text-sm font-semibold text-brown-soft mb-2">Te betalen bedrag:</p>
                     <p className="text-2xl font-bold text-rose-soft">€{(Math.max(0, total - promoDiscount) + shipping).toFixed(2)}</p>
                   </div>
                 </div>

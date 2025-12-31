@@ -15,42 +15,17 @@ export interface PromoCode {
 // Codes promo prédéfinis (à migrer vers Supabase plus tard)
 export const PROMO_CODES: PromoCode[] = [
   {
-    code: 'WELKOM10',
+    code: 'FIRST10',
     type: 'percentage',
     value: 10,
     minPurchase: 0,
+    usageLimit: 1, // Un utilisateur peut l'utiliser une seule fois
   },
   {
-    code: 'VERZEND50',
-    type: 'fixed',
-    value: 5.99,
-    minPurchase: 150,
-  },
-  {
-    code: 'PREMIUM20',
-    type: 'percentage',
-    value: 20,
-    minPurchase: 350,
-    maxDiscount: 50,
-  },
-  {
-    code: 'SCHOONHEID15',
+    code: 'BIGORDER15',
     type: 'percentage',
     value: 15,
-    minPurchase: 75,
-  },
-  {
-    code: 'KERST25',
-    type: 'percentage',
-    value: 25,
-    minPurchase: 100,
-    maxDiscount: 40,
-  },
-  {
-    code: 'ZORG12',
-    type: 'percentage',
-    value: 12,
-    minPurchase: 50,
+    minPurchase: 250,
   },
 ];
 

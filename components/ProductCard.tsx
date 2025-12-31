@@ -18,7 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     addItem(product);
-    addToast(`${product.name} a été ajouté au panier`, 'success');
+    addToast(`${product.name} is aan winkelwagen toegevoegd`, 'success');
   };
 
   return (
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="w-full btn-outline flex items-center justify-center gap-1 sm:gap-2 mt-auto active:scale-95 touch-manipulation py-2 sm:py-2.5"
           >
             <FiShoppingCart className="w-3 h-3 sm:w-4 md:w-5 sm:h-3 md:h-5" />
-            <span className="text-xs sm:text-xs md:text-sm lg:text-base">Ajouter au panier</span>
+            <span className="text-xs sm:text-xs md:text-sm lg:text-base">Aan winkelwagen toevoegen</span>
           </button>
         </div>
       </div>

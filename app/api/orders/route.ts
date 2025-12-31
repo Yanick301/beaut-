@@ -18,18 +18,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { items, shippingAddress, paymentMethod, totalAmount, shippingCost } = body;
 
-    // Vérifier que la livraison est uniquement aux Pays-Bas
-    if (shippingAddress?.country && shippingAddress.country !== 'NL') {
-      return NextResponse.json(
-        { error: 'Nous livrons uniquement aux Pays-Bas' },
-        { status: 400 }
-      );
-    }
-
-    // Forcer le pays à NL si non spécifié ou incorrect
-    if (shippingAddress) {
-      shippingAddress.country = 'NL';
-    }
+    // Le pays est laissé tel que saisi par l'utilisateur
 
     // Générer un numéro de commande unique
     const orderNumber = `CMD-${Date.now()}-${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
