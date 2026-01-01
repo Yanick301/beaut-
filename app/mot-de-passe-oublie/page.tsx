@@ -13,29 +13,28 @@ export default function ForgotPasswordPage() {
 
   const supabase = createClient();
 
-  const handleReset = async (e: React.FormEvent) => {
+  const handleMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setMessage(null);
 
     try {
-      // Utiliser une variable d'environnement ou window.location.origin (vérifier que window existe)
-      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
-      if (!redirectUrl) {
-        throw new Error('NEXT_PUBLIC_SITE_URL must be set in environment variables');
-      }
-      const callbackUrl = `${redirectUrl}/reinitialiser-mot-de-passe`;
-
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: callbackUrl,
+      // Envoi du Magic Link
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/compte`, // redirige après connexion
+        },
       });
 
       if (error) throw error;
 
-      setMessage('Een wachtwoord reset link is naar uw e-mailadres verzonden!');
+      setMessage(
+        'Er is een magische link naar uw e-mailadres gestuurd. Klik erop om automatisch in te loggen. Eenmaal ingelogd kunt u uw wachtwoord wijzigen in uw profiel.'
+      );
     } catch (error: any) {
-      setError(error.message || 'Une erreur est survenue');
+      setError(error.message || 'Er is iets misgegaan');
     } finally {
       setLoading(false);
     }
@@ -49,7 +48,7 @@ export default function ForgotPasswordPage() {
             Wachtwoord vergeten
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Voer uw e-mailadres in om een wachtwoord reset link te ontvangen
+            Voer uw e-mailadres in om een magische link te ontvangen die u automatisch aanmeldt bij uw account.
           </p>
 
           {error && (
@@ -64,7 +63,7 @@ export default function ForgotPasswordPage() {
             </div>
           )}
 
-          <form onSubmit={handleReset} className="space-y-6">
+          <form onSubmit={handleMagicLink} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
                 E-mail
@@ -78,7 +77,7 @@ export default function ForgotPasswordPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="votre@email.com"
+                  placeholder="uw@email.com"
                 />
               </div>
             </div>
@@ -88,7 +87,7 @@ export default function ForgotPasswordPage() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Verzenden...' : 'Verstuur reset link'}
+              {loading ? 'Verzenden...' : 'Verstuur magische link'}
             </button>
           </form>
 
@@ -102,9 +101,3 @@ export default function ForgotPasswordPage() {
     </div>
   );
 }
-
-
-
-
-
-
