@@ -14,37 +14,62 @@ function EmailConfirmedContent() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function checkEmailConfirmation() {
+    async function confirmEmail() {
       const supabase = createClient();
-      
-      // Vérifier si l'utilisateur est connecté et si son email est confirmé
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
-      
-      if (userError || !user) {
-        setError('Erreur lors de la vérification de votre compte');
+
+      const accessToken = searchParams.get('access_token');
+      const refreshToken = searchParams.get('refresh_token');
+
+      if (!accessToken || !refreshToken) {
+        setError('Ongeldige link of token ontbreekt.');
         setLoading(false);
         return;
       }
 
-      // Vérifier si l'email est confirmé
-      if (user.email_confirmed_at) {
-        setConfirmed(true);
-      } else {
-        setError('Votre email n\'a pas encore été confirmé');
+      // Connecter l'utilisateur avec le token
+      const { error: sessionError } = await supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+
+      if (sessionError) {
+        setError(sessionError.message);
+        setLoading(false);
+        return;
       }
-      
+
+      // Confirmer que l'email est vérifié
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError || !user) {
+        setError('Er is een fout opgetreden bij het ophalen van uw account.');
+        setLoading(false);
+        return;
+      }
+
+      if (!user.email_confirmed_at) {
+        setError('Uw e-mailadres kon niet bevestigd worden.');
+        setLoading(false);
+        return;
+      }
+
+      setConfirmed(true);
       setLoading(false);
+
+      // Redirection après 3 secondes
+      setTimeout(() => {
+        router.push('/compte');
+      }, 3000);
     }
 
-    checkEmailConfirmation();
-  }, []);
+    confirmEmail();
+  }, [router, searchParams]);
 
   if (loading) {
     return (
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-soft mx-auto mb-4"></div>
-          <p className="text-brown-soft">Vérification en cours...</p>
+          <p className="text-brown-soft">Bevestiging in progress...</p>
         </div>
       </div>
     );
@@ -88,7 +113,7 @@ function EmailConfirmedContent() {
           </p>
           
           <p className="text-brown-soft mb-8">
-            Uw account is nu actief en u heeft toegang tot alle diensten.
+            Uw account is nu actief en u wordt automatisch doorgestuurd naar uw profiel.
           </p>
 
           <div className="space-y-4">
@@ -127,4 +152,3 @@ export default function EmailConfirmedPage() {
     </Suspense>
   );
 }
-
