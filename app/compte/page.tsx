@@ -334,7 +334,7 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
                   }`}>
                     {order.status === 'delivered' ? 'Geleverd' :
                      order.status === 'shipped' ? 'Verzonden' :
-                     order.status === 'processing' ? 'In verwerking' :
+                     order.status === 'processing' ? 'Geverifieerd' :
                      order.status === 'pending' ? 'In afwachting van verificatie' :
                      'In behandeling'}
                   </span>

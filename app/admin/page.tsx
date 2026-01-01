@@ -203,7 +203,7 @@ export default function AdminDashboard() {
   const statusOptions = [
     { value: 'all', label: 'Toutes les commandes', icon: FiPackage },
     { value: 'pending', label: 'En attente', icon: FiClock },
-    { value: 'processing', label: 'En traitement', icon: FiRefreshCw },
+    { value: 'processing', label: 'Valider', icon: FiRefreshCw },
     { value: 'shipped', label: 'Expédiées', icon: FiTruck },
     { value: 'delivered', label: 'Livrées', icon: FiCheckCircle },
     { value: 'cancelled', label: 'Annulées', icon: FiXCircle },
@@ -342,7 +342,7 @@ export default function AdminDashboard() {
                         <div className="ml-2 flex-shrink-0 flex">
                           <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(order.status)}`}>
                             {order.status === 'pending' ? 'En attente' :
-                             order.status === 'processing' ? 'En traitement' :
+                             order.status === 'processing' ? 'Valider' :
                              order.status === 'shipped' ? 'Expédiée' :
                              order.status === 'delivered' ? 'Livrée' :
                              order.status === 'cancelled' ? 'Annulée' : order.status}
@@ -394,7 +394,7 @@ export default function AdminDashboard() {
                           onClick={() => updateOrderStatus(order.id, 'processing')}
                           className="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded text-blue-700 bg-blue-100 hover:bg-blue-200"
                         >
-                          En traitement
+                          Valider
                         </button>
                       )}
                       {order.status !== 'shipped' && (
