@@ -1,10 +1,10 @@
-import { createServerClient } from '@supabase/ssr'
-import { NextResponse, type NextRequest } from 'next/server'
+import { createServerClient } from '@supabase/ssr';
+import { NextResponse, type NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
-  })
+  });
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -12,107 +12,105 @@ export async function middleware(request: NextRequest) {
     {
       cookies: {
         getAll() {
-          return request.cookies.getAll()
+          return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({
-            request,
-          })
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value)
+          );
+
+          supabaseResponse = NextResponse.next({ request });
+
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options)
-          )
+          );
         },
       },
     }
-  )
+  );
 
-  // IMPORTANT: Avoid writing any logic between createServerClient and
-  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
-  // issues with users being randomly logged out.
-
+  // ⚠️ IMPORTANT : ne rien mettre entre createServerClient et getUser
   const {
     data: { user },
-  } = await supabase.auth.getUser()
+  } = await supabase.auth.getUser();
 
-  // Ne pas bloquer les routes API - elles gèrent leur propre authentification
-  if (request.nextUrl.pathname.startsWith('/api/')) {
+  /* ------------------------------------------------------------------
+   * ROUTES À NE JAMAIS BLOQUER (OBLIGATOIRE POUR SUPABASE)
+   * ------------------------------------------------------------------ */
+  const publicAuthRoutes = [
+    '/auth/callback',
+    '/reinitialiser-mot-de-passe',
+    '/mot-de-passe-oublie',
+  ];
+
+  if (
+    request.nextUrl.pathname.startsWith('/api/') ||
+    publicAuthRoutes.some((path) =>
+      request.nextUrl.pathname.startsWith(path)
+    )
+  ) {
     return supabaseResponse;
   }
 
-  // Routes protégées
+  /* ------------------------------------------------------------------
+   * ROUTES PROTÉGÉES
+   * ------------------------------------------------------------------ */
+
+  // Compte
   if (request.nextUrl.pathname.startsWith('/compte') && !user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/connexion'
-    url.searchParams.set('redirect', request.nextUrl.pathname)
-    return NextResponse.redirect(url)
+    const url = request.nextUrl.clone();
+    url.pathname = '/connexion';
+    url.searchParams.set('redirect', request.nextUrl.pathname);
+    return NextResponse.redirect(url);
   }
 
-  // Vérifier que l'email est confirmé pour les routes protégées (sauf email-confirme)
-  if (user && !user.email_confirmed_at && 
-      (request.nextUrl.pathname.startsWith('/compte') || 
-       request.nextUrl.pathname.startsWith('/checkout'))) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/connexion'
-    url.searchParams.set('error', 'email_not_confirmed')
-    url.searchParams.set('redirect', request.nextUrl.pathname)
-    return NextResponse.redirect(url)
-  }
-
-  // Route checkout - protection requise
+  // Checkout
   if (request.nextUrl.pathname.startsWith('/checkout') && !user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/connexion'
-    url.searchParams.set('redirect', request.nextUrl.pathname)
-    return NextResponse.redirect(url)
+    const url = request.nextUrl.clone();
+    url.pathname = '/connexion';
+    url.searchParams.set('redirect', request.nextUrl.pathname);
+    return NextResponse.redirect(url);
   }
 
-  // Route admin - la protection est gérée dans l'API route
-  // Le middleware redirige juste vers la connexion si non authentifié
+  // Email non confirmé
+  if (
+    user &&
+    !user.email_confirmed_at &&
+    (request.nextUrl.pathname.startsWith('/compte') ||
+      request.nextUrl.pathname.startsWith('/checkout'))
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/connexion';
+    url.searchParams.set('error', 'email_not_confirmed');
+    url.searchParams.set('redirect', request.nextUrl.pathname);
+    return NextResponse.redirect(url);
+  }
+
+  // Admin
   if (request.nextUrl.pathname.startsWith('/admin') && !user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/connexion'
-    url.searchParams.set('redirect', request.nextUrl.pathname)
-    return NextResponse.redirect(url)
+    const url = request.nextUrl.clone();
+    url.pathname = '/connexion';
+    url.searchParams.set('redirect', request.nextUrl.pathname);
+    return NextResponse.redirect(url);
   }
 
-  // Redirection si déjà connecté
-  if ((request.nextUrl.pathname.startsWith('/connexion') || 
-       request.nextUrl.pathname.startsWith('/inscription')) && user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/compte'
-    return NextResponse.redirect(url)
+  // Déjà connecté → pas accès à login / register
+  if (
+    (request.nextUrl.pathname.startsWith('/connexion') ||
+      request.nextUrl.pathname.startsWith('/inscription')) &&
+    user
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/compte';
+    return NextResponse.redirect(url);
   }
 
-  // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
-  // creating a new response object with NextResponse.next() make sure to:
-  // 1. Pass the request in it, like so:
-  //    const myNewResponse = NextResponse.next({ request })
-  // 2. Copy over the cookies, like so:
-  //    myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
-  // 3. Change the myNewResponse object to fit your needs, but avoid changing
-  //    the cookies!
-  // 4. Finally:
-  //    return myNewResponse
-  // If this is not done, you may be causing the browser and server to go out
-  // of sync and terminate the user's session prematurely.
-
-  return supabaseResponse
+  // ⚠️ TOUJOURS retourner supabaseResponse
+  return supabaseResponse;
 }
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
-     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
-}
-
-
-
-
+};
