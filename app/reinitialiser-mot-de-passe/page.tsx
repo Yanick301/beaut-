@@ -2,76 +2,84 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
+  const supabase = createClient();
+
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [authorized, setAuthorized] = useState(false);
 
-  const supabase = createClient();
-
+  /**
+   * IMPORTANT :
+   * On attend explicitement l'événement PASSWORD_RECOVERY
+   * (la session n'existe pas encore au premier render)
+   */
   useEffect(() => {
-    // Vérifier que l'utilisateur a bien un token de réinitialisation
-    // Après le callback, l'utilisateur devrait avoir une session
-    async function checkSession() {
-      const { data: { session }, error } = await supabase.auth.getSession();
-      
-      if (error) {
-        console.error('Session error:', error);
-        setError('Sessie fout. Vraag alstublieft opnieuw een wachtwoord reset link aan.');
-        setTimeout(() => {
-          router.push('/mot-de-passe-oublie');
-        }, 3000);
-        return;
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        setAuthorized(true);
       }
 
-      if (!session) {
-        // Pas de session, rediriger vers la page de demande de réinitialisation
-        setError('Sessie verlopen. Vraag alstublieft opnieuw een wachtwoord reset link aan.');
+      if (!session && event !== 'PASSWORD_RECOVERY') {
+        setError(
+          'Sessie verlopen. Vraag alstublieft opnieuw een wachtwoord reset link aan.'
+        );
         setTimeout(() => {
           router.push('/mot-de-passe-oublie');
         }, 3000);
       }
-    }
+    });
 
-    checkSession();
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [router, supabase]);
 
   const handleReset = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
+
+    if (!authorized) {
+      setError('Niet geautoriseerd om het wachtwoord te wijzigen.');
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError('De wachtwoorden komen niet overeen');
-      setLoading(false);
       return;
     }
 
     if (password.length < 6) {
       setError('Het wachtwoord moet minimaal 6 tekens bevatten');
-      setLoading(false);
       return;
     }
 
+    setLoading(true);
+
     try {
       const { error } = await supabase.auth.updateUser({
-        password: password,
+        password,
       });
 
       if (error) throw error;
 
-      router.push('/compte');
+      // Optionnel mais propre : forcer une reconnexion
+      await supabase.auth.signOut();
+
+      router.push('/connexion');
       router.refresh();
-    } catch (error: any) {
-      setError(error.message || 'Une erreur est survenue');
+    } catch (err: any) {
+      setError(err.message || 'Une erreur est survenue');
     } finally {
       setLoading(false);
     }
@@ -95,14 +103,14 @@ export default function ResetPasswordPage() {
           )}
 
           <form onSubmit={handleReset} className="space-y-6">
+            {/* Nouveau mot de passe */}
             <div>
-              <label htmlFor="password" className="block text-brown-dark font-medium mb-2">
+              <label className="block text-brown-dark font-medium mb-2">
                 Nieuw wachtwoord
               </label>
               <div className="relative">
-                <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
                 <input
-                  id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -114,21 +122,21 @@ export default function ResetPasswordPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-brown-soft hover:text-brown-dark transition"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-soft"
                 >
-                  {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
+                  {showPassword ? <FiEyeOff /> : <FiEye />}
                 </button>
               </div>
             </div>
 
+            {/* Confirmation */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-brown-dark font-medium mb-2">
+              <label className="block text-brown-dark font-medium mb-2">
                 Bevestig wachtwoord
               </label>
               <div className="relative">
-                <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
                 <input
-                  id="confirmPassword"
                   type={showConfirmPassword ? 'text' : 'password'}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -138,10 +146,12 @@ export default function ResetPasswordPage() {
                 />
                 <button
                   type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-brown-soft hover:text-brown-dark transition"
+                  onClick={() =>
+                    setShowConfirmPassword(!showConfirmPassword)
+                  }
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-soft"
                 >
-                  {showConfirmPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
+                  {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
                 </button>
               </div>
             </div>
@@ -149,7 +159,7 @@ export default function ResetPasswordPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn-primary disabled:opacity-50"
             >
               {loading ? 'Bijwerken...' : 'Herstel wachtwoord'}
             </button>
@@ -159,9 +169,3 @@ export default function ResetPasswordPage() {
     </div>
   );
 }
-
-
-
-
-
-
