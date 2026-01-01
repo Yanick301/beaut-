@@ -47,20 +47,14 @@ export default function CGVPage() {
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Bestelling</h2>
             <p>
-              Elke bestelling betekent aanvaarding van de prijzen en beschrijvingen van de producten die te koop zijn. 
-              De bevestiging van uw bestelling geldt als bevestiging hiervan. Een bevestigingsmail 
-              wordt naar u verzonden. De verkoop wordt pas als definitief beschouwd nadat aan de klant 
-              de e-mail is verzonden waarin de acceptatie van de bestelling door Her Essence wordt bevestigd.
+              Elke bestelling betekent aanvaarding van de prijzen en beschrijvingen van de producten die te koop zijn. De bevestiging van uw bestelling geldt als bevestiging hiervan. De verkoop wordt pas als definitief beschouwd nadat de status van de bestelling is veranderd naar "In behandeling", wat de acceptatie van de bestelling door Her Essence bevestigt.
             </p>
           </section>
 
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">6. Betaling</h2>
             <p>
-              De betaling gebeurt uitsluitend via bankoverschrijving, gedaan door de klant zelf. 
-              Na het plaatsen van de bestelling ontvangt u per e-mail de bankgegevens waarnaar u de betaling moet 
-              overschrijven. Betalingen via creditcard, PayPal of andere betaalmethodes zijn niet mogelijk. 
-              Alle betalingen zijn beveiligd.
+              De betaling gebeurt uitsluitend via bankoverschrijving, uitgevoerd door de klant zelf. Na het plaatsen van de bestelling, verandert de status van uw bestelling van "Verificatie" naar "In behandeling". Zodra uw betalingsbewijs is goedgekeurd, verandert de status naar "Verzonden" wanneer uw pakket onderweg is naar u. Zodra het pakket is ontvangen, verandert de status van de bestelling naar "Geleverd".
             </p>
           </section>
 

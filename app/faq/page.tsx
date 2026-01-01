@@ -11,15 +11,15 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     question: 'Wat zijn de leveringstermijnen?',
-    answer: 'De standaard levering duurt 2-3 werkdagen in België. De levering is gratis vanaf €150 bestelling, anders zijn de verzendkosten €2,99. We leveren enkel in België.',
+    answer: 'De standaard levering duurt 2-3 werkdagen in Nederland. De levering is gratis vanaf €150 bestelling, anders zijn de verzendkosten €2,99. We leveren enkel in Nederland.',
   },
   {
     question: 'Welke betalingsmethodes accepteert u?',
-    answer: 'We accepteren bankkaarten (Visa, Mastercard, Bancontact), overschrijvingen en PayPal. Alle betalingen zijn beveiligd en versleuteld.',
+    answer: 'We accepteren enkel overschrijvingen. Elke klant moet voor het valideren van de bestelling een instant bankoverschrijving uitvoeren naar het rekeningnummer dat wordt vermeld op de betalingspagina. Na het uitvoeren van de overschrijving moet de klant het bewijs uploaden op de uploadpagina. Ons team zorgt voor de analyse en validatie van de bestelling.',
   },
   {
     question: 'Kan ik een product retourneren?',
-    answer: 'Ja, u heeft 30 dagen na ontvangst om een ongeopend product in originele verpakking terug te sturen. Retourkosten zijn voor uw rekening, tenzij het product defect is.',
+    answer: 'Ja, u heeft 14 dagen na ontvangst om een ongeopend product in originele verpakking terug te sturen. Retourkosten zijn voor uw rekening, tenzij het product defect is.',
   },
   {
     question: 'Worden uw producten getest op dieren?',
@@ -38,7 +38,7 @@ const faqs: FAQItem[] = [
     answer: 'Ja, sommige producten bevatten monsters in uw bestelling. U kunt deze ook toevoegen bij het afrekenen indien beschikbaar.',
   },
   {
-    question: 'Que faire en cas de problème avec ma commande ?',
+    question: 'Wat moet ik doen als er een probleem is met mijn bestelling?',
     answer: 'Neem onmiddellijk contact met ons op via contact@heressence.nl. Ons team lost het probleem snel op en reageert binnen 24 werkdagen.'
   },
 ];
