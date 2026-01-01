@@ -25,7 +25,7 @@ export default function ForgotPasswordPage() {
       if (!redirectUrl) {
         throw new Error('NEXT_PUBLIC_SITE_URL must be set in environment variables');
       }
-      const callbackUrl = `${redirectUrl}/auth/callback?next=/reinitialiser-mot-de-passe`;
+      const callbackUrl = `${redirectUrl}/reinitialiser-mot-de-passe`;
 
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: callbackUrl,
