@@ -4451,7 +4451,7 @@ export const reviews: Review[] = [
     productId: '1',
     userName: 'Sophie M.',
     rating: 5,
-    comment: 'Excellent produit ! Ma peau est visiblement plus radieuse après seulement 2 semaines d’utilisation.',
+    comment: 'Uitstekend product! Mijn huid ziet er na slechts 2 weken gebruik al veel stralender uit.',
     date: '2024-01-15',
     verified: true
   },
@@ -4460,7 +4460,7 @@ export const reviews: Review[] = [
     productId: '1',
     userName: 'Emma L.',
     rating: 5,
-    comment: 'Je recommande vivement ce sérum. Texture agréable et résultats impressionnants.',
+    comment: 'Ik raad dit serum ten zeerste aan. Aangename textuur en indrukwekkende resultaten.',
     date: '2024-01-10',
     verified: true
   },
@@ -4469,7 +4469,7 @@ export const reviews: Review[] = [
     productId: '24',
     userName: 'Léa D.',
     rating: 5,
-    comment: 'Ma couleur préférée ! Tenue exceptionnelle et texture très confortable.',
+    comment: 'Mijn favoriete kleur! Uitzonderlijke houvast en zeer comfortabele textuur.',
     date: '2024-01-20',
     verified: true
   },
@@ -4478,7 +4478,7 @@ export const reviews: Review[] = [
     productId: '20',
     userName: 'Camille R.',
     rating: 5,
-    comment: 'Fond de teint parfait ! Couvrance excellente et tenue toute la journée.',
+    comment: 'Perfecte foundation! Uitstekende dekking en houdt de hele dag.',
     date: '2024-01-22',
     verified: true
   },
@@ -4487,7 +4487,7 @@ export const reviews: Review[] = [
     productId: '37',
     userName: 'Marie K.',
     rating: 5,
-    comment: 'Lotion super hydratante, ma peau est douce comme la soie !',
+    comment: 'Super hydraterende lotion, mijn huid is zacht als zijde!',
     date: '2024-01-18',
     verified: true
   },
