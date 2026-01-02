@@ -33,15 +33,15 @@ function productNameToImageName(name: string): string {
     // Cas où le fichier existe avec un nom légèrement différent
     'the_ritual_of_sakura_body_mist_rituals.jpg': 'he_ritual_of_sakura_body_mist_rituals.jpg',
     'the_ritual_of_ayurveda_eau_de_parfum_rituals.jpg': 'the_ritual_of_ayurveda_eau_de_parfum_ritual.jpg',
-    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier..jpg',
-    'the_ritual_of_karma_rituals.jpg': 'he_ritual_of_sakura_body_mist_rituals.jpg', // Fallback si nécessaire
+    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier.jpg',
+    'the_ritual_of_karma_rituals.jpg': 'the_ritual_of_karma_rituals.jpg', // Fallback si nécessaire
   };
 
   // Logique de fallback pour les variantes de taille (ex: "100 ml")
   // Si l'image spécifique à la taille n'existe pas, on cherche l'image de base
   const baseResult = result.replace(/_\d+_ml|_extrait|_private_blend/g, '');
   
-  return fileMapping[result] || result;
+  return fileMapping[result] || (result !== baseResult && baseResult !== '.jpg' ? baseResult : result);
 }
 
 /**
