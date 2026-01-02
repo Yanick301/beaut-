@@ -37,10 +37,6 @@ export default function AdminDashboard() {
   const [error, setError] = useState<string | null>(null);
   const [notification, setNotification] = useState<{type: 'success' | 'error' | 'info', message: string} | null>(null);
 
-  useEffect(() => {
-    checkAdminAccess();
-  }, []);
-
   const checkAdminAccess = async () => {
     try {
       const { data: { user }, error } = await supabase.auth.getUser();
@@ -80,6 +76,11 @@ export default function AdminDashboard() {
     }
   };
 
+  useEffect(() => {
+    checkAdminAccess();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const fetchOrders = async () => {
     try {
       const url = selectedStatus === 'all' 
@@ -106,7 +107,8 @@ export default function AdminDashboard() {
     if (user) {
       fetchOrders();
     }
-  }, [selectedStatus]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedStatus, user]);
 
   const updateOrderStatus = async (orderId: string, newStatus: string) => {
     try {

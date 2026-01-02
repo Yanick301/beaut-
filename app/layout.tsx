@@ -78,11 +78,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://heressence.nl',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: '#FAF7F2',
 }
 

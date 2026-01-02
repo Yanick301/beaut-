@@ -5,10 +5,6 @@ import { FiHeart, FiAward, FiZap, FiUsers } from 'react-icons/fi';
 export const metadata: Metadata = {
   title: 'Over ons',
   description: 'Ontdek het verhaal van Her Essence, onze passie voor authentieke schoonheid en ons engagement voor kwaliteitsproducten.',
-  openGraph: {
-    title: 'Over Her Essence',
-    description: 'Onze geschiedenis en waarden: kwaliteit, natuurlijkheid, verantwoordelijkheid en engagement ten aanzien van onze klanten.',
-  },
 };
 
 export default function AboutPage() {

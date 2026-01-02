@@ -25,11 +25,6 @@ const ReviewsSection = dynamic(() => import('@/components/ReviewsSection'), {
 export const metadata: Metadata = {
   title: 'Home',
   description: 'Her Essence - Uw premium beauty bestemming. Ontdek onze exclusieve selectie van hoogwaardige beautyproducten voor vrouwen. Gezichtsverzorging, make-up, lichaamsgeuren en beautyaccessoires van hoge kwaliteit.',
-  openGraph: {
-    title: 'Her Essence - Premium Beauty & Luxe Cosmetica',
-    description: 'Ontdek onze premium selectie van beautyproducten om uw natuurlijke stralen te onthullen.',
-    images: ['/og-image.jpg'],
-  },
 };
 
 export default function Home() {

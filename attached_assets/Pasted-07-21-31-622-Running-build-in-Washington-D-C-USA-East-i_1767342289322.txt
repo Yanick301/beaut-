@@ -1,0 +1,223 @@
+07:21:31.622 Running build in Washington, D.C., USA (East) – iad1
+07:21:31.624 Build machine configuration: 2 cores, 8 GB
+07:21:31.969 Cloning github.com/Yanick301/beaut- (Branch: main, Commit: f48b409)
+07:21:33.146 Cloning completed: 1.176s
+07:21:33.271 Restored build cache from previous deployment (49Y3ETm2KRAnRSvrxujmxGacKJjy)
+07:21:33.812 Running "vercel build"
+07:21:34.235 Vercel CLI 50.1.3
+07:21:34.715 Installing dependencies...
+07:21:35.912 
+07:21:35.914 up to date in 939ms
+07:21:35.915 
+07:21:35.915 143 packages are looking for funding
+07:21:35.915   run `npm fund` for details
+07:21:35.943 Detected Next.js version: 14.2.35
+07:21:35.948 Running "npm run build"
+07:21:36.048 
+07:21:36.048 > esthetique@1.0.0 build
+07:21:36.049 > next build
+07:21:36.049 
+07:21:36.718   ▲ Next.js 14.2.35
+07:21:36.719 
+07:21:36.741    Creating an optimized production build ...
+07:21:44.373 <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (130kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+07:21:49.444  ✓ Compiled successfully
+07:21:49.445    Linting and checking validity of types ...
+07:21:55.180 
+07:21:55.180 ./app/admin/page.tsx
+07:21:55.181 42:6  Warning: React Hook useEffect has a missing dependency: 'checkAdminAccess'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+07:21:55.181 109:6  Warning: React Hook useEffect has missing dependencies: 'fetchOrders' and 'user'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+07:21:55.181 
+07:21:55.181 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+07:21:58.586    Collecting page data ...
+07:22:00.244    Generating static pages (0/32) ...
+07:22:00.555    Generating static pages (8/32) 
+07:22:00.645  ⚠ Unsupported metadata viewport is configured in metadata export in /_not-found. Please move it to viewport export instead.
+07:22:00.645 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.645  ⚠ Unsupported metadata themeColor is configured in metadata export in /_not-found. Please move it to viewport export instead.
+07:22:00.645 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.665  ⚠ Unsupported metadata viewport is configured in metadata export in /_not-found. Please move it to viewport export instead.
+07:22:00.666 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.666  ⚠ Unsupported metadata themeColor is configured in metadata export in /_not-found. Please move it to viewport export instead.
+07:22:00.666 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.822  ⚠ Unsupported metadata viewport is configured in metadata export in /admin. Please move it to viewport export instead.
+07:22:00.823 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.824  ⚠ Unsupported metadata themeColor is configured in metadata export in /admin. Please move it to viewport export instead.
+07:22:00.824 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.825  ⚠ Unsupported metadata viewport is configured in metadata export in /admin. Please move it to viewport export instead.
+07:22:00.825 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.825  ⚠ Unsupported metadata themeColor is configured in metadata export in /admin. Please move it to viewport export instead.
+07:22:00.826 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.928  ⚠ Unsupported metadata viewport is configured in metadata export in /auth. Please move it to viewport export instead.
+07:22:00.928 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.928  ⚠ Unsupported metadata themeColor is configured in metadata export in /auth. Please move it to viewport export instead.
+07:22:00.928 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.928  ⚠ Unsupported metadata viewport is configured in metadata export in /auth. Please move it to viewport export instead.
+07:22:00.928 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:00.928  ⚠ Unsupported metadata themeColor is configured in metadata export in /auth. Please move it to viewport export instead.
+07:22:00.928 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.167  ⚠ Unsupported metadata viewport is configured in metadata export in /cgv. Please move it to viewport export instead.
+07:22:01.170 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.171  ⚠ Unsupported metadata themeColor is configured in metadata export in /cgv. Please move it to viewport export instead.
+07:22:01.171 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.171  ⚠ Unsupported metadata viewport is configured in metadata export in /cgv. Please move it to viewport export instead.
+07:22:01.171 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.174  ⚠ Unsupported metadata themeColor is configured in metadata export in /cgv. Please move it to viewport export instead.
+07:22:01.174 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.389  ⚠ Unsupported metadata viewport is configured in metadata export in /checkout. Please move it to viewport export instead.
+07:22:01.389 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.389  ⚠ Unsupported metadata themeColor is configured in metadata export in /checkout. Please move it to viewport export instead.
+07:22:01.389 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.389  ⚠ Unsupported metadata viewport is configured in metadata export in /checkout. Please move it to viewport export instead.
+07:22:01.389 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.389  ⚠ Unsupported metadata themeColor is configured in metadata export in /checkout. Please move it to viewport export instead.
+07:22:01.389 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.391    Generating static pages (16/32) 
+07:22:01.451  ⚠ Unsupported metadata viewport is configured in metadata export in /commande-confirmee. Please move it to viewport export instead.
+07:22:01.451 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.454  ⚠ Unsupported metadata themeColor is configured in metadata export in /commande-confirmee. Please move it to viewport export instead.
+07:22:01.454 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.454  ⚠ Unsupported metadata viewport is configured in metadata export in /commande-confirmee. Please move it to viewport export instead.
+07:22:01.454 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.454  ⚠ Unsupported metadata themeColor is configured in metadata export in /commande-confirmee. Please move it to viewport export instead.
+07:22:01.454 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.489  ⚠ Unsupported metadata viewport is configured in metadata export in /compte. Please move it to viewport export instead.
+07:22:01.490 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.490  ⚠ Unsupported metadata themeColor is configured in metadata export in /compte. Please move it to viewport export instead.
+07:22:01.490 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.491  ⚠ Unsupported metadata viewport is configured in metadata export in /compte. Please move it to viewport export instead.
+07:22:01.491 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.491  ⚠ Unsupported metadata themeColor is configured in metadata export in /compte. Please move it to viewport export instead.
+07:22:01.491 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.576  ⚠ Unsupported metadata viewport is configured in metadata export in /confidentialite. Please move it to viewport export instead.
+07:22:01.577 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.577  ⚠ Unsupported metadata themeColor is configured in metadata export in /confidentialite. Please move it to viewport export instead.
+07:22:01.577 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.596  ⚠ Unsupported metadata viewport is configured in metadata export in /confidentialite. Please move it to viewport export instead.
+07:22:01.597 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.597  ⚠ Unsupported metadata themeColor is configured in metadata export in /confidentialite. Please move it to viewport export instead.
+07:22:01.597 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.638  ⚠ Unsupported metadata viewport is configured in metadata export in /connexion. Please move it to viewport export instead.
+07:22:01.639 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.639  ⚠ Unsupported metadata themeColor is configured in metadata export in /connexion. Please move it to viewport export instead.
+07:22:01.639 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.639  ⚠ Unsupported metadata viewport is configured in metadata export in /connexion. Please move it to viewport export instead.
+07:22:01.640 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.640  ⚠ Unsupported metadata themeColor is configured in metadata export in /connexion. Please move it to viewport export instead.
+07:22:01.640 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.701  ⚠ Unsupported metadata viewport is configured in metadata export in /contact. Please move it to viewport export instead.
+07:22:01.701 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.708  ⚠ Unsupported metadata themeColor is configured in metadata export in /contact. Please move it to viewport export instead.
+07:22:01.708 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.708  ⚠ Unsupported metadata viewport is configured in metadata export in /contact. Please move it to viewport export instead.
+07:22:01.708 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.708  ⚠ Unsupported metadata themeColor is configured in metadata export in /contact. Please move it to viewport export instead.
+07:22:01.708 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.725  ⚠ Unsupported metadata viewport is configured in metadata export in /email-confirme. Please move it to viewport export instead.
+07:22:01.726 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.726  ⚠ Unsupported metadata themeColor is configured in metadata export in /email-confirme. Please move it to viewport export instead.
+07:22:01.726 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.739  ⚠ Unsupported metadata viewport is configured in metadata export in /email-confirme. Please move it to viewport export instead.
+07:22:01.742 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.742  ⚠ Unsupported metadata themeColor is configured in metadata export in /email-confirme. Please move it to viewport export instead.
+07:22:01.743 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.777  ⚠ Unsupported metadata viewport is configured in metadata export in /faq. Please move it to viewport export instead.
+07:22:01.777 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.777  ⚠ Unsupported metadata themeColor is configured in metadata export in /faq. Please move it to viewport export instead.
+07:22:01.777 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.777  ⚠ Unsupported metadata viewport is configured in metadata export in /faq. Please move it to viewport export instead.
+07:22:01.778 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.778  ⚠ Unsupported metadata themeColor is configured in metadata export in /faq. Please move it to viewport export instead.
+07:22:01.778 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.847  ⚠ Unsupported metadata viewport is configured in metadata export in /inscription. Please move it to viewport export instead.
+07:22:01.848 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.848  ⚠ Unsupported metadata themeColor is configured in metadata export in /inscription. Please move it to viewport export instead.
+07:22:01.848 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.848  ⚠ Unsupported metadata viewport is configured in metadata export in /inscription. Please move it to viewport export instead.
+07:22:01.848 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.849  ⚠ Unsupported metadata themeColor is configured in metadata export in /inscription. Please move it to viewport export instead.
+07:22:01.849 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.912    Generating static pages (24/32) 
+07:22:01.941  ⚠ Unsupported metadata viewport is configured in metadata export in /livraison-retours. Please move it to viewport export instead.
+07:22:01.941 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.942  ⚠ Unsupported metadata themeColor is configured in metadata export in /livraison-retours. Please move it to viewport export instead.
+07:22:01.942 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.958  ⚠ Unsupported metadata viewport is configured in metadata export in /livraison-retours. Please move it to viewport export instead.
+07:22:01.959 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:01.959  ⚠ Unsupported metadata themeColor is configured in metadata export in /livraison-retours. Please move it to viewport export instead.
+07:22:01.959 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.005  ⚠ Unsupported metadata viewport is configured in metadata export in /mentions-legales. Please move it to viewport export instead.
+07:22:02.005 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.005  ⚠ Unsupported metadata themeColor is configured in metadata export in /mentions-legales. Please move it to viewport export instead.
+07:22:02.005 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.006  ⚠ Unsupported metadata viewport is configured in metadata export in /mentions-legales. Please move it to viewport export instead.
+07:22:02.006 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.006  ⚠ Unsupported metadata themeColor is configured in metadata export in /mentions-legales. Please move it to viewport export instead.
+07:22:02.006 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.057  ⚠ Unsupported metadata viewport is configured in metadata export in /mot-de-passe-oublie. Please move it to viewport export instead.
+07:22:02.058 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.058  ⚠ Unsupported metadata themeColor is configured in metadata export in /mot-de-passe-oublie. Please move it to viewport export instead.
+07:22:02.058 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.058  ⚠ Unsupported metadata viewport is configured in metadata export in /mot-de-passe-oublie. Please move it to viewport export instead.
+07:22:02.059 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.059  ⚠ Unsupported metadata themeColor is configured in metadata export in /mot-de-passe-oublie. Please move it to viewport export instead.
+07:22:02.059 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.076  ⚠ Unsupported metadata viewport is configured in metadata export in /panier. Please move it to viewport export instead.
+07:22:02.077 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.077  ⚠ Unsupported metadata themeColor is configured in metadata export in /panier. Please move it to viewport export instead.
+07:22:02.077 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.078  ⚠ Unsupported metadata viewport is configured in metadata export in /panier. Please move it to viewport export instead.
+07:22:02.078 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.078  ⚠ Unsupported metadata themeColor is configured in metadata export in /panier. Please move it to viewport export instead.
+07:22:02.078 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.317  ⚠ Unsupported metadata viewport is configured in metadata export in /reinitialiser-mot-de-passe. Please move it to viewport export instead.
+07:22:02.319 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.319  ⚠ Unsupported metadata themeColor is configured in metadata export in /reinitialiser-mot-de-passe. Please move it to viewport export instead.
+07:22:02.321 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.321  ⚠ Unsupported metadata viewport is configured in metadata export in /reinitialiser-mot-de-passe. Please move it to viewport export instead.
+07:22:02.321 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.321  ⚠ Unsupported metadata themeColor is configured in metadata export in /reinitialiser-mot-de-passe. Please move it to viewport export instead.
+07:22:02.321 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.321  ⨯ useSearchParams() should be wrapped in a suspense boundary at page "/reinitialiser-mot-de-passe". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+07:22:02.322     at s (/vercel/path0/.next/server/chunks/536.js:59:14023)
+07:22:02.322     at c (/vercel/path0/.next/server/chunks/536.js:59:25006)
+07:22:02.322     at l (/vercel/path0/.next/server/app/reinitialiser-mot-de-passe/page.js:1:1808)
+07:22:02.322     at nj (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46252)
+07:22:02.322     at nM (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47572)
+07:22:02.322     at nL (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64547)
+07:22:02.322     at nI (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47011)
+07:22:02.322     at nM (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47718)
+07:22:02.322     at nM (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:61547)
+07:22:02.322     at nL (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64547)
+07:22:02.322 
+07:22:02.322 Error occurred prerendering page "/reinitialiser-mot-de-passe". Read more: https://nextjs.org/docs/messages/prerender-error
+07:22:02.322 
+07:22:02.341  ⚠ Unsupported metadata viewport is configured in metadata export in /televerser-recu. Please move it to viewport export instead.
+07:22:02.341 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.341  ⚠ Unsupported metadata themeColor is configured in metadata export in /televerser-recu. Please move it to viewport export instead.
+07:22:02.341 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.341  ⚠ Unsupported metadata viewport is configured in metadata export in /televerser-recu. Please move it to viewport export instead.
+07:22:02.341 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.341  ⚠ Unsupported metadata themeColor is configured in metadata export in /televerser-recu. Please move it to viewport export instead.
+07:22:02.341 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.371  ⚠ Unsupported metadata viewport is configured in metadata export in /a-propos. Please move it to viewport export instead.
+07:22:02.371 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.371  ⚠ Unsupported metadata themeColor is configured in metadata export in /a-propos. Please move it to viewport export instead.
+07:22:02.371 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.371  ⚠ Unsupported metadata viewport is configured in metadata export in /a-propos. Please move it to viewport export instead.
+07:22:02.371 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.371  ⚠ Unsupported metadata themeColor is configured in metadata export in /a-propos. Please move it to viewport export instead.
+07:22:02.371 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.520  ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+07:22:02.520 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.520  ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+07:22:02.520 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.521  ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+07:22:02.521 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.521  ⚠ Unsupported metadata themeColor is configured in metadata export in /. Please move it to viewport export instead.
+07:22:02.521 Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+07:22:02.734  ✓ Generating static pages (32/32)
+07:22:02.746 
+07:22:02.747 > Export encountered errors on following paths:
+07:22:02.747 	/reinitialiser-mot-de-passe/page: /reinitialiser-mot-de-passe
+07:22:02.780 Error: Command "npm run build" exited with 1
