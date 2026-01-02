@@ -5,43 +5,31 @@ import { Product, Category, Review } from '@/types';
  * Supprime les accents pour correspondre aux noms de fichiers existants
  */
 function productNameToImageName(name: string): string {
-  // Mapping des caractères accentués vers leurs équivalents sans accent
-  const accentMap: { [key: string]: string } = {
-    'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a',
-    'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
-    'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
-    'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
-    'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
-    'ý': 'y', 'ÿ': 'y',
-    'ç': 'c'
-  };
-
-  let result = name
+  // Normalize unicode and strip diacritics, then build a safe filename
+  let normalized = name
     .toLowerCase()
     .trim()
-    // Remplacer les caractères accentués
-    .split('')
-    .map(char => accentMap[char] || char)
-    .join('')
-    .replace(/\s+/g, '_')
-    .replace(/[^a-z0-9_]/gi, '')
-    .replace(/_{2,}/g, '_')
-    .replace(/^_|_$/g, '') + '.jpg';
+    .normalize('NFD')
+    // Remove diacritic marks
+    .replace(/[\u0300-\u036f]/g, '')
+    // Convert typographic apostrophes to simple apostrophe
+    .replace(/[’‘`ʼ]/g, "'")
+    // Replace any non-alphanumeric sequence with an underscore
+    .replace(/[^a-z0-9]+/g, '_')
+    // Trim leading/trailing underscores
+    .replace(/^_+|_+$/g, '');
 
-  // Mapping spécifique pour les fichiers existants avec noms différents
+  // Ensure common tokens like "+" become underscores rather than disappearing
+  const result = `${normalized}.jpg`;
+
+  // Known file mapping corrections (only override when necessary)
   const fileMapping: { [key: string]: string } = {
-    // Cas où le fichier existe avec un nom légèrement différent
-    'the_ritual_of_sakura_body_mist_rituals.jpg': 'he_ritual_of_sakura_body_mist_rituals.jpg',
-    'the_ritual_of_ayurveda_eau_de_parfum_rituals.jpg': 'the_ritual_of_ayurveda_eau_de_parfum_ritual.jpg',
-    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier_2.jpg',
-    'fructis_hydrating_garnier..jpg': 'fructis_hydrating_garnier_2.jpg',
-    'the_ritual_of_karma_rituals.jpg': 'the_ritual_of_karma_rituals.jpg', // Fallback si nécessaire
+    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier_2.jpg'
   };
 
-  // Logique de fallback pour les variantes de taille (ex: "100 ml")
-  // Si l'image spécifique à la taille n'existe pas, on cherche l'image de base
+  // Fallback: strip common size/tokens (e.g. "100_ml") for base image
   const baseResult = result.replace(/_\d+_ml|_extrait|_private_blend/g, '');
-  
+
   return fileMapping[result] || (result !== baseResult && baseResult !== '.jpg' ? baseResult : result);
 }
 

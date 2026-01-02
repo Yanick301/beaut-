@@ -8,6 +8,8 @@ import PromoBanner from '@/components/PromoBanner'
 import StructuredData from '@/components/StructuredData'
 import ToastContainer from '@/components/ToastContainer'
 import SmartsuppChat from '@/components/SmartsuppChat'
+import AuthNotification from '@/components/AuthNotification'
+import Modal from '@/components/Modal'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -105,6 +107,8 @@ export default function RootLayout({
         <Footer />
         <SmartsuppChat />
         <ToastContainer />
+        <AuthNotification />
+        <Modal />
       </body>
     </html>
   )

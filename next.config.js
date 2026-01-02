@@ -4,6 +4,9 @@ const nextConfig = {
   allowedDevOrigins: ['*.replit.dev', '*.repl.co'],
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Disable Next.js image optimization so local static images are served directly.
+    // This avoids runtime 400 errors from the built-in optimizer in some environments.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
