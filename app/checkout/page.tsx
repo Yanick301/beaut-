@@ -11,12 +11,12 @@ import PromoCodeInput from '@/components/PromoCodeInput';
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, getTotal, clearCart } = useCartStore();
-  const total = getTotal();
-  const shipping = total >= 150 ? 0 : 2.99;
-  const supabase = createClient();
-  
   const [promoDiscount, setPromoDiscount] = useState(0);
   const [appliedPromoCode, setAppliedPromoCode] = useState<string | undefined>();
+  const total = getTotal();
+  const promoTotal = Math.max(0, total - promoDiscount);
+  const shipping = promoTotal >= 150 ? 0 : 2.99;
+  const supabase = createClient();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -81,6 +81,9 @@ export default function CheckoutPage() {
         email: formData.email,
       };
 
+      const finalTotal = total - promoDiscount;
+      const finalShipping = finalTotal >= 150 ? 0 : 2.99;
+
       const response = await fetch('/api/orders', {
         method: 'POST',
         headers: {
@@ -90,8 +93,8 @@ export default function CheckoutPage() {
           items,
           shippingAddress,
           paymentMethod: formData.paymentMethod,
-          totalAmount: Math.max(0, total - promoDiscount),
-          shippingCost: shipping,
+          totalAmount: Math.max(0, finalTotal),
+          shippingCost: finalShipping,
           promoCode: appliedPromoCode,
           promoDiscount: promoDiscount,
         }),
@@ -280,7 +283,7 @@ export default function CheckoutPage() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-brown-soft mb-2">Te betalen bedrag:</p>
-                    <p className="text-2xl font-bold text-rose-soft">€{(Math.max(0, total - promoDiscount) + shipping).toFixed(2)}</p>
+                    <p className="text-2xl font-bold text-rose-soft">€{(Math.max(0, total - promoDiscount) + (total - promoDiscount >= 150 ? 0 : 2.99)).toFixed(2)}</p>
                   </div>
                 </div>
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
@@ -354,7 +357,7 @@ export default function CheckoutPage() {
                 <div className="border-t border-nude pt-4">
                   <div className="flex justify-between text-lg font-semibold text-brown-dark">
                     <span>Total</span>
-                    <span>€{(Math.max(0, total - promoDiscount) + shipping).toFixed(2)}</span>
+                    <span>€{(promoTotal + shipping).toFixed(2)}</span>
                   </div>
                 </div>
               </div>

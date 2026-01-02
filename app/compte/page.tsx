@@ -12,7 +12,16 @@ function AccountContent() {
   const searchParams = useSearchParams();
   const supabase = createClient();
   const [activeTab, setActiveTab] = useState<'profile' | 'orders' | 'favorites'>('profile');
+  const [message, setMessage] = useState<string | null>(null);
   
+  // Vérifier les messages de succès dans l'URL
+  useEffect(() => {
+    const success = searchParams.get('success');
+    if (success === 'signup_auto_login') {
+      setMessage('Welkom! Uw account is succesvol aangemaakt en u bent nu ingelogd.');
+    }
+  }, [searchParams]);
+
   // Vérifier si on doit ouvrir l'onglet commandes depuis l'URL
   useEffect(() => {
     const tab = searchParams.get('tab');
@@ -75,6 +84,12 @@ function AccountContent() {
   return (
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-5xl">
+        {message && (
+          <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm flex justify-between items-center">
+            <span>{message}</span>
+            <button onClick={() => setMessage(null)} className="text-green-700 font-bold ml-4">×</button>
+          </div>
+        )}
         <div className="flex items-center justify-between mb-8">
           <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark">Mijn account</h1>
           <button
@@ -245,12 +260,17 @@ function ProfileTab({ user, profile, supabase }: { user: any; profile: any; supa
             <FiLock className="w-4 h-4" />
             Wachtwoord
           </label>
-          <Link
-            href="/reinitialiser-mot-de-passe"
-            className="text-rose-soft hover:text-rose-soft/80 transition text-sm underline"
-          >
-            Mijn wachtwoord wijzigen
-          </Link>
+          <div className="bg-gray-50 border-2 border-nude rounded-lg p-6">
+            <p className="text-sm text-brown-soft mb-4">
+              Om uw wachtwoord te wijzigen, klikt u op de onderstaande knop. We sturen u een e-mail met een link om uw wachtwoord veilig opnieuw in te stellen.
+            </p>
+            <Link
+              href="/mot-de-passe-oublie"
+              className="btn-primary inline-block text-sm"
+            >
+              Vraag wachtwoordherstel aan
+            </Link>
+          </div>
         </div>
 
         <button

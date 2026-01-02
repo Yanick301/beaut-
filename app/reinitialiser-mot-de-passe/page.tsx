@@ -1,38 +1,52 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { FiMail } from 'react-icons/fi';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
 
-export default function ForgotPasswordPage() {
-  const [email, setEmail] = useState('');
+export default function ResetPasswordPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
   const supabase = createClient();
 
-  const handleMagicLink = async (e: React.FormEvent) => {
+  useEffect(() => {
+    const success = searchParams.get('success');
+    if (success === 'recovery_auto_login') {
+      setMessage('U bent automatisch ingelogd. U kunt nu uw wachtwoord hieronder wijzigen.');
+    }
+  }, [searchParams]);
+
+  const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setMessage(null);
 
+    if (password !== confirmPassword) {
+      setError('Wachtwoorden komen niet overeen');
+      setLoading(false);
+      return;
+    }
+
     try {
-      // Envoi du Magic Link
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/compte`, // redirige après connexion
-        },
+      const { error } = await supabase.auth.updateUser({
+        password: password
       });
 
       if (error) throw error;
 
-      setMessage(
-        'Er is een magische link naar uw e-mailadres gestuurd. Klik erop om automatisch in te loggen. Eenmaal ingelogd kunt u uw wachtwoord wijzigen in uw profiel.'
-      );
+      setMessage('Uw wachtwoord is succesvol bijgewerkt!');
+      setTimeout(() => {
+        router.push('/connexion');
+      }, 3000);
     } catch (error: any) {
       setError(error.message || 'Er is iets misgegaan');
     } finally {
@@ -45,10 +59,10 @@ export default function ForgotPasswordPage() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Wachtwoord vergeten
+            Nieuw wachtwoord
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Voer uw e-mailadres in om een magische link te ontvangen die u automatisch aanmeldt bij uw account.
+            Voer uw nieuwe wachtwoord in.
           </p>
 
           {error && (
@@ -63,21 +77,47 @@ export default function ForgotPasswordPage() {
             </div>
           )}
 
-          <form onSubmit={handleMagicLink} className="space-y-6">
+          <form onSubmit={handleResetPassword} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
-                E-mail
+              <label htmlFor="password" title="password" className="block text-brown-dark font-medium mb-2">
+                Nieuw wachtwoord
               </label>
               <div className="relative">
-                <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
                 <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-brown-soft hover:text-brown-dark transition"
+                >
+                  {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="confirmPassword" title="confirmPassword" className="block text-brown-dark font-medium mb-2">
+                Bevestig wachtwoord
+              </label>
+              <div className="relative">
+                <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="uw@email.com"
+                  placeholder="••••••••"
                 />
               </div>
             </div>
@@ -87,15 +127,9 @@ export default function ForgotPasswordPage() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Verzenden...' : 'Verstuur magische link'}
+              {loading ? 'Bijwerken...' : 'Wachtwoord bijwerken'}
             </button>
           </form>
-
-          <div className="mt-6 text-center text-sm text-brown-soft">
-            <Link href="/connexion" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Terug naar inloggen
-            </Link>
-          </div>
         </div>
       </div>
     </div>

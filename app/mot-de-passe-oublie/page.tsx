@@ -20,18 +20,15 @@ export default function ForgotPasswordPage() {
     setMessage(null);
 
     try {
-      // Envoi du Magic Link
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/compte`, // redirige après connexion
-        },
+      // Envoi du Magic Link / Récupération
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback?next=/reinitialiser-mot-de-passe&type=recovery`,
       });
 
       if (error) throw error;
 
       setMessage(
-        'Er is een magische link naar uw e-mailadres gestuurd. Klik erop om automatisch in te loggen. Eenmaal ingelogd kunt u uw wachtwoord wijzigen in uw profiel.'
+        'Er is een link naar uw e-mailadres gestuurd om uw wachtwoord te herstellen.'
       );
     } catch (error: any) {
       setError(error.message || 'Er is iets misgegaan');

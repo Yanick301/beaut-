@@ -10,15 +10,23 @@ export default function PromoBanner() {
 
   // Ne pas afficher si l'utilisateur a fermé la bannière (stocké dans localStorage)
   useEffect(() => {
-    const dismissed = localStorage.getItem('promo-banner-dismissed');
-    if (dismissed === 'true') {
-      setIsVisible(false);
+    try {
+      const dismissed = localStorage.getItem('promo-banner-dismissed');
+      if (dismissed === 'true') {
+        setIsVisible(false);
+      }
+    } catch (err) {
+      console.error('LocalStorage access error:', err);
     }
   }, []);
 
   const handleDismiss = () => {
     setIsVisible(false);
-    localStorage.setItem('promo-banner-dismissed', 'true');
+    try {
+      localStorage.setItem('promo-banner-dismissed', 'true');
+    } catch (err) {
+      console.error('LocalStorage set error:', err);
+    }
   };
 
   const handleCopyCode = async (code: string) => {
