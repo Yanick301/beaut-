@@ -2516,7 +2516,7 @@ const productsRaw: Product[] = [
   {
     id: '151',
     name: 'Essential Brush Set',
-    description: 'Set pinceaux essentiels',
+    description: 'Set essentiële penceaus',
     longDescription: 'Set van 6 essentiële make-up penceaus. Zachte en duurzame synthetische haren. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 35.99,
     image: getProductImagePath('Essential Brush Set EcoTools'),
@@ -2532,8 +2532,8 @@ const productsRaw: Product[] = [
   {
     id: '152',
     name: 'Perfecting Blender Sponge',
-    description: 'Éponge beauté parfaite',
-    longDescription: 'Éponge beauté pour un fini parfait. Forme ergonomique et texture douce. Produit de qualité professionnelle disponible aux Pays-Bas.',
+    description: 'Perfecte beauty blender',
+    longDescription: 'Beauty blender voor perfecte afwerking. Ergonomische vorm en zachte textuur. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 22.99,
     image: getProductImagePath('Perfecting Blender Sponge EcoTools'),
     category: 'accessoires',
@@ -2548,8 +2548,8 @@ const productsRaw: Product[] = [
   {
     id: '153',
     name: 'LED Makeup Mirror',
-    description: 'Miroir maquillage LED',
-    longDescription: 'Miroir maquillage LED avec éclairage réglable. 3 niveaux d\'intensité et miroir grossissant. Produit de qualité professionnelle disponible aux Pays-Bas.',
+    description: 'LED make-up spiegel',
+    longDescription: 'LED make-up spiegel met instelbare verlichting. 3 intensiteitsniveaus en vergrotende spiegel. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 94.99,
     image: getProductImagePath('LED Makeup Mirror Philips'),
     category: 'accessoires',
@@ -2564,7 +2564,7 @@ const productsRaw: Product[] = [
   {
     id: '154',
     name: 'Brush Storage Case',
-    description: 'Étui de rangement pinceaux',
+    description: 'Opbergkoffer voor penceaus',
     longDescription: 'Opbergkoffer voor penceaus met vakken. Compact en praktisch design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 25.99,
     image: getProductImagePath('Brush Storage Case EcoTools'),
@@ -2580,7 +2580,7 @@ const productsRaw: Product[] = [
   {
     id: '155',
     name: 'Beauty Organizer',
-    description: 'Organisateur beauté',
+    description: 'Beauty organizer',
     longDescription: 'Beauty organizer met meerdere vakken. Elegant en functioneel design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 54.99,
     image: getProductImagePath('Beauty Organizer Philips'),
@@ -2596,7 +2596,7 @@ const productsRaw: Product[] = [
   {
     id: '156',
     name: 'Travel Makeup Bag',
-    description: 'Trousse maquillage voyage',
+    description: 'Reiskosmetiektas',
     longDescription: 'Reiskosmetiektas met meerdere zakken. Duurzaam en waterdicht materiaal. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 23.99,
     image: getProductImagePath('Travel Makeup Bag EcoTools'),
@@ -2612,7 +2612,7 @@ const productsRaw: Product[] = [
   {
     id: '157',
     name: 'Brush Cleansing Soap',
-    description: 'Savon nettoyant pinceaux',
+    description: 'Reinigend zeep voor penceaus',
     longDescription: 'Reinigend zeep voor penceaus. Milde en effectieve formule. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 24.99,
     image: getProductImagePath('Brush Cleansing Soap EcoTools'),
@@ -2628,7 +2628,7 @@ const productsRaw: Product[] = [
   {
     id: '158',
     name: 'Reusable Makeup Remover Pads',
-    description: 'Disques démaquillants réutilisables',
+    description: 'Herbruikbare make-upverwijderende schijfjes',
     longDescription: 'Herbruikbare make-upverwijderende schijfjes van biologische katoen. Zacht voor de huid en ecologisch. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 22.99,
     image: getProductImagePath('Reusable Makeup Remover Pads EcoTools'),
@@ -2644,7 +2644,7 @@ const productsRaw: Product[] = [
   {
     id: '159',
     name: 'Professional Eyelash Curler',
-    description: 'Recourbe-cils professionnel',
+    description: 'Professionele wimperskruller',
     longDescription: 'Professionele wimperskruller met gepolsterde kussentjes. Ergonomisch en effectief design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 29.99,
     image: getProductImagePath('Professional Eyelash Curler Shiseido'),
@@ -2660,7 +2660,7 @@ const productsRaw: Product[] = [
   {
     id: '160',
     name: 'Precision Tweezers',
-    description: 'Pince à épiler précision',
+    description: 'Precisie-epiler',
     longDescription: 'Precisie-epiler met fijne punt. Comfortabele handgreep. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 27.99,
     image: getProductImagePath('Precision Tweezers Shiseido'),
@@ -2676,7 +2676,7 @@ const productsRaw: Product[] = [
   {
     id: '161',
     name: 'Professional Nail Care Set',
-    description: 'Set soin ongles professionnel',
+    description: 'Professionele nagelverzorgingsset',
     longDescription: 'Volledige professionele nagelverzorgingset. Kwalitatieve en duurzame tools. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 25.99,
     image: getProductImagePath('Professional Nail Care Set Shiseido'),
@@ -2692,7 +2692,7 @@ const productsRaw: Product[] = [
   {
     id: '162',
     name: 'Wet Brush Pro',
-    description: 'Brosse cheveux humide',
+    description: 'Borstel voor nat haar',
     longDescription: 'Borstel voor nat haar. Ontwarrend zonder haarbreuk. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 26.99,
     image: getProductImagePath('Wet Brush Pro Wet Brush'),
@@ -2708,7 +2708,7 @@ const productsRaw: Product[] = [
   {
     id: '163',
     name: 'Detangler Brush',
-    description: 'Brosse démêlante professionnelle',
+    description: 'Professionele ontwarrende borstel',
     longDescription: 'Professionele ontwarrende borstel. Flexibele en zachte haren. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 27.99,
     image: getProductImagePath('Detangler Brush Wet Brush'),
@@ -2724,7 +2724,7 @@ const productsRaw: Product[] = [
   {
     id: '164',
     name: 'Ionic Hair Dryer',
-    description: 'Sèche-cheveux ionique',
+    description: 'Ionische föhn',
     longDescription: 'Ionische föhn met infraroodtechnologie. Sneldrogen en haarverzorging. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 94.99,
     image: getProductImagePath('Ionic Hair Dryer Babyliss'),
@@ -2740,8 +2740,8 @@ const productsRaw: Product[] = [
   {
     id: '165',
     name: 'Ceramic Straightener',
-    description: 'Lisseur céramique',
-    longDescription: 'Lisseur céramique avec plaques lissantes. Température réglable jusqu\'à 230°C. Produit de qualité professionnelle disponible aux Pays-Bas.',
+    description: 'Keramische stijltang',
+    longDescription: 'Keramische stijltang met gladde platen. Instelbare temperatuur tot 230°C. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 84.99,
     image: getProductImagePath('Ceramic Straightener Babyliss'),
     category: 'accessoires',
@@ -2756,7 +2756,7 @@ const productsRaw: Product[] = [
   {
     id: '166',
     name: 'Curling Wand',
-    description: 'Fer à boucler',
+    description: 'Krultang',
     longDescription: 'Kapperskrultang met keramische cilinder. Creëert duurzame en natuurlijke krullen. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 74.99,
     image: getProductImagePath('Curling Wand Babyliss'),
@@ -2772,7 +2772,7 @@ const productsRaw: Product[] = [
   {
     id: '167',
     name: 'Hair Claw Clips',
-    description: 'Pinces griffes cheveux',
+    description: 'Haarklemmen met klauwvorm',
     longDescription: 'Haarklemmen met klauwvorm. Modern en duurzaam design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 22.99,
     image: getProductImagePath('Hair Claw Clips Scünci'),
@@ -2788,7 +2788,7 @@ const productsRaw: Product[] = [
   {
     id: '168',
     name: 'No-Crease Hair Elastics',
-    description: 'Élastiques cheveux sans marque',
+    description: 'Haarelástiekjes zonder knelpartijen',
     longDescription: 'Haarelástiekjes zonder knelpartijen. Laat geen sporen achter en beschadigt het haar niet. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 23.99,
     image: getProductImagePath('No-Crease Hair Elastics Scünci'),
@@ -2804,7 +2804,7 @@ const productsRaw: Product[] = [
   {
     id: '169',
     name: 'Velvet Scrunchie',
-    description: 'Chouchou velours',
+    description: 'Fluwelen scrunchie',
     longDescription: 'Zachte fluwelen scrunchie. Elegant en comfortabel design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 24.99,
     image: getProductImagePath('Velvet Scrunchie Scünci'),
@@ -2820,7 +2820,7 @@ const productsRaw: Product[] = [
   {
     id: '170',
     name: 'Wide Headband',
-    description: 'Bandeau large',
+    description: 'Brede haarspeld',
     longDescription: 'Brede haarspeld van zacht textiel. Zit stevig en is comfortabel. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 25.99,
     image: getProductImagePath('Wide Headband Scünci'),
@@ -2836,7 +2836,7 @@ const productsRaw: Product[] = [
   {
     id: '171',
     name: 'Magnetic Makeup Palette',
-    description: 'Palette maquillage magnétique',
+    description: 'Magnetische make-uppalet',
     longDescription: 'Magnetische make-uppalet met verwisselbare vakken. Praktisch en modulair design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 35.99,
     image: getProductImagePath('Magnetic Makeup Palette Morphe'),
@@ -2852,7 +2852,7 @@ const productsRaw: Product[] = [
   {
     id: '172',
     name: 'Pro Brush Collection',
-    description: 'Collection pinceaux pro',
+    description: 'Professionele penceaus collectie',
     longDescription: 'Complete set professionele penceaus. 12 penceaus van hoge kwaliteit. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 94.99,
     image: getProductImagePath('Pro Brush Collection Morphe'),
@@ -2868,7 +2868,7 @@ const productsRaw: Product[] = [
   {
     id: '173',
     name: 'Original Beauty Sponge',
-    description: 'Éponge beauté originale',
+    description: 'Originele beauty blender',
     longDescription: 'Originele beauty blender voor een perfecte afwerking. Unieke vorm en zachte textuur. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 29.99,
     image: getProductImagePath('Original Beauty Sponge Fenty Beauty'),
@@ -2884,7 +2884,7 @@ const productsRaw: Product[] = [
   {
     id: '174',
     name: 'Beauty Sponge Duo',
-    description: 'Duo éponges beauté',
+    description: 'Duo beauty blenders',
     longDescription: 'Duo beauty blenders in twee maten. Perfect voor alle soorten make-up. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 54.99,
     image: getProductImagePath('Beauty Sponge Duo Fenty Beauty'),
@@ -2900,7 +2900,7 @@ const productsRaw: Product[] = [
   {
     id: '175',
     name: 'Brush Cleaning Glove',
-    description: 'Gant nettoyant pinceaux',
+    description: 'Schoonmaakhandschoen voor penceaus',
     longDescription: 'Schoonmaakhandschoen voor penceaus met verschillende texturen. Effectieve en snelle reiniging. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 30.99,
     image: getProductImagePath('Brush Cleaning Glove Morphe'),
@@ -2916,7 +2916,7 @@ const productsRaw: Product[] = [
   {
     id: '176',
     name: 'Essential Brush Kit',
-    description: 'Kit pinceaux essentiels',
+    description: 'Set essentiële penceaus',
     longDescription: 'Set van 8 essentiële make-up penceaus. Kwalitatieve synthetische haren. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 84.99,
     image: getProductImagePath('Essential Brush Kit Morphe'),
@@ -2932,7 +2932,7 @@ const productsRaw: Product[] = [
   {
     id: '177',
     name: 'Blending Sponge',
-    description: 'Éponge de fusion',
+    description: 'Blending sponge',
     longDescription: 'Blending sponge voor naadloos make-up. Unieke textuur en ergonomische vorm. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 25.99,
     image: getProductImagePath('Blending Sponge Morphe'),
@@ -2948,8 +2948,8 @@ const productsRaw: Product[] = [
   {
     id: '178',
     name: 'Compact Makeup Mirror',
-    description: 'Miroir maquillage compact',
-    longDescription: 'Miroir maquillage compact avec éclairage LED. Parfait pour le voyage. Produit de qualité professionnelle disponible aux Pays-Bas.',
+    description: 'Compacte make-up spiegel',
+    longDescription: 'Compacte make-up spiegel met LED-verlichting. Perfect voor reizen. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 64.99,
     image: getProductImagePath('Compact Makeup Mirror Philips'),
     category: 'accessoires',
@@ -2964,8 +2964,8 @@ const productsRaw: Product[] = [
   {
     id: '179',
     name: 'Smart LED Mirror',
-    description: 'Miroir LED intelligent',
-    longDescription: 'Miroir LED intelligent avec détection automatique. Éclairage naturel et réglable. Produit de qualité professionnelle disponible aux Pays-Bas.',
+    description: 'Slimme LED spiegel',
+    longDescription: 'Slimme LED spiegel met automatische detectie. Natuurlijke en instelbare verlichting. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 74.99,
     image: getProductImagePath('Smart LED Mirror Philips'),
     category: 'accessoires',
@@ -2980,8 +2980,8 @@ const productsRaw: Product[] = [
   {
     id: '180',
     name: 'Portable Mirror',
-    description: 'Miroir portable',
-    longDescription: 'Miroir portable avec éclairage LED intégré. Design compact et pratique. Produit de qualité professionnelle disponible aux Pays-Bas.',
+    description: 'Draagbare spiegel',
+    longDescription: 'Draagbare spiegel met geïntegreerde LED-verlichting. Compact en praktisch design. Professioneel kwaliteitsproduct beschikbaar in Nederland.',
     price: 30.99,
     image: getProductImagePath('Portable Mirror Philips'),
     category: 'accessoires',

@@ -41,11 +41,12 @@ function LoginContent() {
 
     try {
       const supabase = createClient();
+      const redirectUrl = typeof window !== 'undefined' ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || '');
       const { error } = await supabase.auth.resend({
         type: 'signup',
         email: email.trim(),
         options: {
-          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}/auth/callback?next=/compte&type=signup`,
+          emailRedirectTo: `${redirectUrl}/auth/callback?next=/compte&type=signup`,
         },
       });
 
@@ -130,10 +131,11 @@ function LoginContent() {
 
     try {
       const supabase = createClient();
+      const redirectUrl = typeof window !== 'undefined' ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || '');
       const { error } = await supabase.auth.signInWithOtp({
         email: email.trim(),
         options: {
-          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}/auth/callback?next=/compte`,
+          emailRedirectTo: `${redirectUrl}/auth/callback?next=/compte&type=magiclink`,
         },
       });
 

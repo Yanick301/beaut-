@@ -6,21 +6,27 @@ import { FiUser, FiMail, FiLock, FiPackage, FiHeart, FiLogOut } from 'react-icon
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
+import { useToastStore } from '@/lib/toast-store';
 
 function AccountContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createClient();
+  const addToast = useToastStore((state) => state.addToast);
   const [activeTab, setActiveTab] = useState<'profile' | 'orders' | 'favorites'>('profile');
-  const [message, setMessage] = useState<string | null>(null);
   
-  // Vérifier les messages de succès dans l'URL
+  // Vérifier les messages de succès dans l'URL et afficher les toasts
   useEffect(() => {
     const success = searchParams.get('success');
+    
     if (success === 'signup_auto_login') {
-      setMessage('Welkom! Uw account is succesvol aangemaakt en u bent nu ingelogd.');
+      addToast('Votre email a été confirmé avec succès ! Vous êtes maintenant connecté.', 'success');
+    } else if (success === 'magic_link_login') {
+      addToast('Connexion réussie ! Vous êtes maintenant connecté via le lien magique.', 'success');
+    } else if (success === 'email_changed') {
+      addToast('Votre email a été modifié avec succès !', 'success');
     }
-  }, [searchParams]);
+  }, [searchParams, addToast]);
 
   // Vérifier si on doit ouvrir l'onglet commandes depuis l'URL
   useEffect(() => {
@@ -84,12 +90,6 @@ function AccountContent() {
   return (
     <div className="section-padding bg-beige-light min-h-screen">
       <div className="container-custom max-w-5xl">
-        {message && (
-          <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm flex justify-between items-center">
-            <span>{message}</span>
-            <button onClick={() => setMessage(null)} className="text-green-700 font-bold ml-4">×</button>
-          </div>
-        )}
         <div className="flex items-center justify-between mb-8">
           <h1 className="font-elegant text-4xl md:text-5xl text-brown-dark">Mijn account</h1>
           <button

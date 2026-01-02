@@ -1,0 +1,31 @@
+RAPPORT D'ANALYSE IMAGES/PRODUITS
+================================================================================
+
+Date: 02/01/2026 12:46:02
+
+Total d'images dans le dossier: 241
+Total de produits dans data.ts: 267
+
+
+IMAGES ORPHELINES (15):
+--------------------------------------------------------------------------------
+1. brush cleaning glove .jpg
+2. accessoires_beauté.jpg
+3. aha_30_plus_bha_2_peeling_solution_the_ordinary.jpg
+4. caffeine_solution_5_plus_egcg_the_ordinary.jpg
+5. fructis_hydrating_garnier.jpg
+6. hyaluronic_acid_2_plus_b5_the_ordinary.jpg
+7. lactic_acid_10_plus_ha_the_ordinary.jpg
+8. loreal_paris_deodorant_loreal_paris.jpg
+9. loreal_paris_rollon_loreal_paris.jpg
+10. loreal_paris_spray_loreal_paris.jpg
+11. matrixyl_10_plus_ha_the_ordinary.jpg
+12. natural_moisturizing_factors_plus_ha_the_ordinary.jpg
+13. niacinamide_10_plus_zinc_1_the_ordinary.jpg
+14. the_ritual_of_karma_rituals.jpg
+15. vitamin_c_suspension_23_plus_ha_spheres_2_the_ordinary.jpg
+
+PRODUITS AVEC IMAGES MANQUANTES (1):
+--------------------------------------------------------------------------------
+1. ID: 256 | Nom: Amouage Interlude Man 100 ml
+   Image attendue: amouage_interlude_man.jpg

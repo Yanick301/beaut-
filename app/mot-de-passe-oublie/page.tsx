@@ -1,17 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FiMail } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
 
-export default function ForgotPasswordPage() {
+function ForgotPasswordContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
   const supabase = createClient();
+
+  // Vérifier les erreurs dans l'URL
+  useEffect(() => {
+    const errorParam = searchParams.get('error');
+    if (errorParam === 'invalid_or_expired_link') {
+      setError('Le lien de réinitialisation est invalide ou a expiré. Veuillez demander un nouveau lien.');
+    }
+  }, [searchParams]);
 
   const handleMagicLink = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +32,9 @@ export default function ForgotPasswordPage() {
 
     try {
       // Envoi du Magic Link / Récupération
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback?next=/reinitialiser-mot-de-passe&type=recovery`,
+      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+        redirectTo: `${redirectUrl}/auth/callback?next=/reinitialiser-mot-de-passe&type=recovery`,
       });
 
       if (error) throw error;
@@ -96,5 +108,17 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ForgotPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
+        <div className="text-brown-soft">Chargement...</div>
+      </div>
+    }>
+      <ForgotPasswordContent />
+    </Suspense>
   );
 }

@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { createClient } from '@/lib/supabase/client';
+import { useToastStore } from '@/lib/toast-store';
 
 export default function ResetPasswordClient() {
   const router = useRouter();
   const supabase = createClient();
+  const addToast = useToastStore((state) => state.addToast);
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -16,24 +18,36 @@ export default function ResetPasswordClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [authorized, setAuthorized] = useState(false);
+  const [loadingAuth, setLoadingAuth] = useState(true);
 
   /**
-   * IMPORTANT :
-   * On attend explicitement l'événement PASSWORD_RECOVERY
-   * (la session n'existe pas encore au premier render)
+   * Vérifier la session au chargement et écouter les changements d'état
    */
   useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'PASSWORD_RECOVERY') {
+    // Vérifier la session actuelle
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
         setAuthorized(true);
       }
+      setLoadingAuth(false);
+    };
 
-      if (!session && event !== 'PASSWORD_RECOVERY') {
+    checkSession();
+
+    // Écouter les changements d'état d'authentification
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'PASSWORD_RECOVERY' || session) {
+        setAuthorized(true);
+        setLoadingAuth(false);
+        setError(null);
+      } else if (event === 'SIGNED_OUT' || (!session && event !== 'INITIAL_SESSION')) {
         setError(
           'Session expirée. Veuillez redemander un lien de réinitialisation.'
         );
+        setLoadingAuth(false);
         setTimeout(() => {
           router.push('/mot-de-passe-oublie');
         }, 3000);
@@ -49,8 +63,13 @@ export default function ResetPasswordClient() {
     e.preventDefault();
     setError(null);
 
-    if (!authorized) {
-      setError("Vous n'êtes pas autorisé à modifier ce mot de passe.");
+    // Vérifier à nouveau la session avant de continuer
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      setError("Vous n'êtes pas autorisé à modifier ce mot de passe. Veuillez redemander un lien de réinitialisation.");
+      setTimeout(() => {
+        router.push('/mot-de-passe-oublie');
+      }, 2000);
       return;
     }
 
@@ -73,17 +92,35 @@ export default function ResetPasswordClient() {
 
       if (error) throw error;
 
+      // Afficher le toast de succès
+      addToast('Votre mot de passe a été modifié avec succès !', 'success');
+
       // Déconnexion propre après modification
       await supabase.auth.signOut();
 
-      router.push('/connexion');
-      router.refresh();
+      // Petit délai pour que l'utilisateur voie le toast
+      setTimeout(() => {
+        router.push('/connexion');
+        router.refresh();
+      }, 1500);
     } catch (err: any) {
       setError(err.message || 'Une erreur est survenue.');
     } finally {
       setLoading(false);
     }
   };
+
+  if (loadingAuth) {
+    return (
+      <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
+        <div className="container-custom max-w-md">
+          <div className="bg-white-cream rounded-2xl p-8 shadow-md text-center">
+            <div className="text-brown-soft">Vérification de la session...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
