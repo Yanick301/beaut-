@@ -39,6 +39,7 @@ export async function middleware(request: NextRequest) {
    * ------------------------------------------------------------------ */
   const publicAuthRoutes = [
     '/auth/callback',
+    '/auth/magic',
     '/reinitialiser-mot-de-passe',
     '/mot-de-passe-oublie',
   ];

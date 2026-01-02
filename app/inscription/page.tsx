@@ -1,73 +1,82 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { FiMail, FiLock, FiUser, FiEye, FiEyeOff } from 'react-icons/fi';
-import { createClient } from '@/lib/supabase/client';
+import { FiMail, FiUser } from 'react-icons/fi';
+import { useToastStore } from '@/lib/toast-store';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 export default function SignupPage() {
-  const router = useRouter();
-  
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
-
-  const supabase = createClient();
+  const [emailSent, setEmailSent] = useState(false);
+  const { addToast } = useToastStore();
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
-    setMessage(null);
 
-    // Validation
-    if (password !== confirmPassword) {
-      setError('De wachtwoorden komen niet overeen');
-      setLoading(false);
-      return;
-    }
-
-    if (password.length < 6) {
-      setError('Het wachtwoord moet minimaal 6 tekens bevatten');
+    if (!email || !firstName || !lastName) {
+      addToast('Veuillez remplir tous les champs', 'error');
       setLoading(false);
       return;
     }
 
     try {
-      const redirectUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
-      const callbackUrl = `${redirectUrl}/auth/callback?next=/compte&type=signup`;
+      addToast('Création du compte...', 'info');
 
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: callbackUrl,
-          data: {
-            first_name: firstName,
-            last_name: lastName,
-          },
-        },
+      // 1. Créer l'utilisateur dans Supabase Auth
+      const adminClient = createAdminClient();
+      
+      const { data: authUser, error: authError } = await adminClient.auth.admin.createUser({
+        email: email.trim().toLowerCase(),
+        email_confirm: true,
+        user_metadata: {
+          first_name: firstName,
+          last_name: lastName,
+        }
       });
 
-      if (error) throw error;
-
-      if (data.user) {
-        setMessage('Een bevestigingsmail is naar uw e-mailadres verzonden! Controleer alstublieft uw inbox.');
-        // Optionnel : redirection automatique après quelques secondes
-        setTimeout(() => {
-          router.push('/connexion');
-        }, 3000);
+      if (authError) {
+        if (authError.message.includes('already exists')) {
+          throw new Error('Cet email est déjà utilisé');
+        }
+        throw authError;
       }
+
+      // 2. Créer le profil utilisateur
+      if (authUser.user) {
+        const { error: profileError } = await adminClient
+          .from('profiles')
+          .insert({
+            id: authUser.user.id,
+            email: email.trim().toLowerCase(),
+            first_name: firstName,
+            last_name: lastName,
+            updated_at: new Date().toISOString(),
+          });
+
+        if (profileError && !profileError.message.includes('duplicate')) {
+          console.error('Profile error:', profileError);
+        }
+      }
+
+      setEmailSent(true);
+      addToast('Compte créé ! Vous pouvez maintenant vous connecter 🎉', 'success');
+      
+      // Réinitialiser le formulaire
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+
+      // Rediriger après 2 secondes
+      setTimeout(() => {
+        window.location.href = '/connexion';
+      }, 2000);
     } catch (error: any) {
-      setError(error.message || 'Er is een fout opgetreden tijdens de registratie');
+      addToast(error.message || 'Erreur lors de la création du compte', 'error');
     } finally {
       setLoading(false);
     }
@@ -78,157 +87,109 @@ export default function SignupPage() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Registratie
+            Créer un compte
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Maak uw Her Essence account aan
+            Rejoignez notre communauté
           </p>
 
-          {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              {error}
-            </div>
-          )}
+          {!emailSent ? (
+            <form onSubmit={handleSignup} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="firstName" className="block text-brown-dark font-medium mb-2">
+                    Prénom
+                  </label>
+                  <div className="relative">
+                    <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                    <input
+                      id="firstName"
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      required
+                      className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                      placeholder="Prénom"
+                      disabled={loading}
+                    />
+                  </div>
+                </div>
 
-          {message && (
-            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-              {message}
-            </div>
-          )}
-
-          <form onSubmit={handleSignup} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="firstName" className="block text-brown-dark font-medium mb-2">
-                  Voornaam
-                </label>
-                <div className="relative">
-                  <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
-                  <input
-                    id="firstName"
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                    placeholder="Voornaam"
-                  />
+                <div>
+                  <label htmlFor="lastName" className="block text-brown-dark font-medium mb-2">
+                    Nom
+                  </label>
+                  <div className="relative">
+                    <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                    <input
+                      id="lastName"
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      required
+                      className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                      placeholder="Nom"
+                      disabled={loading}
+                    />
+                  </div>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="lastName" className="block text-brown-dark font-medium mb-2">
-                  Achternaam
+                <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
+                  Adresse email
                 </label>
                 <div className="relative">
-                  <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                  <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
                   <input
-                    id="lastName"
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                     className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                    placeholder="Achternaam"
+                    placeholder="votre@email.com"
+                    disabled={loading}
                   />
                 </div>
               </div>
-            </div>
 
-            <div>
-              <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
-                Email
-              </label>
-              <div className="relative">
-                <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="uw@email.com"
-                />
+              <div className="text-xs text-brown-soft mb-4">
+                En créant un compte, vous acceptez nos{' '}
+                <Link href="/cgv" className="text-rose-soft hover:underline">
+                  conditions générales
+                </Link>{' '}
+                et notre{' '}
+                <Link href="/confidentialite" className="text-rose-soft hover:underline">
+                  politique de confidentialité
+                </Link>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Création en cours...' : 'Créer mon compte'}
+              </button>
+            </form>
+          ) : (
+            <div className="text-center space-y-4">
+              <div className="text-4xl mb-4">🎉</div>
+              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-green-700 font-medium mb-2">Compte créé avec succès !</p>
+                <p className="text-green-600 text-sm">
+                  Vous serez redirigé vers la page de connexion.<br />
+                  Vous pouvez vous connecter directement avec votre email.
+                </p>
               </div>
             </div>
-
-            <div>
-              <label htmlFor="password" className="block text-brown-dark font-medium mb-2">
-                Wachtwoord
-              </label>
-              <div className="relative">
-                <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  minLength={6}
-                  className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-brown-soft hover:text-brown-dark transition"
-                >
-                  {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
-                </button>
-              </div>
-              <p className="text-xs text-brown-soft mt-1">Minimaal 6 tekens</p>
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-brown-dark font-medium mb-2">
-                Bevestig wachtwoord
-              </label>
-              <div className="relative">
-                <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
-                <input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                  className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-brown-soft hover:text-brown-dark transition"
-                >
-                  {showConfirmPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
-                </button>
-              </div>
-            </div>
-
-            <div className="text-xs text-brown-soft">
-              Door een account aan te maken accepteert u onze{' '}
-              <Link href="/cgv" className="text-rose-soft hover:underline">
-                Algemene voorwaarden
-              </Link>{' '}
-              en ons{' '}
-              <Link href="/confidentialite" className="text-rose-soft hover:underline">
-                Privacybeleid
-              </Link>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Registratie...' : 'Maak account aan'}
-            </button>
-          </form>
+          )}
 
           <div className="mt-6 text-center text-sm text-brown-soft">
-            Heeft u al een account ?{' '}
+            Vous avez déjà un compte ?{' '}
             <Link href="/connexion" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Inloggen
+              Se connecter
             </Link>
           </div>
         </div>
