@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useToastStore } from '@/lib/toast-store';
 
-export default function MagicLinkPage() {
+function MagicLinkContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
@@ -38,13 +38,13 @@ export default function MagicLinkPage() {
           throw new Error(data.error || 'Erreur lors de la vérification');
         }
 
-        // Succès
+        // Succès - créer la session Supabase
         addToast('Connexion réussie ! Redirection...', 'success');
         
-        // Attendre un peu puis rediriger
+        // Refresh la page pour mettre à jour la session Supabase
         setTimeout(() => {
-          router.push('/compte');
           router.refresh();
+          router.push('/compte');
         }, 1000);
       } catch (err: any) {
         const errorMsg = err.message || 'Erreur lors de la connexion';
@@ -89,4 +89,21 @@ export default function MagicLinkPage() {
   }
 
   return null;
+}
+
+export default function MagicLinkPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100">
+        <div className="text-center">
+          <div className="inline-block animate-spin">
+            <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full"></div>
+          </div>
+          <p className="mt-4 text-purple-700 font-semibold">Chargement...</p>
+        </div>
+      </div>
+    }>
+      <MagicLinkContent />
+    </Suspense>
+  );
 }

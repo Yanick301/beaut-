@@ -1,7 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { cookies } from 'next/headers';
 
 export async function POST(req: NextRequest) {
   try {
@@ -69,80 +68,60 @@ export async function POST(req: NextRequest) {
       .update({ used: true })
       .eq('id', magicLink.id);
 
-    // 7. Créer une session Supabase pour cet utilisateur
-    // On doit créer un JWT valide pour établir la session
-    const { data: { user: authUser }, error: authError } = await adminClient.auth.admin.getUserById(user.id);
+    // 7. Récupérer ou créer l'utilisateur dans Supabase Auth
+    let authUserId = magicLink.user_id;
 
-    if (authError) {
-      // Si l'utilisateur n'existe pas en auth, on peut le créer ou simplement créer la session
-      console.log('User not in auth, creating session via magic link...');
-    }
-
-    // 8. Créer une session valide en utilisant le token de session Supabase
-    // Le mieux est de créer une session JWT directement
-    const sessionResponse = await adminClient.auth.admin.createUser({
-      email: magicLink.email,
-      email_confirm: true,
-      user_metadata: {
-        provider: 'magic_link',
-        authenticated_at: new Date().toISOString()
+    if (!authUserId) {
+      try {
+        // Essayer de récupérer l'utilisateur par email
+        const { data: { user: existingUser } } = await adminClient.auth.admin.getUserById(magicLink.user_id || '');
+        authUserId = existingUser?.id;
+      } catch (e) {
+        // L'utilisateur n'existe pas, on le crée
       }
-    }).catch(async (error) => {
-      // L'utilisateur existe déjà, on peut ignorer cette erreur
-      if (error.message.includes('already exists')) {
-        return { data: { user: authUser }, error: null };
+
+      if (!authUserId) {
+        const { data: newUserData, error: createError } = await adminClient.auth.admin.createUser({
+          email: magicLink.email,
+          email_confirm: true,
+          user_metadata: {
+            provider: 'magic_link',
+            authenticated_at: new Date().toISOString()
+          }
+        });
+
+        if (createError) {
+          // Si user existe déjà, essayer de le trouver
+          if (createError.message.includes('already exists')) {
+            // Faire une requête pour obtenir l'ID de cet utilisateur
+            const { data: { users } } = await adminClient.auth.admin.listUsers();
+            const foundUser = users?.find(u => u.email === magicLink.email);
+            authUserId = foundUser?.id;
+          }
+
+          if (!authUserId) {
+            console.error('Auth creation error:', createError);
+            return NextResponse.json(
+              { error: 'Erreur lors de la création du compte' },
+              { status: 500 }
+            );
+          }
+        } else {
+          authUserId = newUserData.user?.id;
+        }
       }
-      throw error;
-    });
-
-    const authenticatedUser = sessionResponse.data?.user;
-
-    if (!authenticatedUser) {
-      return NextResponse.json(
-        { error: 'Erreur lors de la création de la session' },
-        { status: 500 }
-      );
     }
 
-    // 9. Générer une session JWT valide
-    const { data: { session }, error: sessionError } = await adminClient.auth.admin.createSession(authenticatedUser.id);
-
-    if (sessionError || !session) {
-      return NextResponse.json(
-        { error: 'Erreur lors de la création de la session' },
-        { status: 500 }
-      );
-    }
-
-    // 10. Définir les cookies de session
+    // 8. Retourner les informations pour la redirection côté client
     const response = NextResponse.json(
       {
         message: 'Authentification réussie',
-        userId: user.id,
-        email: magicLink.email
+        userId: authUserId,
+        email: magicLink.email,
+        redirect: '/compte'
       },
       { status: 200 }
     );
-
-    // Définir les cookies Supabase
-    if (session.access_token) {
-      const cookieStore = await cookies();
-      cookieStore.set('sb-access-token', session.access_token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        maxAge: 60 * 60 * 24 * 365 // 1 year
-      });
-      
-      if (session.refresh_token) {
-        cookieStore.set('sb-refresh-token', session.refresh_token, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'lax',
-          maxAge: 60 * 60 * 24 * 365 // 1 year
-        });
-      }
-    }
 
     return response;
   } catch (error) {
