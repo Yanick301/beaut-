@@ -25,13 +25,13 @@ function LoginContent() {
   useEffect(() => {
     if (errorParam === 'email_not_confirmed') {
       setEmailNotConfirmed(true);
-      setError('Votre email n\'a pas encore été confirmé. Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation.');
+      setError('Uw e-mailadres is nog niet bevestigd. Controleer uw inbox en klik op de bevestigingslink.');
     }
   }, [errorParam]);
 
   const handleResendConfirmation = async () => {
     if (!email) {
-      setError('Veuillez entrer votre email');
+      setError('Voer uw e-mailadres in');
       return;
     }
 
@@ -124,7 +124,7 @@ function LoginContent() {
     setMessage(null);
 
     if (!email) {
-      setError('Veuillez entrer votre email');
+      setError('Voer uw e-mailadres in');
       setLoading(false);
       return;
     }
@@ -272,7 +272,7 @@ export default function LoginPage() {
   return (
     <Suspense fallback={
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
-        <div className="text-brown-soft">Chargement...</div>
+        <div className="text-brown-soft">Laden...</div>
       </div>
     }>
       <LoginContent />

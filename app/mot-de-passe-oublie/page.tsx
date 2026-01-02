@@ -115,7 +115,7 @@ export default function ForgotPasswordPage() {
   return (
     <Suspense fallback={
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
-        <div className="text-brown-soft">Chargement...</div>
+        <div className="text-brown-soft">Laden...</div>
       </div>
     }>
       <ForgotPasswordContent />

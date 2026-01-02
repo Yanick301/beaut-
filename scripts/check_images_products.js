@@ -210,7 +210,7 @@ console.log('='.repeat(80));
 const reportPath = path.join(__dirname, '../IMAGE_PRODUCT_ANALYSIS_REPORT.txt');
 let report = 'RAPPORT D\'ANALYSE IMAGES/PRODUITS\n';
 report += '='.repeat(80) + '\n\n';
-report += `Date: ${new Date().toLocaleString('fr-FR')}\n\n`;
+report += `Date: ${new Date().toLocaleString('nl-NL')}\n\n`;
 report += `Total d'images dans le dossier: ${allImageFiles.length}\n`;
 report += `Total de produits dans data.ts: ${products.length}\n\n`;
 

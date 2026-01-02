@@ -148,7 +148,7 @@ export default function SignupPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="votre@email.com"
+                  placeholder="uw@email.com"
                 />
               </div>
             </div>
@@ -206,7 +206,7 @@ export default function SignupPage() {
             </div>
 
             <div className="text-xs text-brown-soft">
-              En créant un compte, vous acceptez nos{' '}
+              Door een account aan te maken accepteert u onze{' '}
               <Link href="/cgv" className="text-rose-soft hover:underline">
                 Algemene voorwaarden
               </Link>{' '}

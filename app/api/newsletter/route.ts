@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 
     if (!email || !email.includes('@')) {
       return NextResponse.json(
-        { error: 'Email invalide' },
+        { error: 'Ongeldig e-mailadres' },
         { status: 400 }
       );
     }
@@ -25,10 +25,10 @@ export async function POST(request: NextRequest) {
     // Vous pouvez créer une table newsletter dans Supabase si nécessaire
     console.log('Newsletter subscription:', { email, name });
 
-    // Simuler un enregistrement réussi
+    // Simuleer een succesvolle inschrijving
     return NextResponse.json({ 
       success: true, 
-      message: 'Vous êtes maintenant inscrit(e) à notre newsletter !' 
+      message: 'U bent nu ingeschreven op onze nieuwsbrief!' 
     });
 
     // Si vous voulez sauvegarder dans Supabase :
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       if (error.code === '23505') { // Already subscribed
         return NextResponse.json({ 
           success: true, 
-          message: 'Vous êtes déjà inscrit(e) à notre newsletter !' 
+            message: 'U bent al ingeschreven op onze nieuwsbrief!' 
         });
       }
       throw error;
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Newsletter error:', error);
     return NextResponse.json(
-      { error: 'Erreur lors de l\'inscription à la newsletter' },
+      { error: 'Fout bij het inschrijven voor de nieuwsbrief' },
       { status: 500 }
     );
   }

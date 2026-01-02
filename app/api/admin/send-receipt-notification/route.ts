@@ -271,7 +271,7 @@ export async function POST(request: NextRequest) {
       console.error('Resend error details:', JSON.stringify(error, null, 2));
       return NextResponse.json(
         { 
-          error: 'Erreur lors de l\'envoi de l\'email', 
+          error: 'Fout bij het verzenden van de e-mail', 
           details: error instanceof Error ? error.message : String(error),
           resendError: error
         },

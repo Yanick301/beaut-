@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Non authentifié' },
+        { error: 'Niet geauthenticeerd' },
         { status: 401 }
       );
     }
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     if (orderError) {
       console.error('Order creation error:', orderError);
       return NextResponse.json(
-        { error: 'Erreur lors de la création de la commande', details: orderError.message },
+        { error: 'Fout bij het aanmaken van de bestelling', details: orderError.message },
         { status: 500 }
       );
     }
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       // Supprimer la commande si les items n'ont pas pu être créés
       await supabase.from('orders').delete().eq('id', order.id);
       return NextResponse.json(
-        { error: 'Erreur lors de la création des articles de commande' },
+        { error: 'Fout bij het aanmaken van de bestelregels' },
         { status: 500 }
       );
     }
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Unexpected error:', error);
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue', details: error.message },
+      { error: 'Er is een onverwachte fout opgetreden', details: error.message },
       { status: 500 }
     );
   }
@@ -95,7 +95,7 @@ export async function GET(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Non authentifié' },
+        { error: 'Niet geauthenticeerd' },
         { status: 401 }
       );
     }
@@ -112,7 +112,7 @@ export async function GET(request: NextRequest) {
 
     if (ordersError) {
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération des commandes' },
+        { error: 'Fout bij het ophalen van bestellingen' },
         { status: 500 }
       );
     }
@@ -120,7 +120,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ orders: orders || [] });
   } catch (error: any) {
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue' },
+      { error: 'Er is een onverwachte fout opgetreden' },
       { status: 500 }
     );
   }

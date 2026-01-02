@@ -344,7 +344,7 @@ export default function ProductPage() {
                     </span>
                     {review.verified && (
                       <span className="text-xs bg-rose-soft/20 text-rose-soft px-2 py-1 rounded">
-                        Geverifieerd
+                        Validé
                       </span>
                     )}
                   </div>
@@ -362,7 +362,7 @@ export default function ProductPage() {
                     <p className="text-brown-soft italic mb-3">&quot;{review.comment}&quot;</p>
                   )}
                   <p className="text-sm text-brown-soft/60">
-                    {new Date(review.created_at).toLocaleDateString('fr-FR', {
+                    {new Date(review.created_at).toLocaleDateString('nl-NL', {
                       day: 'numeric',
                       month: 'long',
                       year: 'numeric'

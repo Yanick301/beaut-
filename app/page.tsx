@@ -16,7 +16,7 @@ const ReviewsSection = dynamic(() => import('@/components/ReviewsSection'), {
   loading: () => (
     <section className="bg-white-cream section-padding">
       <div className="container-custom">
-        <div className="text-center py-12 text-brown-soft">Chargement des avis...</div>
+        <div className="text-center py-12 text-brown-soft">Beoordelingen laden...</div>
       </div>
     </section>
   ),

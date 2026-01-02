@@ -24,7 +24,7 @@ export default function ResetPasswordClient() {
    * Vérifier la session au chargement et écouter les changements d'état
    */
   useEffect(() => {
-    // Vérifier la session actuelle
+    // Controleer de huidige sessie
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
@@ -45,7 +45,7 @@ export default function ResetPasswordClient() {
         setError(null);
       } else if (event === 'SIGNED_OUT' || (!session && event !== 'INITIAL_SESSION')) {
         setError(
-          'Session expirée. Veuillez redemander un lien de réinitialisation.'
+          'Sessie verlopen. Vraag opnieuw een resetlink aan.'
         );
         setLoadingAuth(false);
         setTimeout(() => {
@@ -66,7 +66,7 @@ export default function ResetPasswordClient() {
     // Vérifier à nouveau la session avant de continuer
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) {
-      setError("Vous n'êtes pas autorisé à modifier ce mot de passe. Veuillez redemander un lien de réinitialisation.");
+      setError("U bent niet gemachtigd dit wachtwoord te wijzigen. Vraag een nieuwe resetlink aan.");
       setTimeout(() => {
         router.push('/mot-de-passe-oublie');
       }, 2000);
@@ -74,12 +74,12 @@ export default function ResetPasswordClient() {
     }
 
     if (password !== confirmPassword) {
-      setError('Les mots de passe ne correspondent pas.');
+      setError('Wachtwoorden komen niet overeen.');
       return;
     }
 
     if (password.length < 6) {
-      setError('Le mot de passe doit contenir au moins 6 caractères.');
+      setError('Het wachtwoord moet minimaal 6 tekens bevatten.');
       return;
     }
 
@@ -92,8 +92,8 @@ export default function ResetPasswordClient() {
 
       if (error) throw error;
 
-      // Afficher le toast de succès
-      addToast('Votre mot de passe a été modifié avec succès !', 'success');
+      // Toon succesbericht
+      addToast('Uw wachtwoord is succesvol gewijzigd!', 'success');
 
       // Déconnexion propre après modification
       await supabase.auth.signOut();
@@ -104,7 +104,7 @@ export default function ResetPasswordClient() {
         router.refresh();
       }, 1500);
     } catch (err: any) {
-      setError(err.message || 'Une erreur est survenue.');
+      setError(err.message || 'Er is een fout opgetreden.');
     } finally {
       setLoading(false);
     }
@@ -115,7 +115,7 @@ export default function ResetPasswordClient() {
       <div className="section-padding bg-beige-light min-h-screen flex items-center justify-center">
         <div className="container-custom max-w-md">
           <div className="bg-white-cream rounded-2xl p-8 shadow-md text-center">
-            <div className="text-brown-soft">Vérification de la session...</div>
+            <div className="text-brown-soft">Sessie wordt gecontroleerd...</div>
           </div>
         </div>
       </div>
@@ -127,10 +127,10 @@ export default function ResetPasswordClient() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Réinitialiser le mot de passe
+            Wachtwoord opnieuw instellen
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Entrez votre nouveau mot de passe
+            Voer uw nieuwe wachtwoord in
           </p>
 
           {error && (
@@ -143,7 +143,7 @@ export default function ResetPasswordClient() {
             {/* Nouveau mot de passe */}
             <div>
               <label className="block text-brown-dark font-medium mb-2">
-                Nouveau mot de passe
+                Nieuw wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -169,7 +169,7 @@ export default function ResetPasswordClient() {
             {/* Confirmation */}
             <div>
               <label className="block text-brown-dark font-medium mb-2">
-                Confirmer le mot de passe
+                Bevestig wachtwoord
               </label>
               <div className="relative">
                 <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -198,7 +198,7 @@ export default function ResetPasswordClient() {
               disabled={loading}
               className="w-full btn-primary disabled:opacity-50"
             >
-              {loading ? 'Mise à jour...' : 'Réinitialiser'}
+              {loading ? 'Bijwerken...' : 'Opnieuw instellen'}
             </button>
           </form>
         </div>

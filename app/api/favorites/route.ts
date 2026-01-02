@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Non authentifié' },
+        { error: 'Niet geauthenticeerd' },
         { status: 401 }
       );
     }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
         
         if (deleteError) {
           return NextResponse.json(
-            { error: 'Erreur lors de la suppression du favori' },
+            { error: 'Fout bij het verwijderen van favoriet' },
             { status: 500 }
           );
         }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       }
       
       return NextResponse.json(
-        { error: 'Erreur lors de l\'ajout aux favoris' },
+        { error: 'Fout bij het toevoegen aan favorieten' },
         { status: 500 }
       );
     }
@@ -95,7 +95,7 @@ export async function GET(request: NextRequest) {
 
     if (error) {
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération des favoris' },
+        { error: 'Fout bij het ophalen van favorieten' },
         { status: 500 }
       );
     }
@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ favorites: data || [] });
   } catch (error: any) {
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue' },
+      { error: 'Er is een onverwachte fout opgetreden' },
       { status: 500 }
     );
   }
@@ -117,7 +117,7 @@ export async function DELETE(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Non authentifié' },
+        { error: 'Niet geauthenticeerd' },
         { status: 401 }
       );
     }
@@ -127,7 +127,7 @@ export async function DELETE(request: NextRequest) {
 
     if (!productId) {
       return NextResponse.json(
-        { error: 'productId requis' },
+        { error: 'productId vereist' },
         { status: 400 }
       );
     }
@@ -140,7 +140,7 @@ export async function DELETE(request: NextRequest) {
 
     if (error) {
       return NextResponse.json(
-        { error: 'Erreur lors de la suppression du favori' },
+        { error: 'Fout bij het verwijderen van favoriet' },
         { status: 500 }
       );
     }
@@ -148,7 +148,7 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue' },
+      { error: 'Er is een onverwachte fout opgetreden' },
       { status: 500 }
     );
   }

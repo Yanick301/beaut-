@@ -169,7 +169,7 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-500 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Chargement du dashboard...</p>
+            <p className="mt-4 text-gray-600">Dashboard laden...</p>
         </div>
       </div>
     );
@@ -352,7 +352,7 @@ export default function AdminDashboard() {
                         </div>
                       </div>
                       <div className="text-sm text-gray-500">
-                        <p>{new Date(order.created_at).toLocaleDateString('fr-FR')}</p>
+                        <p>{new Date(order.created_at).toLocaleDateString('nl-NL')}</p>
                       </div>
                     </div>
                     <div className="mt-2 sm:flex sm:justify-between">

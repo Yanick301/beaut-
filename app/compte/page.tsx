@@ -20,11 +20,11 @@ function AccountContent() {
     const success = searchParams.get('success');
     
     if (success === 'signup_auto_login') {
-      addToast('Votre email a été confirmé avec succès ! Vous êtes maintenant connecté.', 'success');
+      addToast('Uw e-mailadres is succesvol bevestigd! U bent nu ingelogd.', 'success');
     } else if (success === 'magic_link_login') {
-      addToast('Connexion réussie ! Vous êtes maintenant connecté via le lien magique.', 'success');
+      addToast('Succesvol ingelogd! U bent nu aangemeld via de inloglink.', 'success');
     } else if (success === 'email_changed') {
-      addToast('Votre email a été modifié avec succès !', 'success');
+      addToast('Uw e-mailadres is succesvol gewijzigd!', 'success');
     }
   }, [searchParams, addToast]);
 
@@ -337,7 +337,7 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
                 <div>
                   <p className="font-semibold text-brown-dark text-lg">Bestelling #{order.order_number}</p>
                   <p className="text-sm text-brown-soft">
-                    {new Date(order.created_at).toLocaleDateString('fr-FR', {
+                    {new Date(order.created_at).toLocaleDateString('nl-NL', {
                       day: 'numeric',
                       month: 'long',
                       year: 'numeric'
@@ -354,7 +354,7 @@ function OrdersTab({ userId, supabase }: { userId: string; supabase: any }) {
                   }`}>
                     {order.status === 'delivered' ? 'Geleverd' :
                      order.status === 'shipped' ? 'Verzonden' :
-                     order.status === 'processing' ? 'Geverifieerd' :
+                     order.status === 'processing' ? 'Validé' :
                      order.status === 'pending' ? 'In afwachting van verificatie' :
                      'In behandeling'}
                   </span>

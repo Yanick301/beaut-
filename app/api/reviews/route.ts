@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     
     if (authError || !user) {
       return NextResponse.json(
-        { error: 'Non authentifié' },
+        { error: 'Niet geauthenticeerd' },
         { status: 401 }
       );
     }
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
     if (!productId || !rating || rating < 1 || rating > 5) {
       return NextResponse.json(
-        { error: 'Données invalides' },
+        { error: 'Ongeldige gegevens' },
         { status: 400 }
       );
     }
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
   } catch (error: any) {
     console.error('Review error:', error);
     return NextResponse.json(
-      { error: 'Erreur lors de l\'enregistrement de l\'avis', details: error.message },
+      { error: 'Fout bij het opslaan van de beoordeling', details: error.message },
       { status: 500 }
     );
   }
@@ -102,7 +102,7 @@ export async function GET(request: NextRequest) {
     if (reviewsError) {
       console.error('Error fetching reviews:', reviewsError);
       return NextResponse.json(
-        { error: 'Erreur lors de la récupération des avis', details: reviewsError.message },
+        { error: 'Fout bij het ophalen van beoordelingen', details: reviewsError.message },
         { status: 500 }
       );
     }
@@ -136,7 +136,7 @@ export async function GET(request: NextRequest) {
   } catch (error: any) {
     console.error('Unexpected error in GET reviews:', error);
     return NextResponse.json(
-      { error: 'Une erreur inattendue est survenue', details: error.message },
+      { error: 'Er is een onverwachte fout opgetreden', details: error.message },
       { status: 500 }
     );
   }

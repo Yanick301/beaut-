@@ -33,7 +33,8 @@ function productNameToImageName(name: string): string {
     // Cas où le fichier existe avec un nom légèrement différent
     'the_ritual_of_sakura_body_mist_rituals.jpg': 'he_ritual_of_sakura_body_mist_rituals.jpg',
     'the_ritual_of_ayurveda_eau_de_parfum_rituals.jpg': 'the_ritual_of_ayurveda_eau_de_parfum_ritual.jpg',
-    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier.jpg',
+    'fructis_hydrating_garnier.jpg': 'fructis_hydrating_garnier_2.jpg',
+    'fructis_hydrating_garnier..jpg': 'fructis_hydrating_garnier_2.jpg',
     'the_ritual_of_karma_rituals.jpg': 'the_ritual_of_karma_rituals.jpg', // Fallback si nécessaire
   };
 

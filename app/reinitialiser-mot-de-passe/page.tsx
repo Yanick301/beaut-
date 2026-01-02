@@ -3,7 +3,7 @@ import ResetPasswordClient from './ResetPasswordClient';
 
 export default function Page() {
   return (
-    <Suspense fallback={<p>Chargement...</p>}>
+    <Suspense fallback={<p>Laden...</p>}>
       <ResetPasswordClient />
     </Suspense>
   );

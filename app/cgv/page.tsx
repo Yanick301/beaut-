@@ -47,7 +47,7 @@ export default function CGVPage() {
           <section>
             <h2 className="font-elegant text-2xl text-brown-dark mb-4">5. Bestelling</h2>
             <p>
-              Chaque commande implique l'acceptation des prix et descriptions des produits en vente. La confirmation de votre commande vaut confirmation de ceci, et la vente n'est considérée comme définitive qu'après que le statut de la commande soit passé à "Geverifieerd", ce qui confirme l'acceptation de la commande par Her Essence.
+              Chaque commande implique l'acceptation des prix et descriptions des produits en vente. La confirmation de votre commande vaut confirmation de ceci, et la vente n'est considérée comme définitive qu'après que le statut de la commande soit passé à "Validé", ce qui confirme l'acceptation de la commande par Her Essence.
             </p>
           </section>
 
