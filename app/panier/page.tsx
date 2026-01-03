@@ -142,7 +142,7 @@ export default function CartPage() {
                     </button>
                   </div>
                   <span className="text-xs sm:text-sm text-brown-soft">
-                    €{item.price.toFixed(2)} / unité
+                    €{item.price.toFixed(2)} / stuk
                   </span>
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function CartPage() {
                 )}
                 <div className="border-t border-nude pt-3 sm:pt-4">
                   <div className="flex justify-between text-base sm:text-lg md:text-xl font-semibold text-brown-dark">
-                    <span>Total</span>
+                    <span>Totaal</span>
                     <span>€{(total + shipping).toFixed(2)}</span>
                   </div>
                 </div>

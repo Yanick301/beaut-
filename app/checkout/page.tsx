@@ -34,7 +34,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     async function checkAuthAndLoadData() {
       const { data: { user }, error } = await supabase.auth.getUser();
-      
+
       if (error || !user) {
         // Rediriger vers la connexion si non authentifié
         router.push('/connexion?redirect=/checkout');
@@ -356,7 +356,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="border-t border-nude pt-4">
                   <div className="flex justify-between text-lg font-semibold text-brown-dark">
-                    <span>Total</span>
+                    <span>Totaal</span>
                     <span>€{(promoTotal + shipping).toFixed(2)}</span>
                   </div>
                 </div>
@@ -372,7 +372,7 @@ export default function CheckoutPage() {
               </button>
 
               <p className="text-xs text-brown-soft text-center">
-              
+
               </p>
             </div>
           </div>
