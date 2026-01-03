@@ -5,15 +5,21 @@ import Link from 'next/link';
 import { FiMail, FiUser } from 'react-icons/fi';
 import { useToastStore } from '@/lib/toast-store';
 
+import { createClient } from '@/lib/supabase/client';
+
 export default function SignupPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
+  const [verificationLoading, setVerificationLoading] = useState(false);
+  const [step, setStep] = useState<'form' | 'otp'>('form');
   const [emailSent, setEmailSent] = useState(false);
   const { addToast } = useToastStore();
+  const supabase = createClient();
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,22 +55,48 @@ export default function SignupPage() {
         throw new Error(data.error || 'Fout bij het aanmaken van het account');
       }
 
-      setEmailSent(true);
-      addToast('Account aangemaakt! U kunt nu inloggen 🎉', 'success');
-
-      // Réinitialiser le formulaire
-      setFirstName('');
-      setLastName('');
-      setEmail('');
-
-      // Rediriger après 2 secondes
-      setTimeout(() => {
-        window.location.href = '/connexion';
-      }, 2000);
+      setStep('otp');
+      addToast('Account aangemaakt! Voer de verificatiecode uit uw e-mail in 📧', 'success');
     } catch (error: any) {
       addToast(error.message || 'Fout bij het aanmaken van het account', 'error');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setVerificationLoading(true);
+
+    if (!otp) {
+      addToast('Voer de verificatiecode in', 'error');
+      setVerificationLoading(false);
+      return;
+    }
+
+    try {
+      addToast('Code controleren...', 'info');
+
+      const { error } = await supabase.auth.verifyOtp({
+        email: email.trim().toLowerCase(),
+        token: otp.trim(),
+        type: 'signup',
+      });
+
+      if (error) throw error;
+
+      addToast('E-mail succesvol bevestigd! 🎉', 'success');
+      setEmailSent(true);
+
+      // Rediriger après 2 secondes
+      setTimeout(() => {
+        window.location.href = '/compte';
+      }, 2000);
+    } catch (error: any) {
+      console.error('OTP Verification error:', error);
+      addToast(error.message || 'Ongeldige of verlopen code', 'error');
+    } finally {
+      setVerificationLoading(false);
     }
   };
 
@@ -79,7 +111,7 @@ export default function SignupPage() {
             Word lid van onze community
           </p>
 
-          {!emailSent ? (
+          {step === 'form' ? (
             <form onSubmit={handleSignup} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -198,14 +230,56 @@ export default function SignupPage() {
                 {loading ? 'Bezig met aanmaken...' : 'Account aanmaken'}
               </button>
             </form>
+          ) : !emailSent ? (
+            <form onSubmit={handleVerifyOtp} className="space-y-6">
+              <div className="p-4 bg-rose-50 border border-rose-100 rounded-lg text-center mb-4">
+                <p className="text-brown-dark text-sm">
+                  We hebben een verificatiecode gestuurd naar:<br />
+                  <strong className="text-rose-soft">{email}</strong>
+                </p>
+              </div>
+
+              <div>
+                <label htmlFor="otp" className="block text-brown-dark font-medium mb-2">
+                  Verificatiecode
+                </label>
+                <input
+                  id="otp"
+                  type="text"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  required
+                  className="w-full px-4 py-4 text-center text-2xl tracking-[0.5em] font-bold rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                  placeholder="000000"
+                  maxLength={6}
+                  disabled={verificationLoading}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={verificationLoading}
+                className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {verificationLoading ? 'Controleren...' : 'Code bevestigen'}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setStep('form')}
+                className="w-full text-sm text-brown-soft hover:text-rose-soft transition"
+              >
+                E-mailadres aanpassen
+              </button>
+            </form>
           ) : (
             <div className="text-center space-y-4">
               <div className="text-4xl mb-4">🎉</div>
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-700 font-medium mb-2">Account succesvol aangemaakt!</p>
+                <p className="text-green-700 font-medium mb-2">E-mail succesvol bevestigd!</p>
                 <p className="text-green-600 text-sm">
-                  U wordt doorgestuurd naar de inlogpagina.<br />
-                  U kunt nu direct inloggen met uw e-mail.
+                  Welkom bij Essence Féminine.<br />
+                  U wordt nu doorverwezen naar uw account...
                 </p>
               </div>
             </div>

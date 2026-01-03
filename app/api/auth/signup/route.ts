@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
-        message: 'Compte créé avec succès. Vérifiez vos emails.',
+        message: 'Compte créé avec succès. Un code de vérification a été envoyé par e-mail.',
         userId: authUser.user?.id,
         email: authUser.user?.email
       },

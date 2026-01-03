@@ -24,10 +24,12 @@ export default function ForgotPasswordPage() {
     }
 
     try {
-      addToast('Link verzenden...', 'info');
+      addToast('Code verzenden...', 'info');
 
+      // Pour OTP, on utilise resetPasswordForEmail
+      // Supabase enverra un code si configuré dans Email Templates > Reset Password
       const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-        redirectTo: `${window.location.origin}/auth/callback?next=/reinitialiser-mot-de-passe`,
+        redirectTo: `${window.location.origin}/reinitialiser-mot-de-passe`,
       });
 
       if (error) {
@@ -35,11 +37,16 @@ export default function ForgotPasswordPage() {
       }
 
       setEmailSent(true);
-      addToast('Resetlink verzonden! Controleer uw e-mail 📧', 'success');
+      addToast('Resetcode verzonden! Controleer uw e-mail 📧', 'success');
+
+      // Rediriger vers la page de saisie du code après un court délai
+      setTimeout(() => {
+        window.location.href = `/reinitialiser-mot-de-passe?email=${encodeURIComponent(email.trim())}`;
+      }, 3000);
 
     } catch (error: any) {
       console.error('Reset error:', error);
-      addToast(error.message || 'Fout bij het versturen van de link', 'error');
+      addToast(error.message || 'Fout bij het versturen van de code', 'error');
     } finally {
       setLoading(false);
     }
@@ -86,17 +93,17 @@ export default function ForgotPasswordPage() {
                 disabled={loading}
                 className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Versturen...' : 'Resetlink versturen'}
+                {loading ? 'Versturen...' : 'Resetcode versturen'}
               </button>
             </form>
           ) : (
             <div className="text-center space-y-4">
               <div className="text-4xl mb-4">📧</div>
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-700 font-medium mb-2">Link succesvol verzonden!</p>
+                <p className="text-green-700 font-medium mb-2">Code succesvol verzonden!</p>
                 <p className="text-green-600 text-sm mb-4">
                   Controleer uw e-mail {email}.<br />
-                  Klik op de link in de e-mail om een nieuw wachtwoord in te stellen.
+                  U wordt doorgeleid naar de pagina om uw wachtwoord opnieuw in te stellen.
                 </p>
               </div>
               <button

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiLock, FiEye, FiEyeOff, FiMail } from 'react-icons/fi';
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { useToastStore } from '@/lib/toast-store';
 
@@ -13,6 +14,8 @@ export default function ResetPasswordClient() {
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,6 +27,13 @@ export default function ResetPasswordClient() {
    * Vérifier la session au chargement et écouter les changements d'état
    */
   useEffect(() => {
+    // Récupérer l'email depuis l'URL
+    const searchParams = new URLSearchParams(window.location.search);
+    const emailParam = searchParams.get('email');
+    if (emailParam) {
+      setEmail(emailParam);
+    }
+
     // Controleer de huidige sessie
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -39,18 +49,14 @@ export default function ResetPasswordClient() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log('Auth event:', event);
       if (event === 'PASSWORD_RECOVERY' || session) {
         setAuthorized(true);
         setLoadingAuth(false);
         setError(null);
-      } else if (event === 'SIGNED_OUT' || (!session && event !== 'INITIAL_SESSION')) {
-        setError(
-          'Sessie verlopen. Vraag opnieuw een resetlink aan.'
-        );
-        setLoadingAuth(false);
-        setTimeout(() => {
-          router.push('/mot-de-passe-oublie');
-        }, 3000);
+      } else if (event === 'SIGNED_OUT') {
+        // Ne pas rediriger immédiatement, l'utilisateur est peut-être en train d'utiliser un code
+        setAuthorized(false);
       }
     });
 
@@ -58,6 +64,35 @@ export default function ResetPasswordClient() {
       subscription.unsubscribe();
     };
   }, [router, supabase]);
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    if (!email || !otp) {
+      setError('Vul alle velden in.');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const { error } = await supabase.auth.verifyOtp({
+        email: email.trim(),
+        token: otp.trim(),
+        type: 'recovery',
+      });
+
+      if (error) throw error;
+
+      setAuthorized(true);
+      addToast('Code bevestigd! Stel nu uw nieuwe wachtwoord in.', 'success');
+    } catch (err: any) {
+      setError(err.message || 'Ongeldige of verlopen code.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleReset = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,77 +165,130 @@ export default function ResetPasswordClient() {
             Wachtwoord opnieuw instellen
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Voer uw nieuwe wachtwoord in
+            {authorized
+              ? 'Voer uw nieuwe wachtwoord in'
+              : 'Voer de verificatiecode in die u per e-mail heeft ontvangen'
+            }
           </p>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm font-medium">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleReset} className="space-y-6">
-            {/* Nouveau mot de passe */}
-            <div>
-              <label className="block text-brown-dark font-medium mb-2">
-                Nieuw wachtwoord
-              </label>
-              <div className="relative">
-                <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  minLength={6}
-                  className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-soft"
-                >
-                  {showPassword ? <FiEyeOff /> : <FiEye />}
-                </button>
+          {!authorized ? (
+            <form onSubmit={handleVerifyOtp} className="space-y-6">
+              <div>
+                <label className="block text-brown-dark font-medium mb-2">
+                  E-mailadres
+                </label>
+                <div className="relative">
+                  <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    placeholder="uw@email.com"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Confirmation */}
-            <div>
-              <label className="block text-brown-dark font-medium mb-2">
-                Bevestig wachtwoord
-              </label>
-              <div className="relative">
-                <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
+              <div>
+                <label className="block text-brown-dark font-medium mb-2">
+                  Verificatiecode
+                </label>
                 <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  type="text"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
                   required
-                  className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                  placeholder="••••••••"
+                  className="w-full px-4 py-4 text-center text-2xl tracking-[0.5em] font-bold rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                  placeholder="000000"
+                  maxLength={6}
                 />
-                <button
-                  type="button"
-                  onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword)
-                  }
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-soft"
-                >
-                  {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
-                </button>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full btn-primary disabled:opacity-50"
-            >
-              {loading ? 'Bijwerken...' : 'Opnieuw instellen'}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full btn-primary disabled:opacity-50"
+              >
+                {loading ? 'Controleren...' : 'Code bevestigen'}
+              </button>
+
+              <div className="text-center mt-4">
+                <Link href="/mot-de-passe-oublie" className="text-sm text-brown-soft hover:text-rose-soft transition">
+                  Nieuwe code aanvragen
+                </Link>
+              </div>
+            </form>
+          ) : (
+            <form onSubmit={handleReset} className="space-y-6">
+              {/* Nouveau mot de passe */}
+              <div>
+                <label className="block text-brown-dark font-medium mb-2">
+                  Nieuw wachtwoord
+                </label>
+                <div className="relative">
+                  <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    minLength={6}
+                    className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-soft"
+                  >
+                    {showPassword ? <FiEyeOff /> : <FiEye />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Confirmation */}
+              <div>
+                <label className="block text-brown-dark font-medium mb-2">
+                  Bevestig wachtwoord
+                </label>
+                <div className="relative">
+                  <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-brown-soft w-5 h-5" />
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    className="w-full pl-10 pr-12 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setShowConfirmPassword(!showConfirmPassword)
+                    }
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-brown-soft"
+                  >
+                    {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                  </button>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full btn-primary disabled:opacity-50"
+              >
+                {loading ? 'Bijwerken...' : 'Wachtwoord bijwerken'}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </div>
