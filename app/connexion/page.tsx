@@ -16,13 +16,13 @@ function LoginContent() {
     setLoading(true);
 
     if (!email) {
-      addToast('Veuillez entrer votre email', 'error');
+      addToast('Vul uw e-mailadres in', 'error');
       setLoading(false);
       return;
     }
 
     try {
-      addToast('Envoi du lien de connexion...', 'info');
+      addToast('Inloglink versturen...', 'info');
 
       const response = await fetch('/api/auth/request-magic-link', {
         method: 'POST',
@@ -35,14 +35,14 @@ function LoginContent() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de l\'envoi du lien');
+        throw new Error(data.error || 'Fout bij het versturen van de link');
       }
 
       setEmailSent(true);
-      addToast('Lien de connexion envoyé ! Vérifiez votre email 📧', 'success');
+      addToast('Inloglink verzonden! Controleer uw e-mail 📧', 'success');
       setEmail('');
     } catch (error: any) {
-      addToast(error.message || 'Erreur lors de l\'envoi du lien', 'error');
+      addToast(error.message || 'Fout bij het versturen van de link', 'error');
     } finally {
       setLoading(false);
     }
@@ -53,17 +53,17 @@ function LoginContent() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Connexion
+            Inloggen
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Connectez-vous à votre compte via email
+            Log in op uw account via e-mail
           </p>
 
           {!emailSent ? (
             <form onSubmit={handleMagicLink} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
-                  Adresse email
+                  E-mailadres
                 </label>
                 <div className="relative">
                   <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -74,7 +74,7 @@ function LoginContent() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                    placeholder="votre@email.com"
+                    placeholder="uw@email.com"
                     disabled={loading}
                   />
                 </div>
@@ -85,22 +85,22 @@ function LoginContent() {
                 disabled={loading}
                 className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Envoi en cours...' : 'Recevoir un lien de connexion'}
+                {loading ? 'Versturen...' : 'Ontvang een inloglink'}
               </button>
 
               <p className="text-center text-sm text-brown-soft">
-                Un lien de connexion sécurisé sera envoyé à votre email.<br />
-                <span className="text-xs">Pas de mot de passe requis 🔐</span>
+                Een veilige inloglink wordt naar uw e-mail gestuurd.<br />
+                <span className="text-xs">Geen wachtwoord vereist 🔐</span>
               </p>
             </form>
           ) : (
             <div className="text-center space-y-4">
               <div className="text-4xl mb-4">✉️</div>
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-700 font-medium mb-2">Lien envoyé avec succès !</p>
+                <p className="text-green-700 font-medium mb-2">Link succesvol verzonden!</p>
                 <p className="text-green-600 text-sm mb-4">
-                  Vérifiez votre email {email} et cliquez sur le lien de connexion.<br />
-                  <span className="font-semibold">Ce lien expire dans 15 minutes.</span>
+                  Controleer uw e-mail {email} en klik op de inloglink.<br />
+                  <span className="font-semibold">Deze link vervalt over 15 minuten.</span>
                 </p>
               </div>
               <button
@@ -110,15 +110,15 @@ function LoginContent() {
                 }}
                 className="w-full btn-outline"
               >
-                Utiliser un autre email
+                Een ander e-mailadres gebruiken
               </button>
             </div>
           )}
 
           <div className="mt-6 text-center text-sm text-brown-soft">
-            Vous n'avez pas de compte ?{' '}
+            Heeft u nog geen account?{' '}
             <Link href="/inscription" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Créer un compte
+              Account aanmaken
             </Link>
           </div>
         </div>

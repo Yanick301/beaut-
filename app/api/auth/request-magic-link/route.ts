@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     if (insertError) {
       console.error('Erreur BD:', insertError);
       return NextResponse.json(
-        { error: 'Erreur lors de la création du lien' },
+        { error: 'Fout bij aanmaken link' },
         { status: 500 }
       );
     }
@@ -60,23 +60,72 @@ export async function POST(req: NextRequest) {
     const magicLink = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'}/auth/magic?token=${token}`;
 
     const { error: emailError } = await resend.emails.send({
-      from: 'noreply@beaut.fr',
+      from: 'Essence Féminine <connexion@beaut.fr>',
       to: email,
-      subject: 'Votre lien de connexion',
+      subject: '✨ Uw Essence Féminine inloglink',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #333;">Connectez-vous à votre compte</h2>
-          <p style="color: #666; font-size: 16px;">Cliquez sur le lien ci-dessous pour vous connecter automatiquement. Ce lien expire dans 15 minutes.</p>
-          <a href="${magicLink}" style="display: inline-block; background-color: #8b5cf6; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; font-weight: bold;">
-            Me connecter
-          </a>
-          <p style="color: #999; font-size: 14px; margin-top: 20px;">
-            Si vous n'avez pas demandé ce lien, ignorez cet email.
-          </p>
-          <p style="color: #999; font-size: 12px;">
-            Lien direct : <a href="${magicLink}" style="color: #8b5cf6;">${magicLink}</a>
-          </p>
-        </div>
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Inloggen Essence Féminine</title>
+        </head>
+        <body style="margin: 0; padding: 0; background-color: #FAF7F2; font-family: 'Times New Roman', serif;">
+          <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #FAF7F2; padding: 40px 0;">
+            <tr>
+              <td align="center">
+                <table role="presentation" width="600" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                  
+                  <!-- Header avec Logo -->
+                  <tr>
+                    <td align="center" style="padding: 40px 0; background-color: #ffffff; border-bottom: 2px solid #F4E6E0;">
+                      <h1 style="color: #5A4A3A; font-family: 'Playfair Display', 'Times New Roman', serif; font-size: 28px; margin: 0; letter-spacing: 1px;">
+                        ESSENCE FÉMININE
+                      </h1>
+                      <p style="color: #D4AF37; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin: 5px 0 0 0;">
+                        PREMIUM SCHOONHEID
+                      </p>
+                    </td>
+                  </tr>
+
+                  <!-- Contenu Principal -->
+                  <tr>
+                    <td align="center" style="padding: 40px 40px;">
+                      <h2 style="color: #5A4A3A; font-size: 22px; margin-bottom: 20px; font-weight: normal;">
+                        Welkom thuis
+                      </h2>
+                      <p style="color: #8B7355; font-size: 16px; line-height: 1.6; margin-bottom: 30px; max-width: 400px;">
+                        Hier is uw magische link om toegang te krijgen tot uw persoonlijke ruimte. Geen wachtwoord nodig.
+                      </p>
+                      
+                      <!-- Bouton d'action -->
+                      <a href="${magicLink}" style="display: inline-block; background-color: #D4AF37; color: #ffffff; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-size: 14px; font-weight: bold; letter-spacing: 1px; transition: background-color 0.3s ease;">
+                        NAAR MIJN ACCOUNT
+                      </a>
+
+                      <p style="color: #999; font-size: 14px; margin-top: 30px; font-style: italic;">
+                        Deze link is 15 minuten geldig.
+                      </p>
+                    </td>
+                  </tr>
+
+                  <!-- Footer -->
+                  <tr>
+                    <td align="center" style="background-color: #F5F1EB; padding: 30px; color: #8B7355; font-size: 12px;">
+                      <p style="margin: 0 0 10px 0;">
+                        Als u deze link niet heeft aangevraagd, kunt u deze e-mail veilig negeren.
+                      </p>
+                      <p style="margin: 0;">
+                        &copy; ${new Date().getFullYear()} Essence Féminine. Alle rechten voorbehouden.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </body>
+        </html>
       `,
     });
 
@@ -87,9 +136,9 @@ export async function POST(req: NextRequest) {
         .from('magic_links')
         .delete()
         .eq('token_hash', tokenHash);
-      
+
       return NextResponse.json(
-        { error: 'Erreur lors de l\'envoi du lien' },
+        { error: 'Fout bij versturen link' },
         { status: 500 }
       );
     }

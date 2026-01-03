@@ -1,8 +1,15 @@
 # Configuration des Variables d'Environnement
 
-## Créer le fichier .env.local
+## 1. Créer le fichier .env.local
 
-Créez un fichier `.env.local` à la racine du projet avec le contenu suivant :
+Ce fichier est indispensable pour que l'application fonctionne (Authentification, Base de données, Emails).
+Copiez le fichier `.env.example` vers `.env.local` :
+
+```bash
+cp .env.example .env.local
+```
+
+Ou créez-le manuellement avec ce contenu :
 
 ```env
 # Supabase Configuration
@@ -10,27 +17,35 @@ NEXT_PUBLIC_SUPABASE_URL=https://votre-projet.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=votre-cle-anon-supabase
 SUPABASE_SERVICE_ROLE_KEY=votre-cle-service-role-supabase
 
-# Admin Configuration (optionnel)
-# Liste des emails admin séparés par des virgules
-ADMIN_EMAILS=admin@example.com,admin2@example.com
+# App Configuration
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+# Resend (Emails)
+RESEND_API_KEY=re_123...
+RESEND_FROM_EMAIL="Her Essence <noreply@heressence.nl>"
+
+# Admin Configuration
+ADMIN_EMAILS=admin@example.com
 ```
 
-## Comment obtenir ces valeurs
+## 2. Où trouver les valeurs ?
 
-1. Aller sur [supabase.com](https://supabase.com) et se connecter
-2. Sélectionner votre projet (ou en créer un nouveau)
-3. Aller dans **Settings** > **API**
-4. Copier :
-   - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
-   - **anon/public key** → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - **service_role key** → `SUPABASE_SERVICE_ROLE_KEY` (gardez cette clé secrète !)
+### Supabase
+1. Allez sur [supabase.com](https://supabase.com) > Settings > API.
+2. Copiez **Project URL** -> `NEXT_PUBLIC_SUPABASE_URL`.
+3. Copiez **anon public** -> `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+4. Copiez **service_role** -> `SUPABASE_SERVICE_ROLE_KEY` (Secret ! Ne jamais partager).
 
-## Important
+### Resend (Emails)
+1. Allez sur [resend.com](https://resend.com) > API Keys.
+2. Créez une nouvelle clé avec permission "Sending access".
+3. Copiez la clé -> `RESEND_API_KEY`.
+4. Ajoutez et vérifiez votre domaine dans "Domains".
 
-- ⚠️ Ne jamais commiter le fichier `.env.local` dans Git
-- ⚠️ La clé `SUPABASE_SERVICE_ROLE_KEY` ne doit être utilisée que côté serveur
-- ✅ Le fichier `.env.local` est déjà dans `.gitignore`
+### App
+- En local : `http://localhost:3000`
+- En production : `https://heressence.nl` (ou votre URL Vercel)
 
-
-
-
+## ⚠️ Important
+- Ne commitez JAMAIS `.env.local` sur Git.
+- Si vous changez `NEXT_PUBLIC_SITE_URL` en production, mettez aussi à jour les **Redirect URLs** dans Supabase Auth > URL Configuration.

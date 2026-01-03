@@ -35,12 +35,12 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [error, setError] = useState<string | null>(null);
-  const [notification, setNotification] = useState<{type: 'success' | 'error' | 'info', message: string} | null>(null);
+  const [notification, setNotification] = useState<{ type: 'success' | 'error' | 'info', message: string } | null>(null);
 
   const checkAdminAccess = async () => {
     try {
       const { data: { user }, error } = await supabase.auth.getUser();
-      
+
       if (error || !user) {
         router.push('/connexion');
         return;
@@ -83,10 +83,10 @@ export default function AdminDashboard() {
 
   const fetchOrders = async () => {
     try {
-      const url = selectedStatus === 'all' 
-        ? '/api/admin/orders' 
+      const url = selectedStatus === 'all'
+        ? '/api/admin/orders'
         : `/api/admin/orders?status=${selectedStatus}`;
-        
+
       const response = await fetch(url);
       const data = await response.json();
 
@@ -127,19 +127,19 @@ export default function AdminDashboard() {
       }
 
       // Mettre à jour la commande dans l'état local
-      setOrders(prevOrders => 
-        prevOrders.map(order => 
+      setOrders(prevOrders =>
+        prevOrders.map(order =>
           order.id === orderId ? { ...order, status: newStatus } : order
         )
       );
-      
+
       // Rafraîchir les stats
       fetchOrders();
-      
+
       // Afficher une notification de succès
-      setNotification({ 
-        type: 'success', 
-        message: `Statut de la commande mise à jour à ${newStatus}` 
+      setNotification({
+        type: 'success',
+        message: `Statut de la commande mise à jour à ${newStatus}`
       });
     } catch (err: any) {
       console.error('Update order error:', err);
@@ -169,7 +169,7 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-500 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Dashboard laden...</p>
+          <p className="mt-4 text-gray-600">Dashboard laden...</p>
         </div>
       </div>
     );
@@ -180,11 +180,11 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded max-w-md">
           <p>{error}</p>
-          <button 
+          <button
             onClick={() => router.push('/')}
             className="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
           >
-            Retour à l'accueil
+            Terug naar home
           </button>
         </div>
       </div>
@@ -228,7 +228,7 @@ export default function AdminDashboard() {
           </div>
         </div>
       )}
-      
+
       {/* Header */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -324,8 +324,8 @@ export default function AdminDashboard() {
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
           <div className="px-4 py-5 sm:px-6">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
-              {selectedStatus === 'all' ? 'Toutes les commandes' : 
-               statusOptions.find(opt => opt.value === selectedStatus)?.label}
+              {selectedStatus === 'all' ? 'Toutes les commandes' :
+                statusOptions.find(opt => opt.value === selectedStatus)?.label}
             </h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
               {orders.length} commande{orders.length !== 1 ? 's' : ''} trouvée{orders.length !== 1 ? 's' : ''}
@@ -344,10 +344,10 @@ export default function AdminDashboard() {
                         <div className="ml-2 flex-shrink-0 flex">
                           <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(order.status)}`}>
                             {order.status === 'pending' ? 'En attente' :
-                             order.status === 'processing' ? 'Valider' :
-                             order.status === 'shipped' ? 'Expédiée' :
-                             order.status === 'delivered' ? 'Livrée' :
-                             order.status === 'cancelled' ? 'Annulée' : order.status}
+                              order.status === 'processing' ? 'Valider' :
+                                order.status === 'shipped' ? 'Expédiée' :
+                                  order.status === 'delivered' ? 'Livrée' :
+                                    order.status === 'cancelled' ? 'Annulée' : order.status}
                           </span>
                         </div>
                       </div>
@@ -370,7 +370,7 @@ export default function AdminDashboard() {
                         <p>{order.order_items?.length || 0} article{order.order_items?.length !== 1 ? 's' : ''}</p>
                       </div>
                     </div>
-                    
+
                     {/* Order Items Preview */}
                     {order.order_items && order.order_items.length > 0 && (
                       <div className="mt-3">
@@ -380,7 +380,7 @@ export default function AdminDashboard() {
                         </p>
                       </div>
                     )}
-                    
+
                     {/* Status Update Buttons */}
                     <div className="mt-4 flex gap-2">
                       {order.status !== 'pending' && (
@@ -436,8 +436,8 @@ export default function AdminDashboard() {
             <FiPackage className="mx-auto h-12 w-12 text-gray-400" />
             <h3 className="mt-2 text-sm font-medium text-gray-900">Aucune commande</h3>
             <p className="mt-1 text-sm text-gray-500">
-              {selectedStatus === 'all' 
-                ? 'Aucune commande n\'a été passée.' 
+              {selectedStatus === 'all'
+                ? 'Aucune commande n\'a été passée.'
                 : `Aucune commande avec le statut "${statusOptions.find(opt => opt.value === selectedStatus)?.label}".`}
             </p>
           </div>

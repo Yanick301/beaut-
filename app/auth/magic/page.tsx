@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useToastStore } from '@/lib/toast-store';
+import { createClient } from '@/lib/supabase/client';
 
 function MagicLinkContent() {
   const router = useRouter();
@@ -15,14 +16,15 @@ function MagicLinkContent() {
   useEffect(() => {
     const verifyMagicLink = async () => {
       if (!token) {
-        setError('Lien invalide');
-        addToast('Lien invalide', 'error');
+        setError('Link ongeldig of ontbreekt');
+        addToast('Link ongeldig', 'error');
         setLoading(false);
         return;
       }
 
       try {
-        addToast('Vérification de votre lien...', 'info');
+        // Design du loader prolongé légèrement pour l'effet "premium"
+        const verificationStart = Date.now();
 
         const response = await fetch('/api/auth/verify-magic-link', {
           method: 'POST',
@@ -35,19 +37,36 @@ function MagicLinkContent() {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || 'Erreur lors de la vérification');
+          throw new Error(data.error || 'Fout bij verificatie');
         }
 
-        // Succès - créer la session Supabase
-        addToast('Connexion réussie ! Redirection...', 'success');
-        
-        // Refresh la page pour mettre à jour la session Supabase
-        setTimeout(() => {
-          router.refresh();
-          router.push('/compte');
-        }, 1000);
+        // --- PARTIE CRUCIALE : Session Supabase ---
+        if (data.session) {
+          const supabase = createClient();
+          const { error: sessionError } = await supabase.auth.setSession(data.session);
+
+          if (sessionError) {
+            console.error('Erreur setSession:', sessionError);
+            throw new Error('Beveiligen van sessie mislukt');
+          }
+        }
+        // ------------------------------------------
+
+        const verificationDuration = Date.now() - verificationStart;
+        const minLoadingTime = 1500; // 1.5s minimum pour apprécier l'animation
+
+        if (verificationDuration < minLoadingTime) {
+          await new Promise(resolve => setTimeout(resolve, minLoadingTime - verificationDuration));
+        }
+
+        addToast('Inloggen geslaagd. Welkom.', 'success');
+
+        // Refresh pour mettre à jour l'état Auth dans toute l'app
+        router.refresh();
+        router.push('/compte');
+
       } catch (err: any) {
-        const errorMsg = err.message || 'Erreur lors de la connexion';
+        const errorMsg = err.message || 'Fout bij de verbinding';
         setError(errorMsg);
         addToast(errorMsg, 'error');
         setLoading(false);
@@ -59,12 +78,23 @@ function MagicLinkContent() {
 
   if (loading && !error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100">
-        <div className="text-center">
-          <div className="inline-block animate-spin">
-            <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full"></div>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2]">
+        <div className="text-center p-8 max-w-sm w-full">
+          {/* Logo Animation */}
+          <div className="relative w-24 h-24 mx-auto mb-8">
+            <div className="absolute inset-0 border-4 border-[#F4E6E0] rounded-full animate-ping opacity-20"></div>
+            <div className="absolute inset-0 border-4 border-[#D4AF37] rounded-full border-t-transparent animate-spin"></div>
+            <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <span className="text-2xl">✨</span>
+            </div>
           </div>
-          <p className="mt-4 text-purple-700 font-semibold">Vérification de votre lien...</p>
+
+          <h2 className="font-elegant text-2xl text-[#5A4A3A] mb-2 tracking-wide">
+            Verificatie
+          </h2>
+          <p className="text-[#8B7355] text-sm animate-pulse">
+            Uw toegangsrechten worden gecontroleerd...
+          </p>
         </div>
       </div>
     );
@@ -72,16 +102,18 @@ function MagicLinkContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
-          <div className="text-red-500 text-4xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Erreur de connexion</h1>
-          <p className="text-gray-600 mb-6">{error}</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] p-4">
+        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center border-t-4 border-red-400">
+          <div className="text-4xl mb-6">🥀</div>
+          <h1 className="font-elegant text-2xl text-[#5A4A3A] mb-3">Link verlopen of ongeldig</h1>
+          <p className="text-[#8B7355] mb-8 leading-relaxed">
+            {error}. Om veiligheidsredenen zijn onze magische links voor eenmalig gebruik en beperkt in tijd.
+          </p>
           <a
             href="/connexion"
-            className="inline-block bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition"
+            className="inline-block w-full bg-[#5A4A3A] text-white px-6 py-3 rounded-lg hover:bg-[#4A3A2A] transition-colors duration-300 font-medium tracking-wide uppercase text-xs"
           >
-            Retour à la connexion
+            Nieuwe link aanvragen
           </a>
         </div>
       </div>
@@ -91,15 +123,13 @@ function MagicLinkContent() {
   return null;
 }
 
+// Composant principal avec Suspense
 export default function MagicLinkPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-purple-100">
-        <div className="text-center">
-          <div className="inline-block animate-spin">
-            <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full"></div>
-          </div>
-          <p className="mt-4 text-purple-700 font-semibold">Chargement...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2]">
+        <div className="text-[#D4AF37] animate-pulse font-elegant text-xl">
+          Laden...
         </div>
       </div>
     }>

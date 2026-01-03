@@ -12,9 +12,9 @@ function productNameToImageName(name: string): string {
     .normalize('NFD')
     // Remove diacritic marks
     .replace(/[\u0300-\u036f]/g, '')
-    // Convert typographic apostrophes to simple apostrophe
-    .replace(/[’‘`ʼ]/g, "'")
-    // Replace any non-alphanumeric sequence with an underscore
+    // Remove apostrophes and hyphens completely (files use 'loreal' not 'l_oreal', 'antiage' not 'anti_age')
+    .replace(/['’‘`ʼ\-]/g, '')
+    // Replace any non-alphanumeric sequence (mostly spaces) with an underscore
     .replace(/[^a-z0-9]+/g, '_')
     // Trim leading/trailing underscores
     .replace(/^_+|_+$/g, '');
@@ -80,7 +80,7 @@ export const categories: Category[] = [
   },
   {
     id: '5',
-    name: 'Lichaamsgeur',
+    name: 'Parfums',
     slug: 'senteur-corporel',
     description: 'Elegante en verfijnde geuren',
     image: getProductImagePath('Senteur corporel'),
@@ -4338,22 +4338,22 @@ const productsRaw: Product[] = [
 function mergeParfumProducts(productsList: Product[]): Product[] {
   const parfumMap = new Map<string, Product>();
   const otherProducts: Product[] = [];
-  
+
   for (const product of productsList) {
     // Vérifier si c'est un parfum (senteur-corporel avec subCategory Parfum)
     const isParfum = product.category === 'senteur-corporel' && product.subCategory === 'Parfum';
-    
+
     // Vérifier si le nom contient un volume (format: "Nom 50 ml" ou "Nom - 50ml")
     const volumeMatch = product.name.match(/(\d+)\s*ml$/i);
-    
+
     if (isParfum && volumeMatch) {
       // Extraire le nom de base (sans le volume)
       const baseName = product.name.replace(/\s+\d+\s*ml$/i, '').trim();
       const volume = `${volumeMatch[1]} ml`;
-      
+
       // Créer une clé unique basée sur le nom de base et la marque (si disponible)
       const mapKey = product.brand ? `${baseName}::${product.brand}` : baseName;
-      
+
       if (parfumMap.has(mapKey)) {
         // Ajouter le volume au produit existant
         const existingProduct = parfumMap.get(mapKey)!;
@@ -4412,7 +4412,7 @@ function mergeParfumProducts(productsList: Product[]): Product[] {
       otherProducts.push(product);
     }
   }
-  
+
   // Convertir la map en tableau et trier les volumes par taille (volume croissant)
   const mergedParfums = Array.from(parfumMap.values()).map(product => {
     if (product.volumes && product.volumes.length > 0) {
@@ -4427,7 +4427,7 @@ function mergeParfumProducts(productsList: Product[]): Product[] {
     }
     return product;
   });
-  
+
   return [...otherProducts, ...mergedParfums];
 }
 

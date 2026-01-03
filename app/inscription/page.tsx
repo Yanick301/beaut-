@@ -18,13 +18,13 @@ export default function SignupPage() {
     setLoading(true);
 
     if (!email || !firstName || !lastName) {
-      addToast('Veuillez remplir tous les champs', 'error');
+      addToast('Vul alle velden in', 'error');
       setLoading(false);
       return;
     }
 
     try {
-      addToast('Création du compte...', 'info');
+      addToast('Account aanmaken...', 'info');
 
       // Appeler l'API pour créer l'utilisateur
       const response = await fetch('/api/auth/signup', {
@@ -42,12 +42,12 @@ export default function SignupPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur lors de la création du compte');
+        throw new Error(data.error || 'Fout bij het aanmaken van het account');
       }
 
       setEmailSent(true);
-      addToast('Compte créé ! Vous pouvez maintenant vous connecter 🎉', 'success');
-      
+      addToast('Account aangemaakt! U kunt nu inloggen 🎉', 'success');
+
       // Réinitialiser le formulaire
       setFirstName('');
       setLastName('');
@@ -58,7 +58,7 @@ export default function SignupPage() {
         window.location.href = '/connexion';
       }, 2000);
     } catch (error: any) {
-      addToast(error.message || 'Erreur lors de la création du compte', 'error');
+      addToast(error.message || 'Fout bij het aanmaken van het account', 'error');
     } finally {
       setLoading(false);
     }
@@ -69,10 +69,10 @@ export default function SignupPage() {
       <div className="container-custom max-w-md">
         <div className="bg-white-cream rounded-2xl p-8 shadow-md">
           <h1 className="font-elegant text-3xl sm:text-4xl text-brown-dark mb-2 text-center">
-            Créer un compte
+            Account aanmaken
           </h1>
           <p className="text-brown-soft text-center mb-8">
-            Rejoignez notre communauté
+            Word lid van onze community
           </p>
 
           {!emailSent ? (
@@ -80,7 +80,7 @@ export default function SignupPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-brown-dark font-medium mb-2">
-                    Prénom
+                    Voornaam
                   </label>
                   <div className="relative">
                     <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -91,7 +91,7 @@ export default function SignupPage() {
                       onChange={(e) => setFirstName(e.target.value)}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                      placeholder="Prénom"
+                      placeholder="Voornaam"
                       disabled={loading}
                     />
                   </div>
@@ -99,7 +99,7 @@ export default function SignupPage() {
 
                 <div>
                   <label htmlFor="lastName" className="block text-brown-dark font-medium mb-2">
-                    Nom
+                    Achternaam
                   </label>
                   <div className="relative">
                     <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -110,7 +110,7 @@ export default function SignupPage() {
                       onChange={(e) => setLastName(e.target.value)}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                      placeholder="Nom"
+                      placeholder="Achternaam"
                       disabled={loading}
                     />
                   </div>
@@ -119,7 +119,7 @@ export default function SignupPage() {
 
               <div>
                 <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
-                  Adresse email
+                  E-mailadres
                 </label>
                 <div className="relative">
                   <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
@@ -130,20 +130,20 @@ export default function SignupPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
-                    placeholder="votre@email.com"
+                    placeholder="uw@email.com"
                     disabled={loading}
                   />
                 </div>
               </div>
 
               <div className="text-xs text-brown-soft mb-4">
-                En créant un compte, vous acceptez nos{' '}
+                Door een account aan te maken gaat u akkoord met onze{' '}
                 <Link href="/cgv" className="text-rose-soft hover:underline">
-                  conditions générales
+                  algemene voorwaarden
                 </Link>{' '}
-                et notre{' '}
+                en ons{' '}
                 <Link href="/confidentialite" className="text-rose-soft hover:underline">
-                  politique de confidentialité
+                  privacybeleid
                 </Link>
               </div>
 
@@ -152,26 +152,26 @@ export default function SignupPage() {
                 disabled={loading}
                 className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? 'Création en cours...' : 'Créer mon compte'}
+                {loading ? 'Bezig met aanmaken...' : 'Account aanmaken'}
               </button>
             </form>
           ) : (
             <div className="text-center space-y-4">
               <div className="text-4xl mb-4">🎉</div>
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-700 font-medium mb-2">Compte créé avec succès !</p>
+                <p className="text-green-700 font-medium mb-2">Account succesvol aangemaakt!</p>
                 <p className="text-green-600 text-sm">
-                  Vous serez redirigé vers la page de connexion.<br />
-                  Vous pouvez vous connecter directement avec votre email.
+                  U wordt doorgestuurd naar de inlogpagina.<br />
+                  U kunt nu direct inloggen met uw e-mail.
                 </p>
               </div>
             </div>
           )}
 
           <div className="mt-6 text-center text-sm text-brown-soft">
-            Vous avez déjà un compte ?{' '}
+            Heeft u al een account?{' '}
             <Link href="/connexion" className="text-rose-soft hover:text-rose-soft/80 font-medium transition">
-              Se connecter
+              Inloggen
             </Link>
           </div>
         </div>

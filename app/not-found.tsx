@@ -8,14 +8,14 @@ export default function NotFound() {
         <div className="max-w-2xl mx-auto">
           <h1 className="font-elegant text-8xl md:text-9xl text-rose-soft mb-4">404</h1>
           <h2 className="font-elegant text-4xl md:text-5xl text-brown-dark mb-6">
-            Page non trouvée
+            Pagina niet gevonden
           </h2>
           <p className="text-lg text-brown-soft mb-8">
-            Désolée, la page que vous recherchez n'existe pas ou a été déplacée.
+            Sorry, de pagina die u zoekt bestaat niet of is verplaatst.
           </p>
           <Link href="/" className="btn-primary inline-flex items-center gap-2">
             <FiHome className="w-5 h-5" />
-            Retour à l'accueil
+            Terug naar home
           </Link>
         </div>
       </div>

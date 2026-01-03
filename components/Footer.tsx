@@ -12,14 +12,14 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <h3 className="font-elegant text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4">Her Essence</h3>
             <p className="text-white-cream/80 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 max-w-sm">
-              Uw premium beauty bestemming. Kwaliteitsproducten 
+              Uw premium beauty bestemming. Kwaliteitsproducten
               om uw natuurlijke schoonheid te versterken.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">Navigation</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base md:text-lg">Navigatie</h4>
             <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm md:text-base text-white-cream/80">
               <li>
                 <Link href="/a-propos" className="hover:text-gold transition-colors duration-200 inline-block">Over ons</Link>
