@@ -1,0 +1,92 @@
+LISTE DES IMAGES MANQUANTES
+============================================================
+
+Total: 56 images manquantes
+
+SOINS DU VISAGE (12 images)
+-----------------------------------------------------------
+1. age_perfect_cell_renewal_loréal_paris.jpg
+2. hydra_genius_loréal_paris.jpg
+3. revitalift_filler_loréal_paris.jpg
+4. revitalift_laser_x3_loréal_paris.jpg
+5. hyaluronic_acid_2_b5_the_ordinary.jpg
+6. niacinamide_10_zinc_1_the_ordinary.jpg
+7. aha_30_bha_2_peeling_solution_the_ordinary.jpg
+8. lactic_acid_10_ha_the_ordinary.jpg
+9. matrixyl_10_ha_the_ordinary.jpg
+10. natural_moisturizing_factors_ha_the_ordinary.jpg
+11. caffeine_solution_5_egcg_the_ordinary.jpg
+12. vitamin_c_suspension_23_ha_spheres_2_the_ordinary.jpg
+
+MAQUILLAGE (19 images)
+-----------------------------------------------------------
+13. age_perfect_foundation_loréal_paris.jpg
+14. age_perfect_radiant_serum_foundation_loréal_paris.jpg
+15. true_match_foundation_loréal_paris.jpg
+16. true_match_lumi_foundation_loréal_paris.jpg
+17. infallible_24h_fresh_wear_loréal_paris.jpg
+18. infallible_promatte_foundation_loréal_paris.jpg
+19. color_riche_lipstick_loréal_paris.jpg
+20. color_riche_shine_lipstick_loréal_paris.jpg
+21. infallible_prolast_lipstick_loréal_paris.jpg
+22. volume_million_lashes_loréal_paris.jpg
+23. telescopic_mascara_loréal_paris.jpg
+24. voluminous_lash_paradise_mascara_loréal_paris.jpg
+25. liner_signature_loréal_paris.jpg
+26. blush_subtil_loréal_paris.jpg
+27. glow_paradise_loréal_paris.jpg
+28. brow_stylist_loréal_paris.jpg
+29. infallible_prospray_set_loréal_paris.jpg
+
+SOINS DU CORPS (0 images)
+-----------------------------------------------------------
+Aucune image manquante dans cette catégorie.
+
+CHEVEUX (9 images)
+-----------------------------------------------------------
+30. elvive_total_repair_5_loréal_paris.jpg
+31. elvive_dream_lengths_loréal_paris.jpg
+32. elvive_extraordinary_oil_loréal_paris.jpg
+33. elvive_color_vibrancy_loréal_paris.jpg
+34. elvive_volume_filler_loréal_paris.jpg
+35. elvive_smooth_intense_loréal_paris.jpg
+36. elvive_nutrigloss_loréal_paris.jpg
+37. elvive_fibrology_loréal_paris.jpg
+38. elvive_hyaluron_plump_loréal_paris.jpg
+39. elvive_wonder_water_loréal_paris.jpg
+40. fructis_hydrating_garnier.jpg
+
+PARFUMS (12 images)
+-----------------------------------------------------------
+41. loréal_paris_deodorant_loréal_paris.jpg
+42. loréal_paris_rollon_loréal_paris.jpg
+43. loréal_paris_spray_loréal_paris.jpg
+44. the_ritual_of_ayurveda_body_mist_rituals.jpg
+45. the_ritual_of_ayurveda_eau_de_parfum_rituals.jpg
+46. the_ritual_of_hammam_body_mist_rituals.jpg
+47. the_ritual_of_sakura_body_mist_rituals.jpg
+48. yves_rocher_brume_parfumée_yves_rocher.jpg
+49. yves_rocher_déodorant_nature_yves_rocher.jpg
+50. yves_rocher_rollon_végétal_yves_rocher.jpg
+51. yves_rocher_spray_fraîcheur_yves_rocher.jpg
+
+ACCESSOIRES BEAUTÉ (4 images)
+-----------------------------------------------------------
+52. portable_mirror_philips.jpg
+53. hair_claw_clips_scünci.jpg
+54. nocrease_hair_elastics_scünci.jpg
+55. velvet_scrunchie_scünci.jpg
+56. wide_headband_scünci.jpg
+
+
+NOTES IMPORTANTES
+-----------------------------------------------------------
+- Certaines images peuvent exister avec des noms légèrement différents (casse, accents).
+- Vérifiez si certaines images existent déjà sous un nom similaire.
+- Les noms d'images doivent correspondre exactement aux noms générés par la fonction productNameToImageName().
+
+
+
+
+
+

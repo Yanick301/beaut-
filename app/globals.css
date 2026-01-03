@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-playfair: 'Playfair Display', serif;
+  }
+
+  body {
+    @apply bg-beige-light text-brown-dark;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-elegant;
+  }
+
+  /* Amélioration de la lisibilité sur mobile */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Optimisation du scroll sur mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Amélioration des performances sur mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brown-soft text-white-cream px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 rounded-full font-medium 
+           hover:bg-brown-dark transition-all duration-300 shadow-md hover:shadow-lg
+           transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95
+           text-sm sm:text-base touch-manipulation;
+  }
+
+  .btn-secondary {
+    @apply bg-white-cream text-brown-soft border-2 border-brown-soft px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 
+           rounded-full font-medium hover:bg-brown-soft hover:text-white-cream 
+           transition-all duration-300 active:scale-95 text-sm sm:text-base touch-manipulation;
+  }
+
+  .btn-outline {
+    @apply border-2 border-rose-soft text-rose-soft px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-full 
+           font-medium hover:bg-rose-soft hover:text-white transition-all duration-300 
+           active:scale-95 text-sm sm:text-base touch-manipulation;
+  }
+
+  .card-product {
+    @apply bg-white-cream rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition-all 
+           duration-300 overflow-hidden transform hover:-translate-y-1;
+  }
+
+  .section-padding {
+    @apply py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-4 md:px-5 lg:px-6 xl:px-8;
+  }
+
+  /* Optimisation des images pour mobile */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Amélioration du contraste pour l'accessibilité */
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-rose-soft;
+  }
+
+  /* Touch-friendly pour mobile */
+  button, a {
+    @apply touch-manipulation;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Amélioration des animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* Modal animations */
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .animate-modal-in {
+    animation: modal-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+}

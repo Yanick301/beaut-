@@ -1,0 +1,3878 @@
+[
+  {
+    "image": "soins_du_visage.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "maquillage.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "soins_du_corps.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "cheveux.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "senteur_corporel.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "accessoires_beaute.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "buffet_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "niacinamide_10_zinc_1_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "hyaluronic_acid_2_b5_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "retinol_1_in_squalane_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "vitamin_c_suspension_23_ha_spheres_2_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "aha_30_bha_2_peeling_solution_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "revitalift_filler_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "revitalift_laser_x3_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "age_perfect_cell_renewal_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "hydra_genius_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "pure_hyaluronic_acid_serum_the_inkey_list.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "retinol_serum_the_inkey_list.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "q10_antiwrinkle_day_cream_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "q10_plus_antiage_night_cream_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "soft_moisturising_cream_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_sakura_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "micellar_cleansing_water_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "micellar_cleansing_gel_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "vitamin_c_brightening_serum_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "organic_argan_oil_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "100_plantderived_squalane_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "natural_moisturizing_factors_ha_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "matrixyl_10_ha_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "argireline_solution_10_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "caffeine_solution_5_egcg_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "lactic_acid_10_ha_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "glycolic_acid_7_toning_solution_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "salicylic_acid_2_solution_the_ordinary.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "true_match_foundation_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "infallible_24h_fresh_wear_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "age_perfect_foundation_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "superstay_matte_ink_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "color_sensational_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "lash_sensational_mascara_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_falsies_mascara_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "great_lash_mascara_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fit_me_foundation_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "master_precise_liquid_eyeliner_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "colorama_nail_polish_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "dream_satin_liquid_foundation_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "instant_age_rewind_concealer_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "master_chrome_highlighter_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_blushed_nudes_palette_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_nudes_palette_maybelline.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "color_riche_lipstick_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "volume_million_lashes_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "telescopic_mascara_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "liner_signature_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "blush_subtil_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "glow_paradise_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "age_perfect_radiant_serum_foundation_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "infallible_promatte_foundation_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "true_match_lumi_foundation_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "infallible_prolast_lipstick_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "color_riche_shine_lipstick_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "voluminous_lash_paradise_mascara_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "brow_stylist_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "infallible_prospray_set_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_body_cream_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_sakura_body_cream_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_body_cream_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_ayurveda_body_cream_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_hammam_body_scrub_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_body_scrub_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_sakura_body_scrub_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_body_scrub_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_ayurveda_body_scrub_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_body_oil_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_sakura_body_oil_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_body_oil_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_ayurveda_body_oil_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_hammam_body_oil_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_body_lotion_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_rich_nourishing_body_lotion_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_soft_moisturising_cream_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_q10_plus_firming_body_lotion_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_sun_protect_moisture_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_sun_protect_refresh_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_7_days_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_repair_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_nourishing_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_smoothing_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_firming_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_antiage_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_sun_protection_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_after_sun_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_exfoliating_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_body_intensive_hand_cream_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_total_repair_5_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_dream_lengths_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_extraordinary_oil_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_color_vibrancy_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_volume_filler_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_smooth_intense_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_nutrigloss_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_fibrology_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_hyaluron_plump_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "elvive_wonder_water_loreal_paris.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ultra_doux_shampoo_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ultra_doux_conditioner_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ultra_doux_hair_mask_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ultra_doux_oil_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fructis_strength_shine_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fructis_smooth_shine_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fructis_volume_body_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fructis_color_shield_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fructis_repair_shine_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "fructis_hydrating_garnier_2.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_hair_care_shampoo_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_hair_care_conditioner_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_hair_care_hair_mask_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_hair_care_oil_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_shampoo_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_sakura_shampoo_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_shampoo_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_ayurveda_shampoo_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_hammam_shampoo_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_conditioner_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_eau_de_parfum_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_sakura_eau_de_parfum_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_eau_de_parfum_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_ayurveda_eau_de_parfum_ritual.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_hammam_eau_de_parfum_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_namaste_body_mist_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "he_ritual_of_sakura_body_mist_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_karma_body_mist_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_ayurveda_body_mist_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "the_ritual_of_hammam_body_mist_rituals.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_deodorant_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_rollon_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nivea_spray_nivea.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_deodorant_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_rollon_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "garnier_spray_garnier.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "rexona_maximum_protection_rexona.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "rexona_rollon_rexona.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "rexona_spray_rexona.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "sanex_dermo_sensitive_sanex.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "dove_original_dove.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "yves_rocher_deodorant_nature_yves_rocher.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "yves_rocher_rollon_vegetal_yves_rocher.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "yves_rocher_spray_fraicheur_yves_rocher.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "yves_rocher_brume_parfumee_yves_rocher.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "yves_rocher_eau_de_toilette_yves_rocher.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "yves_rocher_eau_de_cologne_yves_rocher.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "essential_brush_set_ecotools.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "perfecting_blender_sponge_ecotools.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "led_makeup_mirror_philips.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "brush_storage_case_ecotools.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "beauty_organizer_philips.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "travel_makeup_bag_ecotools.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "brush_cleansing_soap_ecotools.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "reusable_makeup_remover_pads_ecotools.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "professional_eyelash_curler_shiseido.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "precision_tweezers_shiseido.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "professional_nail_care_set_shiseido.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "wet_brush_pro_wet_brush.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "detangler_brush_wet_brush.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ionic_hair_dryer_babyliss.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ceramic_straightener_babyliss.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "curling_wand_babyliss.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "hair_claw_clips_scunci.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "nocrease_hair_elastics_scunci.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "velvet_scrunchie_scunci.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "wide_headband_scunci.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "magnetic_makeup_palette_morphe.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "pro_brush_collection_morphe.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "original_beauty_sponge_fenty_beauty.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "beauty_sponge_duo_fenty_beauty.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "brush_cleaning_glove_morphe.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "essential_brush_kit_morphe.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "blending_sponge_morphe.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "compact_makeup_mirror_philips.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "smart_led_mirror_philips.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "portable_mirror_philips.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "bleu_de_chanel.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "dior_sauvage.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "acqua_di_gio.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ysl_lhomme.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "terre_d_hermes.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "one_million.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "le_male.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "azzaro_wanted.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "boss_bottled_beyond.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "montblanc_legend_red.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ysl_la_nuit.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "versace_eros.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "habit_rouge.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "prada_paradigme.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "issey_le_sel.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "dior_jadore.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "lancome_la_vie_est_belle.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "chanel_coco_mademoiselle.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "ysl_black_opium.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "miss_dior.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "gucci_bamboo.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "good_girl.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "la_bomba.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "lancome_tresor.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "chanel_no5.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "prada_paradoxe.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "tom_ford_cafe_rose.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "dior_addict.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "gucci_bloom.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "dolce_gabbana_the_one.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "creed_aventus.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "baccarat_rouge_540_extrait.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "initio_oud_for_greatness.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "tom_ford_oud_wood.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "parfums_de_marly_herod.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "by_kilian_black_phantom.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "amouage_interlude_man.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "creed_love_in_white.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "mfk_oud_satin_mood.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "xerjoff_naxos.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "roja_enigma_pour_homme.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "frederic_malle_portrait_of_a_lady.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "serge_lutens_borneo_1834.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "parfums_de_marly_delina_exclusif.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  {
+    "image": "amouage_jubilation_xxv.jpg",
+    "results": {
+      "desktop": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "android": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      },
+      "iphone": {
+        "status": 200,
+        "contentType": "image/jpeg"
+      }
+    }
+  }
+]
