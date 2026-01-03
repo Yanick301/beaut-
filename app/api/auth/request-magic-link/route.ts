@@ -36,7 +36,12 @@ export async function POST(req: NextRequest) {
     const { error: otpError } = await supabase.auth.signInWithOtp({
       email: email.toLowerCase().trim(),
       options: {
+<<<<<<< HEAD
         emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'}/auth/callback`,
+=======
+        // Utiliser l'origine de la requête si NEXT_PUBLIC_SITE_URL n'est pas défini
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || req.headers.get('origin') || 'http://localhost:3000'}/auth/callback`,
+>>>>>>> 2eb31de (Initial commit: e-commerce site with auth fixes and image corrections)
       },
     });
 
