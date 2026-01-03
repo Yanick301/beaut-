@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { FiMail, FiUser } from 'react-icons/fi';
 import { useToastStore } from '@/lib/toast-store';
-import { createAdminClient } from '@/lib/supabase/admin';
 
 export default function SignupPage() {
   const [firstName, setFirstName] = useState('');
@@ -27,40 +26,23 @@ export default function SignupPage() {
     try {
       addToast('Création du compte...', 'info');
 
-      // 1. Créer l'utilisateur dans Supabase Auth
-      const adminClient = createAdminClient();
-      
-      const { data: authUser, error: authError } = await adminClient.auth.admin.createUser({
-        email: email.trim().toLowerCase(),
-        email_confirm: true,
-        user_metadata: {
+      // Appeler l'API pour créer l'utilisateur
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
           first_name: firstName,
           last_name: lastName,
-        }
+        }),
       });
 
-      if (authError) {
-        if (authError.message.includes('already exists')) {
-          throw new Error('Cet email est déjà utilisé');
-        }
-        throw authError;
-      }
+      const data = await response.json();
 
-      // 2. Créer le profil utilisateur
-      if (authUser.user) {
-        const { error: profileError } = await adminClient
-          .from('profiles')
-          .insert({
-            id: authUser.user.id,
-            email: email.trim().toLowerCase(),
-            first_name: firstName,
-            last_name: lastName,
-            updated_at: new Date().toISOString(),
-          });
-
-        if (profileError && !profileError.message.includes('duplicate')) {
-          console.error('Profile error:', profileError);
-        }
+      if (!response.ok) {
+        throw new Error(data.error || 'Erreur lors de la création du compte');
       }
 
       setEmailSent(true);
