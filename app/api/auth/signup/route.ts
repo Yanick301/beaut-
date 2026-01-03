@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, first_name, last_name } = await req.json();
+    const { email, password, first_name, last_name, phone } = await req.json();
 
-    if (!email || !first_name || !last_name) {
+    if (!email || !password || !first_name || !last_name || !phone) {
       return NextResponse.json(
         { error: 'Tous les champs sont obligatoires' },
         { status: 400 }
@@ -14,13 +14,19 @@ export async function POST(req: NextRequest) {
 
     const adminClient = createAdminClient();
 
-    // 1. Créer l'utilisateur dans Supabase Auth
-    const { data: authUser, error: authError } = await adminClient.auth.admin.createUser({
+    // 1. Créer l'utilisateur dans Supabase Auth (Standard Sign Up avec Password)
+    // Cela enverra automatiquement l'email de confirmation configuré dans Supabase
+    // On ajoute le phone dans les metadata pour l'accès facile si besoin
+    const { data: authUser, error: authError } = await adminClient.auth.signUp({
       email: email.trim().toLowerCase(),
-      email_confirm: true,
-      user_metadata: {
-        first_name,
-        last_name,
+      password,
+      options: {
+        data: {
+          first_name,
+          last_name,
+          phone,
+        },
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'}/auth/callback`,
       }
     });
 
@@ -34,33 +40,22 @@ export async function POST(req: NextRequest) {
       throw authError;
     }
 
-    // 2. Créer le profil utilisateur
+    // 2. Créer ou mettre à jour le profil utilisateur
+    // Note: Normalement géré par trigger, mais on le garde pour sécurité/complétude
     if (authUser.user) {
       const { error: profileError } = await adminClient
         .from('profiles')
-        .insert({
+        .upsert({
           id: authUser.user.id,
           email: email.trim().toLowerCase(),
           first_name,
           last_name,
+          phone,
           updated_at: new Date().toISOString(),
-        });
+        }, { onConflict: 'id' });
 
-      if (profileError && !profileError.message.includes('duplicate')) {
+      if (profileError) {
         console.error('Profile creation error:', profileError);
-      }
-
-      // 3. Déclencher l'envoi du Magic Link via Supabase (Native)
-      // Cela utilisera le template "Magic Link" configuré dans le dashboard Supabase
-      const { error: otpError } = await adminClient.auth.signInWithOtp({
-        email: email.trim().toLowerCase(),
-        options: {
-          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:5000'}/auth/callback`,
-        },
-      });
-
-      if (otpError) {
-        console.error('Erreur envoi Magic Link Supabase:', otpError);
       }
     }
 

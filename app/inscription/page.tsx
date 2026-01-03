@@ -9,6 +9,8 @@ export default function SignupPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const { addToast } = useToastStore();
@@ -17,7 +19,7 @@ export default function SignupPage() {
     e.preventDefault();
     setLoading(true);
 
-    if (!email || !firstName || !lastName) {
+    if (!email || !password || !firstName || !lastName || !phone) {
       addToast('Vul alle velden in', 'error');
       setLoading(false);
       return;
@@ -34,8 +36,10 @@ export default function SignupPage() {
         },
         body: JSON.stringify({
           email: email.trim().toLowerCase(),
+          password,
           first_name: firstName,
           last_name: lastName,
+          phone,
         }),
       });
 
@@ -118,6 +122,25 @@ export default function SignupPage() {
               </div>
 
               <div>
+                <label htmlFor="phone" className="block text-brown-dark font-medium mb-2">
+                  Telefoonnummer
+                </label>
+                <div className="relative">
+                  <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                  <input
+                    id="phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    placeholder="06 12 34 56 78"
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+
+              <div>
                 <label htmlFor="email" className="block text-brown-dark font-medium mb-2">
                   E-mailadres
                 </label>
@@ -132,6 +155,26 @@ export default function SignupPage() {
                     className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
                     placeholder="uw@email.com"
                     disabled={loading}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-brown-dark font-medium mb-2">
+                  Wachtwoord
+                </label>
+                <div className="relative">
+                  <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-brown-soft w-5 h-5" />
+                  <input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-nude focus:border-rose-soft outline-none transition"
+                    placeholder="********"
+                    disabled={loading}
+                    minLength={6}
                   />
                 </div>
               </div>
