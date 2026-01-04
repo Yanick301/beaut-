@@ -136,11 +136,26 @@ export default function AdminDashboard() {
       // Rafraîchir les stats
       fetchOrders();
 
-      // Afficher une notification de succès
+      // Show success notification
       setNotification({
         type: 'success',
         message: `Statut de la commande mise à jour à ${newStatus}`
       });
+
+      // Trigger GA4 event for payment/validation
+      if (newStatus === 'processing') {
+        // Use the current state 'orders' to find the order details.
+        // Note: 'orders' might not have the updated status yet if we just called setOrders with a callback,
+        // but the amount and order number should be correct.
+        const order = orders.find(o => o.id === orderId);
+        if (order && typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'Get_validated', {
+            currency: 'EUR',
+            value: parseFloat(order.total_amount),
+            transaction_id: order.order_number
+          });
+        }
+      }
     } catch (err: any) {
       console.error('Update order error:', err);
       setError(err.message || 'Erreur lors de la mise à jour de la commande');
