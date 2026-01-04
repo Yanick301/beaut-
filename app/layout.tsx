@@ -10,13 +10,14 @@ import ToastContainer from '@/components/ToastContainer'
 import SmartsuppChat from '@/components/SmartsuppChat'
 import AuthNotification from '@/components/AuthNotification'
 import Modal from '@/components/Modal'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
 })
@@ -97,6 +98,7 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-beige-light font-sans antialiased">
+        <GoogleAnalytics />
         <StructuredData type="Organization" data={{}} />
         <StructuredData type="WebSite" data={{}} />
         <PromoBanner />
